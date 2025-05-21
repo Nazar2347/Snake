@@ -1,2 +1,4 @@
 /.vs/
 /build/
+CMakeSettings.json
+/external/raylib-subbuild/
