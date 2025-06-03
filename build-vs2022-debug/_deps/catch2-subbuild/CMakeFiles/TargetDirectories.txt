@@ -1,3 +1,0 @@
-C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/catch2-subbuild/CMakeFiles/catch2-populate.dir
-C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/catch2-subbuild/CMakeFiles/ALL_BUILD.dir
-C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/catch2-subbuild/CMakeFiles/ZERO_CHECK.dir
