@@ -1,0 +1,20 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CPack.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CPackComponent.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindOpenGL.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindPackageMessage.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/GNUInstallDirs.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Templates/CPackConfig.cmake.in
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/CMakeFiles/cmake.verify_globs
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/CompileDefinitions.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/GlfwImport.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/InstallConfigurations.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/JoinPaths.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/LibraryConfigurations.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/LibraryPathToLinkerFlags.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/PackConfigurations.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/PopulateConfigVariablesLocally.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/raylib-config-version.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/raylib.pc.in
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/src/CMakeLists.txt

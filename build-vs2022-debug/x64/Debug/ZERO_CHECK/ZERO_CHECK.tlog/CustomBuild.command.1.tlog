@@ -1,0 +1,10 @@
+^C:\USERS\NDUNAS\SOURCE\REPOS\SNAKE\BUILD-VS2022-DEBUG\CMAKEFILES\3226FD35AC0F42B6B2456C268848E467\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/ndunas/source/repos/Snake -BC:/Users/ndunas/source/repos/Snake/build-vs2022-debug --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/Snake.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

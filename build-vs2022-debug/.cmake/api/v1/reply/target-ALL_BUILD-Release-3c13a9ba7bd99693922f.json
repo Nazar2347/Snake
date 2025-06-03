@@ -1,0 +1,64 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "UnitTests::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "SnakeMain::@2f8e42959f975d322c07"
+		},
+		{
+			"id" : "SnakeRenderLib::@575b2d73ea6609e95b61"
+		},
+		{
+			"id" : "SnakeCoreLib::@78f8d56e64358c0e66d0"
+		},
+		{
+			"id" : "AllTests::@a44f0ac069e85531cdee"
+		},
+		{
+			"id" : "Catch2WithMain::@fa92aa50e9bf5e1a7206"
+		},
+		{
+			"id" : "Catch2::@fa92aa50e9bf5e1a7206"
+		},
+		{
+			"id" : "raylib::@4dc3a4644cf4ded08c01"
+		},
+		{
+			"id" : "glfw::@9de86fbe87260ae8e66c"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

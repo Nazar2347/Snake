@@ -1,0 +1,14 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CMakeDependentOption.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/CMakeFiles/cmake.verify_globs
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/CMakeLists.txt
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/CMakeOptions.txt
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/AddIfFlagCompiles.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/CompilerFlags.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/EnumOption.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/ParseConfigHeader.cmake
+C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/raylib-src/cmake/Uninstall.cmake

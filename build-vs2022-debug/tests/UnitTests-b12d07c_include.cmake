@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/tests/UnitTests-b12d07c_tests.cmake")
+  include("C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/tests/UnitTests-b12d07c_tests.cmake")
+else()
+  add_test(UnitTests_NOT_BUILT-b12d07c UnitTests_NOT_BUILT-b12d07c)
+endif()

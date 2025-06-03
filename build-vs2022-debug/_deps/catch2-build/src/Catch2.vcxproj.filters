@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_chronometer.cpp">
+      <Filter>sources\benchmark</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_analyse.cpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_benchmark_function.cpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_run_for_at_least.cpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_stats.cpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generator_exception.cpp">
+      <Filter>sources\generators</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generators.cpp">
+      <Filter>sources\generators</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generators_random.cpp">
+      <Filter>sources\generators</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_automake.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_common_base.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_compact.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_console.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_cumulative_base.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_event_listener.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_helpers.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_json.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_junit.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_multi.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_registrars.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_sonarqube.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_streaming_base.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_tap.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_teamcity.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_xml.cpp">
+      <Filter>sources\reporters</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_capture.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_config.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_exception.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_generatortracker.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_registry_hub.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_reporter.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_reporter_factory.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_testcase.cpp">
+      <Filter>sources\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_approx.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_assertion_result.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_config.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_get_random_seed.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_message.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_registry_hub.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_session.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_tag_alias_autoregistrar.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_test_case_info.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_test_spec.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_timer.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_tostring.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_totals.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_translate_exception.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_version.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_assertion_handler.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_case_insensitive_comparisons.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_clara.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_commandline.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_console_colour.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_context.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_debug_console.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_debugger.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_decomposer.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_enforce.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_enum_values_registry.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_errno_guard.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_exception_translator_registry.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_fatal_condition_handler.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_floating_point_helpers.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_getenv.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_istream.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_jsonwriter.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_lazy_expr.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_leak_detector.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_list.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_message_info.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_output_redirect.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_parse_numbers.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_polyfills.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_random_number_generator.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_random_seed_generation.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_reporter_registry.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_reporter_spec_parser.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_reusable_string_stream.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_run_context.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_section.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_singletons.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_source_line_info.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_startup_exception_registry.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_stdstreams.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_string_manip.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_stringref.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_tag_alias_registry.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_case_info_hasher.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_case_registry_impl.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_case_tracker.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_failure_exception.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_registry.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_spec_parser.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_textflow.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_uncaught_exceptions.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_wildcard_pattern.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_xmlwriter.cpp">
+      <Filter>sources\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_container_properties.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_exception.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_floating_point.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_predicate.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_quantifiers.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_string.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_templated.cpp">
+      <Filter>sources\matchers</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\internal\catch_matchers_impl.cpp">
+      <Filter>sources\matchers\internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_benchmark.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_benchmark_all.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_chronometer.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_clock.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_constructor.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_environment.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_estimate.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_execution_plan.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_optimizer.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_outlier_classification.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\catch_sample_analysis.hpp">
+      <Filter>sources\benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_analyse.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_benchmark_function.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_benchmark_stats.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_benchmark_stats_fwd.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_complete_invoke.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_estimate_clock.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_measure.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_repeat.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_run_for_at_least.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_stats.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\benchmark\detail\catch_timing.hpp">
+      <Filter>sources\benchmark\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generator_exception.hpp">
+      <Filter>sources\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generators.hpp">
+      <Filter>sources\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generators_adapters.hpp">
+      <Filter>sources\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generators_all.hpp">
+      <Filter>sources\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generators_random.hpp">
+      <Filter>sources\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\generators\catch_generators_range.hpp">
+      <Filter>sources\generators</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_automake.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_common_base.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_compact.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_console.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_cumulative_base.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_event_listener.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_helpers.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_json.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_junit.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_multi.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_registrars.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_sonarqube.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_streaming_base.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_tap.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_teamcity.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporter_xml.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\reporters\catch_reporters_all.hpp">
+      <Filter>sources\reporters</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_all.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_capture.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_config.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_enum_values_registry.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_exception.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_generatortracker.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_registry_hub.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_reporter.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_reporter_factory.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_tag_alias_registry.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_test_invoker.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\interfaces\catch_interfaces_testcase.hpp">
+      <Filter>sources\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-build\generated-includes\catch2\catch_user_config.hpp">
+      <Filter>generated headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_user_config.hpp.in">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_all.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_approx.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_assertion_info.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_assertion_result.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_case_sensitive.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_config.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_get_random_seed.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_message.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_section_info.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_session.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_tag_alias.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_tag_alias_autoregistrar.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_template_test_macros.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_test_case_info.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_test_macros.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_test_spec.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_timer.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_tostring.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_totals.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_translate_exception.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_version.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\catch_version_macros.hpp">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_assertion_handler.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_case_insensitive_comparisons.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_clara.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_commandline.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_compare_traits.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_compiler_capabilities.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_config_android_logwrite.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_config_counter.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_config_prefix_messages.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_config_static_analysis_support.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_config_uncaught_exceptions.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_config_wchar.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_console_colour.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_console_width.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_container_nonmembers.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_context.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_debug_console.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_debugger.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_decomposer.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_enforce.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_enum_values_registry.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_errno_guard.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_exception_translator_registry.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_fatal_condition_handler.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_floating_point_helpers.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_getenv.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_istream.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_is_permutation.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_jsonwriter.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_lazy_expr.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_leak_detector.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_list.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_logical_traits.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_message_info.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_meta.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_move_and_forward.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_noncopyable.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_optional.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_output_redirect.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_parse_numbers.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_platform.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_polyfills.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_preprocessor.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_preprocessor_remove_parens.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_random_floating_point_helpers.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_random_integer_helpers.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_random_number_generator.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_random_seed_generation.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_reporter_registry.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_reporter_spec_parser.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_result_type.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_reusable_string_stream.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_run_context.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_section.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_sharding.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_singletons.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_source_line_info.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_startup_exception_registry.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_stdstreams.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_stream_end_stop.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_string_manip.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_stringref.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_tag_alias_registry.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_template_test_registry.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_case_info_hasher.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_case_registry_impl.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_case_tracker.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_failure_exception.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_macro_impl.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_registry.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_run_info.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_test_spec_parser.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_textflow.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_to_string.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_uncaught_exceptions.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_uniform_floating_point_distribution.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_uniform_integer_distribution.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_unique_name.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_unique_ptr.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_void_type.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_wildcard_pattern.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_windows_h_proxy.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\internal\catch_xmlwriter.hpp">
+      <Filter>sources\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_all.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_container_properties.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_contains.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_range_equals.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_exception.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_floating_point.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_predicate.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_quantifiers.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_string.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_templated.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\catch_matchers_vector.hpp">
+      <Filter>sources\matchers</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\catch2\matchers\internal\catch_matchers_impl.hpp">
+      <Filter>sources\matchers\internal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\ndunas\source\repos\Snake\build-vs2022-debug\_deps\catch2-src\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="generated headers">
+      <UniqueIdentifier>{41E00735-E632-3F09-BEE1-FA787603229D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources">
+      <UniqueIdentifier>{9E9901BF-A6ED-3B38-84C3-4ECFD2C0CDFE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\benchmark">
+      <UniqueIdentifier>{00E1FF0B-8C19-3E44-A749-137B11C3BDFF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\benchmark\detail">
+      <UniqueIdentifier>{D1A9E696-0258-319E-AD6F-53D7AC470F7E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\generators">
+      <UniqueIdentifier>{439CEA14-57B2-3E81-8322-08198C685EC4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\interfaces">
+      <UniqueIdentifier>{D5E4C8C1-7504-3A82-A407-68382635F95A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\internal">
+      <UniqueIdentifier>{445423D6-8BF6-351C-B4C2-0D94C88116B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\matchers">
+      <UniqueIdentifier>{7DA18E41-67A1-3EE7-881B-9256E6434CA0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\matchers\internal">
+      <UniqueIdentifier>{9673107E-5833-34D9-AE1D-C99A92AC1B0F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\reporters">
+      <UniqueIdentifier>{43995A46-3186-3641-B3DF-3ED10944D8E3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

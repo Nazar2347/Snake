@@ -1,0 +1,2058 @@
+{
+	"archive" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64",
+				"role" : "flags"
+			}
+		]
+	},
+	"artifacts" : 
+	[
+		{
+			"path" : "_deps/catch2-build/src/Release/Catch2.lib"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"build-vs2022-debug/_deps/catch2-src/src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 350,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 376,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/catch2-src/src/catch2/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/ndunas/source/repos/Snake/build-vs2022-debug/_deps/catch2-build/generated-includes"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				22,
+				23,
+				24,
+				25,
+				26,
+				33,
+				34,
+				35,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				138,
+				139,
+				140,
+				141,
+				142,
+				143,
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				273,
+				274,
+				275,
+				276,
+				277,
+				278,
+				279,
+				280,
+				281
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "Catch2::@fa92aa50e9bf5e1a7206",
+	"name" : "Catch2",
+	"nameOnDisk" : "Catch2.lib",
+	"paths" : 
+	{
+		"build" : "_deps/catch2-build/src",
+		"source" : "build-vs2022-debug/_deps/catch2-src/src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "sources\\benchmark",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				22
+			]
+		},
+		{
+			"name" : "sources\\benchmark\\detail",
+			"sourceIndexes" : 
+			[
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				23,
+				24,
+				25,
+				26
+			]
+		},
+		{
+			"name" : "sources\\generators",
+			"sourceIndexes" : 
+			[
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35
+			]
+		},
+		{
+			"name" : "sources\\reporters",
+			"sourceIndexes" : 
+			[
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68
+			]
+		},
+		{
+			"name" : "sources\\interfaces",
+			"sourceIndexes" : 
+			[
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88
+			]
+		},
+		{
+			"name" : "sources",
+			"sourceIndexes" : 
+			[
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				154,
+				155,
+				156,
+				157,
+				158,
+				159,
+				160,
+				161,
+				162,
+				163,
+				164,
+				165,
+				166,
+				167,
+				168,
+				169,
+				170,
+				171,
+				172,
+				173,
+				174,
+				175,
+				176
+			]
+		},
+		{
+			"name" : "sources\\internal",
+			"sourceIndexes" : 
+			[
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				138,
+				139,
+				140,
+				141,
+				142,
+				143,
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				177,
+				178,
+				179,
+				180,
+				181,
+				182,
+				183,
+				184,
+				185,
+				186,
+				187,
+				188,
+				189,
+				190,
+				191,
+				192,
+				193,
+				194,
+				195,
+				196,
+				197,
+				198,
+				199,
+				200,
+				201,
+				202,
+				203,
+				204,
+				205,
+				206,
+				207,
+				208,
+				209,
+				210,
+				211,
+				212,
+				213,
+				214,
+				215,
+				216,
+				217,
+				218,
+				219,
+				220,
+				221,
+				222,
+				223,
+				224,
+				225,
+				226,
+				227,
+				228,
+				229,
+				230,
+				231,
+				232,
+				233,
+				234,
+				235,
+				236,
+				237,
+				238,
+				239,
+				240,
+				241,
+				242,
+				243,
+				244,
+				245,
+				246,
+				247,
+				248,
+				249,
+				250,
+				251,
+				252,
+				253,
+				254,
+				255,
+				256,
+				257,
+				258,
+				259
+			]
+		},
+		{
+			"name" : "generated headers",
+			"sourceIndexes" : 
+			[
+				153
+			]
+		},
+		{
+			"name" : "sources\\matchers",
+			"sourceIndexes" : 
+			[
+				260,
+				261,
+				262,
+				263,
+				264,
+				265,
+				266,
+				267,
+				268,
+				269,
+				270,
+				271,
+				273,
+				274,
+				275,
+				276,
+				277,
+				278,
+				279,
+				280
+			]
+		},
+		{
+			"name" : "sources\\matchers\\internal",
+			"sourceIndexes" : 
+			[
+				272,
+				281
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_benchmark.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_benchmark_all.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_chronometer.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_clock.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_constructor.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_environment.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_estimate.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_execution_plan.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_optimizer.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_outlier_classification.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_sample_analysis.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_analyse.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_benchmark_function.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_benchmark_stats.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_benchmark_stats_fwd.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_complete_invoke.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_estimate_clock.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_measure.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_repeat.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_run_for_at_least.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_stats.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_timing.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/catch_chronometer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_analyse.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_benchmark_function.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_run_for_at_least.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/benchmark/detail/catch_stats.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generator_exception.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generators.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generators_adapters.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generators_all.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generators_random.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generators_range.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generator_exception.cpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generators.cpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/generators/catch_generators_random.cpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_automake.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_common_base.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_compact.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_console.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_cumulative_base.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_event_listener.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_helpers.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_json.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_junit.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_multi.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_registrars.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_sonarqube.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_streaming_base.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_tap.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_teamcity.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_xml.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporters_all.hpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_automake.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_common_base.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_compact.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_console.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_cumulative_base.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_event_listener.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_helpers.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_json.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_junit.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_multi.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_registrars.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_sonarqube.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_streaming_base.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_tap.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_teamcity.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/reporters/catch_reporter_xml.cpp",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_all.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_capture.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_config.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_enum_values_registry.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_exception.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_generatortracker.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_registry_hub.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_reporter.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_reporter_factory.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_tag_alias_registry.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_test_invoker.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_testcase.hpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_capture.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_config.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_exception.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_generatortracker.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_registry_hub.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_reporter.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_reporter_factory.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/interfaces/catch_interfaces_testcase.cpp",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_approx.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_assertion_result.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_config.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_get_random_seed.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_message.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_registry_hub.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_session.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_tag_alias_autoregistrar.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_test_case_info.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_test_spec.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_timer.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_tostring.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_totals.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_translate_exception.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_version.cpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_assertion_handler.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_case_insensitive_comparisons.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_clara.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_commandline.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_console_colour.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_context.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_debug_console.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_debugger.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_decomposer.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_enforce.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_enum_values_registry.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_errno_guard.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_exception_translator_registry.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_fatal_condition_handler.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_floating_point_helpers.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_getenv.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_istream.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_jsonwriter.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_lazy_expr.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_leak_detector.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_list.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_message_info.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_output_redirect.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_parse_numbers.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_polyfills.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_random_number_generator.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_random_seed_generation.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_reporter_registry.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_reporter_spec_parser.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_reusable_string_stream.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_run_context.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_section.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_singletons.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_source_line_info.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_startup_exception_registry.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_stdstreams.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_string_manip.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_stringref.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_tag_alias_registry.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_case_info_hasher.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_case_registry_impl.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_case_tracker.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_failure_exception.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_registry.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_spec_parser.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_textflow.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_uncaught_exceptions.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_wildcard_pattern.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_xmlwriter.cpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-build/generated-includes/catch2/catch_user_config.hpp",
+			"sourceGroupIndex" : 7
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_user_config.hpp.in",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_all.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_approx.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_assertion_info.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_assertion_result.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_case_sensitive.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_config.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_get_random_seed.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_message.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_section_info.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_session.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_tag_alias.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_tag_alias_autoregistrar.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_template_test_macros.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_test_case_info.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_test_macros.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_test_spec.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_timer.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_tostring.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_totals.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_translate_exception.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_version.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/catch_version_macros.hpp",
+			"sourceGroupIndex" : 5
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_assertion_handler.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_case_insensitive_comparisons.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_clara.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_commandline.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_compare_traits.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_compiler_capabilities.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_config_android_logwrite.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_config_counter.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_config_prefix_messages.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_config_static_analysis_support.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_config_uncaught_exceptions.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_config_wchar.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_console_colour.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_console_width.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_container_nonmembers.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_context.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_debug_console.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_debugger.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_decomposer.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_enforce.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_enum_values_registry.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_errno_guard.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_exception_translator_registry.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_fatal_condition_handler.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_floating_point_helpers.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_getenv.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_istream.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_is_permutation.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_jsonwriter.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_lazy_expr.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_leak_detector.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_list.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_logical_traits.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_message_info.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_meta.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_move_and_forward.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_noncopyable.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_optional.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_output_redirect.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_parse_numbers.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_platform.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_polyfills.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_preprocessor.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_preprocessor_remove_parens.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_random_floating_point_helpers.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_random_integer_helpers.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_random_number_generator.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_random_seed_generation.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_reporter_registry.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_reporter_spec_parser.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_result_type.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_reusable_string_stream.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_run_context.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_section.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_sharding.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_singletons.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_source_line_info.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_startup_exception_registry.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_stdstreams.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_stream_end_stop.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_string_manip.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_stringref.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_tag_alias_registry.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_template_test_registry.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_case_info_hasher.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_case_registry_impl.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_case_tracker.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_failure_exception.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_macro_impl.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_registry.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_run_info.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_test_spec_parser.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_textflow.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_to_string.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_uncaught_exceptions.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_uniform_floating_point_distribution.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_uniform_integer_distribution.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_unique_name.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_unique_ptr.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_void_type.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_wildcard_pattern.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_windows_h_proxy.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/internal/catch_xmlwriter.hpp",
+			"sourceGroupIndex" : 6
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_all.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_container_properties.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_contains.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_range_equals.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_exception.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_floating_point.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_predicate.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_quantifiers.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_string.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_templated.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_vector.hpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/internal/catch_matchers_impl.hpp",
+			"sourceGroupIndex" : 9
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_container_properties.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_exception.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_floating_point.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_predicate.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_quantifiers.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_string.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/catch_matchers_templated.cpp",
+			"sourceGroupIndex" : 8
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "build-vs2022-debug/_deps/catch2-src/src/catch2/matchers/internal/catch_matchers_impl.cpp",
+			"sourceGroupIndex" : 9
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
