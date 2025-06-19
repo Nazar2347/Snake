@@ -44,10 +44,10 @@ void Snake::ShortTailBy(size_t Size)
 
 void Snake::Move(Vector2 Direction)
 {
-	Vector2Add(HeadPosition_, Direction);
-	for (auto tail : TailPosition_)
+	HeadPosition_ = Vector2Add(HeadPosition_, Direction); // Move the head
+	for (auto tail : TailPosition_) // Move the tail segments
 	{
-		Vector2Add(tail, Direction);
+		tail = Vector2Add(tail, Direction);
 	}
 }
 
