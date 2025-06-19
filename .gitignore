@@ -3,3 +3,4 @@
 CMakeSettings.json
 /external/raylib-subbuild/
 /build-vs2022-debug/
+/Documentation/
