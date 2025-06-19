@@ -44,11 +44,19 @@ void Snake::ShortTailBy(size_t Size)
 
 void Snake::Move(Vector2 Direction)
 {
-	HeadPosition_ = Vector2Add(HeadPosition_, Direction); // Move the head
-	for (auto tail : TailPosition_) // Move the tail segments
+	if (Vector2Add(Direction, HeadPosition_) != TailPosition_[0]) //If movement is not backwards
 	{
-		tail = Vector2Add(tail, Direction);
+		HeadPosition_ = Vector2Add(HeadPosition_, Direction); // Move the head
+		for (auto tail : TailPosition_) // Move the tail segments
+		{
+			tail = Vector2Add(tail, Direction);
+		}
 	}
+	else 
+	{
+
+	}
+		
 }
 
 bool Snake::isAlive()
