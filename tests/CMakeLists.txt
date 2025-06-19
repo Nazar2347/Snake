@@ -15,6 +15,8 @@ add_executable (${PROJECT_NAME} ${TEST_SOURCES})
 
 target_link_libraries( ${PROJECT_NAME}
 	PRIVATE Catch2::Catch2WithMain
+	PRIVATE ExternalLibrary
+	PRIVATE SnakeCoreLib
 )
 
 list (APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
