@@ -43,12 +43,27 @@ TEST_CASE("Move() updates head and tail positions", "[Snake]") {
     auto oldHead = snake.getHeadPosition();
     auto oldTail = snake.getTailPosition();
 
-    Vector2 dir = { 1, 0 };
-    snake.Move(dir);
+    SECTION("Check if snake moved","[Snake1]")
+    {
+        Vector2 dir = { -1, 0 };
+    
+        snake.Move(dir);
 
-    auto newHead = snake.getHeadPosition();
-    REQUIRE(newHead.x == oldHead.x + dir.x);
-    REQUIRE(newHead.y == oldHead.y + dir.y);
+        auto newHead = snake.getHeadPosition();
+        REQUIRE(newHead.x == oldHead.x + dir.x);
+        REQUIRE(newHead.y == oldHead.y + dir.y);
+
+    }
+    SECTION("Check if direction not going into snake body")
+    {
+        Vector2 dir2 = { 1,0 }; //move backwards
+        oldHead = snake.getHeadPosition();
+        oldTail = snake.getTailPosition();
+        snake.Move(dir2);
+        
+        REQUIRE(snake.getHeadPosition() == oldHead);
+       
+    }
     // Note: Tail movement logic may need to be checked for correctness
 }
 
