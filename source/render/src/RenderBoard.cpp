@@ -6,36 +6,28 @@ RenderBoard::RenderBoard(const Board& Board): LevelBoard_(Board)
 {
 	Image TopBorder = LoadImage("Assets/BorderTop.png");
 	Image Ground1 = LoadImage("Assets/Ground1.png");
-	if (TopBorder.data == NULL || Ground1.data==NULL)
+	Image Ground2 = LoadImage("Assets/Ground2.png");
+	if (TopBorder.data == NULL || Ground1.data==NULL|| Ground2.data==NULL)
 	{
 		std::cout << "Failed to load image \n";
 	}
 	
 	BorderTopTexture_ = LoadTextureFromImage(TopBorder);
-	GroundTexture_ = LoadTextureFromImage(Ground1);
-	if (BorderTopTexture_.id == 0 || GroundTexture_.id ==0)
+	GroundTexture1_ = LoadTextureFromImage(Ground1);
+	GroundTexture2_ = LoadTextureFromImage(Ground2);
+	if (BorderTopTexture_.id == 0 || GroundTexture1_.id ==0 || GroundTexture2_.id ==0)
 	{
 		std::cout << "Failed to load texture for BorderTop.png \n";
 	}
 	UnloadImage(TopBorder);
 	UnloadImage(Ground1);
+	UnloadImage(Ground2);
 }
 
 void RenderBoard::Draw() const
 {
-	DrawBorder();
-	DrawGround();
-	
-}
-
-RenderBoard::~RenderBoard()
-{
-	UnloadTexture(BorderTopTexture_);
-}
-
-void RenderBoard::DrawBorder() const
-{
-	if (BorderTopTexture_.id != NULL)
+	DrawBackground();
+	if (BorderTopTexture_.id != NULL && GroundTexture1_.id != 0 && GroundTexture2_.id != 0)
 	{
 		for (int i = 0; i < LevelBoard_.GetLevelXSize(); i++)
 		{
@@ -44,8 +36,25 @@ void RenderBoard::DrawBorder() const
 				Vector2 CurrentCell = { i,j };
 				if (LevelBoard_.GetCellInfo(CurrentCell) == 1)
 				{
-					DrawTextureEx(BorderTopTexture_, { CurrentCell.x * CELL_SIZE+BOARD_INITIAL_X_POS,
-						CurrentCell.y * CELL_SIZE +BOARD_INITIAL_Y_POS }, 0.0f, 0.11f, WHITE);
+					DrawTextureEx(BorderTopTexture_, { CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
+						CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS }, 0.0f, BLOCKS_SCALE, WHITE);
+				}
+				else
+				{
+					if ((i + j) % 2 == 0)
+					{
+						DrawTextureEx(GroundTexture1_, {
+							CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
+							CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
+							0.0f, BLOCKS_SCALE, WHITE);
+					}
+					else
+					{
+						DrawTextureEx(GroundTexture2_, {
+							CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
+							CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
+							0.0f, BLOCKS_SCALE, WHITE);
+					}
 				}
 
 			}
@@ -57,24 +66,28 @@ void RenderBoard::DrawBorder() const
 	}
 }
 
-void RenderBoard::DrawGround() const
+RenderBoard::~RenderBoard()
 {
-	if (GroundTexture_.id != NULL)
-	{
-		for (int i = 0; i < LevelBoard_.GetLevelXSize(); i++)
-		{
-			for (int j = 0; j < LevelBoard_.GetLevelYSize(); j++)
-			{
-				Vector2 CurrentCell = { i,j };
-				if (LevelBoard_.GetCellInfo(CurrentCell) == 0)
-				{
-					DrawTextureEx(GroundTexture_,{ 
-						CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
-						CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS }, 
-						0.0f, 0.11f, WHITE);
-				}
-
-			}
-		}
-	}
+	UnloadTexture(BorderTopTexture_);
+	UnloadTexture(GroundTexture1_);
+	UnloadTexture(GroundTexture2_);
 }
+
+void RenderBoard::DrawBackground() const
+{
+	Rectangle Backgoround;
+	Backgoround.x = BOARD_INITIAL_X_POS;
+	Backgoround.y = BOARD_INITIAL_Y_POS;
+	Backgoround.height = LevelBoard_.GetLevelYSize();
+	Backgoround.width = LevelBoard_.GetLevelXSize();
+
+	DrawRectangle(Backgoround.x, Backgoround.y, Backgoround.width*CELL_SIZE, Backgoround.height*CELL_SIZE, LIME);
+
+	
+}
+
+
+
+
+
+

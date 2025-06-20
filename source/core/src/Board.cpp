@@ -40,19 +40,6 @@ size_t Board::GetLevelYSize()const
 	return LevelYSize_;
 }
 
-Vector2 Board::getStartingPos() const
-{
-	return StartingPosition_;
-}
-
-size_t Board::GetLevelXSize()const
-{
-	return LevelXSize_;
-}
-size_t Board::GetLevelYSize()const
-{
-	return LevelYSize_;
-}
 
 Board::~Board()
 {

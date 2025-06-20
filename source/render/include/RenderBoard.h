@@ -10,8 +10,9 @@ public:
 private:
 	Board LevelBoard_;
 	Texture2D BorderTopTexture_;
-	Texture2D GroundTexture_;
-	void DrawBorder()const;
-	void DrawGround()const;
+	Texture2D GroundTexture1_;
+	Texture2D GroundTexture2_;
+	void DrawBackground() const;
+
 	
 };
