@@ -12,9 +12,10 @@ enum class ELevelType
 class Board
 {
 public:
-	Board(std::vector<std::vector<bool>> LevelData);
+	Board(std::vector<std::vector<bool>> LevelData, Vector2 StartingPos);
 	void ChangeLevel(std::vector<std::vector<bool>> LevelData);
-	bool GetCellInfo(Vector2 Position);
+	bool GetCellInfo(Vector2 Position) const;
+	std::vector<std::vector<bool>> getLevelData() const;
 	virtual ~Board();
 private:
 	std::vector<std::vector<bool>> LevelData_;
