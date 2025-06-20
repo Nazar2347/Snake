@@ -48,6 +48,7 @@ size_t Board::GetLevelYSize()const
 	return LevelYSize_;
 }
 
+
 // Destructor
 Board::~Board()
 {
