@@ -12,11 +12,16 @@ RenderSnake::RenderSnake(Snake& Snake): Snake_(Snake)
 }
 void RenderSnake::Draw()const
 {
-
+    //Render SnakeHead
+    DrawSnakePart(SnakeParts[SnakePartType::TAIL_LEFT], Snake_.getHeadPosition());
 }
-void RenderSnake::DrawSnakePart(Rectangle Area, Vector2 Position)
+void RenderSnake::DrawSnakePart(Rectangle Area, Vector2 Position)const
 {
-    DrawTextureRec(SnakeBodyTexture_, Area, Position, WHITE);
+    DrawTextureRec(SnakeBodyTexture_, Area, 
+        { Position.x * CELL_SIZE + BOARD_INITIAL_X_POS,
+          Position.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
+        WHITE);
+    
 }
 
 RenderSnake::~RenderSnake()
