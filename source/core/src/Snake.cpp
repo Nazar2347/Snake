@@ -5,12 +5,12 @@ Snake::Snake(Vector2 StartingPos) : HeadPosition_(StartingPos),bIsAlive_(true)
 	TailPosition_.push_back({ StartingPos.x + 1, StartingPos.y });
 }
 
-std::vector<Vector2> Snake::getTailPosition()
+std::vector<Vector2> Snake::getTailPosition()const
 {
 	return TailPosition_;
 }
 
-Vector2 Snake::getHeadPosition()
+Vector2 Snake::getHeadPosition()const
 {
 	return HeadPosition_;
 }

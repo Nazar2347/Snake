@@ -23,13 +23,13 @@ public:
      * @brief Gets the positions of all tail segments.
      * @return A vector of Vector2 positions representing the tail.
      */
-    std::vector<Vector2> getTailPosition();
+    std::vector<Vector2> getTailPosition()const;
 
     /**
      * @brief Gets the current position of the snake's head.
      * @return The head position as a Vector2.
      */
-    Vector2 getHeadPosition();
+    Vector2 getHeadPosition()const;
 
     /**
      * @brief Extends the tail by a specified number of segments.
