@@ -4,20 +4,34 @@
 class Command
 {
 public:
-	virtual void execute() = 0;
+	virtual void execute(Snake& SnakeActor) = 0;
 	virtual ~Command();
 protected:
-	Snake& SnakeActor_;
 };
 
-class MoveCommand :public Command
+class MoveUPCommand :public Command
 {
 public:
-	void execute() override;
+	void execute(Snake& SnakeActor) override;
+};
+class MoveDownCommand : public Command
+{
+public:
+	void execute(Snake& SnakeActor) override;
+};
+class MoveRightCommand : public Command
+{
+public:
+	void execute(Snake& SnakeActor) override;
+};
+class MoveLeftCommand :public Command
+{
+public:
+	void execute(Snake& SnakeActor) override;
 };
 
-class NullComand
+class NullCommand : public Command
 {
 public:
-	void execute() override;
+	void execute(Snake & SnakeActor) override;
 };

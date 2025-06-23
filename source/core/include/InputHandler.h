@@ -6,12 +6,13 @@ class InputHandler
 {
 public:
 	InputHandler();
-	void HandleInput();
+	Command* HandleInput();
 	virtual ~InputHandler();
 private:
 	Command* ButtonW_;
 	Command* ButtonD_;
 	Command* ButtonA_;
 	Command* ButtonS_;
+	Command* NullCommand_;
 
 };

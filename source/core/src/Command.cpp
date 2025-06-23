@@ -4,12 +4,28 @@ Command::~Command()
 {
 }
 
-void MoveCommand::execute()
+void MoveUPCommand::execute(Snake& SnakeActor) 
 {
-	SnakeActor_.SetDirection()
+	SnakeActor.SetDirection(EDirection::UP);
 }
 
-void NullComand::execute()
+void MoveRightCommand::execute(Snake& SnakeActor)
 {
-	//Do nothing
+	SnakeActor.SetDirection(EDirection::RIGHT);
 }
+void MoveLeftCommand::execute(Snake& SnakeActor)
+{
+	SnakeActor.SetDirection(EDirection::LEFT);
+}
+
+void MoveDownCommand::execute(Snake& SnakeActor)
+{
+	SnakeActor.SetDirection(EDirection::DOWN);
+}
+void NullCommand::execute(Snake& SnakeActor) 
+{
+	// do nothing
+}
+
+
+
