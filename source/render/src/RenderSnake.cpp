@@ -1,7 +1,7 @@
 #include "RenderSnake.h"
 
 
-RenderSnake::RenderSnake(Snake& Snake): Snake_(Snake)
+RenderSnake::RenderSnake( Snake* Snake):Snake_(Snake)
 {
     
     Image ImageSnake = LoadImage("Assets/Snake-Graphics.png");
@@ -13,7 +13,16 @@ RenderSnake::RenderSnake(Snake& Snake): Snake_(Snake)
 void RenderSnake::Draw()const
 {
     //Render SnakeHead
-    DrawSnakePart(SnakeParts[SnakePartType::TAIL_LEFT], Snake_.getHeadPosition());
+    DrawSnakePart(SnakeParts[SnakePartType::HEAD_UP], Snake_->getHeadPosition());
+    for (int i = 0; i < Snake_->getTailPosition().size(); i++)
+    {
+        if (i == Snake_->getTailPosition().size() - 1)
+        {
+            DrawSnakePart(SnakeParts[SnakePartType::TAIL_UP], Snake_->getTailPosition()[i]);
+            break;
+        }
+        DrawSnakePart(SnakeParts[SnakePartType::BODY_HORIZONTAL], Snake_->getTailPosition()[i]);
+    }
 }
 void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position)const
 {

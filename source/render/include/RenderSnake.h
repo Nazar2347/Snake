@@ -28,12 +28,12 @@ enum SnakePartType {
 class RenderSnake
 {
 public:
-	RenderSnake(Snake& Snake);
+	RenderSnake(Snake* Snake);
 	void Draw()const;
     void DrawSnakePart(Rectangle SnakePart, Vector2 Position)const;
     virtual ~RenderSnake();
 private:
-	Snake Snake_;
+	Snake *Snake_;
 	Texture2D SnakeBodyTexture_;
     Rectangle SnakeParts[15] = {
         {0,   0, 64, 64},   //Body turn (top-left)
