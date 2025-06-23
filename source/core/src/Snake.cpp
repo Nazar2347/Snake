@@ -1,6 +1,6 @@
 #include "Snake.h"
 
-Snake::Snake(Vector2 StartingPos) : HeadPosition_(StartingPos),bIsAlive_(true)
+Snake::Snake(Vector2 StartingPos) : HeadPosition_(StartingPos), bIsAlive_(true), HeadDirection_(EDirection::UP)
 {
 	TailPosition_.push_back({ StartingPos.x + 1, StartingPos.y });
 }
@@ -42,14 +42,44 @@ void Snake::ShortTailBy(size_t Size)
 	}
 }
 
-void Snake::Move(Vector2 Direction)
+void Snake::Move()
 {
-	if (Vector2Add(Direction, HeadPosition_) != TailPosition_[0]) //If movement is not backwards
+	Vector2 NextCell;
+	
+	switch (HeadDirection_)
 	{
-		HeadPosition_ = Vector2Add(HeadPosition_, Direction); // Move the head
-		for (auto tail : TailPosition_) // Move the tail segments
+	case EDirection::UP:
+	{
+		NextCell = Vector2Add(HeadPosition_, { 0,-1 });
+		break;
+	}
+	case EDirection::RIGHT:
+	{
+		NextCell = Vector2Add(HeadPosition_, { 1,0 });
+		break;
+	}
+		
+	case EDirection::LEFT:
+	{
+		NextCell = Vector2Add(HeadPosition_, { -1,0 });
+		break;
+	}
+	case EDirection::DOWN:
+	{
+		NextCell = Vector2Add(HeadPosition_, { 0,1 });
+		break;
+	}
+	default:
+		break;
+	}
+	if (NextCell != TailPosition_[0]) //If movement is not backwards
+	{
+		Vector2 OldBodyPos = HeadPosition_;
+		HeadPosition_ = NextCell; // Move the head
+		for (int i = 0; i < TailPosition_.size(); i++) // Move the tail segments
 		{
-			tail = Vector2Add(tail, Direction);
+				TailPosition_[i] = OldBodyPos;	
+				OldBodyPos = TailPosition_[i];
 		}
 	}
 	else 

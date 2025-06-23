@@ -54,7 +54,7 @@ public:
      * @brief Moves the snake in the specified direction.
      * @param Direction The direction vector to move the snake.
      */
-    void Move(Vector2 Direction);
+    void Move();
 
     /**
      * @brief Checks if the snake is alive.
