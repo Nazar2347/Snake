@@ -19,10 +19,11 @@ void Snake::ExtendTailBy(size_t Size)
 {
 	for (int i = 0; i < Size; i++)
 	{
-		if (TailPosition_.size() > 1 && TailPosition_.size() < 100)
+		if (TailPosition_.size() >= 1 && TailPosition_.size() < 100)
 		{
 			Vector2 LastElementOfTail = TailPosition_.back();
-			TailPosition_.push_back({ LastElementOfTail.x++, LastElementOfTail.y });
+			TailPosition_.push_back({ LastElementOfTail.x+1, LastElementOfTail.y });
+			printf("TailPosition increased\n");
 		}
 	}
 }
@@ -78,8 +79,9 @@ void Snake::Move()
 		HeadPosition_ = NextCell; // Move the head
 		for (int i = 0; i < TailPosition_.size(); i++) // Move the tail segments
 		{
+			Vector2 OldBodyPos2 = TailPosition_[i];
 				TailPosition_[i] = OldBodyPos;	
-				OldBodyPos = TailPosition_[i];
+				OldBodyPos = OldBodyPos2;
 		}
 	}
 	else 

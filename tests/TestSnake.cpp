@@ -16,38 +16,38 @@ TEST_CASE("Snake construction() initializes head and tail", "[Snake]") {
 
 }
 //
-//TEST_CASE("ExtendTailBy() increases tail size", "[Snake]") {
-//    Snake snake({ 0, 0 });
-//    size_t initialSize = snake.getTailPosition().size();
-//
-//    snake.ExtendTailBy(3);
-//    auto tail = snake.getTailPosition();
-//    REQUIRE(tail.size() >= initialSize); // Only extends if size > 1 and < 100
-//}
-//
-//TEST_CASE("ShortTailBy() decreases tail size and can kill snake", "[Snake]") {
-//    Snake snake({ 0, 0 });
-//    snake.ExtendTailBy(2);
-//    size_t before = snake.getTailPosition().size();
-//
-//    snake.ShortTailBy(1);
-//    REQUIRE(snake.getTailPosition().size() == before - 1);
-//    REQUIRE(snake.isAlive());
-//
-//    // Remove all tail elements
-//    snake.ShortTailBy(100);
-//    REQUIRE_FALSE(snake.isAlive());
-//}
+TEST_CASE("ExtendTailBy() increases tail size", "[Snake]") {
+    Snake snake({ 0, 0 });
+    size_t initialSize = snake.getTailPosition().size();
+
+    snake.ExtendTailBy(1);
+    auto tail = snake.getTailPosition();
+    REQUIRE(tail.size() >= initialSize); // Only extends if size > 1 and < 100
+}
+
+TEST_CASE("ShortTailBy() decreases tail size and can kill snake", "[Snake]") {
+    Snake snake({ 0, 0 });
+    snake.ExtendTailBy(2);
+    size_t before = snake.getTailPosition().size();
+
+    snake.ShortTailBy(1);
+    REQUIRE(snake.getTailPosition().size() == before - 1);
+    REQUIRE(snake.isAlive());
+
+    // Remove all tail elements
+    snake.ShortTailBy(100);
+    REQUIRE_FALSE(snake.isAlive());
+}
 
 //TEST_CASE("Move() updates head and tail positions", "[Snake]") {
 //    Snake snake({ 1, 1 });
 //    auto oldHead = snake.getHeadPosition();
 //    auto oldTail = snake.getTailPosition();
 //
-//    SECTION("Check if snake moved","[Snake1]")
+//    SECTION("Check if snake moved", "[Snake1]")
 //    {
 //        Vector2 dir = { -1, 0 };
-//    
+//
 //        snake.Move();
 //
 //        auto newHead = snake.getHeadPosition();
@@ -55,6 +55,7 @@ TEST_CASE("Snake construction() initializes head and tail", "[Snake]") {
 //        REQUIRE(newHead.y == oldHead.y + dir.y);
 //
 //    }
+//}
 //    SECTION("Check if direction not going into snake body")
 //    {
 //        Vector2 dir2 = { 1,0 }; //move backwards
@@ -68,9 +69,9 @@ TEST_CASE("Snake construction() initializes head and tail", "[Snake]") {
 //    // Note: Tail movement logic may need to be checked for correctness
 //}
 //
-//TEST_CASE("isAlive() returns correct status", "[Snake]") {
-//    Snake snake({ 0, 0 });
-//    REQUIRE(snake.isAlive());
-//    snake.ShortTailBy(100);
-//    REQUIRE_FALSE(snake.isAlive());
-//}
+TEST_CASE("isAlive() returns correct status", "[Snake]") {
+    Snake snake({ 0, 0 });
+    REQUIRE(snake.isAlive());
+    snake.ShortTailBy(100);
+    REQUIRE_FALSE(snake.isAlive());
+}
