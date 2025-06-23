@@ -62,6 +62,10 @@ public:
      */
     bool isAlive();
 
+    void SetDirection(EDirection Direction);
+
+    EDirection GetDirection();
+
     /**
      * @brief Destructor for the Snake class.
      */
@@ -71,5 +75,5 @@ private:
     std::vector<Vector2> TailPosition_; ///< Positions of the tail segments.
     Vector2 HeadPosition_;              ///< Position of the snake's head.
     bool bIsAlive_;                     ///< Indicates if the snake is alive.
-    EDirection HeadDirection;            /**< Indicates the direction for Snake movement. */
+    EDirection HeadDirection_;            /**< Indicates the direction for Snake movement. */
 };

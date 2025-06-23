@@ -59,6 +59,15 @@ void Snake::Move(Vector2 Direction)
 		
 }
 
+void Snake::SetDirection(EDirection Direction)
+{
+	HeadDirection_ = Direction;
+}
+EDirection Snake::GetDirection()
+{
+	return HeadDirection_;
+}
+
 bool Snake::isAlive()
 {
 	return bIsAlive_;
