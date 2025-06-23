@@ -30,7 +30,7 @@ class RenderSnake
 public:
 	RenderSnake(Snake& Snake);
 	void Draw()const;
-    void DrawSnakePart(Rectangle Area, Vector2 Position)const;
+    void DrawSnakePart(Rectangle SnakePart, Vector2 Position)const;
     virtual ~RenderSnake();
 private:
 	Snake Snake_;
