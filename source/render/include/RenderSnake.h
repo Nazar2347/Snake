@@ -30,13 +30,17 @@ class RenderSnake
 public:
 	RenderSnake(Snake* Snake);
 	void Draw()const;
-    void DrawSnakePart(Rectangle SnakePart, Vector2 Position)const;
     virtual ~RenderSnake();
+protected:
+    void DrawHead()const;
+    void DrawBody()const;
+    void DrawTail()const;
+    void DrawSnakePart(Rectangle SnakePart, Vector2 Position)const;
 private:
 	Snake *Snake_;
 	Texture2D SnakeBodyTexture_;
     Rectangle SnakeParts[15] = {
-        {0,   0, 64, 64},   //Body turn (top-left)
+        {0,   0, 64, 64},   //Body turn (top-right)
         {64,  0, 64, 64},   //Body horizontal (top-middle)
         {128, 0, 64, 64},   //Body turn (top-left)
         {192, 0, 64, 64},   //Head up
