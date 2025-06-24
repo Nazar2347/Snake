@@ -2,6 +2,14 @@
 #include <raylib.h>
 #include "Board.h"
 
+enum class EFoodType
+{
+	APPLE,
+	FROG,
+	CHOCOLATE,
+	NONE
+};
+
 class IEatable
 {
 public:
@@ -9,10 +17,12 @@ public:
 	virtual Vector2 GetPosition()const;
 	virtual short int GetPoints()const;
 	virtual void SetPosition(Vector2 Position);
+	EFoodType GetFoodType();
 	virtual ~IEatable();
 protected:
 	short int Points_;
 	Vector2 Position_;
+	EFoodType FoodType_;
 
 };
 
