@@ -1,4 +1,4 @@
-#include "RenderSnake.h"
+﻿#include "RenderSnake.h"
 
 
 RenderSnake::RenderSnake( Snake* Snake):Snake_(Snake)
@@ -44,7 +44,7 @@ void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position)const
 void RenderSnake::DrawHead() const
 {
     //Render SnakeHead
-
+    
     if (Snake_->GetDirection() == EDirection::UP)
     {
         DrawSnakePart(SnakeParts[SnakePartType::HEAD_UP], Snake_->getHeadPosition());
@@ -81,26 +81,29 @@ void RenderSnake::DrawBody() const
                 DrawSnakePart(SnakeParts[SnakePartType::BODY_HORIZONTAL], Current);
             }
 
+            else if ((Current.y == Next.y && Current.y > Previous.y) && (Current.x < Next.x && Current.x == Previous.x)
+                        ||(Current.y>Next.y && Current.y ==Previous.y)&&(Current.x ==Next.x && Current.x <Previous.x))
+            {
+                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_LEFT], Current); // 6-9 and  9-6
+            }
 
-            else if (Next.y < Previous.y && Next.x > Previous.x) // 9-12 +
+            else if (((Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x))
+                || ((Current.y == Next.y && Current.y > Previous.y)&&(Current.x > Next.x && Current.x == Previous.x)))// ++
             {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_RIGHT], Current);
+                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_RIGHT], Current); //3-6 and 6-3
             }
-            else if (Next.y < Previous.y && Next.x < Previous.x) // 6-9 +
+            else if (((Current.y == Next.y && Current.y < Previous.y) && (Current.x > Next.x && Current.x == Previous.x))
+                ||((Current.y < Next.y && Current.y == Previous.y)&&(Current.x ==Next.x && Current.x >Previous.x)))
             {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_LEFT], Current);
+                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_LEFT], Current); // 12-3 and 3-12
             }
-            else if (Next.y > Previous.y && Next.x > Previous.x) // 12-3 +
+            else if (((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x))
+                || ((Current.y == Next.y&& Current.y < Previous.y )&&(Current.x < Next.x && Current.x == Previous.x)))
             {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_LEFT], Current); 
+                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_RIGHT], Current); // 9-12 and 12-9
             }
-            else if (Next.y > Previous.y && Next.x < Previous.x) //3-6 +
-            {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_RIGHT], Current);
-            }
+            
           
-            
-            
             Next = Snake_->getTailPosition()[i];
         
     }

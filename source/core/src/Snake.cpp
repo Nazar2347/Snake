@@ -45,50 +45,54 @@ void Snake::ShortTailBy(size_t Size)
 
 void Snake::Move()
 {
-	Vector2 NextCell;
-	
-	switch (HeadDirection_)
-	{
-	case EDirection::UP:
-	{
-		NextCell = Vector2Add(HeadPosition_, { 0,-1 });
-		break;
-	}
-	case EDirection::RIGHT:
-	{
-		NextCell = Vector2Add(HeadPosition_, { 1,0 });
-		break;
-	}
-		
-	case EDirection::LEFT:
-	{
-		NextCell = Vector2Add(HeadPosition_, { -1,0 });
-		break;
-	}
-	case EDirection::DOWN:
-	{
-		NextCell = Vector2Add(HeadPosition_, { 0,1 });
-		break;
-	}
-	default:
-		break;
-	}
-	if (NextCell != TailPosition_[0]) //If movement is not backwards
-	{
-		Vector2 OldBodyPos = HeadPosition_;
-		HeadPosition_ = NextCell; // Move the head
-		for (int i = 0; i < TailPosition_.size(); i++) // Move the tail segments
-		{
-			Vector2 OldBodyPos2 = TailPosition_[i];
-				TailPosition_[i] = OldBodyPos;	
-				OldBodyPos = OldBodyPos2;
-		}
-	}
-	else 
-	{
+    
+        Vector2 NextCell;
 
-	}
-		
+        // Step 1: Compute next cell based on current direction
+        switch (HeadDirection_)
+        {
+        case EDirection::UP:    NextCell = Vector2Add(HeadPosition_, { 0, -1 }); break;
+        case EDirection::DOWN:  NextCell = Vector2Add(HeadPosition_, { 0, 1 });  break;
+        case EDirection::LEFT:  NextCell = Vector2Add(HeadPosition_, { -1, 0 }); break;
+        case EDirection::RIGHT: NextCell = Vector2Add(HeadPosition_, { 1, 0 });  break;
+        default: return;
+        }
+
+        // Step 2: If reversing into own body, reject the move by computing old direction instead
+        if (TailPosition_.size() > 0 && Vector2Equals(NextCell, TailPosition_[0]))
+        {
+            // Recompute NextCell using the *opposite* of the new direction (assume player tried to go into boyd)
+            switch (HeadDirection_)
+            {
+            case EDirection::UP:    HeadDirection_ = EDirection::DOWN; break;
+            case EDirection::DOWN:  HeadDirection_ = EDirection::UP; break;
+            case EDirection::LEFT:  HeadDirection_ = EDirection::RIGHT; break;
+            case EDirection::RIGHT: HeadDirection_ = EDirection::LEFT; break;
+            }
+
+            // Recompute valid direction cell (same as before, but with restored HeadDirection_)
+            switch (HeadDirection_)
+            {
+            case EDirection::UP:    NextCell = Vector2Add(HeadPosition_, { 0, -1 }); break;
+            case EDirection::DOWN:  NextCell = Vector2Add(HeadPosition_, { 0, 1 });  break;
+            case EDirection::LEFT:  NextCell = Vector2Add(HeadPosition_, { -1, 0 }); break;
+            case EDirection::RIGHT: NextCell = Vector2Add(HeadPosition_, { 1, 0 });  break;
+            default: return;
+            }
+        }
+
+        // Step 3: Move the head
+        Vector2 OldBodyPos = HeadPosition_;
+        HeadPosition_ = NextCell;
+
+        // Step 4: Move the tail
+        for (int i = 0; i < TailPosition_.size(); i++)
+        {
+            Vector2 OldBodyPos2 = TailPosition_[i];
+            TailPosition_[i] = OldBodyPos;
+            OldBodyPos = OldBodyPos2;
+        }
+    
 }
 
 void Snake::SetDirection(EDirection Direction)
