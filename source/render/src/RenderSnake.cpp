@@ -22,8 +22,6 @@ void RenderSnake::Draw()const
         DrawHead();
         DrawBody();
         DrawTail();
-
-       
     }
     else
     {

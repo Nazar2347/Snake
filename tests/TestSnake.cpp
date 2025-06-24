@@ -2,7 +2,6 @@
 #include <raylib.h>
 #include "Snake.h"
 
-// Helper for comparing Vector2
 
 TEST_CASE("Snake construction() initializes head and tail", "[Snake]") {
     Vector2 start = { 5, 5 };
@@ -39,36 +38,56 @@ TEST_CASE("ShortTailBy() decreases tail size and can kill snake", "[Snake]") {
     REQUIRE_FALSE(snake.isAlive());
 }
 
-//TEST_CASE("Move() updates head and tail positions", "[Snake]") {
-//    Snake snake({ 1, 1 });
-//    auto oldHead = snake.getHeadPosition();
-//    auto oldTail = snake.getTailPosition();
-//
-//    SECTION("Check if snake moved", "[Snake1]")
-//    {
-//        Vector2 dir = { -1, 0 };
-//
-//        snake.Move();
-//
-//        auto newHead = snake.getHeadPosition();
-//        REQUIRE(newHead.x == oldHead.x + dir.x);
-//        REQUIRE(newHead.y == oldHead.y + dir.y);
-//
-//    }
-//}
-//    SECTION("Check if direction not going into snake body")
-//    {
-//        Vector2 dir2 = { 1,0 }; //move backwards
-//        oldHead = snake.getHeadPosition();
-//        oldTail = snake.getTailPosition();
-//        snake.Move(dir2);
-//        
-//        REQUIRE(snake.getHeadPosition() == oldHead);
-//       
-//    }
-//    // Note: Tail movement logic may need to be checked for correctness
-//}
-//
+TEST_CASE("SetDirection and GetDirection work as expected", "[Snake]") {
+    Snake snake({ 2, 2 });
+    snake.SetDirection(EDirection::DOWN);
+    REQUIRE(snake.GetDirection() == EDirection::DOWN);
+
+    snake.SetDirection(EDirection::LEFT);
+    REQUIRE(snake.GetDirection() == EDirection::LEFT);
+}
+
+TEST_CASE("Move() updates head and tail positions correctly", "[Snake]") {
+    Snake snake({ 3, 3 });
+    Vector2 initialHead = snake.getHeadPosition();
+    auto initialTail = snake.getTailPosition();
+
+    // Default direction is UP
+    snake.Move();
+    Vector2 expectedHead = { initialHead.x, initialHead.y - 1 };
+    REQUIRE(snake.getHeadPosition().x == expectedHead.x);
+    REQUIRE(snake.getHeadPosition().y == expectedHead.y);
+
+    // Tail should follow the old head position
+    auto tail = snake.getTailPosition();
+    REQUIRE(tail[0].x == initialHead.x);
+    REQUIRE(tail[0].y == initialHead.y);
+}
+
+TEST_CASE("Move() prevents reversing into own body", "[Snake]") {
+    Snake snake({ 4, 4 });
+    snake.ExtendTailBy(1); // Now tail has 2 segments
+
+    // Move once to update positions
+    snake.Move();
+
+    // Try to reverse direction into the body
+    snake.SetDirection(EDirection::DOWN); // Opposite of UP
+    Vector2 beforeMove = snake.getHeadPosition();
+    snake.Move();
+
+    // Head should not move into the tail's first segment
+    REQUIRE_FALSE(snake.getHeadPosition() == snake.getTailPosition()[0]);
+    // Head should have moved in the opposite direction (UP again)
+    REQUIRE(snake.getHeadPosition().y == beforeMove.y - 1);
+}
+
+TEST_CASE("ExtendTailBy does not exceed 100 segments", "[Snake]") {
+    Snake snake({ 0, 0 });
+    snake.ExtendTailBy(200);
+    REQUIRE(snake.getTailPosition().size() <= 100);
+}
+
 TEST_CASE("isAlive() returns correct status", "[Snake]") {
     Snake snake({ 0, 0 });
     REQUIRE(snake.isAlive());
