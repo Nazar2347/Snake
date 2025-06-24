@@ -3,6 +3,13 @@
 #include <raymath.h>
 #include <vector>
 
+enum class EDirection
+{
+    UP,
+    RIGHT,
+    LEFT,
+    DOWN
+};
 /**
  * @brief Represents a snake entity for grid-based games (e.g., Snake).
  *
@@ -23,13 +30,13 @@ public:
      * @brief Gets the positions of all tail segments.
      * @return A vector of Vector2 positions representing the tail.
      */
-    std::vector<Vector2> getTailPosition();
+    std::vector<Vector2> getTailPosition()const;
 
     /**
      * @brief Gets the current position of the snake's head.
      * @return The head position as a Vector2.
      */
-    Vector2 getHeadPosition();
+    Vector2 getHeadPosition()const;
 
     /**
      * @brief Extends the tail by a specified number of segments.
@@ -47,13 +54,17 @@ public:
      * @brief Moves the snake in the specified direction.
      * @param Direction The direction vector to move the snake.
      */
-    void Move(Vector2 Direction);
+    void Move();
 
     /**
      * @brief Checks if the snake is alive.
      * @return True if the snake is alive, false otherwise.
      */
     bool isAlive();
+
+    void SetDirection(EDirection Direction);
+
+    EDirection GetDirection();
 
     /**
      * @brief Destructor for the Snake class.
@@ -64,4 +75,5 @@ private:
     std::vector<Vector2> TailPosition_; ///< Positions of the tail segments.
     Vector2 HeadPosition_;              ///< Position of the snake's head.
     bool bIsAlive_;                     ///< Indicates if the snake is alive.
+    EDirection HeadDirection_;            /**< Indicates the direction for Snake movement. */
 };
