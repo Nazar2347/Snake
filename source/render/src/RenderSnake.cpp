@@ -1,13 +1,13 @@
 ﻿#include "RenderSnake.h"
 
-
-RenderSnake::RenderSnake( Snake* Snake):Snake_(Snake)
+// Constructor: Initializes the RenderSnake with a pointer to a Snake object.
+// Loads the snake body texture from an image file if the Snake pointer is valid.
+RenderSnake::RenderSnake(Snake* Snake) : Snake_(Snake)
 {
     if (Snake != nullptr)
     {
         Image ImageSnake = LoadImage("Assets/Snake-Graphics.png");
         SnakeBodyTexture_ = LoadTextureFromImage(ImageSnake);
-
         UnloadImage(ImageSnake);
     }
     else
@@ -15,7 +15,10 @@ RenderSnake::RenderSnake( Snake* Snake):Snake_(Snake)
         // Error: no initialized Snake
     }
 }
-void RenderSnake::Draw()const
+
+// Draws the entire snake (head, body, tail) if the Snake pointer is valid.
+// Otherwise, displays an error message on the board.
+void RenderSnake::Draw() const
 {
     if (Snake_ != nullptr)
     {
@@ -27,22 +30,24 @@ void RenderSnake::Draw()const
     {
         DrawText("NO INITIALIZED SNAKE", static_cast<int>(BOARD_INITIAL_X_POS), static_cast<int>(BOARD_INITIAL_Y_POS), 14, RED);
     }
-
-
 }
-void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position)const
+
+// Draws a single part of the snake (head, body, or tail) at the specified board position.
+void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position) const
 {
-    DrawTextureRec(SnakeBodyTexture_, SnakePart, 
+    DrawTextureRec(
+        SnakeBodyTexture_,
+        SnakePart,
         { Position.x * CELL_SIZE + BOARD_INITIAL_X_POS,
           Position.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
-        WHITE);
-    
+        WHITE
+    );
 }
 
+// Draws the snake's head using the correct texture based on the current direction.
 void RenderSnake::DrawHead() const
 {
-    //Render SnakeHead
-    
+    // Render Snake Head in the correct direction
     if (Snake_->GetDirection() == EDirection::UP)
     {
         DrawSnakePart(SnakeParts[SnakePartType::HEAD_UP], Snake_->getHeadPosition());
@@ -61,67 +66,71 @@ void RenderSnake::DrawHead() const
     }
 }
 
+// Draws the snake's body segments, choosing the correct texture for straight or turning segments.
 void RenderSnake::DrawBody() const
 {
     Vector2 Next = Snake_->getHeadPosition();
 
+    // Iterate through all tail segments except the last one
     for (int i = 0; i < Snake_->getTailPosition().size() - 1; i++)
     {
         Vector2 Current = Snake_->getTailPosition()[i];
         Vector2 Previous = Snake_->getTailPosition()[i + 1];
-        
-            if (Next.x == Previous.x)
-            {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_VERTICAL], Current);
-            }
-            else if (Next.y == Previous.y )
-            {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_HORIZONTAL], Current);
-            }
 
-            else if ((Current.y == Next.y && Current.y > Previous.y) && (Current.x < Next.x && Current.x == Previous.x)
-                        ||(Current.y>Next.y && Current.y ==Previous.y)&&(Current.x ==Next.x && Current.x <Previous.x))
-            {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_LEFT], Current); // 6-9 and  9-6
-            }
+        // Draw straight vertical body part
+        if (Next.x == Previous.x)
+        {
+            DrawSnakePart(SnakeParts[SnakePartType::BODY_VERTICAL], Current);
+        }
+        // Draw straight horizontal body part
+        else if (Next.y == Previous.y)
+        {
+            DrawSnakePart(SnakeParts[SnakePartType::BODY_HORIZONTAL], Current);
+        }
+        // Draw body turns (various corner cases)
+        else if ((Current.y == Next.y && Current.y > Previous.y) && (Current.x < Next.x && Current.x == Previous.x)
+                 || (Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x))
+        {
+            DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_LEFT], Current);
+        }
+        else if (((Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x))
+                 || ((Current.y == Next.y && Current.y > Previous.y) && (Current.x > Next.x && Current.x == Previous.x)))
+        {
+            DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_RIGHT], Current);
+        }
+        else if (((Current.y == Next.y && Current.y < Previous.y) && (Current.x > Next.x && Current.x == Previous.x))
+                 || ((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x)))
+        {
+            DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_LEFT], Current);
+        }
+        else if (((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x))
+                 || ((Current.y == Next.y && Current.y < Previous.y) && (Current.x < Next.x && Current.x == Previous.x)))
+        {
+            DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_RIGHT], Current);
+        }
 
-            else if (((Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x))
-                || ((Current.y == Next.y && Current.y > Previous.y)&&(Current.x > Next.x && Current.x == Previous.x)))// ++
-            {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_RIGHT], Current); //3-6 and 6-3
-            }
-            else if (((Current.y == Next.y && Current.y < Previous.y) && (Current.x > Next.x && Current.x == Previous.x))
-                ||((Current.y < Next.y && Current.y == Previous.y)&&(Current.x ==Next.x && Current.x >Previous.x)))
-            {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_LEFT], Current); // 12-3 and 3-12
-            }
-            else if (((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x))
-                || ((Current.y == Next.y&& Current.y < Previous.y )&&(Current.x < Next.x && Current.x == Previous.x)))
-            {
-                DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_RIGHT], Current); // 9-12 and 12-9
-            }
-            
-          
-            Next = Snake_->getTailPosition()[i];
-        
+        // Move to the next segment for the next iteration
+        Next = Snake_->getTailPosition()[i];
     }
 }
 
+// Draws the snake's tail using the correct texture based on the direction of the last segment.
 void RenderSnake::DrawTail() const
 {
     size_t TailLenght = Snake_->getTailPosition().size();
     Vector2 Next;
     if (TailLenght >= 1)
     {
-        Next = Snake_->getTailPosition()[TailLenght-2];
+        Next = Snake_->getTailPosition()[TailLenght - 2];
     }
     else
     {
         Next = Snake_->getHeadPosition();
     }
-    Vector2 TailPos = Snake_->getTailPosition()[TailLenght-1];
-    
-    if (Next.y <TailPos.y)
+    Vector2 TailPos = Snake_->getTailPosition()[TailLenght - 1];
+
+    // Determine the direction of the tail and draw the correct tail part
+    if (Next.y < TailPos.y)
     {
         DrawSnakePart(SnakeParts[SnakePartType::TAIL_UP], TailPos);
     }
@@ -139,6 +148,7 @@ void RenderSnake::DrawTail() const
     }
 }
 
+// Destructor: Unloads the snake body texture from GPU memory.
 RenderSnake::~RenderSnake()
 {
     UnloadTexture(SnakeBodyTexture_);
