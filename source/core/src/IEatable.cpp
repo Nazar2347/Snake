@@ -33,18 +33,25 @@ AppleFood::AppleFood(short int Points, Vector2 Position) :IEatable(Points, Posit
 {
 	FoodType_ = EFoodType::APPLE;
 }
+void AppleFood::DoSomething()
+{
+	//do nothing as it is an stationary item
+}
 
 FrogFood::FrogFood(short int Points, Vector2 Position): IEatable(Points, Position)
 {
 	FoodType_ = EFoodType::FROG;
 }
-
-void FrogFood::Jump(const Board & Board)
+void FrogFood::DoSomething()
 {
-	//to -do 
+	// jump for over 1 cell
 }
 
-ChocolateFood::ChocolateFood(short int Points, Vector2 Position): IEatable(Points, Position)
+MouseFood::MouseFood(short int Points, Vector2 Position): IEatable(Points, Position)
 {
-	FoodType_ = EFoodType::CHOCOLATE;
+	FoodType_ = EFoodType::MOUSE;
+}
+void MouseFood::DoSomething()
+{
+	//Move into 1 cell
 }

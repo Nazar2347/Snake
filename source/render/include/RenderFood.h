@@ -12,7 +12,7 @@ public:
 protected:
 	Texture2D AppleTexture_;
 	Texture2D FrogTexture_;
-	Texture2D ChokolateTexture_;
+	Texture2D MouseTexture_;
 };
 
 

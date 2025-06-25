@@ -4,8 +4,10 @@ FoodRender::FoodRender()
 {
 	Image AppleImage = LoadImage("Assets/Apple.png");
 	Image FrogImage = LoadImage("Assets/Frog.png");
+	Image MouseImage = LoadImage("Assets/Mouse.png");
 	AppleTexture_ = LoadTextureFromImage(AppleImage);
 	FrogTexture_ = LoadTextureFromImage(FrogImage);
+	MouseTexture_ = LoadTextureFromImage(MouseImage);
 
 	UnloadImage(AppleImage);
 	UnloadImage(FrogImage);
@@ -32,9 +34,9 @@ void FoodRender::Draw(IEatable* Object)
 		);
 
 	}
-	else if (Object->GetFoodType() == EFoodType::CHOCOLATE)
+	else if (Object->GetFoodType() == EFoodType::MOUSE)
 	{
-		DrawTextureEx(ChokolateTexture_, {
+		DrawTextureEx(MouseTexture_, {
 			Object->GetPosition().x * CELL_SIZE + BOARD_INITIAL_X_POS,
 			Object->GetPosition().y * CELL_SIZE + BOARD_INITIAL_Y_POS
 			}, 0.0f, OBJECTS_SCALE, WHITE
@@ -54,7 +56,7 @@ FoodRender::~FoodRender()
 {
 	UnloadTexture(AppleTexture_);
 	UnloadTexture(FrogTexture_);
-	UnloadTexture(ChokolateTexture_);
+	UnloadTexture(MouseTexture_);
 }
 
 
