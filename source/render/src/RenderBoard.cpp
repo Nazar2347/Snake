@@ -35,7 +35,7 @@ void RenderBoard::Draw() const
         {
             for (int j = 0; j < LevelBoard_.GetLevelYSize(); j++)
             {
-                Vector2 CurrentCell = { i,j };
+                Vector2 CurrentCell = { (float)i,float(j) };
                 if (LevelBoard_.GetCellInfo(CurrentCell) == 1)
                 {
                     // Draw border texture for active cell
@@ -84,10 +84,15 @@ void RenderBoard::DrawBackground() const
     Rectangle Backgoround;
     Backgoround.x = BOARD_INITIAL_X_POS;
     Backgoround.y = BOARD_INITIAL_Y_POS;
-    Backgoround.height = LevelBoard_.GetLevelYSize();
-    Backgoround.width = LevelBoard_.GetLevelXSize();
+    Backgoround.height = static_cast<float>(LevelBoard_.GetLevelYSize());
+    Backgoround.width = static_cast<float>(LevelBoard_.GetLevelXSize());
 
-    DrawRectangle(Backgoround.x, Backgoround.y, Backgoround.width*CELL_SIZE, Backgoround.height*CELL_SIZE, LIME);
+    DrawRectangle(
+        static_cast<int>(Backgoround.x),
+        static_cast<int>(Backgoround.y), 
+        static_cast<int>(Backgoround.width*CELL_SIZE), 
+        static_cast<int>(Backgoround.height*CELL_SIZE), 
+        LIME);
 }
 
 
