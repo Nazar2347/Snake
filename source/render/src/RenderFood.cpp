@@ -14,7 +14,7 @@ FoodRender::FoodRender()
 	
 }
 
-void FoodRender::Draw(IEatable* Object)
+void FoodRender::Draw(IFood* Object)
 {
 	if (Object->GetFoodType() == EFoodType::APPLE)
 	{
@@ -45,9 +45,9 @@ void FoodRender::Draw(IEatable* Object)
 	else
 	{
 		DrawRectangle(
-			Object->GetPosition().x * CELL_SIZE + BOARD_INITIAL_X_POS,
-			Object->GetPosition().y * CELL_SIZE + BOARD_INITIAL_Y_POS
-			, OBJECTS_SCALE * 32, OBJECTS_SCALE * 32, RED);
+			(int)(Object->GetPosition().x * CELL_SIZE + BOARD_INITIAL_X_POS),
+			(int)(Object->GetPosition().y * CELL_SIZE + BOARD_INITIAL_Y_POS)
+			, (int)OBJECTS_SCALE * 32, (int)OBJECTS_SCALE * 32, RED);
 	}
 
 }

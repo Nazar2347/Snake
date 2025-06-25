@@ -10,40 +10,46 @@ enum class EFoodType
 	NONE
 };
 
-class IEatable
+class IFood
 {
 public:
-	IEatable(short int Points, Vector2 Position);
+	IFood(short int Points, Vector2 Position, Board &Board);
 	virtual Vector2 GetPosition()const;
 	virtual short int GetPoints()const;
 	virtual void SetPosition(Vector2 Position);
 	virtual void DoSomething() = 0;
 	EFoodType GetFoodType();
-	virtual ~IEatable();
+	virtual ~IFood();
+	void SetBoard(Board& board);
 protected:
 	short int Points_;
 	Vector2 Position_;
 	EFoodType FoodType_;
+	Board& Board_;
 
 };
 
 
-class AppleFood : public IEatable
+class AppleFood : public IFood
 {
 public:
-	AppleFood(short int Points, Vector2 Position);
+	AppleFood(short int Points, Vector2 Position, Board &Board);
 	void DoSomething() override;
 };
 
-class FrogFood : public IEatable
+class Frog : public IFood
 {
 public:
-	FrogFood(short int Points, Vector2 Position);
+	Frog(short int Points, Vector2 Position, Board & Board);
 	void DoSomething() override;
+
+	
 };
-class MouseFood : public IEatable
+
+class Mouse : public IFood
 {
 public:
-	MouseFood(short int Points, Vector2 Position);
+	Mouse(short int Points, Vector2 Position, Board & Board);
 	void DoSomething() override;
+
 };

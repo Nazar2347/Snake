@@ -1,5 +1,5 @@
 #pragma once
-#include "IEatable.h"
+#include "IFood.h"
 #include "RenderConstant.h"
 
 
@@ -7,7 +7,7 @@ class FoodRender
 {
 public:
 	FoodRender();
-	void Draw(IEatable* Object);
+	void Draw(IFood* Object);
 	virtual ~FoodRender();
 protected:
 	Texture2D AppleTexture_;
