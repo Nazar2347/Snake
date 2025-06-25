@@ -1,6 +1,7 @@
 #pragma once 
 #include <raylib.h>
 #include "Board.h"
+#include "IMove.h"
 
 enum class EFoodType
 {
@@ -37,19 +38,21 @@ public:
 	void DoSomething() override;
 };
 
-class Frog : public IFood
+class Frog : public IFood, public IMove
 {
 public:
 	Frog(short int Points, Vector2 Position, Board & Board);
 	void DoSomething() override;
-
+protected:
+	void Move() override;
 	
 };
 
-class Mouse : public IFood
+class Mouse : public IFood, public IMove
 {
 public:
 	Mouse(short int Points, Vector2 Position, Board & Board);
 	void DoSomething() override;
-
+protected:
+	void Move() override;
 };

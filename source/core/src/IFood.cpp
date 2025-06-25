@@ -74,3 +74,11 @@ void Mouse::DoSomething()
 	}
 
 }
+
+void Frog::Move()
+{
+}
+
+void Mouse::Move()
+{
+}
