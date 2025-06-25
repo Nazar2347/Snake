@@ -20,8 +20,8 @@ public:
 	virtual void SetPosition(Vector2 Position);
 	virtual void DoSomething() = 0;
 	EFoodType GetFoodType();
-	virtual ~IFood();
 	void SetBoard(Board& board);
+	virtual ~IFood();
 protected:
 	short int Points_;
 	Vector2 Position_;

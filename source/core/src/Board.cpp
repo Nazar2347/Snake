@@ -20,7 +20,14 @@ bool Board::GetCellInfo(Vector2 Position) const
 {
 	size_t X = static_cast<size_t>(Position.x);
 	size_t Y = static_cast<size_t>(Position.y);
-	
+	if (X <= 0 || Y <= 0)
+	{
+		return 1;
+	}
+	else if (X > this->GetLevelXSize()-1 || Y > this->GetLevelYSize()-1)
+	{
+		return 1;
+	}
 	return LevelData_.at(X).at(Y);
 }
 

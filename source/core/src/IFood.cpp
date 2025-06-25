@@ -48,37 +48,45 @@ Frog::Frog(short int Points, Vector2 Position, Board & Board)
 	:IFood(Points, Position, Board)
 {
 	FoodType_ = EFoodType::FROG;
-	
+	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
 }
 void Frog::DoSomething()
 {
 	// jump for over 1 cell
+	this->Move();
 }
 
 Mouse::Mouse(short int Points, Vector2 Position, Board& Board)
 	: IFood(Points, Position, Board)
 {
 	FoodType_ = EFoodType::MOUSE;
-	
+	NumberGenerator_ = new RandomNumberGenerator(-1, 1);
 }
 
 void Mouse::DoSomething()
 {
 	//Move into 1 cell
-	Vector2 NewRandomPos;
-	NewRandomPos.x = Position_.x;
-	NewRandomPos.y = Position_.y;
-	if (Board_.GetCellInfo(NewRandomPos) != 1)
-	{
-		SetPosition(NewRandomPos);
-	}
-
+	this->Move();
 }
 
 void Frog::Move()
 {
+	Vector2 NewRandomPos;
+	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
+	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
+	if (Board_.GetCellInfo(NewRandomPos) != 1)
+	{
+		SetPosition(NewRandomPos);
+	}
 }
 
 void Mouse::Move()
 {
+	Vector2 NewRandomPos;
+	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
+	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
+	if (Board_.GetCellInfo(NewRandomPos) != 1)
+	{
+		SetPosition(NewRandomPos);
+	}
 }
