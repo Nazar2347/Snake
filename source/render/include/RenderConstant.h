@@ -30,3 +30,5 @@ constexpr float BOARD_INITIAL_Y_POS = 50.0f;
  * @brief Scale factor for rendering individual blocks.
  */
 constexpr float BLOCKS_SCALE = (SCALE / 10) + 0.01f;
+
+constexpr float OBJECTS_SCALE = (SCALE / 2) + 0.0f;

@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include <raymath.h>
 #include <vector>
+#include "IMove.h"
 
 enum class EDirection
 {
@@ -17,7 +18,7 @@ enum class EDirection
  * including its head, tail, and alive status. It provides methods to
  * manipulate the snake's length and position, and to query its current state.
  */
-class Snake
+class Snake: public IMove
 {
 public:
     /**
@@ -54,7 +55,7 @@ public:
      * @brief Moves the snake in the specified direction.
      * @param Direction The direction vector to move the snake.
      */
-    void Move();
+    void Move()override;
 
     /**
      * @brief Checks if the snake is alive.
