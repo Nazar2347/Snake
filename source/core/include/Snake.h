@@ -4,6 +4,7 @@
 #include <vector>
 #include "IMove.h"
 
+
 enum class EDirection
 {
     UP,
@@ -25,7 +26,7 @@ public:
      * @brief Constructs a Snake with a given starting position.
      * @param StartingPos The initial position of the snake's head.
      */
-    Snake(Vector2 StartingPos);
+    Snake(Vector2 StartingPos, Board &Board);
 
     /**
      * @brief Gets the positions of all tail segments.

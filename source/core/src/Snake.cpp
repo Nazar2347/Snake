@@ -2,7 +2,11 @@
 
 // Constructor: Initializes the snake's head position, alive status, and starting direction.
 // Also adds the initial tail segment to the right of the head.
-Snake::Snake(Vector2 StartingPos) : HeadPosition_(StartingPos), bIsAlive_(true), HeadDirection_(EDirection::UP)
+Snake::Snake(Vector2 StartingPos, Board &Board) : 
+    HeadPosition_(StartingPos),
+    bIsAlive_(true),
+    HeadDirection_(EDirection::UP),
+    IMove(Board)
 {
     TailPosition_.push_back({ StartingPos.x + 1, StartingPos.y });
 }
@@ -67,7 +71,10 @@ void Snake::Move()
     case EDirection::RIGHT: NextCell = Vector2Add(HeadPosition_, { 1, 0 });  break;
     default: return;
     }
-
+    if (CheckPosition(NextCell) == 1)
+    {
+        return;
+    }
     // Step 2: If reversing into own body, reject the move by computing old direction instead
     if (TailPosition_.size() > 0 && Vector2Equals(NextCell, TailPosition_[0]))
     {
