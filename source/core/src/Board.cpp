@@ -10,11 +10,6 @@ Board::Board(std::vector<std::vector<bool>> LevelData) :
 	TransformLevelData();
 }
 
-// Change the current level data
-void Board::ChangeLevel(std::vector<std::vector<bool>> LevelData)
-{
-	LevelData_ = LevelData;
-}
 void Board::TransformLevelData()
 {
 	if (!LevelData_.empty())
@@ -60,7 +55,18 @@ std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> Board::getLeve
 	return BoardMap_;
 }
 
-
+Vector2 Board::GetEmptyCell() const
+{
+	for (auto i : BoardMap_)
+	{
+		if (i.second == ECellType::EMPTY)
+		{
+			return i.first;
+		}
+	}
+	return { 1,1 };
+	
+}
 
 // Get the width of the level (number of columns)
 size_t Board::GetLevelXSize()const

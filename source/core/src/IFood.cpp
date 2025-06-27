@@ -6,6 +6,11 @@ IFood::IFood(short int Points, Vector2 Position, Board &Board):
 	FBoard_(Board)
 {
 	FoodType_ = EFoodType::NONE;
+	if (FBoard_.GetCellInfo(Position_) != ECellType::EMPTY)
+	{
+		Position_ = FBoard_.GetEmptyCell();
+	}
+	FBoard_.SetCellType(Position_, ECellType::FOOD);
 }
 
 Vector2 IFood::GetPosition()const 
@@ -30,6 +35,7 @@ EFoodType IFood::GetFoodType()
 
 IFood::~IFood()
 {
+	FBoard_.SetCellType(Position_,ECellType::EMPTY);
 }
 
 void IFood::SetBoard(Board& Board)
@@ -53,11 +59,8 @@ Frog::Frog(short int Points, Vector2 Position, Board & Board)
 {
 	FoodType_ = EFoodType::FROG;
 	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
-	if (CheckPosition(Position_) != ECellType::EMPTY)
-	{
-		Position_ = { 1,1 };
-		this->Move();
-	}
+	this->Move();
+	
 }
 void Frog::DoSomething()
 {
@@ -73,11 +76,8 @@ Mouse::Mouse(short int Points, Vector2 Position, Board& Board)
 	short MinStep = -1;
 	short MaxStep = 1;
 	NumberGenerator_ = new RandomNumberGenerator(MinStep, MaxStep);
-	if (CheckPosition(Position_) != ECellType::EMPTY)
-	{
-		Position_ = { 1,1 };
-		this->Move();
-	}
+	this->Move();
+	
 }
 
 void Mouse::DoSomething()

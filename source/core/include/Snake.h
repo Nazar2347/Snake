@@ -44,13 +44,8 @@ public:
      * @brief Extends the tail by a specified number of segments.
      * @param Size The number of segments to add to the tail.
      */
-    void ExtendTailBy(size_t Size);
-
-    /**
-     * @brief Shortens the tail by a specified number of segments.
-     * @param Size The number of segments to remove from the tail.
-     */
-    void ShortTailBy(size_t Size);
+    void ChangeTailSizeBy(int  Size);
+    
 
     /**
      * @brief Moves the snake in the specified direction.
@@ -67,7 +62,7 @@ public:
     void SetDirection(EDirection Direction);
 
     EDirection GetDirection();
-
+    
     /**
      * @brief Destructor for the Snake class.
      */

@@ -62,7 +62,6 @@ public:
      * @brief Changes the current level data.
      * @param LevelData 2D vector representing the new level's cell states.
      */
-    void ChangeLevel(std::vector<std::vector<bool>> LevelData);
 
     /**
      * @brief Gets the state of a cell at the specified position.
@@ -77,13 +76,12 @@ public:
      */
     std::unordered_map<Vector2,ECellType,Vector2Hash,Vector2Equal> getLevelData() const;
 
-    void TransformLevelData();
     /**
      * @brief Gets the width (number of columns) of the level.
      * @return The number of columns in the level.
      */
     size_t GetLevelXSize() const;
-
+    Vector2 GetEmptyCell()const;
     /**
      * @brief Gets the height (number of rows) of the level.
      * @return The number of rows in the level.
@@ -96,6 +94,7 @@ public:
     virtual ~Board();
 
 private:
+    void TransformLevelData();
     std::vector<std::vector<bool>> LevelData_;
     std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> BoardMap_;/**< 2D vector storing the level's cell states. */
     Vector2 StartingPosition_;                 /**< The starting position on the board. */
