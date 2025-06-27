@@ -1,5 +1,6 @@
 #include "RenderFood.h"
 
+// Constructor: Loads images and creates textures for each food type
 FoodRender::FoodRender()
 {
 	Image AppleImage = LoadImage("Assets/Apple.png");
@@ -11,31 +12,33 @@ FoodRender::FoodRender()
 
 	UnloadImage(AppleImage);
 	UnloadImage(FrogImage);
-	
+	// MouseImage is not unloaded here, possibly intentional or a bug
 }
 
+// Draws the given food object using the appropriate texture or a red rectangle if type is unknown
 void FoodRender::Draw(IFood* Object)
 {
 	if (Object->GetFoodType() == EFoodType::APPLE)
 	{
-		 DrawTextureEx(AppleTexture_, { 
+		// Draw apple texture at the food's position
+		DrawTextureEx(AppleTexture_, { 
 			Object->GetPosition().x *CELL_SIZE +BOARD_INITIAL_X_POS, 
 			Object->GetPosition().y *CELL_SIZE + BOARD_INITIAL_Y_POS
 			}, 0.0f, OBJECTS_SCALE, WHITE
-		 );
-
+		);
 	}
 	else if (Object->GetFoodType() == EFoodType::FROG)
 	{
+		// Draw frog texture at the food's position
 		DrawTextureEx(FrogTexture_, {
 			Object->GetPosition().x * CELL_SIZE + BOARD_INITIAL_X_POS,
 			Object->GetPosition().y * CELL_SIZE + BOARD_INITIAL_Y_POS
 			}, 0.0f, OBJECTS_SCALE, WHITE
 		);
-
 	}
 	else if (Object->GetFoodType() == EFoodType::MOUSE)
 	{
+		// Draw mouse texture at the food's position
 		DrawTextureEx(MouseTexture_, {
 			Object->GetPosition().x * CELL_SIZE + BOARD_INITIAL_X_POS,
 			Object->GetPosition().y * CELL_SIZE + BOARD_INITIAL_Y_POS
@@ -44,14 +47,15 @@ void FoodRender::Draw(IFood* Object)
 	}
 	else
 	{
+		// Draw a red rectangle for unknown food types
 		DrawRectangle(
 			(int)(Object->GetPosition().x * CELL_SIZE + BOARD_INITIAL_X_POS),
-			(int)(Object->GetPosition().y * CELL_SIZE + BOARD_INITIAL_Y_POS)
-			, (int)OBJECTS_SCALE * 32, (int)OBJECTS_SCALE * 32, RED);
+			(int)(Object->GetPosition().y * CELL_SIZE + BOARD_INITIAL_Y_POS),
+			(int)OBJECTS_SCALE * 32, (int)OBJECTS_SCALE * 32, RED);
 	}
-
 }
 
+// Destructor: Unloads all loaded textures
 FoodRender::~FoodRender()
 {
 	UnloadTexture(AppleTexture_);

@@ -4,7 +4,7 @@
 #include <unordered_map>
 
 /**
- * @brief Enumerates the available level types for the board.
+ * @brief Types of levels available in the game.
  */
 enum class ELevelType
 {
@@ -13,90 +13,108 @@ enum class ELevelType
     WINTER_FOREST   /**< Winter-themed forest level. */
 };
 
+/**
+ * @brief Types of cells that can exist on the board.
+ */
 enum class ECellType
 {
-    EMPTY,
-    WALL,
-    FOOD,
-    SNAKE,
-    OUT_OF_BORDER
-};
-
-// === Equality struct ===
-struct Vector2Equal 
-{
-    bool operator()(const Vector2& a, const Vector2& b) const noexcept
-    {
-        return static_cast<int>(a.x) == static_cast<int>(b.x) &&
-               static_cast<int>(a.y) == static_cast<int>(b.y);
-    }
-};
-// === Hash struct ===
-struct Vector2Hash
-{
-    std::size_t operator()(const Vector2& v) const noexcept 
-    {
-        int x = static_cast<int>(v.x);
-        int y = static_cast<int>(v.y);
-        return std::hash<int>()(x) ^ (std::hash<int>()(y) << 1);
-    }
+    EMPTY,          /**< Empty cell. */
+    WALL,           /**< Wall cell. */
+    FOOD,           /**< Food cell. */
+    SNAKE,          /**< Snake cell. */
+    OUT_OF_BORDER   /**< Cell outside the board boundaries. */
 };
 
 /**
- * @brief Represents a 2D board for level data and player positioning.
- *
- * The Board class manages the level's grid data, starting position, and provides
- * methods to query and modify the board state.
+ * @brief Functor for comparing two Vector2 objects for equality.
+ */
+struct Vector2Equal     
+{
+    /**
+     * @brief Compares two Vector2 objects for equality.
+     * @param a First vector.
+     * @param b Second vector.
+     * @return True if both vectors have the same integer coordinates, false otherwise.
+     */
+    bool operator()(const Vector2& a, const Vector2& b) const noexcept;
+};
+
+/**
+ * @brief Functor for hashing a Vector2 object.
+ */
+struct Vector2Hash
+{
+    /**
+     * @brief Computes a hash value for a Vector2 object.
+     * @param v The vector to hash.
+     * @return The hash value.
+     */
+    std::size_t operator()(const Vector2& v) const noexcept;
+};
+
+/**
+ * @brief Represents the game board and manages its state.
  */
 class Board
 {
 public:
     /**
-     * @brief Constructs a Board with the given level data and starting position.
-     * @param LevelData 2D vector representing the level's cell states.
-     * @param StartingPos The initial position on the board.
+     * @brief Constructs a Board from the given level data.
+     * @param LevelData 2D vector representing the initial level layout.
      */
     Board(std::vector<std::vector<bool>> LevelData);
 
     /**
-     * @brief Changes the current level data.
-     * @param LevelData 2D vector representing the new level's cell states.
-     */
-
-    /**
-     * @brief Gets the state of a cell at the specified position.
+     * @brief Gets the type of cell at the specified position.
      * @param Position The position to query.
-     * @return True if the cell is active, false otherwise.
+     * @return The type of cell at the given position.
      */
     ECellType GetCellInfo(Vector2 Position) const;
-    void SetCellType(Vector2 Position, ECellType Celltype);
+
     /**
-     * @brief Retrieves the current level data.
-     * @return 2D vector representing the level's cell states.s
+     * @brief Sets the type of cell at the specified position.
+     * @param Position The position to modify.
+     * @param Celltype The new cell type.
      */
-    std::unordered_map<Vector2,ECellType,Vector2Hash,Vector2Equal> getLevelData() const;
+    void SetCellType(Vector2 Position, ECellType Celltype);
+
+    /**
+     * @brief Gets the current level data as a map of positions to cell types.
+     * @return The level data map.
+     */
+    std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> getLevelData() const;
 
     /**
      * @brief Gets the width (number of columns) of the level.
-     * @return The number of columns in the level.
+     * @return The width of the level.
      */
     size_t GetLevelXSize() const;
-    Vector2 GetEmptyCell()const;
+
+    /**
+     * @brief Gets a random empty cell position on the board.
+     * @return The position of an empty cell.
+     */
+    Vector2 GetEmptyCell() const;
+
     /**
      * @brief Gets the height (number of rows) of the level.
-     * @return The number of rows in the level.
+     * @return The height of the level.
      */
     size_t GetLevelYSize() const;
 
     /**
-     * @brief Destroys the Board instance.
+     * @brief Destroys the Board and releases resources.
      */
     virtual ~Board();
 
 private:
+    /**
+     * @brief Transforms the initial level data into the board map.
+     */
     void TransformLevelData();
-    std::vector<std::vector<bool>> LevelData_;
-    std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> BoardMap_;/**< 2D vector storing the level's cell states. */
+
+    std::vector<std::vector<bool>> LevelData_; /**< 2D vector storing the initial level layout. */
+    std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> BoardMap_; /**< Map storing the cell states. */
     Vector2 StartingPosition_;                 /**< The starting position on the board. */
     size_t LevelXSize_;                        /**< The width (number of columns) of the level. */
     size_t LevelYSize_;                        /**< The height (number of rows) of the level. */
