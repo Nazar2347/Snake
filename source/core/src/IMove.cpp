@@ -7,7 +7,7 @@ IMove::IMove(Board &Board)
 
 bool IMove::CheckPosition(Vector2 Position)
 {
-	if (Board_->GetCellInfo(Position) == 0)
+	if (Board_->GetCellInfo(Position) == ECellType::EMPTY)
 	{
 		return 0;
 	}

@@ -1,9 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <raylib.h>
 #include "Snake.h"
-std::vector<std::vector<bool>> TestMap = { {1,1,1,1,1},{1,0,0,0,1},{1,0,0,0,1},{1,1,1,1,1} };
-Vector2 Start = { 3,1 };
-Board TestLevel(TestMap,Start);
+
 
 TEST_CASE("Snake construction() initializes head ansd tail", "[Snake]") {
     REQUIRE((2 + 2) == 4);
