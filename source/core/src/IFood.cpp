@@ -80,7 +80,7 @@ void Frog::Move()
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
-	if (CheckPosition(NewRandomPos)==0)
+	if (CheckPosition(NewRandomPos)==ECellType::EMPTY)
 	{
 		SetPosition(NewRandomPos);
 	} //else do nothing
@@ -92,7 +92,7 @@ void Mouse::Move()
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
 	
-	if (CheckPosition(NewRandomPos)==0)
+	if (CheckPosition(NewRandomPos)==ECellType::EMPTY)
 	{
 		SetPosition(NewRandomPos);
 	} //else do nothing

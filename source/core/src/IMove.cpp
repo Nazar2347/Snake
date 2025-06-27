@@ -5,13 +5,9 @@ IMove::IMove(Board &Board)
 	Board_ = &Board;
 }
 
-bool IMove::CheckPosition(Vector2 Position)
+ECellType IMove::CheckPosition(Vector2 Position)
 {
-	if (Board_->GetCellInfo(Position) == ECellType::EMPTY)
-	{
-		return 0;
-	}
-	return 1;
+	return Board_->GetCellInfo(Position);
 }
 IMove:: ~IMove()
 {

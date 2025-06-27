@@ -71,9 +71,13 @@ void Snake::Move()
     case EDirection::RIGHT: NextCell = Vector2Add(HeadPosition_, { 1, 0 });  break;
     default: return;
     }
-    if (CheckPosition(NextCell) == 1)
+    if (CheckPosition(NextCell) == ECellType::WALL || CheckPosition(NextCell)==ECellType::OUT_OF_BORDER)
     {
         return;
+    }
+    else if (CheckPosition(NextCell) == ECellType::FOOD)
+    {
+        ExtendTailBy(1);
     }
     // Step 2: If reversing into own body, reject the move by computing old direction instead
     if (TailPosition_.size() > 0 && Vector2Equals(NextCell, TailPosition_[0]))

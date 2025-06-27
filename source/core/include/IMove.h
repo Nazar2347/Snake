@@ -10,7 +10,7 @@ public:
 	virtual ~IMove();
 protected:
 	RandomNumberGenerator* NumberGenerator_;
-	virtual bool CheckPosition(Vector2 Position);
+	virtual ECellType CheckPosition(Vector2 Position);
 private:
 	Board* Board_;
 };
