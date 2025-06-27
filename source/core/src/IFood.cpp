@@ -53,6 +53,11 @@ Frog::Frog(short int Points, Vector2 Position, Board & Board)
 {
 	FoodType_ = EFoodType::FROG;
 	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
+	if (CheckPosition(Position_) != ECellType::EMPTY)
+	{
+		Position_ = { 1,1 };
+		this->Move();
+	}
 }
 void Frog::DoSomething()
 {
@@ -68,6 +73,11 @@ Mouse::Mouse(short int Points, Vector2 Position, Board& Board)
 	short MinStep = -1;
 	short MaxStep = 1;
 	NumberGenerator_ = new RandomNumberGenerator(MinStep, MaxStep);
+	if (CheckPosition(Position_) != ECellType::EMPTY)
+	{
+		Position_ = { 1,1 };
+		this->Move();
+	}
 }
 
 void Mouse::DoSomething()
