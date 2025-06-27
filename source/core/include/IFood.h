@@ -26,7 +26,7 @@ protected:
 	short int Points_;
 	Vector2 Position_;
 	EFoodType FoodType_;
-	Board& Board_;
+	Board& FBoard_;
 
 };
 

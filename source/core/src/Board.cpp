@@ -45,6 +45,14 @@ ECellType Board::GetCellInfo(Vector2 Position) const
 	}
 	return ECellType::OUT_OF_BORDER;
 }
+void Board::SetCellType(Vector2 Position,ECellType CellType)
+{
+	if (BoardMap_.find(Position) != BoardMap_.end())
+	{
+		BoardMap_.at(Position) = CellType;
+	}
+	
+}
 
 // Return the current level data
 std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> Board::getLevelData() const

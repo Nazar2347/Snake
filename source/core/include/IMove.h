@@ -11,6 +11,6 @@ public:
 protected:
 	RandomNumberGenerator* NumberGenerator_;
 	virtual ECellType CheckPosition(Vector2 Position);
-private:
 	Board* Board_;
+
 };

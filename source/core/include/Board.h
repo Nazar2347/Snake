@@ -70,7 +70,7 @@ public:
      * @return True if the cell is active, false otherwise.
      */
     ECellType GetCellInfo(Vector2 Position) const;
-
+    void SetCellType(Vector2 Position, ECellType Celltype);
     /**
      * @brief Retrieves the current level data.
      * @return 2D vector representing the level's cell states.s

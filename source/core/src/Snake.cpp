@@ -71,12 +71,17 @@ void Snake::Move()
     case EDirection::RIGHT: NextCell = Vector2Add(HeadPosition_, { 1, 0 });  break;
     default: return;
     }
-    if (CheckPosition(NextCell) == ECellType::WALL || CheckPosition(NextCell)==ECellType::OUT_OF_BORDER)
+    if (CheckPosition(NextCell) == ECellType::WALL 
+        ||CheckPosition(NextCell)==ECellType::OUT_OF_BORDER
+        ||CheckPosition(NextCell)==ECellType::SNAKE)
     {
+        bIsAlive_ = false; 
+        printf("Snake died\n");
         return;
     }
     else if (CheckPosition(NextCell) == ECellType::FOOD)
     {
+        //eat logic
         ExtendTailBy(1);
     }
     // Step 2: If reversing into own body, reject the move by computing old direction instead
@@ -105,14 +110,16 @@ void Snake::Move()
     // Step 3: Move the head to the next cell
     Vector2 OldBodyPos = HeadPosition_;
     HeadPosition_ = NextCell;
-
+    Board_->SetCellType(HeadPosition_, ECellType::SNAKE);
     // Step 4: Move the tail segments to follow the head
     for (int i = 0; i < TailPosition_.size(); i++)
     {
+        Board_->SetCellType(TailPosition_[i], ECellType::SNAKE);
         Vector2 OldBodyPos2 = TailPosition_[i];
         TailPosition_[i] = OldBodyPos;
         OldBodyPos = OldBodyPos2;
     }
+        Board_->SetCellType(OldBodyPos, ECellType::EMPTY);
 }
 
 // Sets the snake's movement direction.

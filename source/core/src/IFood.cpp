@@ -3,7 +3,7 @@
 IFood::IFood(short int Points, Vector2 Position, Board &Board):
 	Points_(Points),
 	Position_(Position),
-	Board_(Board)
+	FBoard_(Board)
 {
 	FoodType_ = EFoodType::NONE;
 }
@@ -34,7 +34,7 @@ IFood::~IFood()
 
 void IFood::SetBoard(Board& Board)
 {
-	Board_ = Board;
+	FBoard_ = Board;
 }
 
 AppleFood::AppleFood(short int Points, Vector2 Position, Board & Board) 
@@ -90,10 +90,13 @@ void Frog::Move()
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
-	if (CheckPosition(NewRandomPos)==ECellType::EMPTY)
+	if (CheckPosition(NewRandomPos) != ECellType::EMPTY)
 	{
-		SetPosition(NewRandomPos);
-	} //else do nothing
+		return; 
+	} 
+	Board_->SetCellType(Position_, ECellType::EMPTY);
+	SetPosition(NewRandomPos);
+	Board_->SetCellType(NewRandomPos, ECellType::FOOD);
 }
 
 void Mouse::Move()
@@ -102,8 +105,11 @@ void Mouse::Move()
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
 	
-	if (CheckPosition(NewRandomPos)==ECellType::EMPTY)
+	if (CheckPosition(NewRandomPos) != ECellType::EMPTY)
 	{
-		SetPosition(NewRandomPos);
-	} //else do nothing
+		return;
+	}
+	Board_->SetCellType(Position_, ECellType::EMPTY);
+	SetPosition(NewRandomPos);
+	Board_->SetCellType(NewRandomPos, ECellType::FOOD);
 }
