@@ -1,9 +1,13 @@
-#include "Snake.h"
+    #include "Snake.h"
 
-// Constructor: Initializes the snake's head position, alive status, and starting direction.
-// Also adds the initial tail segment to the right of the head.
-Snake::Snake(Vector2 StartingPos) : HeadPosition_(StartingPos), bIsAlive_(true), HeadDirection_(EDirection::UP)
+// Constructor: Initializes the snake's head position, alive state, direction, and starting tail
+Snake::Snake(Vector2 StartingPos, Board &Board) : 
+    HeadPosition_(StartingPos),
+    bIsAlive_(true),
+    HeadDirection_(EDirection::UP),
+    IMove(Board)
 {
+    // Add initial tail segment to the right of the head
     TailPosition_.push_back({ StartingPos.x + 1, StartingPos.y });
 }
 
@@ -19,41 +23,45 @@ Vector2 Snake::getHeadPosition() const
     return HeadPosition_;
 }
 
-// Extends the tail by the specified number of segments, up to a maximum of 100 segments.
-// New segments are added in a straight line from the last tail segment.
-void Snake::ExtendTailBy(size_t Size)
+// Changes the size of the snake's tail by the given amount (positive to grow, negative to shrink)
+void Snake::ChangeTailSizeBy(int Size)
 {
-    for (int i = 0; i < Size; i++)
+    if (Size < 0)
     {
-        // Only extend if there is at least one tail segment and less than 100 segments.
-        if (TailPosition_.size() >= 1 && TailPosition_.size() < 100)
+        // Shrink the tail
+        for (; Size < 0; Size++)
         {
-            Vector2 LastElementOfTail = TailPosition_.back();
-            TailPosition_.push_back({ LastElementOfTail.x + 1, LastElementOfTail.y });
-            printf("TailPosition increased\n");
+            if (TailPosition_.size() >= 1)
+            {
+                Board_->SetCellType(TailPosition_.back(), ECellType::EMPTY);
+                TailPosition_.pop_back();
+                if (TailPosition_.size() <= 1)
+                {
+                    bIsAlive_ = false; // Snake dies if tail less than 2
+                }
+            }
+            else
+            {
+                bIsAlive_ = false; // Snake dies if tail less than 2
+            }
+        }
+    }
+    else
+    {
+        // Grow the tail
+        for (int i = 0; i < Size; i++)
+        {
+            if (TailPosition_.size() >= 1 && TailPosition_.size() < 100)
+            {
+                Vector2 LastElementOfTail = TailPosition_.back();
+                TailPosition_.push_back({ LastElementOfTail.x + 1, LastElementOfTail.y });
+                printf("TailPosition increased\n");
+            }
         }
     }
 }
 
-// Shortens the tail by the specified number of segments.
-// If the tail becomes empty, the snake is marked as dead.
-void Snake::ShortTailBy(size_t Size)
-{
-    for (int i = 0; i < Size; i++)
-    {
-        if (TailPosition_.size() < 1)
-        {
-            bIsAlive_ = false;
-        }
-        else
-        {
-            TailPosition_.pop_back();
-        }
-    }
-}
-
-// Moves the snake forward by one cell in the current direction.
-// Prevents reversing into the snake's own body by rejecting moves that would do so.
+// Moves the snake in the current direction, updates board and tail positions
 void Snake::Move()
 {
     Vector2 NextCell;
@@ -68,10 +76,20 @@ void Snake::Move()
     default: return;
     }
 
-    // Step 2: If reversing into own body, reject the move by computing old direction instead
+    // Check for collision with wall, border, or itself
+    if (CheckPosition(NextCell) == ECellType::WALL 
+        ||CheckPosition(NextCell)==ECellType::OUT_OF_BORDER
+        ||CheckPosition(NextCell)==ECellType::SNAKE)
+    {
+        bIsAlive_ = false; 
+        printf("Snake died\n");
+        return;
+    }
+  
+    // Prevent immediate reversal into the first tail segment
     if (TailPosition_.size() > 0 && Vector2Equals(NextCell, TailPosition_[0]))
     {
-        // Reverse the direction to prevent moving into the body
+        // Reverse direction if about to collide with first tail segment
         switch (HeadDirection_)
         {
         case EDirection::UP:    HeadDirection_ = EDirection::DOWN; break;
@@ -80,7 +98,7 @@ void Snake::Move()
         case EDirection::RIGHT: HeadDirection_ = EDirection::LEFT; break;
         }
 
-        // Recompute valid direction cell (with restored HeadDirection_)
+        // Recalculate next cell after direction change
         switch (HeadDirection_)
         {
         case EDirection::UP:    NextCell = Vector2Add(HeadPosition_, { 0, -1 }); break;
@@ -91,38 +109,45 @@ void Snake::Move()
         }
     }
 
-    // Step 3: Move the head to the next cell
+    // Move head to next cell and update board
     Vector2 OldBodyPos = HeadPosition_;
     HeadPosition_ = NextCell;
-
-    // Step 4: Move the tail segments to follow the head
+    Board_->SetCellType(HeadPosition_, ECellType::SNAKE);
+  
+    // Move each tail segment to the position of the previous segment
     for (int i = 0; i < TailPosition_.size(); i++)
     {
+        Board_->SetCellType(TailPosition_[i], ECellType::SNAKE);
         Vector2 OldBodyPos2 = TailPosition_[i];
         TailPosition_[i] = OldBodyPos;
         OldBodyPos = OldBodyPos2;
+        // Clear the last cell previously occupied by the tail
+        if (i == TailPosition_.size() - 1)
+        {
+            Board_->SetCellType(OldBodyPos, ECellType::EMPTY);
+        }
     }
 }
 
-// Sets the snake's movement direction.
+// Sets the direction of the snake's movement
 void Snake::SetDirection(EDirection Direction)
 {
     HeadDirection_ = Direction;
 }
 
-// Returns the current movement direction.
+// Returns the current direction of the snake's head
 EDirection Snake::GetDirection()
 {
     return HeadDirection_;
 }
 
-// Returns whether the snake is alive.
+// Returns whether the snake is alive
 bool Snake::isAlive()
 {
     return bIsAlive_;
 }
 
-// Destructor: No dynamic memory to clean up.
+// Destructor
 Snake::~Snake()
 {
 

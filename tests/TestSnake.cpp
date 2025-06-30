@@ -1,96 +1,177 @@
 #include <catch2/catch_test_macros.hpp>
 #include <raylib.h>
 #include "Snake.h"
+#include "Board.h"
+
+std::vector<std::vector <bool>> TestLevelData = {
+    {1,1,1,1,1,1},
+    {1,0,0,0,0,1},
+    {1,0,0,0,0,1},
+    {1,0,0,0,0,1},
+    {1,0,0,0,0,1},
+    {1,1,1,1,1,1} };
+Board TestLevel(TestLevelData);
 
 
-TEST_CASE("Snake construction() initializes head and tail", "[Snake]") {
-    Vector2 start = { 5, 5 };
-    Snake snake(start);
+TEST_CASE("Snake Constructor initializes correctly", "[Snake]") {
+    Vector2 start;
+    start.x = 1;
+    start.y = 1;
+    Snake snake(start, TestLevel);
 
-    REQUIRE(snake.getHeadPosition() == start);
-
-    auto tail = snake.getTailPosition();
+    REQUIRE(snake.getHeadPosition().x == 1);
+    REQUIRE(snake.getHeadPosition().y == 1);
+    std::vector<Vector2> tail = snake.getTailPosition();
     REQUIRE(tail.size() == 1);
-    REQUIRE(tail[0] == Vector2{ 6, 5 });
-
-}
-//
-TEST_CASE("ExtendTailBy() increases tail size", "[Snake]") {
-    Snake snake({ 0, 0 });
-    size_t initialSize = snake.getTailPosition().size();
-
-    snake.ExtendTailBy(1);
-    auto tail = snake.getTailPosition();
-    REQUIRE(tail.size() >= initialSize); // Only extends if size > 1 and < 100
-}
-
-TEST_CASE("ShortTailBy() decreases tail size and can kill snake", "[Snake]") {
-    Snake snake({ 0, 0 });
-    snake.ExtendTailBy(2);
-    size_t before = snake.getTailPosition().size();
-
-    snake.ShortTailBy(1);
-    REQUIRE(snake.getTailPosition().size() == before - 1);
+    REQUIRE(tail[0].x == 2);
+    REQUIRE(tail[0].y == 1);
     REQUIRE(snake.isAlive());
-
-    // Remove all tail elements
-    snake.ShortTailBy(100);
-    REQUIRE_FALSE(snake.isAlive());
+    REQUIRE(snake.GetDirection() == EDirection::UP);
 }
 
-TEST_CASE("SetDirection and GetDirection work as expected", "[Snake]") {
-    Snake snake({ 2, 2 });
-    snake.SetDirection(EDirection::DOWN);
-    REQUIRE(snake.GetDirection() == EDirection::DOWN);
+TEST_CASE("Snake::SetDirection and GetDirection", "[Snake]") {
+    Vector2 start;
+    start.x = 0;
+    start.y = 0;
+    Snake snake(start, TestLevel);
 
     snake.SetDirection(EDirection::LEFT);
     REQUIRE(snake.GetDirection() == EDirection::LEFT);
+
+    snake.SetDirection(EDirection::DOWN);
+    REQUIRE(snake.GetDirection() == EDirection::DOWN);
 }
 
-TEST_CASE("Move() updates head and tail positions correctly", "[Snake]") {
-    Snake snake({ 3, 3 });
-    Vector2 initialHead = snake.getHeadPosition();
-    auto initialTail = snake.getTailPosition();
+TEST_CASE("Snake::ChangeTailSizeBy grows and shrinks tail", "[Snake]") {
+    Vector2 start;
+    start.x = 0;
+    start.y = 0;
+    Snake snake(start, TestLevel);
 
-    // Default direction is UP
-    snake.Move();
-    Vector2 expectedHead = { initialHead.x, initialHead.y - 1 };
-    REQUIRE(snake.getHeadPosition().x == expectedHead.x);
-    REQUIRE(snake.getHeadPosition().y == expectedHead.y);
+    // Grow tail by 2
+    snake.ChangeTailSizeBy(2);
+    std::vector<Vector2> tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 3);
 
-    // Tail should follow the old head position
-    auto tail = snake.getTailPosition();
-    REQUIRE(tail[0].x == initialHead.x);
-    REQUIRE(tail[0].y == initialHead.y);
+    // Shrink tail by 1
+    snake.ChangeTailSizeBy(-1);
+    tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 2);
+
+    // Shrink tail to zero, snake should die
+    snake.ChangeTailSizeBy(-2);
+    REQUIRE(snake.getTailPosition().size() == 0);
+    REQUIRE_FALSE(snake.isAlive()); //problem
 }
 
-TEST_CASE("Move() prevents reversing into own body", "[Snake]") {
-    Snake snake({ 4, 4 });
-    snake.ExtendTailBy(1); // Now tail has 2 segments
 
-    // Move once to update positions
-    snake.Move();
+TEST_CASE("Snake::isAlive returns correct state", "[Snake]") {
+    Vector2 start;
+    start.x = 0;
+    start.y = 0;
+    Snake snake(start, TestLevel);
 
-    // Try to reverse direction into the body
-    snake.SetDirection(EDirection::DOWN); // Opposite of UP
-    Vector2 beforeMove = snake.getHeadPosition();
-    snake.Move();
-
-    // Head should not move into the tail's first segment
-    REQUIRE_FALSE(snake.getHeadPosition() == snake.getTailPosition()[0]);
-    // Head should have moved in the opposite direction (UP again)
-    REQUIRE(snake.getHeadPosition().y == beforeMove.y - 1);
-}
-
-TEST_CASE("ExtendTailBy does not exceed 100 segments", "[Snake]") {
-    Snake snake({ 0, 0 });
-    snake.ExtendTailBy(200);
-    REQUIRE(snake.getTailPosition().size() <= 100);
-}
-
-TEST_CASE("isAlive() returns correct status", "[Snake]") {
-    Snake snake({ 0, 0 });
     REQUIRE(snake.isAlive());
-    snake.ShortTailBy(100);
+    snake.ChangeTailSizeBy(-1); // Remove only tail segment
+    snake.ChangeTailSizeBy(-1); // Should die
     REQUIRE_FALSE(snake.isAlive());
+}
+
+TEST_CASE("Snake::getHeadPosition and getTailPosition", "[Snake]") {
+    Vector2 start;
+    start.x = 5;
+    start.y = 5;
+    Snake snake(start, TestLevel);
+
+    REQUIRE(snake.getHeadPosition().x == 5);
+    REQUIRE(snake.getHeadPosition().y == 5);
+    std::vector<Vector2> tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 1);
+    REQUIRE(tail[0].x == 6);
+    REQUIRE(tail[0].y == 5);
+}
+
+TEST_CASE("Snake interacts correctly with custom TestLevel board", "[Snake][Board]") {
+    // Use the provided TestLevelData and TestLevel
+    Vector2 start;
+    start.x = 2;
+    start.y = 2;
+    Snake snake(start, TestLevel);
+
+    // Initial state
+    REQUIRE(snake.getHeadPosition().x == 2);
+    REQUIRE(snake.getHeadPosition().y == 2);
+    REQUIRE(snake.isAlive());
+
+    // Move up (should be valid)
+    snake.SetDirection(EDirection::UP);
+    snake.Move();
+    REQUIRE(snake.getHeadPosition().x == 2);
+    REQUIRE(snake.getHeadPosition().y == 1);
+    REQUIRE(snake.isAlive());
+
+    // Move left (should be valid)
+    snake.SetDirection(EDirection::LEFT);
+    snake.Move();
+    REQUIRE(snake.getHeadPosition().x == 1);
+    REQUIRE(snake.getHeadPosition().y == 1);
+    REQUIRE(snake.isAlive());
+
+    // Move left into wall (should die or stop, depending on implementation)
+    snake.Move();
+    // The expected result depends on your Snake implementation:
+    // If hitting a wall kills the snake:
+    REQUIRE_FALSE(snake.isAlive());
+    // If hitting a wall prevents movement but doesn't kill:
+    // REQUIRE(snake.getHeadPosition().x == 1);
+    // REQUIRE(snake.getHeadPosition().y == 1);
+}
+
+TEST_CASE("Snake tail grows, shrinks, and follows head correctly on TestLevel", "[Snake][Tail]") {
+    Vector2 start;
+    start.x = 2;
+    start.y = 2;
+    Snake snake(start, TestLevel);
+
+    // Initial tail check
+    std::vector<Vector2> tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 1);
+    REQUIRE(tail[0].x == 3);
+    REQUIRE(tail[0].y == 2);
+
+    // Grow tail by 2
+    snake.ChangeTailSizeBy(2);
+    tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 3);
+
+    // Move right
+    snake.SetDirection(EDirection::LEFT);
+    snake.Move();
+    REQUIRE(snake.getHeadPosition().x == 1); //problem
+    REQUIRE(snake.getHeadPosition().y == 2);
+
+    tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 3);
+    REQUIRE(tail[0].x == 2);
+    REQUIRE(tail[0].y == 2);
+    REQUIRE(tail[1].x == 3);
+    REQUIRE(tail[1].y == 2);
+    REQUIRE(tail[2].x == 4);
+    REQUIRE(tail[2].y == 2);
+
+    // Shrink tail by 2
+    snake.ChangeTailSizeBy(-2);
+    tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 1);
+
+    // Move down
+    snake.SetDirection(EDirection::DOWN);
+    snake.Move();
+    REQUIRE(snake.getHeadPosition().x == 1);
+    REQUIRE(snake.getHeadPosition().y == 3);
+
+    tail = snake.getTailPosition();
+    REQUIRE(tail.size() == 1);
+    REQUIRE(tail[0].x == 1);
+    REQUIRE(tail[0].y == 2);
 }

@@ -36,13 +36,13 @@ void RenderBoard::Draw() const
             for (int j = 0; j < LevelBoard_.GetLevelYSize(); j++)
             {
                 Vector2 CurrentCell = { (float)i,float(j) };
-                if (LevelBoard_.GetCellInfo(CurrentCell) == 1)
+                if (LevelBoard_.GetCellInfo(CurrentCell) == ECellType::WALL)
                 {
                     // Draw border texture for active cell
                     DrawTextureEx(BorderTopTexture_, { CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
                         CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS }, 0.0f, BLOCKS_SCALE, WHITE);
                 }
-                else
+                else if (LevelBoard_.GetCellInfo(CurrentCell) == ECellType::EMPTY)
                 {
                     // Alternate ground textures for inactive cells
                     if ((i + j) % 2 == 0)

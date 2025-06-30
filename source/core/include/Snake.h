@@ -4,58 +4,56 @@
 #include <vector>
 #include "IMove.h"
 
+/**
+ * @brief Represents the possible movement directions for the snake.
+ */
 enum class EDirection
 {
-    UP,
-    RIGHT,
-    LEFT,
-    DOWN
+    UP,    /**< Move upwards. */
+    RIGHT, /**< Move rightwards. */
+    LEFT,  /**< Move leftwards. */
+    DOWN   /**< Move downwards. */
 };
+
 /**
- * @brief Represents a snake entity for grid-based games (e.g., Snake).
- *
- * The Snake class manages the position, movement, and state of a snake,
- * including its head, tail, and alive status. It provides methods to
- * manipulate the snake's length and position, and to query its current state.
+ * @brief Represents the snake entity and its behavior in the game.
+ * 
+ * Inherits from IMove to provide movement logic.
  */
-class Snake: public IMove
+class Snake : public IMove
 {
 public:
     /**
-     * @brief Constructs a Snake with a given starting position.
+     * @brief Constructs a Snake object at the given starting position.
      * @param StartingPos The initial position of the snake's head.
+     * @param Board Reference to the game board.
      */
-    Snake(Vector2 StartingPos);
+    Snake(Vector2 StartingPos, Board &Board);
 
     /**
      * @brief Gets the positions of all tail segments.
-     * @return A vector of Vector2 positions representing the tail.
+     * @return A vector containing the positions of the tail segments.
      */
-    std::vector<Vector2> getTailPosition()const;
+    std::vector<Vector2> getTailPosition() const;
 
     /**
      * @brief Gets the current position of the snake's head.
-     * @return The head position as a Vector2.
+     * @return The position of the head.
      */
-    Vector2 getHeadPosition()const;
+    Vector2 getHeadPosition() const;
 
     /**
-     * @brief Extends the tail by a specified number of segments.
-     * @param Size The number of segments to add to the tail.
+     * @brief Changes the size of the snake's tail.
+     * @param Size The amount to change the tail size by (positive to grow, negative to shrink).
      */
-    void ExtendTailBy(size_t Size);
+    void ChangeTailSizeBy(int Size);
 
     /**
-     * @brief Shortens the tail by a specified number of segments.
-     * @param Size The number of segments to remove from the tail.
+     * @brief Moves the snake in the current direction.
+     * 
+     * Overrides IMove::Move.
      */
-    void ShortTailBy(size_t Size);
-
-    /**
-     * @brief Moves the snake in the specified direction.
-     * @param Direction The direction vector to move the snake.
-     */
-    void Move()override;
+    void Move() override;
 
     /**
      * @brief Checks if the snake is alive.
@@ -63,12 +61,20 @@ public:
      */
     bool isAlive();
 
+    /**
+     * @brief Sets the direction of the snake's head.
+     * @param Direction The new direction to set.
+     */
     void SetDirection(EDirection Direction);
 
+    /**
+     * @brief Gets the current direction of the snake's head.
+     * @return The current direction.
+     */
     EDirection GetDirection();
 
     /**
-     * @brief Destructor for the Snake class.
+     * @brief Destroys the Snake object.
      */
     virtual ~Snake();
 
@@ -76,5 +82,5 @@ private:
     std::vector<Vector2> TailPosition_; ///< Positions of the tail segments.
     Vector2 HeadPosition_;              ///< Position of the snake's head.
     bool bIsAlive_;                     ///< Indicates if the snake is alive.
-    EDirection HeadDirection_;            /**< Indicates the direction for Snake movement. */
+    EDirection HeadDirection_;          /**< Indicates the direction for Snake movement. */
 };

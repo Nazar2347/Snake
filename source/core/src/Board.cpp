@@ -1,62 +1,107 @@
 #include "Board.h"
 
-// Constructor: initializes board with level data and starting position
-Board::Board(std::vector<std::vector<bool>> LevelData, Vector2 StartingPos) : 
-	LevelData_(LevelData),
-	StartingPosition_(StartingPos)
+// Vector2Equal: Functor for comparing two Vector2 objects for equality in unordered_map.
+// Compares the integer values of x and y to avoid floating-point precision issues.
+bool Vector2Equal::operator()(const Vector2& a, const Vector2& b) const noexcept
+{
+    return static_cast<int>(a.x) == static_cast<int>(b.x) &&
+           static_cast<int>(a.y) == static_cast<int>(b.y);
+}
+
+// Vector2Hash: Functor for hashing a Vector2 object for use in unordered_map.
+// Hashes the integer values of x and y, combining them to produce a unique hash.
+size_t Vector2Hash::operator()(const Vector2& v) const noexcept
+{
+    int x = static_cast<int>(v.x); 
+    int y = static_cast<int>(v.y);
+    return std::hash<int>()(x) ^ (std::hash<int>()(y) << 1);
+}
+
+// Constructor: Initializes the board with the given level data
+Board::Board(std::vector<std::vector<bool>> LevelData) : 
+	LevelData_(LevelData)
 {
 	LevelXSize_ = LevelData_.size();           // Set board width
 	LevelYSize_ = LevelData_.front().size();   // Set board height
+	BoardMap_.clear();                         // Clear any existing board data
+	TransformLevelData();                      // Convert level data to board map
 }
 
-// Change the current level data
-void Board::ChangeLevel(std::vector<std::vector<bool>> LevelData)
+// Converts the 2D level data into the BoardMap_ structure
+void Board::TransformLevelData()
 {
-	LevelData_ = LevelData;
-}
-
-// Get the value of a cell at the given position
-bool Board::GetCellInfo(Vector2 Position) const 
-{
-	size_t X = static_cast<size_t>(Position.x);
-	size_t Y = static_cast<size_t>(Position.y);
-	if (X <= 0 || Y <= 0)
+	if (!LevelData_.empty())
 	{
-		return 1;
+		for (size_t x = 0; x < LevelXSize_; x++)
+		{
+			for (size_t y = 0; y < LevelYSize_; y++)
+			{
+				if (LevelData_.at(x).at(y) == 0)
+				{
+					BoardMap_.emplace(Vector2{ (float)x,(float)y }, ECellType::EMPTY);
+				}
+				else
+				{
+					BoardMap_.emplace(Vector2{ (float)x,(float)y }, ECellType::WALL);
+				}
+			}
+		}
 	}
-	else if (X > this->GetLevelXSize()-1 || Y > this->GetLevelYSize()-1)
+}
+
+// Returns the cell type at the given position, or OUT_OF_BORDER if not found
+ECellType Board::GetCellInfo(Vector2 Position) const 
+{
+	if (BoardMap_.find(Position) != BoardMap_.end())
 	{
-		return 1;
+		return BoardMap_.at(Position);
 	}
-	return LevelData_.at(X).at(Y);
+	return ECellType::OUT_OF_BORDER;
 }
 
-// Return the current level data
-std::vector<std::vector<bool>> Board::getLevelData() const
+// Sets the cell type at the given position if it exists
+void Board::SetCellType(Vector2 Position,ECellType CellType)
 {
-	return LevelData_;
+	if (BoardMap_.find(Position) != BoardMap_.end())
+	{
+		BoardMap_.at(Position) = CellType;
+	}
 }
 
-// Return the starting position
-Vector2 Board::getStartingPos() const
+// Returns the entire board map (positions and their cell types)
+std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> Board::getLevelData() const
 {
-	return StartingPosition_;
+	return BoardMap_;
 }
 
-// Get the width of the level (number of columns)
+// Finds and returns the first empty cell position, or {1,1} if none found
+Vector2 Board::GetEmptyCell() const
+{
+	for (auto i : BoardMap_)
+	{
+		if (i.second == ECellType::EMPTY)
+		{
+			return i.first;
+		}
+	}
+	return { 1,1 };
+}
+
+// Returns the width of the board
 size_t Board::GetLevelXSize()const
 {
 	return LevelXSize_;
 }
 
-// Get the height of the level (number of rows)
+// Returns the height of the board
 size_t Board::GetLevelYSize()const
 {
 	return LevelYSize_;
 }
 
-
 // Destructor
 Board::~Board()
 {
 }
+
+

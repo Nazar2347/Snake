@@ -1,92 +1,134 @@
 #include "IFood.h"
 
-IFood::IFood(short int Points, Vector2 Position, Board &Board):Points_(Points), Position_(Position), Board_(Board)
+// IFood constructor: initializes food with points, position, and board reference
+IFood::IFood(short int Points, Vector2 Position, Board &Board):
+	Points_(Points),
+	Position_(Position),
+	FBoard_(Board)
 {
 	FoodType_ = EFoodType::NONE;
+	// If the initial position is not empty, find an empty cell
+	if (FBoard_.GetCellInfo(Position_) != ECellType::EMPTY)
+	{
+		Position_ = FBoard_.GetEmptyCell();
+	}
+	// Mark the cell as containing food
+	FBoard_.SetCellType(Position_, ECellType::FOOD);
 }
 
+// Returns the current position of the food
 Vector2 IFood::GetPosition()const 
 {
 	return Position_;
 }
 
+// Returns the points value of the food
 short int IFood::GetPoints()const
 {
 	return Points_;
 }
 
+// Sets the position of the food
 void IFood::SetPosition(Vector2 Position)
 {
 	Position_ = Position;
 }
 
+// Returns the type of the food
 EFoodType IFood::GetFoodType()
 {
 	return FoodType_;
 }
 
+// IFood destructor: clears the food from the board
 IFood::~IFood()
 {
+	FBoard_.SetCellType(Position_,ECellType::EMPTY);
 }
 
+// Sets the board reference for the food
 void IFood::SetBoard(Board& Board)
 {
-	Board_ = Board;
+	FBoard_ = Board;
 }
 
+// AppleFood constructor: sets type to APPLE
 AppleFood::AppleFood(short int Points, Vector2 Position, Board & Board) 
 	:IFood(Points, Position, Board)
 {
 	FoodType_ = EFoodType::APPLE;
 }
+
+// AppleFood does nothing special when activated
 void AppleFood::DoSomething()
 {
-	//do nothing as it is an stationary item
+	// do nothing as it is a stationary item
 }
 
+// Frog constructor: sets type to FROG and initializes movement
 Frog::Frog(short int Points, Vector2 Position, Board & Board)
-	:IFood(Points, Position, Board)
+	:IFood(Points, Position, Board), 
+	 IMove (Board)
 {
 	FoodType_ = EFoodType::FROG;
 	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
+	this->Move();
+	
 }
+
+// Frog jumps to a new position when activated
 void Frog::DoSomething()
 {
 	// jump for over 1 cell
 	this->Move();
 }
 
+// Mouse constructor: sets type to MOUSE and initializes movement
 Mouse::Mouse(short int Points, Vector2 Position, Board& Board)
-	: IFood(Points, Position, Board)
+	: IFood(Points, Position, Board), 
+	  IMove (Board)
 {
 	FoodType_ = EFoodType::MOUSE;
-	NumberGenerator_ = new RandomNumberGenerator(-1, 1);
+	short MinStep = -1;
+	short MaxStep = 1;
+	NumberGenerator_ = new RandomNumberGenerator(MinStep, MaxStep);
+	this->Move();
+	
 }
 
+// Mouse moves to a new position when activated
 void Mouse::DoSomething()
 {
-	//Move into 1 cell
 	this->Move();
 }
 
+// Moves the frog to a random empty position within its range
 void Frog::Move()
 {
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
-	if (Board_.GetCellInfo(NewRandomPos) != 1)
+	if (CheckPosition(NewRandomPos) != ECellType::EMPTY)
 	{
-		SetPosition(NewRandomPos);
-	}
+		return; 
+	} 
+	Board_->SetCellType(Position_, ECellType::EMPTY);
+	SetPosition(NewRandomPos);
+	Board_->SetCellType(NewRandomPos, ECellType::FOOD);
 }
 
+// Moves the mouse to a random empty position within its range
 void Mouse::Move()
 {
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
-	if (Board_.GetCellInfo(NewRandomPos) != 1)
+	
+	if (CheckPosition(NewRandomPos) != ECellType::EMPTY)
 	{
-		SetPosition(NewRandomPos);
+		return;
 	}
+	Board_->SetCellType(Position_, ECellType::EMPTY);
+	SetPosition(NewRandomPos);
+	Board_->SetCellType(NewRandomPos, ECellType::FOOD);
 }
