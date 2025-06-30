@@ -1,5 +1,18 @@
 #include "Board.h"
 
+bool Vector2Equal::operator()(const Vector2& a, const Vector2& b) const noexcept
+{
+		return static_cast<int>(a.x) == static_cast<int>(b.x) &&
+		static_cast<int>(a.y) == static_cast<int>(b.y);
+}
+size_t Vector2Hash::operator()(const Vector2& v) const noexcept
+{
+	int x = static_cast<int>(v.x); 
+		int y = static_cast<int>(v.y);
+	return std::hash<int>()(x) ^ (std::hash<int>()(y) << 1);
+}
+
+
 // Constructor: Initializes the board with the given level data
 Board::Board(std::vector<std::vector<bool>> LevelData) : 
 	LevelData_(LevelData)
@@ -86,3 +99,5 @@ size_t Board::GetLevelYSize()const
 Board::~Board()
 {
 }
+
+

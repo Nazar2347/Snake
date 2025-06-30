@@ -35,10 +35,14 @@ void Snake::ChangeTailSizeBy(int Size)
             {
                 Board_->SetCellType(TailPosition_.back(), ECellType::EMPTY);
                 TailPosition_.pop_back();
+                if (TailPosition_.size() <= 1)
+                {
+                    bIsAlive_ = false; // Snake dies if tail less than 2
+                }
             }
             else
             {
-                bIsAlive_ = false; // Snake dies if tail is gone
+                bIsAlive_ = false; // Snake dies if tail less than 2
             }
         }
     }
