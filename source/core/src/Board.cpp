@@ -1,17 +1,21 @@
 #include "Board.h"
 
+// Vector2Equal: Functor for comparing two Vector2 objects for equality in unordered_map.
+// Compares the integer values of x and y to avoid floating-point precision issues.
 bool Vector2Equal::operator()(const Vector2& a, const Vector2& b) const noexcept
 {
-		return static_cast<int>(a.x) == static_cast<int>(b.x) &&
-		static_cast<int>(a.y) == static_cast<int>(b.y);
-}
-size_t Vector2Hash::operator()(const Vector2& v) const noexcept
-{
-	int x = static_cast<int>(v.x); 
-		int y = static_cast<int>(v.y);
-	return std::hash<int>()(x) ^ (std::hash<int>()(y) << 1);
+    return static_cast<int>(a.x) == static_cast<int>(b.x) &&
+           static_cast<int>(a.y) == static_cast<int>(b.y);
 }
 
+// Vector2Hash: Functor for hashing a Vector2 object for use in unordered_map.
+// Hashes the integer values of x and y, combining them to produce a unique hash.
+size_t Vector2Hash::operator()(const Vector2& v) const noexcept
+{
+    int x = static_cast<int>(v.x); 
+    int y = static_cast<int>(v.y);
+    return std::hash<int>()(x) ^ (std::hash<int>()(y) << 1);
+}
 
 // Constructor: Initializes the board with the given level data
 Board::Board(std::vector<std::vector<bool>> LevelData) : 
