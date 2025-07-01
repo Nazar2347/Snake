@@ -33,7 +33,7 @@ private:
 	RenderBoard* BoardRender_;
 	RenderSnake* SnakeRender_;
 	FoodRender* FoodRender_;
-	std::stack<IFood*> Level1FoodStack;
+	std::stack<IFood*> LevelFoodStack;
 	InputHandler InputHandler_;
 	Command* PlayerCommand_;
 	bool bIsLevelCompleted_;
