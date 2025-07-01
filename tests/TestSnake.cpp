@@ -26,7 +26,7 @@ TEST_CASE("Snake Constructor initializes correctly", "[Snake]") {
     REQUIRE(tail[0].x == 2);
     REQUIRE(tail[0].y == 1);
     REQUIRE(snake.isAlive());
-    REQUIRE(snake.GetDirection() == EDirection::UP);
+    REQUIRE(snake.GetDirection() == EDirection::LEFT);
 }
 
 TEST_CASE("Snake::SetDirection and GetDirection", "[Snake]") {

@@ -79,6 +79,7 @@ Frog::Frog(short int Points, Vector2 Position, Board & Board)
 // Frog jumps to a new position when activated
 void Frog::DoSomething()
 {
+	
 	// jump for over 1 cell
 	this->Move();
 }

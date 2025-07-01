@@ -26,8 +26,8 @@ int FrogPoints = 2;
 		{1,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,1,0,1},
 		{1,0,0,0,1,1,0,0,0,0,1,0,1},
-		{1,0,0,0,0,1,0,0,0,0,0,0,1},
-		{1,0,0,0,0,1,1,1,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,1,0,1,0,0,0,0,1},
 		{1,0,0,0,0,0,0,1,0,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,1,0,0,0,0,0,1,0,0,1},
@@ -58,6 +58,7 @@ void Game::ProcessInput()
 {	
 	PlayerCommand_ = InputHandler_.HandleInput();
 	PlayerCommand_->execute(*PlayerSnake_);
+	
 }
 
 void Game::Update()
@@ -76,7 +77,6 @@ void Game::Update()
 	}
 	if (!LevelFoodStack.empty())
 	{
-		
 		LevelFoodStack.top()->DoSomething();
 	}
 	else
