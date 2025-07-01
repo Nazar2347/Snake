@@ -21,6 +21,7 @@ public:
 	void Update();
 	void Render();
 	bool IsGameOver();
+	bool IsLevelCompleted();
 	virtual ~Game();
 protected:
 	void InitializeLevel1();
@@ -35,4 +36,5 @@ private:
 	std::stack<IFood*> Level1FoodStack;
 	InputHandler InputHandler_;
 	Command* PlayerCommand_;
+	bool bIsLevelCompleted_;
 };

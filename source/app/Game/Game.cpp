@@ -63,6 +63,7 @@ void Game::ProcessInput()
 
 void Game::Update()
 {
+	
 	PlayerSnake_->Move();
 	if (!Level1FoodStack.empty())
 	{
@@ -76,7 +77,12 @@ void Game::Update()
 	}
 	if (!Level1FoodStack.empty())
 	{
+		
 		Level1FoodStack.top()->DoSomething();
+	}
+	else
+	{
+		bIsLevelCompleted_ = true;
 	}
 }
 
@@ -92,7 +98,19 @@ void Game::Render()
 
 bool Game::IsGameOver()
 {
-	return PlayerSnake_->isAlive();
+	if (PlayerSnake_->isAlive())
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+bool Game::IsLevelCompleted()
+{
+	return bIsLevelCompleted_;
 }
 
 
@@ -127,6 +145,7 @@ void Game::InitializeLevel1()
 
 	PlayerCommand_ = new NullCommand();
 	PlayerSnake_->ChangeTailSizeBy(2);
+	bIsLevelCompleted_ = false;
 }
 
 void Game::InitializeLevel2()
@@ -149,10 +168,12 @@ void Game::InitializeLevel2()
 
 	PlayerCommand_ = new NullCommand();
 	PlayerSnake_->ChangeTailSizeBy(2);
+	bIsLevelCompleted_ = false;
 }
 
 void Game::InitializeLevel3()
 {
+	bIsLevelCompleted_ = false;
 }
 
 

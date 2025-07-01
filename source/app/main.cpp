@@ -38,7 +38,7 @@ int main()
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
-        if (newGame.IsGameOver() != false)
+        if (!newGame.IsGameOver() && newGame.IsLevelCompleted()!=true)
         {
             newGame.ProcessInput();
 
@@ -56,15 +56,21 @@ int main()
             ClearBackground(RAYWHITE);
 
 
-            if (newGame.IsGameOver() != false)
-            {
-                newGame.Render();
-            }
-            else
+            if (newGame.IsGameOver())
             {
                 newGame.Render();
                 DrawRectangle((screenWidth / 3) - 50, screenHeight / 3, 650, 200, WHITE);
                 DrawText("Game OVER!", screenWidth/3, screenHeight/2.5, 96, RED);
+            }
+            else if (newGame.IsLevelCompleted())
+            {
+                newGame.Render();
+                DrawRectangle((screenWidth / 3) - 50, screenHeight / 3, 650, 200, WHITE);
+                DrawText("YOU WON!", screenWidth / 3, screenHeight / 2.5, 96, GREEN);
+            }
+            else 
+            {
+                newGame.Render();
             }
             EndDrawing();
         
