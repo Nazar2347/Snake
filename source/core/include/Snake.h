@@ -72,7 +72,7 @@ public:
      * @return The current direction.
      */
     EDirection GetDirection();
-
+    EDirection Snake::GetHeadDirection();
     /**
      * @brief Destroys the Snake object.
      */
@@ -81,6 +81,7 @@ public:
 private:
     std::vector<Vector2> TailPosition_; ///< Positions of the tail segments.
     Vector2 HeadPosition_;              ///< Position of the snake's head.
+    EDirection Direction_;
     bool bIsAlive_;                     ///< Indicates if the snake is alive.
     EDirection HeadDirection_;          /**< Indicates the direction for Snake movement. */
 };
