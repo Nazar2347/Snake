@@ -100,11 +100,14 @@ void Snake::Move()
         default: return;
         }
     }
+    // Check for collision with wall, border, or itself
 
     // Move head to next cell and update board
     Vector2 OldBodyPos = HeadPosition_;
     HeadPosition_ = NextCell;
     HeadDirection_ = Direction_;
+  
+  
     // Move each tail segment to the position of the previous segment
     for (int i = 0; i < TailPosition_.size(); i++)
     {
@@ -115,9 +118,7 @@ void Snake::Move()
         // Clear the last cell previously occupied by the tail
         if (i == TailPosition_.size() - 1)
         {
-            Board_->SetCellType(OldBodyPos, ECellType::EMPTY);
         }
-    }
     // Check for collision with wall, border, or itself
     if (CheckPosition(HeadPosition_) == ECellType::WALL 
         ||CheckPosition(HeadPosition_)==ECellType::OUT_OF_BORDER
@@ -126,8 +127,10 @@ void Snake::Move()
         bIsAlive_ = false; 
         printf("Snake died\n");
         return;
-    }
+            Board_->SetCellType(OldBodyPos, ECellType::EMPTY);
     Board_->SetCellType(HeadPosition_, ECellType::SNAKE);
+        }
+    }
 }
 
 // Sets the direction of the snake's movement
