@@ -1,6 +1,13 @@
 #include <iostream>
 #include "RenderSnake.h"
+#include "RenderBoard.h"
+#include "InputHandler.h"
+#include "RenderFood.h"
+#include "Game/Game.h"
+#include <stack>
 using namespace std;
+
+
 
 
 
@@ -8,31 +15,59 @@ int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenWidth = 1920;
+    const int screenHeight = 960;
+    
+    const float Tick = 0.19f;
+    float AccumulatorTime = 0.0f;
+    float PreviousTime = GetTime();
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+   
 
-    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
-
+    Game newGame(EGameLevel::LEVEL2);
+    
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
+        float CurrentTime = GetTime();
+        float DeltaTime = CurrentTime - PreviousTime;
+        PreviousTime = CurrentTime;
+        AccumulatorTime += DeltaTime;
         // Update
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
+        if (newGame.IsGameOver() != false)
+        {
+            newGame.ProcessInput();
 
-        // Draw
-        //----------------------------------------------------------------------------------
-        BeginDrawing();
+            while (AccumulatorTime >= Tick)
+            {
+                newGame.Update();
+                AccumulatorTime -= Tick;
+            }
+        }
 
-        ClearBackground(RAYWHITE);
+            // Draw
+            //----------------------------------------------------------------------------------
+            BeginDrawing();
 
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+            ClearBackground(RAYWHITE);
 
-        EndDrawing();
+
+            if (newGame.IsGameOver() != false)
+            {
+                newGame.Render();
+            }
+            else
+            {
+                newGame.Render();
+                DrawRectangle((screenWidth / 3) - 50, screenHeight / 3, 650, 200, WHITE);
+                DrawText("Game OVER!", screenWidth/3, screenHeight/2.5, 96, RED);
+            }
+            EndDrawing();
+        
         //----------------------------------------------------------------------------------
     }
 
