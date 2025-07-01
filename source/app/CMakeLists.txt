@@ -1,9 +1,12 @@
 project(SnakeMain)
-
-add_executable(${PROJECT_NAME} main.cpp)
+file (GLOB_RECURSE GAME_HEADERS CONFIGURE_DEPENDS "./Game/*.h")
+file (GLOB_RECURSE GAME_SOURCES CONFIGURE_DEPENDS "./Game/*.cpp")
+add_executable(${PROJECT_NAME} main.cpp
+${GAME_SOURCES})
 
 target_include_directories(${PROJECT_NAME} 
 	PUBLIC ./
+	PUBLIC ./Game
 )
 
 target_link_libraries(${PROJECT_NAME} 
