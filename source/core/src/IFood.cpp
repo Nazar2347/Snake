@@ -2,18 +2,17 @@
 
 // IFood constructor: initializes food with points, position, and board reference
 IFood::IFood(short int Points, Vector2 Position, Board &Board):
-	Points_(Points),
-	Position_(Position),
-	FBoard_(Board)
+	IObject(Position,Board),
+	Points_(Points)
 {
 	FoodType_ = EFoodType::NONE;
 	// If the initial position is not empty, find an empty cell
-	if (FBoard_.GetCellInfo(Position_) != ECellType::EMPTY)
+	if (Board_->GetCellInfo(Position_) != ECellType::EMPTY)
 	{
-		Position_ = FBoard_.GetEmptyCell();
+		Position_ = Board_->GetEmptyCell();
 	}
 	// Mark the cell as containing food
-	FBoard_.SetCellType(Position_, ECellType::FOOD);
+	Board_->SetCellType(Position_, ECellType::FOOD);
 }
 
 // Returns the current position of the food
@@ -43,13 +42,13 @@ EFoodType IFood::GetFoodType()
 // IFood destructor: clears the food from the board
 IFood::~IFood()
 {
-	FBoard_.SetCellType(Position_,ECellType::EMPTY);
+	Board_->SetCellType(Position_,ECellType::EMPTY);
 }
 
 // Sets the board reference for the food
 void IFood::SetBoard(Board& Board)
 {
-	FBoard_ = Board;
+	Board_ = &Board;
 }
 
 // AppleFood constructor: sets type to APPLE
@@ -62,13 +61,16 @@ AppleFood::AppleFood( Vector2 Position, Board & Board)
 // AppleFood does nothing special when activated
 void AppleFood::DoSomething()
 {
+	// do nothing 
+}
+void AppleFood::Move()
+{
 	// do nothing as it is a stationary item
 }
 
 // Frog constructor: sets type to FROG and initializes movement
 Frog::Frog(Vector2 Position, Board & Board)
-	:IFood(GameRules::FROG_POINTS, Position, Board),
-	 IObject (Board)
+	:IFood(GameRules::FROG_POINTS, Position, Board)
 {
 	
 	FoodType_ = EFoodType::FROG;
@@ -87,8 +89,7 @@ void Frog::DoSomething()
 
 // Mouse constructor: sets type to MOUSE and initializes movement
 Mouse::Mouse(Vector2 Position, Board& Board)
-	: IFood(GameRules::MOUSE_POINTS, Position, Board),
-	  IObject (Board)
+	: IFood(GameRules::MOUSE_POINTS, Position, Board)
 {
 	FoodType_ = EFoodType::MOUSE;
 	short MinStep = -1;

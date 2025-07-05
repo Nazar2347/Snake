@@ -17,7 +17,7 @@ enum class EFoodType
 /**
  * @brief Abstract base class representing food items on the board.
  */
-class IFood
+class IFood : public IObject
 {
 public:
     /**
@@ -70,9 +70,8 @@ public:
 
 protected:
     short int Points_;      ///< The score value of the food.
-    Vector2 Position_;      ///< The position of the food on the board.
     EFoodType FoodType_;    ///< The type of the food.
-    Board& FBoard_;         ///< Reference to the game board.
+   
 };
 
 /**
@@ -93,12 +92,13 @@ public:
      * @brief Performs the apple's special action.
      */
     void DoSomething() override;
+    void Move()override;
 };
 
 /**
  * @brief Represents a frog food item that can move.
  */
-class Frog : public IFood, public IObject
+class Frog : public IFood
 {
 public:
     /**
@@ -124,7 +124,7 @@ protected:
 /**
  * @brief Represents a mouse food item that can move.
  */
-class Mouse : public IFood, public IObject
+class Mouse : public IFood
 {
 public:
     /**
@@ -133,7 +133,7 @@ public:
      * @param Position The position of the mouse on the board.
      * @param Board Reference to the game board.
      */
-    Mouse( Vector2 Position, Board & Board);
+    Mouse(Vector2 Position, Board & Board);
 
     /**
      * @brief Performs the mouse's special action.

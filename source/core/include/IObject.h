@@ -14,7 +14,7 @@ public:
      * @brief Constructs a movable entity with a reference to the game board.
      * @param Board Reference to the game board.
      */
-    IObject(Board &Board);
+    IObject(Vector2 Position, Board &Board);
 
     /**
      * @brief Moves the entity on the board.
@@ -37,4 +37,5 @@ protected:
      */
     virtual ECellType CheckPosition(Vector2 Position);
     Board* Board_; ///< Pointer to the game board.
+    Vector2 Position_; 
 };

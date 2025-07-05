@@ -2,11 +2,11 @@
 
 // Constructor: Initializes the snake's head position, alive state, direction, and starting tail
 Snake::Snake(Vector2 StartingPos, Board &Board) : 
-    HeadPosition_(StartingPos),
+    IObject(StartingPos,Board),
+    HeadPosition_(&Position_),
     bIsAlive_(true),
     HeadDirection_(EDirection::LEFT),
-    Direction_ (EDirection::LEFT),
-    IObject(Board)
+    Direction_ (EDirection::LEFT)
 {
     // Add initial tail segment to the right of the head
     TailPosition_.push_back({ StartingPos.x + 1, StartingPos.y });
@@ -21,7 +21,7 @@ std::vector<Vector2> Snake::getTailPosition() const
 // Returns the current head position.
 Vector2 Snake::getHeadPosition() const
 {
-    return HeadPosition_;
+    return *HeadPosition_;
 }
 
 // Changes the size of the snake's tail by the given amount (positive to grow, negative to shrink)
@@ -70,10 +70,10 @@ void Snake::Move()
     // Step 1: Compute next cell based on current direction
     switch (Direction_)
     {
-    case EDirection::UP:    NextCell = Vector2Add(HeadPosition_, { 0, -1 }); break;
-    case EDirection::DOWN:  NextCell = Vector2Add(HeadPosition_, { 0, 1 });  break;
-    case EDirection::LEFT:  NextCell = Vector2Add(HeadPosition_, { -1, 0 }); break;
-    case EDirection::RIGHT: NextCell = Vector2Add(HeadPosition_, { 1, 0 });  break;
+    case EDirection::UP:    NextCell = Vector2Add(*HeadPosition_, { 0, -1 }); break;
+    case EDirection::DOWN:  NextCell = Vector2Add(*HeadPosition_, { 0, 1 });  break;
+    case EDirection::LEFT:  NextCell = Vector2Add(*HeadPosition_, { -1, 0 }); break;
+    case EDirection::RIGHT: NextCell = Vector2Add(*HeadPosition_, { 1, 0 });  break;
     default: return;
     }
 
@@ -93,18 +93,18 @@ void Snake::Move()
         // Recalculate next cell after direction change
         switch (Direction_)
         {
-        case EDirection::UP:    NextCell = Vector2Add(HeadPosition_, { 0, -1 }); break;
-        case EDirection::DOWN:  NextCell = Vector2Add(HeadPosition_, { 0, 1 });  break;
-        case EDirection::LEFT:  NextCell = Vector2Add(HeadPosition_, { -1, 0 }); break;
-        case EDirection::RIGHT: NextCell = Vector2Add(HeadPosition_, { 1, 0 });  break;
+        case EDirection::UP:    NextCell = Vector2Add(*HeadPosition_, { 0, -1 }); break;
+        case EDirection::DOWN:  NextCell = Vector2Add(*HeadPosition_, { 0, 1 });  break;
+        case EDirection::LEFT:  NextCell = Vector2Add(*HeadPosition_, { -1, 0 }); break;
+        case EDirection::RIGHT: NextCell = Vector2Add(*HeadPosition_, { 1, 0 });  break;
         default: return;
         }
     }
     // Check for collision with wall, border, or itself
 
     // Move head to next cell and update board
-    Vector2 OldBodyPos = HeadPosition_;
-    HeadPosition_ = NextCell;
+    Vector2 OldBodyPos = *HeadPosition_;
+    *HeadPosition_ = NextCell;
     HeadDirection_ = Direction_;
   
   
@@ -123,15 +123,15 @@ void Snake::Move()
     // Check for collision with wall, border, or itself
         
     }
-        if (CheckPosition(HeadPosition_) == ECellType::WALL
-            || CheckPosition(HeadPosition_) == ECellType::OUT_OF_BORDER
-            || CheckPosition(HeadPosition_) == ECellType::SNAKE)
+        if (CheckPosition(*HeadPosition_) == ECellType::WALL
+            || CheckPosition(*HeadPosition_) == ECellType::OUT_OF_BORDER
+            || CheckPosition(*HeadPosition_) == ECellType::SNAKE)
         {
             bIsAlive_ = false;
             printf("Snake died\n");
             return;
         }
-        Board_->SetCellType(HeadPosition_, ECellType::SNAKE);
+        Board_->SetCellType(*HeadPosition_, ECellType::SNAKE);
 }
 
 // Sets the direction of the snake's movement

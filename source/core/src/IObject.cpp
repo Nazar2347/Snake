@@ -1,8 +1,11 @@
 #include "IObject.h"
 
-IObject::IObject(Board &Board)
+IObject::IObject(Vector2 Position, Board &Board):
+	Position_(Position), 
+	Board_(&Board)
 {
-	Board_ = &Board;
+
+	
 }
 
 ECellType IObject::CheckPosition(Vector2 Position)
