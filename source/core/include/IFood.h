@@ -58,12 +58,6 @@ public:
     EFoodType GetFoodType();
 
     /**
-     * @brief Sets the board reference for the food.
-     * @param board Reference to the game board.
-     */
-    void SetBoard(Board& board);
-
-    /**
      * @brief Virtual destructor for IFood.
      */
     virtual ~IFood();

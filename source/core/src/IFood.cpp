@@ -45,11 +45,7 @@ IFood::~IFood()
 	Board_->SetCellType(Position_,ECellType::EMPTY);
 }
 
-// Sets the board reference for the food
-void IFood::SetBoard(Board& Board)
-{
-	Board_ = &Board;
-}
+
 
 // AppleFood constructor: sets type to APPLE
 AppleFood::AppleFood( Vector2 Position, Board & Board) 
