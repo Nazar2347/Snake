@@ -6,7 +6,7 @@ Snake::Snake(Vector2 StartingPos, Board &Board) :
     bIsAlive_(true),
     HeadDirection_(EDirection::LEFT),
     Direction_ (EDirection::LEFT),
-    IMove(Board)
+    IObject(Board)
 {
     // Add initial tail segment to the right of the head
     TailPosition_.push_back({ StartingPos.x + 1, StartingPos.y });

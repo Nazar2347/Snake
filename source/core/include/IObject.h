@@ -7,14 +7,14 @@
  *
  * Provides a contract for movement and position checking logic.
  */
-class IMove
+class IObject
 {
 public:
     /**
      * @brief Constructs a movable entity with a reference to the game board.
      * @param Board Reference to the game board.
      */
-    IMove(Board &Board);
+    IObject(Board &Board);
 
     /**
      * @brief Moves the entity on the board.
@@ -26,7 +26,7 @@ public:
     /**
      * @brief Virtual destructor for IMove.
      */
-    virtual ~IMove();
+    virtual ~IObject();
 
 protected:
     RandomNumberGenerator* NumberGenerator_; ///< Pointer to a random number generator for movement logic.

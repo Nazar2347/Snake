@@ -68,7 +68,7 @@ void AppleFood::DoSomething()
 // Frog constructor: sets type to FROG and initializes movement
 Frog::Frog(Vector2 Position, Board & Board)
 	:IFood(GameRules::FROG_POINTS, Position, Board),
-	 IMove (Board)
+	 IObject (Board)
 {
 	
 	FoodType_ = EFoodType::FROG;
@@ -88,7 +88,7 @@ void Frog::DoSomething()
 // Mouse constructor: sets type to MOUSE and initializes movement
 Mouse::Mouse(Vector2 Position, Board& Board)
 	: IFood(GameRules::MOUSE_POINTS, Position, Board),
-	  IMove (Board)
+	  IObject (Board)
 {
 	FoodType_ = EFoodType::MOUSE;
 	short MinStep = -1;

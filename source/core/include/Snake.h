@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <raymath.h>
 #include <vector>
-#include "IMove.h"
+#include "IObject.h"
 
 /**
  * @brief Represents the possible movement directions for the snake.
@@ -20,7 +20,7 @@ enum class EDirection
  * 
  * Inherits from IMove to provide movement logic.
  */
-class Snake : public IMove
+class Snake : public IObject
 {
 public:
     /**

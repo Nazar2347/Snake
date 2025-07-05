@@ -1,7 +1,7 @@
 #pragma once 
 #include <raylib.h>
 #include "Board.h"
-#include "IMove.h"
+#include "IObject.h"
 
 /**
  * @brief Enumerates the different types of food available in the game.
@@ -98,7 +98,7 @@ public:
 /**
  * @brief Represents a frog food item that can move.
  */
-class Frog : public IFood, public IMove
+class Frog : public IFood, public IObject
 {
 public:
     /**
@@ -124,7 +124,7 @@ protected:
 /**
  * @brief Represents a mouse food item that can move.
  */
-class Mouse : public IFood, public IMove
+class Mouse : public IFood, public IObject
 {
 public:
     /**
