@@ -15,13 +15,12 @@ int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const int screenWidth = 1920;
-    const int screenHeight = 960;
+
     float PreviousTime = GetTime();
-    const float Tick = 0.15f;
+    
     float AccumulatorTime = 0.0f;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "raylib [core] example - basic window");
     bool play = false;
     EGameLevel CurrentLevel = EGameLevel::LEVEL1;
     Game* newGame = new Game(CurrentLevel);
@@ -40,7 +39,7 @@ int main()
             }
             BeginDrawing();
             ClearBackground(RAYWHITE);
-            DrawRectangle((screenWidth / 3) - 50, screenHeight / 3, 100, 100, WHITE);
+            DrawRectangle((UI::SCREEN_WIDTH / 3) - 50, UI::SCREEN_HEIGHT / 3, 100, 100, WHITE);
             EndDrawing();
             
             
@@ -59,10 +58,10 @@ int main()
             {
                 
                     newGame->ProcessInput();
-                while (AccumulatorTime >= Tick)
+                while (AccumulatorTime >= GameConst::GameTick)
                 {
                     newGame->Update();
-                    AccumulatorTime -= Tick;
+                    AccumulatorTime -= GameConst::GameTick;
                     
                 }
             }
@@ -76,8 +75,8 @@ int main()
             if (newGame->IsGameOver())
             {
                 newGame->Render();
-                DrawRectangle((screenWidth / 3) - 50, screenHeight / 3, 650, 200, WHITE);
-                DrawText("Game OVER!", screenWidth / 3, screenHeight / 2.5, 96, RED);
+                DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
+                DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, RED);
             }
             else if (newGame->IsLevelCompleted())
             {
@@ -101,8 +100,8 @@ int main()
                 }
                 else
                 {
-                    DrawRectangle((screenWidth / 3) - 50, screenHeight / 3, 650, 200, WHITE);
-                    DrawText("YOU WON!", screenWidth / 3, screenHeight / 2.5, 96, GREEN);
+                    DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
+                    DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, GREEN);
                 }
             }
             else

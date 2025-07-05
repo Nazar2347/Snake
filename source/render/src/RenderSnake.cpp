@@ -28,7 +28,7 @@ void RenderSnake::Draw() const
     }
     else
     {
-        DrawText("NO INITIALIZED SNAKE", static_cast<int>(BOARD_INITIAL_X_POS), static_cast<int>(BOARD_INITIAL_Y_POS), 14, RED);
+        DrawText("NO INITIALIZED SNAKE", static_cast<int>(UI::BOARD_INITIAL_X_POS), static_cast<int>(UI::BOARD_INITIAL_Y_POS), 14, RED);
     }
 }
 
@@ -38,8 +38,8 @@ void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position) const
     DrawTextureRec(
         SnakeBodyTexture_,
         SnakePart,
-        { Position.x * CELL_SIZE + BOARD_INITIAL_X_POS,
-          Position.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
+        { Position.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
+          Position.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS },
         WHITE
     );
 }

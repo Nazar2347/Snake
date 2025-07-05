@@ -1,6 +1,6 @@
 #pragma once
 #include <raylib.h>
-#include "RenderConstant.h"
+#include "GameConstants.h"
 #include "Snake.h"
 
 /**

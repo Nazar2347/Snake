@@ -72,7 +72,8 @@ public:
      * @return The current direction.
      */
     EDirection GetDirection();
-    EDirection Snake::GetHeadDirection();
+
+    EDirection GetHeadDirection();
     /**
      * @brief Destroys the Snake object.
      */
