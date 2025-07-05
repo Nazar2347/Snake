@@ -1,6 +1,6 @@
 #pragma once
 #include "IFood.h"
-#include "RenderConstant.h"
+#include "GameConstants.h"
 
 /**
  * @brief Handles rendering of food items on the game board.

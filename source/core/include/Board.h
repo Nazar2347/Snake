@@ -2,6 +2,7 @@
 #include <vector>
 #include <raylib.h>
 #include <unordered_map>
+#include "GameConstants.h"
 
 /**
  * @brief Types of levels available in the game.

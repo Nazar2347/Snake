@@ -28,7 +28,7 @@ void RenderSnake::Draw() const
     }
     else
     {
-        DrawText("NO INITIALIZED SNAKE", static_cast<int>(BOARD_INITIAL_X_POS), static_cast<int>(BOARD_INITIAL_Y_POS), 14, RED);
+        DrawText("NO INITIALIZED SNAKE", static_cast<int>(UI::BOARD_INITIAL_X_POS), static_cast<int>(UI::BOARD_INITIAL_Y_POS), 14, RED);
     }
 }
 
@@ -38,8 +38,8 @@ void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position) const
     DrawTextureRec(
         SnakeBodyTexture_,
         SnakePart,
-        { Position.x * CELL_SIZE + BOARD_INITIAL_X_POS,
-          Position.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
+        { Position.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
+          Position.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS },
         WHITE
     );
 }
@@ -48,19 +48,19 @@ void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position) const
 void RenderSnake::DrawHead() const
 {
     // Render Snake Head in the correct direction
-    if (Snake_->GetDirection() == EDirection::UP)
+    if (Snake_->GetHeadDirection() == EDirection::UP)
     {
         DrawSnakePart(SnakeParts[SnakePartType::HEAD_UP], Snake_->getHeadPosition());
     }
-    else if (Snake_->GetDirection() == EDirection::DOWN)
+    else if (Snake_->GetHeadDirection() == EDirection::DOWN)
     {
         DrawSnakePart(SnakeParts[SnakePartType::HEAD_DOWN], Snake_->getHeadPosition());
     }
-    else if (Snake_->GetDirection() == EDirection::RIGHT)
+    else if (Snake_->GetHeadDirection() == EDirection::RIGHT)
     {
         DrawSnakePart(SnakeParts[SnakePartType::HEAD_RIGHT], Snake_->getHeadPosition());
     }
-    else if (Snake_->GetDirection() == EDirection::LEFT)
+    else if (Snake_->GetHeadDirection() == EDirection::LEFT)
     {
         DrawSnakePart(SnakeParts[SnakePartType::HEAD_LEFT], Snake_->getHeadPosition());
     }

@@ -1,5 +1,5 @@
 #include "RenderBoard.h"
-#include "RenderConstant.h"
+#include "GameConstants.h"
 #include <iostream>
 
 // Constructor: Loads images and creates textures for the board
@@ -39,8 +39,8 @@ void RenderBoard::Draw() const
                 if (LevelBoard_.GetCellInfo(CurrentCell) == ECellType::WALL)
                 {
                     // Draw border texture for active cell
-                    DrawTextureEx(BorderTopTexture_, { CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
-                        CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS }, 0.0f, BLOCKS_SCALE, WHITE);
+                    DrawTextureEx(BorderTopTexture_, { CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
+                        CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS }, 0.0f, UI::BLOCKS_SCALE, WHITE);
                 }
                 else if (LevelBoard_.GetCellInfo(CurrentCell) == ECellType::EMPTY)
                 {
@@ -48,16 +48,16 @@ void RenderBoard::Draw() const
                     if ((i + j) % 2 == 0)
                     {
                         DrawTextureEx(GroundTexture1_, {
-                            CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
-                            CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
-                            0.0f, BLOCKS_SCALE, WHITE);
+                            CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
+                            CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS },
+                            0.0f, UI::BLOCKS_SCALE, WHITE);
                     }
                     else
                     {
                         DrawTextureEx(GroundTexture2_, {
-                            CurrentCell.x * CELL_SIZE + BOARD_INITIAL_X_POS,
-                            CurrentCell.y * CELL_SIZE + BOARD_INITIAL_Y_POS },
-                            0.0f, BLOCKS_SCALE, WHITE);
+                            CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
+                            CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS },
+                            0.0f, UI::BLOCKS_SCALE, WHITE);
                     }
                 }
 
@@ -82,16 +82,16 @@ RenderBoard::~RenderBoard()
 void RenderBoard::DrawBackground() const
 {
     Rectangle Backgoround;
-    Backgoround.x = BOARD_INITIAL_X_POS;
-    Backgoround.y = BOARD_INITIAL_Y_POS;
+    Backgoround.x = UI::BOARD_INITIAL_X_POS;
+    Backgoround.y = UI::BOARD_INITIAL_Y_POS;
     Backgoround.height = static_cast<float>(LevelBoard_.GetLevelYSize());
     Backgoround.width = static_cast<float>(LevelBoard_.GetLevelXSize());
 
     DrawRectangle(
         static_cast<int>(Backgoround.x),
         static_cast<int>(Backgoround.y), 
-        static_cast<int>(Backgoround.width*CELL_SIZE), 
-        static_cast<int>(Backgoround.height*CELL_SIZE), 
+        static_cast<int>(Backgoround.width*UI::CELL_SIZE), 
+        static_cast<int>(Backgoround.height*UI::CELL_SIZE), 
         LIME);
 }
 

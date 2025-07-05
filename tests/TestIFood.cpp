@@ -15,13 +15,13 @@ TEST_CASE("AppleFood constructs and has correct type", "[AppleFood]")
     auto levelData = CreateEmptyLevelData();
     Board board(levelData);
     Vector2 pos = {0, 2};
-    short points = 10;
+    
 
-    AppleFood apple(points, pos, board);
+    AppleFood apple(pos, board);
 
     REQUIRE(apple.GetPosition().x == pos.x);
     REQUIRE(apple.GetPosition().y == pos.y);
-    REQUIRE(apple.GetPoints() == points);
+    REQUIRE(apple.GetPoints() == GameRules::APPLE_POINTS);
     REQUIRE(apple.GetFoodType() == EFoodType::APPLE);
 
     // DoSomething should not move the apple
@@ -38,7 +38,7 @@ TEST_CASE("Frog moves when DoSomething is called", "[Frog]")
     Vector2 pos = {1, 1};
     short points = 7;
 
-    Frog frog(points, pos, board);
+    Frog frog(pos, board);
 
     REQUIRE(frog.GetFoodType() == EFoodType::FROG);
 
@@ -61,7 +61,7 @@ TEST_CASE("Mouse moves when DoSomething is called", "[Mouse]")
     Vector2 pos = {2, 2};
     short points = 3;
 
-    Mouse mouse(points, pos, board);
+    Mouse mouse( pos, board);
 
     REQUIRE(mouse.GetFoodType() == EFoodType::MOUSE);
 

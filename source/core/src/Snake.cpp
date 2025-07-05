@@ -4,7 +4,8 @@
 Snake::Snake(Vector2 StartingPos, Board &Board) : 
     HeadPosition_(StartingPos),
     bIsAlive_(true),
-    HeadDirection_(EDirection::UP),
+    HeadDirection_(EDirection::LEFT),
+    Direction_ (EDirection::LEFT),
     IMove(Board)
 {
     // Add initial tail segment to the right of the head
@@ -67,7 +68,7 @@ void Snake::Move()
     Vector2 NextCell;
 
     // Step 1: Compute next cell based on current direction
-    switch (HeadDirection_)
+    switch (Direction_)
     {
     case EDirection::UP:    NextCell = Vector2Add(HeadPosition_, { 0, -1 }); break;
     case EDirection::DOWN:  NextCell = Vector2Add(HeadPosition_, { 0, 1 });  break;
@@ -76,30 +77,21 @@ void Snake::Move()
     default: return;
     }
 
-    // Check for collision with wall, border, or itself
-    if (CheckPosition(NextCell) == ECellType::WALL 
-        ||CheckPosition(NextCell)==ECellType::OUT_OF_BORDER
-        ||CheckPosition(NextCell)==ECellType::SNAKE)
-    {
-        bIsAlive_ = false; 
-        printf("Snake died\n");
-        return;
-    }
   
     // Prevent immediate reversal into the first tail segment
-    if (TailPosition_.size() > 0 && Vector2Equals(NextCell, TailPosition_[0]))
+    if (Vector2Equals(NextCell, TailPosition_[0]))
     {
         // Reverse direction if about to collide with first tail segment
-        switch (HeadDirection_)
+        switch (Direction_)
         {
-        case EDirection::UP:    HeadDirection_ = EDirection::DOWN; break;
-        case EDirection::DOWN:  HeadDirection_ = EDirection::UP; break;
-        case EDirection::LEFT:  HeadDirection_ = EDirection::RIGHT; break;
-        case EDirection::RIGHT: HeadDirection_ = EDirection::LEFT; break;
+        case EDirection::UP:    Direction_ = EDirection::DOWN;  break;
+        case EDirection::DOWN:  Direction_ = EDirection::UP;  break;
+        case EDirection::LEFT:  Direction_ = EDirection::RIGHT;  break;
+        case EDirection::RIGHT: Direction_ = EDirection::LEFT;  break;
         }
 
         // Recalculate next cell after direction change
-        switch (HeadDirection_)
+        switch (Direction_)
         {
         case EDirection::UP:    NextCell = Vector2Add(HeadPosition_, { 0, -1 }); break;
         case EDirection::DOWN:  NextCell = Vector2Add(HeadPosition_, { 0, 1 });  break;
@@ -108,12 +100,12 @@ void Snake::Move()
         default: return;
         }
     }
+    // Check for collision with wall, border, or itself
 
     // Move head to next cell and update board
     Vector2 OldBodyPos = HeadPosition_;
     HeadPosition_ = NextCell;
-    Board_->SetCellType(HeadPosition_, ECellType::SNAKE);
-  
+    HeadDirection_ = Direction_;
     // Move each tail segment to the position of the previous segment
     for (int i = 0; i < TailPosition_.size(); i++)
     {
@@ -127,18 +119,32 @@ void Snake::Move()
             Board_->SetCellType(OldBodyPos, ECellType::EMPTY);
         }
     }
+    // Check for collision with wall, border, or itself
+    if (CheckPosition(HeadPosition_) == ECellType::WALL 
+        ||CheckPosition(HeadPosition_)==ECellType::OUT_OF_BORDER
+        ||CheckPosition(HeadPosition_)==ECellType::SNAKE)
+    {
+        bIsAlive_ = false; 
+        printf("Snake died\n");
+        return;
+    }
+    Board_->SetCellType(HeadPosition_, ECellType::SNAKE);
 }
 
 // Sets the direction of the snake's movement
 void Snake::SetDirection(EDirection Direction)
 {
-    HeadDirection_ = Direction;
+    Direction_ = Direction;
 }
 
 // Returns the current direction of the snake's head
-EDirection Snake::GetDirection()
+EDirection Snake::GetHeadDirection()
 {
     return HeadDirection_;
+}
+EDirection Snake::GetDirection()
+{
+    return Direction_;
 }
 
 // Returns whether the snake is alive
