@@ -7,110 +7,102 @@
 #include <stack>
 using namespace std;
 
-
-
-
-
 int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
 
-    float PreviousTime = GetTime();
-    
-    float AccumulatorTime = 0.0f;
+    float PreviousTime = GetTime();           // Stores the time at the previous frame
+    float AccumulatorTime = 0.0f;             // Accumulates elapsed time for fixed time steps
 
+    // Initialize the game window with specified width, height, and title
     InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "raylib [core] example - basic window");
-    bool play = false;
-    EGameLevel CurrentLevel = EGameLevel::LEVEL1;
-    Game* newGame = new Game(CurrentLevel);
-    
+
+    bool play = false;                        // Indicates if the game is currently being played
+    EGameLevel CurrentLevel = EGameLevel::LEVEL1; // Tracks the current game level
+    Game* newGame = new Game(CurrentLevel);   // Create a new game instance for the current level
+
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        
+        // Wait for the player to press ENTER to start the game
         while (play != true)
         {
             if (IsKeyPressed(KEY_ENTER))
             {
                 play = true;
-                PreviousTime = GetTime();
-               
+                PreviousTime = GetTime();     // Reset the timer when the game starts
             }
             BeginDrawing();
             ClearBackground(RAYWHITE);
             DrawRectangle((UI::SCREEN_WIDTH / 3) - 50, UI::SCREEN_HEIGHT / 3, 100, 100, WHITE);
             EndDrawing();
-            
-            
         }
-        
+
         // Update
         //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        
-            float CurrentTime = GetTime();
-            float DeltaTime = CurrentTime - PreviousTime;
-            PreviousTime = CurrentTime;
-            AccumulatorTime += DeltaTime;
-            //----------------------------------------------------------------------------------
-            if (!newGame->IsGameOver() && newGame->IsLevelCompleted() != true )
+        float CurrentTime = GetTime();                // Get the current time
+        float DeltaTime = CurrentTime - PreviousTime; // Calculate time since last frame
+        PreviousTime = CurrentTime;                   // Update previous time
+        AccumulatorTime += DeltaTime;                 // Add to accumulator for fixed updates
+
+        // Only update the game if it's not over and the level is not completed
+        if (!newGame->IsGameOver() && newGame->IsLevelCompleted() != true )
+        {
+            newGame->ProcessInput();                  // Handle user input
+
+            // Update the game logic at fixed intervals (GameTick)
+            while (AccumulatorTime >= GameConst::GameTick)
             {
-                
-                    newGame->ProcessInput();
-                while (AccumulatorTime >= GameConst::GameTick)
-                {
-                    newGame->Update();
-                    AccumulatorTime -= GameConst::GameTick;
-                    
-                }
+                newGame->Update();
+                AccumulatorTime -= GameConst::GameTick;
             }
+        }
 
-            // Draw
-            //----------------------------------------------------------------------------------
-            BeginDrawing();
-            ClearBackground(RAYWHITE);
+        // Draw
+        //----------------------------------------------------------------------------------
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
 
+        if (newGame->IsGameOver())
+        {
+            newGame->Render();    // Render the final game state
+            DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
+            DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, RED);
+        }
+        else if (newGame->IsLevelCompleted())
+        {
+            newGame->Render();    // Render the completed level
+            WaitTime(3);          // Pause before moving to the next level
 
-            if (newGame->IsGameOver())
+            // Handle level progression
+            if (CurrentLevel == EGameLevel::LEVEL1)
             {
-                newGame->Render();
-                DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
-                DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, RED);
+                delete newGame;
+                newGame = new Game(EGameLevel::LEVEL2);
+                CurrentLevel = EGameLevel::LEVEL2;
+                PreviousTime = GetTime();
             }
-            else if (newGame->IsLevelCompleted())
+            else if (CurrentLevel == EGameLevel::LEVEL2)
             {
-                newGame->Render();
-                WaitTime(3);
-                
-                if (CurrentLevel == EGameLevel::LEVEL1)
-                {
-                    delete newGame;
-                    newGame = new Game(EGameLevel::LEVEL2);
-                    CurrentLevel = EGameLevel::LEVEL2;
-                    PreviousTime = GetTime();
-
-                }
-                else if (CurrentLevel == EGameLevel::LEVEL2)
-                {
-                    delete newGame;
-                    newGame = new Game(EGameLevel::LEVEL1);
-                    CurrentLevel = EGameLevel::LEVEL3;
-                    PreviousTime = GetTime();
-                }
-                else
-                {
-                    DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
-                    DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, GREEN);
-                }
+                delete newGame;
+                newGame = new Game(EGameLevel::LEVEL1);
+                CurrentLevel = EGameLevel::LEVEL3;
+                PreviousTime = GetTime();
             }
             else
             {
-                newGame->Render();
+                // All levels completed, show game over in green
+                DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
+                DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, GREEN);
             }
-            
-            EndDrawing();
-        
+        }
+        else
+        {
+            newGame->Render();    // Render the ongoing game
+        }
+
+        EndDrawing();
         //----------------------------------------------------------------------------------
     }
 
@@ -119,5 +111,5 @@ int main()
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
-	return 0;
+    return 0;
 }
