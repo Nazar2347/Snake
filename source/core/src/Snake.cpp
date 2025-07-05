@@ -100,6 +100,7 @@ void Snake::Move()
         default: return;
         }
     }
+    // Check for collision with wall, border, or itself
 
     // Move head to next cell and update board
     Vector2 OldBodyPos = HeadPosition_;
