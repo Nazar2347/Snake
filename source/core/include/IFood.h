@@ -87,7 +87,7 @@ public:
      * @param Position The position of the apple on the board.
      * @param Board Reference to the game board.
      */
-    AppleFood(short int Points, Vector2 Position, Board &Board);
+    AppleFood(Vector2 Position, Board &Board);
 
     /**
      * @brief Performs the apple's special action.
@@ -107,7 +107,7 @@ public:
      * @param Position The position of the frog on the board.
      * @param Board Reference to the game board.
      */
-    Frog(short int Points, Vector2 Position, Board & Board);
+    Frog(Vector2 Position, Board & Board);
 
     /**
      * @brief Performs the frog's special action.
@@ -133,7 +133,7 @@ public:
      * @param Position The position of the mouse on the board.
      * @param Board Reference to the game board.
      */
-    Mouse(short int Points, Vector2 Position, Board & Board);
+    Mouse( Vector2 Position, Board & Board);
 
     /**
      * @brief Performs the mouse's special action.

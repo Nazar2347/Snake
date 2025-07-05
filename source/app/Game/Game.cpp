@@ -2,9 +2,6 @@
 using namespace std;
 
 Vector2 Level1StartingPos = { 6,6 };
-int ApplePoints = -3;
-int MousePoints = 1;
-int FrogPoints = 2;
 
 	vector<vector<bool>> Level1Data = {
 		{1,1,1,1,1,1,1,1,1,1,1,1},
@@ -129,21 +126,17 @@ void Game::InitializeLevel1()
 	Level_ = new Board(Level1Data);
 	PlayerSnake_ = new Snake(Level1StartingPos, *Level_);
 
-	LevelFoodStack.emplace(new Frog(FrogPoints, { 5,3 }, *Level_));
-	LevelFoodStack.emplace(new Mouse(MousePoints, { 7,2 }, *Level_));
-	LevelFoodStack.emplace(new Frog(FrogPoints, { 2,1 }, *Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 3,3 }, *Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,5 }, *Level_));
-	//LevelFoodStack.emplace(new Frog(FrogPoints, { 6,6 }, *Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,3 }, *Level_));
-
+	LevelFoodStack.emplace(new Frog( { 5,3 }, *Level_));
+	LevelFoodStack.emplace(new Mouse( { 7,2 }, *Level_));
+	LevelFoodStack.emplace(new Frog( { 2,1 }, *Level_));
+	
 
 	BoardRender_ = new RenderBoard(*Level_);
 	SnakeRender_ = new RenderSnake(PlayerSnake_);
 	FoodRender_ = new FoodRender();
 
 	PlayerCommand_ = new NullCommand();
-	PlayerSnake_->ChangeTailSizeBy(2);
+	PlayerSnake_->ChangeTailSizeBy(GameRules::INITIAL_SNAKE_SIZE);
 	bIsLevelCompleted_ = false;
 }
 
@@ -152,9 +145,9 @@ void Game::InitializeLevel2()
 	Level_ = new Board(Level2Data);
 	PlayerSnake_ = new Snake(Level1StartingPos, *Level_);
 
-	LevelFoodStack.emplace(new Frog(FrogPoints, { 5,3 }, *Level_));
-	LevelFoodStack.emplace(new Mouse(MousePoints, { 7,2 }, *Level_));
-	LevelFoodStack.emplace(new Frog(FrogPoints, { 2,1 }, *Level_));
+	LevelFoodStack.emplace(new Frog( { 5,3 }, *Level_));
+	LevelFoodStack.emplace(new Mouse( { 7,2 }, *Level_));
+	LevelFoodStack.emplace(new Frog( { 2,1 }, *Level_));
 	//LevelFoodStack.emplace(new Mouse(MousePoints, { 3,3 }, *Level_));
 	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,5 }, *Level_));
 	//LevelFoodStack.emplace(new Frog(FrogPoints, { 6,6 }, *Level_));

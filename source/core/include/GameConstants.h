@@ -5,6 +5,13 @@ namespace GameConst
 {
 	inline constexpr float GameTick = 0.15f;
 }
+namespace GameRules
+{
+	inline constexpr int APPLE_POINTS = -3;
+	inline constexpr int MOUSE_POINTS = 1;
+	inline constexpr int FROG_POINTS = 2;
+	inline constexpr int INITIAL_SNAKE_SIZE = 2;
+}
 namespace UI
 {
 	inline constexpr int LABLE_FONT_SIZE = 96;
@@ -13,19 +20,10 @@ namespace UI
 	constexpr Rectangle WIN_LABLEL = { (SCREEN_WIDTH / 3)-50, (SCREEN_HEIGHT / 3) ,650,200 };
 	constexpr Rectangle LOSE_LABLEL = { (SCREEN_WIDTH / 3)-50, (SCREEN_HEIGHT / 2.5) ,650,200 };
 	constexpr float SCALE = 2.0f;
-
-	
 	constexpr float CELL_SIZE = 30 * SCALE; /*!< Cell size in pixels */
-
-	
 	constexpr float BOARD_INITIAL_X_POS = 50.0f;
-
-	
 	constexpr float BOARD_INITIAL_Y_POS = 50.0f;
-
-	
 	constexpr float BLOCKS_SCALE = (SCALE / 10) + 0.01f;
-
 	constexpr float OBJECTS_SCALE = (SCALE / 2) + 0.0f;
 
 }

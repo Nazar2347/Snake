@@ -53,8 +53,8 @@ void IFood::SetBoard(Board& Board)
 }
 
 // AppleFood constructor: sets type to APPLE
-AppleFood::AppleFood(short int Points, Vector2 Position, Board & Board) 
-	:IFood(Points, Position, Board)
+AppleFood::AppleFood( Vector2 Position, Board & Board) 
+	:IFood(GameRules::APPLE_POINTS, Position, Board)
 {
 	FoodType_ = EFoodType::APPLE;
 }
@@ -66,10 +66,11 @@ void AppleFood::DoSomething()
 }
 
 // Frog constructor: sets type to FROG and initializes movement
-Frog::Frog(short int Points, Vector2 Position, Board & Board)
-	:IFood(Points, Position, Board), 
+Frog::Frog(Vector2 Position, Board & Board)
+	:IFood(GameRules::FROG_POINTS, Position, Board),
 	 IMove (Board)
 {
+	
 	FoodType_ = EFoodType::FROG;
 	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
 	this->Move();
@@ -85,8 +86,8 @@ void Frog::DoSomething()
 }
 
 // Mouse constructor: sets type to MOUSE and initializes movement
-Mouse::Mouse(short int Points, Vector2 Position, Board& Board)
-	: IFood(Points, Position, Board), 
+Mouse::Mouse(Vector2 Position, Board& Board)
+	: IFood(GameRules::MOUSE_POINTS, Position, Board),
 	  IMove (Board)
 {
 	FoodType_ = EFoodType::MOUSE;
