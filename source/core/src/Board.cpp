@@ -21,8 +21,8 @@ size_t Vector2Hash::operator()(const Vector2& v) const noexcept
 Board::Board(std::vector<std::vector<bool>> LevelData) : 
 	LevelData_(LevelData)
 {
-	LevelXSize_ = LevelData_.size();           // Set board width
-	LevelYSize_ = LevelData_.front().size();   // Set board height
+	LevelYSize_ = LevelData_.size();   // Set board height
+	LevelXSize_ = LevelData_.front().size();        // Set board width
 	BoardMap_.clear();                         // Clear any existing board data
 	TransformLevelData();                      // Convert level data to board map
 }
@@ -32,11 +32,11 @@ void Board::TransformLevelData()
 {
 	if (!LevelData_.empty())
 	{
-		for (size_t x = 0; x < LevelXSize_; x++)
+		for (size_t y = 0; y < LevelYSize_; y++)
 		{
-			for (size_t y = 0; y < LevelYSize_; y++)
+			for (size_t x = 0; x < LevelXSize_; x++)
 			{
-				if (LevelData_.at(x).at(y) == 0)
+				if (LevelData_.at(y).at(x) == 0)
 				{
 					BoardMap_.emplace(Vector2{ (float)x,(float)y }, ECellType::EMPTY);
 				}
