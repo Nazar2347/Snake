@@ -28,7 +28,7 @@ public:
     virtual ~RenderBoard();
 
 private:
-    Board LevelBoard_;                /**< The board data to be rendered. */
+    const Board &LevelBoard_;                /**< The board data to be rendered. */
     Texture2D BorderTopTexture_;      /**< Texture for the top border of the board. */
     Texture2D GroundTexture1_;        /**< First ground texture for the board background. */
     Texture2D GroundTexture2_;        /**< Second ground texture for the board background. */
