@@ -42,7 +42,7 @@ void RenderBoard::Draw() const
                     DrawTextureEx(BorderTopTexture_, { CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
                         CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS }, 0.0f, UI::BLOCKS_SCALE, WHITE);
                 }
-                else if (LevelBoard_.GetCellInfo(CurrentCell) == ECellType::EMPTY)
+                else 
                 {
                     // Alternate ground textures for inactive cells
                     if ((i + j) % 2 == 0)

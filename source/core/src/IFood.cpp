@@ -71,6 +71,7 @@ Frog::Frog(Vector2 Position, Board & Board)
 	
 	FoodType_ = EFoodType::FROG;
 	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
+
 	this->Move();
 	
 }
@@ -107,13 +108,16 @@ void Frog::Move()
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
-	if (CheckPosition(NewRandomPos) != ECellType::EMPTY)
+	if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+	{
+		Board_->SetCellType(Position_, ECellType::EMPTY);
+		SetPosition(NewRandomPos);
+		Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+	} 
+	else
 	{
 		return; 
-	} 
-	Board_->SetCellType(Position_, ECellType::EMPTY);
-	SetPosition(NewRandomPos);
-	Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+	}
 }
 
 // Moves the mouse to a random empty position within its range
@@ -123,11 +127,14 @@ void Mouse::Move()
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
 	
-	if (CheckPosition(NewRandomPos) != ECellType::EMPTY)
+	if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+	{
+		Board_->SetCellType(Position_, ECellType::EMPTY);
+		SetPosition(NewRandomPos);
+		Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+	}
+	else
 	{
 		return;
 	}
-	Board_->SetCellType(Position_, ECellType::EMPTY);
-	SetPosition(NewRandomPos);
-	Board_->SetCellType(NewRandomPos, ECellType::FOOD);
 }
