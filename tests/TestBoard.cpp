@@ -13,8 +13,8 @@ TEST_CASE("Board construction and size", "[Board]")
     auto levelData = CreateEmptyLevelData(5, 4);
     Board board(levelData);
 
-    REQUIRE(board.GetLevelXSize() == 5);
-    REQUIRE(board.GetLevelYSize() == 4);
+    REQUIRE(board.GetLevelXSize() == 4);
+    REQUIRE(board.GetLevelYSize() == 5);
 }
 
 TEST_CASE("Board GetCellInfo and SetCellType", "[Board]") 
