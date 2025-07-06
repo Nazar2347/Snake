@@ -2,6 +2,7 @@
 using namespace std;
 
 Vector2 Level1StartingPos = { 6,6 };
+Vector2 Level2StartingPos = { 7,7 };
 
 	vector<vector<bool>> Level1Data = {
 		{1,1,1,1,1,1,1,1,1,1,1,1},
@@ -23,9 +24,9 @@ Vector2 Level1StartingPos = { 6,6 };
 		{1,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,1,0,1},
 		{1,0,0,0,1,1,0,0,0,0,1,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,1,0,0,0,0,0,0,1},
 		{1,0,0,0,0,1,0,1,0,0,0,0,1},
-		{1,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,0,0,0,0,0,1,1,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,1,0,0,0,0,0,1,0,0,1},
 		{1,0,0,1,0,0,0,0,1,1,0,0,1},
@@ -80,6 +81,8 @@ void Game::Update()
 	{
 		bIsLevelCompleted_ = true;
 	}
+	
+	
 }
 
 void Game::Render()
@@ -143,7 +146,7 @@ void Game::InitializeLevel1()
 void Game::InitializeLevel2()
 {
 	Level_ = new Board(Level2Data);
-	PlayerSnake_ = new Snake(Level1StartingPos, *Level_);
+	PlayerSnake_ = new Snake(Level2StartingPos, *Level_);
 
 	LevelFoodStack.emplace(new Frog( { 5,3 }, *Level_));
 	LevelFoodStack.emplace(new Mouse( { 7,2 }, *Level_));
