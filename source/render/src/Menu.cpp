@@ -8,18 +8,45 @@ Menu::Menu()
 	Background_ = LoadTexture("Assets/MenuBackground.png");
 	StartButton_ = new Button("Assets/StartButton.png", { UI::SCREEN_WIDTH / 2 ,UI::SCREEN_HEIGHT/2},1.0f );
 	ExitButton_ = new Button("Assets/ExitButton.png", { UI::SCREEN_WIDTH / 2 ,UI::SCREEN_HEIGHT / 2+ 200 }, 1.0f);
+	RestartButton_ = new Button("Assets/RestartButton.png", { UI::LOSE_LABLEL.x+ 300,UI::LOSE_LABLEL.y + 100 }, 0.5f);
 }
-void Menu::Update()
+void Menu::Update(EGameStates CurrentState)
 {
-	if (StartButton_->isClicked())
+	if (CurrentState == EGameStates::MENU)
 	{
-		bIsPaused_ = false;
+		if (StartButton_->isClicked())
+		{
+			bIsPaused_ = false;
+		}
+		if (ExitButton_->isClicked())
+		{
+			bIsGameShouldClose = true;
+		}
 	}
-	if (ExitButton_->isClicked())
+	else if (CurrentState == EGameStates::GAME_OVER)
 	{
-		bIsGameShouldClose = true;
+		if (RestartButton_->isClicked())
+		{
+
+		}
+
 	}
 
+
+}
+
+void Menu::DrawWinLabel()
+{
+	
+	DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
+	DrawText("You Won!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, GREEN);
+}
+
+void Menu::DrawGameOverLabel()
+{
+	DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
+	DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, RED);
+	RestartButton_->Draw();
 }
 
 void Menu::Draw()

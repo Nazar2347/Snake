@@ -29,7 +29,7 @@ int main()
         // Wait for the player to press ENTER to start the game
         while (menu.bIsGameShouldClose ==false &&menu.bIsPaused_ ==true)
         {
-            menu.Update();
+            menu.Update(EGameStates::MENU);
             if (IsKeyPressed(KEY_ENTER))
             {
                 menu.bIsPaused_ = false;
@@ -73,9 +73,9 @@ int main()
 
         if (newGame->IsGameOver())
         {
-            newGame->Render();    // Render the final game state
-            DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
-            DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, RED);
+            newGame->Render();   
+            menu.Update(EGameStates::GAME_OVER);// Render the final game state
+            menu.DrawGameOverLabel();
         }
         else if (newGame->IsLevelCompleted())
         {
@@ -100,8 +100,8 @@ int main()
             else
             {
                 // All levels completed, show game over in green
-                DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
-                DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, GREEN);
+                menu.Update(EGameStates::WIN);
+                menu.DrawWinLabel();
             }
         }
         else
