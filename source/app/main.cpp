@@ -26,14 +26,16 @@ int main()
     Menu menu;
 
     // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
-    {
         // Wait for the player to press ENTER to start the game
-        while (menu.bIsPaused_ ==true)
+        while (menu.bIsGameShouldClose ==false &&menu.bIsPaused_ ==true)
         {
+            menu.Update();
             if (IsKeyPressed(KEY_ENTER))
             {
                 menu.bIsPaused_ = false;
+            }
+            if (menu.bIsPaused_ == false)
+            { 
                 PreviousTime = GetTime();     // Reset the timer when the game starts
             }
             BeginDrawing();
@@ -42,6 +44,8 @@ int main()
             EndDrawing();
         }
 
+    while (!WindowShouldClose() && menu.bIsGameShouldClose ==false)    // Detect window close button or ESC key
+    {
         // Update
         //----------------------------------------------------------------------------------
         float CurrentTime = GetTime();                // Get the current time

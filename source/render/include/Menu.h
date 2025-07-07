@@ -10,6 +10,7 @@ public:
 	void Draw();
 	~Menu();
 	bool bIsPaused_;
+	bool bIsGameShouldClose;
 private:
 	Texture2D Background_;
 	Button* StartButton_;

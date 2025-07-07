@@ -7,6 +7,7 @@ class Button
 public:
 	Button(const char* FileName, Vector2 Position, float size);
 	void Draw();
+	bool isClicked();
 	~Button();
 private:
 	Texture2D ButtonTexture_;
