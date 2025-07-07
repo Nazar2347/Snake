@@ -5,6 +5,7 @@
 #include "RenderFood.h"
 #include "Game/Game.h"
 #include <stack>
+#include "Menu.h"
 using namespace std;
 
 int main()
@@ -22,6 +23,8 @@ int main()
     EGameLevel CurrentLevel = EGameLevel::LEVEL1; // Tracks the current game level
     Game* newGame = new Game(CurrentLevel);   // Create a new game instance for the current level
 
+    Menu menu;
+
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
@@ -35,7 +38,7 @@ int main()
             }
             BeginDrawing();
             ClearBackground(RAYWHITE);
-            DrawRectangle((UI::SCREEN_WIDTH / 3) - 50, UI::SCREEN_HEIGHT / 3, 100, 100, WHITE);
+            menu.Draw();
             EndDrawing();
         }
 

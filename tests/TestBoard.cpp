@@ -70,13 +70,13 @@ TEST_CASE("SetCellType updates cell type if position exists", "[Board]") {
 
 TEST_CASE("getLevelData returns the correct map", "[Board]") {
     std::vector<std::vector<bool>> level = {
-        {0, 1}
+        {0, 1},
     };
     Board board(level);
     auto map = board.getLevelData();
     REQUIRE(map.size() == 2);
     REQUIRE(map.at(Vector2{ 0,0 }) == ECellType::EMPTY);
-    REQUIRE(map.at(Vector2{ 0,1 }) == ECellType::WALL);
+    REQUIRE(map.at(Vector2{ 1,0 }) == ECellType::WALL);
 }
 
 TEST_CASE("GetEmptyCell returns first empty cell or {1,1}", "[Board]") {
@@ -104,6 +104,6 @@ TEST_CASE("GetLevelXSize and GetLevelYSize return correct sizes", "[Board]") {
         {1, 0, 1}
     };
     Board board(level);
-    REQUIRE(board.GetLevelXSize() == 2);
-    REQUIRE(board.GetLevelYSize() == 3);
+    REQUIRE(board.GetLevelXSize() == 3);
+    REQUIRE(board.GetLevelYSize() == 2);
 }
