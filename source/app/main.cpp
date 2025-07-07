@@ -5,7 +5,7 @@
 #include "RenderFood.h"
 #include "Game/Game.h"
 #include <stack>
-#include "Menu.h"
+#include "GameUI.h"
 using namespace std;
 
 int main()
@@ -14,7 +14,7 @@ int main()
     //--------------------------------------------------------------------------------------
 
     InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "raylib [core] example - basic window");
-    Menu menu;
+    GameUI GameUI;
     EGameLevel CurrentLevel = EGameLevel::LEVEL1; // Tracks the current game level
     Game* newGame = nullptr;
 
@@ -22,16 +22,16 @@ int main()
     float AccumulatorTime = 0.0f;             // Accumulates elapsed time for fixed time steps
     // Initialize the game window with specified width, height, and title
 
-    while (!WindowShouldClose() && menu.bIsGameShouldClose == false)
+    while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false)
     {
-        switch (menu.GetGameState())
+        switch (GameUI.GetGameState())
         {
         case EGameStates::MENU:
-            while (!WindowShouldClose() && menu.bIsGameShouldClose == false && menu.bIsPaused_ == true)
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.bIsPaused_ == true)
             {
-                menu.Update();
+                GameUI.Update();
 
-                if (menu.bIsPaused_ == false)
+                if (GameUI.bIsPaused_ == false)
                 { 
                     CurrentLevel = EGameLevel::LEVEL1;
                     if (newGame == nullptr)
@@ -48,13 +48,13 @@ int main()
                 }
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
-                menu.Draw();
+                GameUI.Draw();
                 EndDrawing();
             }
             break;
         case EGameStates::GAME:
         {
-            while (!WindowShouldClose() && menu.bIsGameShouldClose == false && menu.GetGameState() !=EGameStates::MENU)    // Detect window close button or ESC key
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() !=EGameStates::MENU)    // Detect window close button or ESC key
             {
                 // Update
                 //----------------------------------------------------------------------------------
@@ -85,9 +85,9 @@ int main()
                 {
                     newGame->Render();
 
-                    menu.SetGameState(EGameStates::GAME_OVER);// Render the final game state
-                    menu.Update();
-                    menu.Draw();
+                    GameUI.SetGameState(EGameStates::GAME_OVER);// Render the final game state
+                    GameUI.Update();
+                    GameUI.Draw();
                 }
                 else if (newGame->IsLevelCompleted())
                 {
@@ -113,9 +113,9 @@ int main()
                     }
                     else
                     {
-                        menu.SetGameState(EGameStates::WIN);
-                        menu.Update();
-                        menu.Draw();
+                        GameUI.SetGameState(EGameStates::WIN);
+                        GameUI.Update();
+                        GameUI.Draw();
                     }
                 }
                 else
@@ -128,10 +128,6 @@ int main()
             }
 
         } break;
-        case EGameStates::GAME_OVER:
-            break;
-        case EGameStates::WIN:
-            break;
         default:
             break;
         }

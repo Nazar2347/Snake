@@ -1,7 +1,7 @@
-#include "Menu.h"
+#include "GameUI.h"
 
 
-Menu::Menu()
+GameUI::GameUI()
 {
 	bIsPaused_ = true;
 	bIsGameShouldClose = false;
@@ -11,7 +11,7 @@ Menu::Menu()
 	RestartButton_ = new Button("Assets/RestartButton.png", { UI::LOSE_LABLEL.x+ 300,UI::LOSE_LABLEL.y + 100 }, 0.5f);
 	CurrentState_ = EGameStates::MENU;
 }
-void Menu::Update()
+void GameUI::Update()
 {
 	switch (CurrentState_)
 	{
@@ -47,45 +47,40 @@ void Menu::Update()
 		break;
 	}
 	
-	
-	
-	
-
-
 }
 
-void Menu::DrawMenu()
+void GameUI::DrawMenu()
 {
 	DrawTexture(Background_, static_cast<int>(UI::BOARD_INITIAL_X_POS), static_cast<int>(UI::BOARD_INITIAL_Y_POS), WHITE);
 	StartButton_->Draw();
 	ExitButton_->Draw();
 }
 
-void Menu::DrawWinLabel()
-{
-	
-	DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
-	DrawText("You Won!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, GREEN);
-}
 
-void Menu::SetGameState(EGameStates NewGameState)
+void GameUI::SetGameState(EGameStates NewGameState)
 {
 	CurrentState_ = NewGameState;
 }
 
-EGameStates Menu::GetGameState()
+EGameStates GameUI::GetGameState()
 {
 	return CurrentState_;
 }
+void GameUI::DrawWinLabel()
+{
+	DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
+	DrawText("You Won!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, GREEN);
+	RestartButton_->Draw();
+}
 
-void Menu::DrawGameOverLabel()
+void GameUI::DrawGameOverLabel()
 {
 	DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
 	DrawText("Game OVER!", UI::SCREEN_WIDTH / 3, UI::SCREEN_HEIGHT / 2.5, UI::LABLE_FONT_SIZE, RED);
 	RestartButton_->Draw();
 }
 
-void Menu::Draw()
+void GameUI::Draw()
 {
 	switch (CurrentState_)
 	{
@@ -97,9 +92,10 @@ void Menu::Draw()
 	}
 }
 
-Menu::~Menu()
+GameUI::~GameUI()
 {
 	UnloadTexture(Background_);
 	delete StartButton_;
 	delete ExitButton_;
+	delete RestartButton_;
 }

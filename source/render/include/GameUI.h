@@ -11,15 +11,15 @@ enum class EGameStates
 	WIN
 };
 
-class Menu
+class GameUI
 {
 public:
-	Menu();
+	GameUI();
 	void Update();
 	void Draw();
 	void SetGameState(EGameStates NewGameState);
 	EGameStates GetGameState();
-	~Menu();
+	~GameUI();
 	bool bIsPaused_;
 	bool bIsGameShouldClose;
 protected:
