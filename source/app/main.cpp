@@ -27,9 +27,9 @@ int main()
 
     // Main game loop
         // Wait for the player to press ENTER to start the game
-        while (menu.bIsGameShouldClose ==false &&menu.bIsPaused_ ==true)
+        while (!WindowShouldClose() && menu.bIsGameShouldClose == false && menu.bIsPaused_ == true)
         {
-            menu.Update(EGameStates::MENU);
+            menu.Update();
             if (IsKeyPressed(KEY_ENTER))
             {
                 menu.bIsPaused_ = false;
@@ -74,8 +74,9 @@ int main()
         if (newGame->IsGameOver())
         {
             newGame->Render();   
-            menu.Update(EGameStates::GAME_OVER);// Render the final game state
-            menu.DrawGameOverLabel();
+            menu.SetGameState(EGameStates::GAME_OVER);// Render the final game state
+            menu.Update();
+            menu.Draw();
         }
         else if (newGame->IsLevelCompleted())
         {
@@ -100,8 +101,9 @@ int main()
             else
             {
                 // All levels completed, show game over in green
-                menu.Update(EGameStates::WIN);
-                menu.DrawWinLabel();
+                menu.SetGameState(EGameStates::WIN);
+                menu.Update();
+                menu.Draw();
             }
         }
         else

@@ -15,15 +15,20 @@ class Menu
 {
 public:
 	Menu();
-	void Update(EGameStates CurrentState);
+	void Update();
 	void Draw();
-	void DrawWinLabel();
-	void DrawGameOverLabel();
+	void SetGameState(EGameStates NewGameState);
+	EGameStates GetGameState();
 	~Menu();
 	bool bIsPaused_;
 	bool bIsGameShouldClose;
+protected:
+	void DrawMenu();
+	void DrawWinLabel();
+	void DrawGameOverLabel();
 private:
 	Texture2D Background_;
+	EGameStates CurrentState_;
 	Button* StartButton_;
 	Button* ExitButton_;
 	Button* RestartButton_;
