@@ -1,5 +1,6 @@
 #include "Button.h"
 
+// Constructor: loads and resizes the button image, then creates a texture
 Button::Button(const char* FileName, Vector2 Position, float Scale)
 	:Position_(Position)
 {
@@ -15,11 +16,13 @@ Button::Button(const char* FileName, Vector2 Position, float Scale)
 	UnloadImage(ButtonImage);
 }
 
+// Draws the button texture at its position
 void Button::Draw()
 {
 	DrawTextureEx(ButtonTexture_, Position_, 0.0f, 1.0f, WHITE);
 }
 
+// Returns true if the button is clicked with the mouse
 bool Button::isClicked()
 {
 	Vector2 MousePosition = GetMousePosition();
@@ -42,6 +45,7 @@ bool Button::isClicked()
 	}
 }
 
+// Destructor: unloads the button texture
 Button::~Button()
 {
 	UnloadTexture(ButtonTexture_);

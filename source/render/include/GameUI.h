@@ -3,33 +3,104 @@
 #include "GameConstants.h"
 #include "Button.h"
 
+/**
+ * @brief Enumerates the possible game states.
+ */
 enum class EGameStates
 {
-	MENU,
-	GAME,
-	GAME_OVER,
-	WIN
+    MENU,      ///< Main menu state
+    GAME,      ///< Gameplay state
+    GAME_OVER, ///< Game over state
+    WIN        ///< Win state
 };
 
+/**
+ * @brief Handles the user interface for the game, including menus and state transitions.
+ */
 class GameUI
 {
 public:
-	GameUI();
-	void Update();
-	void Draw();
-	void SetGameState(EGameStates NewGameState);
-	EGameStates GetGameState();
-	~GameUI();
-	bool bIsPaused_;
-	bool bIsGameShouldClose;
+    /**
+     * @brief Constructs the GameUI object and initializes UI elements.
+     */
+    GameUI();
+
+    /**
+     * @brief Updates the UI logic, including button states and game state transitions.
+     */
+    void Update();
+
+    /**
+     * @brief Draws the current UI elements based on the game state.
+     */
+    void Draw();
+
+    /**
+     * @brief Sets the current game state.
+     * @param NewGameState The new state to set.
+     */
+    void SetGameState(EGameStates NewGameState);
+
+    /**
+     * @brief Gets the current game state.
+     * @return The current EGameStates value.
+     */
+    EGameStates GetGameState();
+
+    /**
+     * @brief Destroys the GameUI object and releases resources.
+     */
+    ~GameUI();
+
+    /**
+     * @brief Indicates whether the game is currently paused.
+     */
+    bool bIsPaused_;
+
+    /**
+     * @brief Indicates whether the game should close.
+     */
+    bool bIsGameShouldClose;
+
 protected:
-	void DrawMenu();
-	void DrawWinLabel();
-	void DrawGameOverLabel();
+    /**
+     * @brief Draws the main menu UI.
+     */
+    void DrawMenu();
+
+    /**
+     * @brief Draws the win label UI.
+     */
+    void DrawWinLabel();
+
+    /**
+     * @brief Draws the game over label UI.
+     */
+    void DrawGameOverLabel();
+
 private:
-	Texture2D Background_;
-	EGameStates CurrentState_;
-	Button* StartButton_;
-	Button* ExitButton_;
-	Button* RestartButton_;
+    /**
+     * @brief The background texture for the UI.
+     */
+    Texture2D Background_;
+
+    /**
+     * @brief The current state of the game.
+     */
+    EGameStates CurrentState_;
+
+    /**
+     * @brief Pointer to the start button UI element.
+     */
+    Button* StartButton_;
+
+    /**
+     * @brief Pointer to the exit button UI element.
+     */
+    Button* ExitButton_;
+
+    /**
+     * @brief Pointer to the restart button UI element.
+     */
+    Button* RestartButton_;
 };

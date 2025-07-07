@@ -18,7 +18,7 @@ int main()
     EGameLevel CurrentLevel = EGameLevel::LEVEL1; // Tracks the current game level
     Game* newGame = nullptr;
 
-    float PreviousTime = GetTime();           // Stores the time at the previous frame
+    float PreviousTime = static_cast<float>(GetTime());           // Stores the time at the previous frame
     float AccumulatorTime = 0.0f;             // Accumulates elapsed time for fixed time steps
     // Initialize the game window with specified width, height, and title
 
@@ -43,7 +43,7 @@ int main()
                         delete newGame;
                         newGame = new Game(CurrentLevel);
                     }
-                    PreviousTime = GetTime(); 
+                    PreviousTime = static_cast<float>(GetTime()); 
                     AccumulatorTime = 0.0f;// Reset the timer when the game starts
                 }
                 BeginDrawing();
@@ -58,7 +58,7 @@ int main()
             {
                 // Update
                 //----------------------------------------------------------------------------------
-                float CurrentTime = GetTime();                // Get the current time
+                float CurrentTime = static_cast<float>(GetTime());                // Get the current time
                 float DeltaTime = CurrentTime - PreviousTime; // Calculate time since last frame
                 PreviousTime = CurrentTime;                   // Update previous time
                 AccumulatorTime += DeltaTime;                 // Add to accumulator for fixed updates
@@ -100,7 +100,7 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL2;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL2);
-                        PreviousTime = GetTime();
+                        PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }
                     else if (CurrentLevel == EGameLevel::LEVEL2)
@@ -108,7 +108,7 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL3;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL1); //change!!!
-                        PreviousTime = GetTime();
+                        PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }
                     else
