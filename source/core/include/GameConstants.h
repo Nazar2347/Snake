@@ -53,12 +53,12 @@ namespace UI
     /**
      * @brief Width of the game screen in pixels.
      */
-    inline constexpr int SCREEN_WIDTH = 1920;
+    inline constexpr int SCREEN_WIDTH = 1200;
 
     /**
      * @brief Height of the game screen in pixels.
      */
-    inline constexpr int SCREEN_HEIGHT = 960;
+    inline constexpr int SCREEN_HEIGHT = 940;
 
     /**
      * @brief Rectangle for the win label display.
