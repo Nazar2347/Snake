@@ -29,11 +29,11 @@ int main()
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
         // Wait for the player to press ENTER to start the game
-        while (play != true)
+        while (menu.bIsPaused_ ==true)
         {
             if (IsKeyPressed(KEY_ENTER))
             {
-                play = true;
+                menu.bIsPaused_ = false;
                 PreviousTime = GetTime();     // Reset the timer when the game starts
             }
             BeginDrawing();

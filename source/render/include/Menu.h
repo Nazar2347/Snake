@@ -1,6 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include "GameConstants.h"
+#include "Button.h"
 class Menu
 {
 public:
@@ -8,7 +9,9 @@ public:
 	void Update();
 	void Draw();
 	~Menu();
-private:
 	bool bIsPaused_;
+private:
 	Texture2D Background_;
+	Button* StartButton_;
+	Button* ExitButton_;
 };
