@@ -13,112 +13,139 @@ int main()
     // Initialization
     //--------------------------------------------------------------------------------------
 
+    InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "raylib [core] example - basic window");
+    Menu menu;
+    EGameLevel CurrentLevel = EGameLevel::LEVEL1; // Tracks the current game level
+    Game* newGame = nullptr;
+
     float PreviousTime = GetTime();           // Stores the time at the previous frame
     float AccumulatorTime = 0.0f;             // Accumulates elapsed time for fixed time steps
-
     // Initialize the game window with specified width, height, and title
-    InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "raylib [core] example - basic window");
 
-    bool play = false;                        // Indicates if the game is currently being played
-    EGameLevel CurrentLevel = EGameLevel::LEVEL1; // Tracks the current game level
-    Game* newGame = new Game(CurrentLevel);   // Create a new game instance for the current level
+    while (!WindowShouldClose() && menu.bIsGameShouldClose == false)
+    {
+        switch (menu.GetGameState())
+        {
+        case EGameStates::MENU:
+            while (!WindowShouldClose() && menu.bIsGameShouldClose == false && menu.bIsPaused_ == true)
+            {
+                menu.Update();
 
-    Menu menu;
+                if (menu.bIsPaused_ == false)
+                { 
+                    CurrentLevel = EGameLevel::LEVEL1;
+                    if (newGame == nullptr)
+                    {
+                        newGame = new Game(CurrentLevel);// Create a new game instance for the current level
+                    }
+                    else
+                    {
+                        delete newGame;
+                        newGame = new Game(CurrentLevel);
+                    }
+                    PreviousTime = GetTime(); 
+                    AccumulatorTime = 0.0f;// Reset the timer when the game starts
+                }
+                BeginDrawing();
+                ClearBackground(RAYWHITE);
+                menu.Draw();
+                EndDrawing();
+            }
+            break;
+        case EGameStates::GAME:
+        {
+            while (!WindowShouldClose() && menu.bIsGameShouldClose == false && menu.GetGameState() !=EGameStates::MENU)    // Detect window close button or ESC key
+            {
+                // Update
+                //----------------------------------------------------------------------------------
+                float CurrentTime = GetTime();                // Get the current time
+                float DeltaTime = CurrentTime - PreviousTime; // Calculate time since last frame
+                PreviousTime = CurrentTime;                   // Update previous time
+                AccumulatorTime += DeltaTime;                 // Add to accumulator for fixed updates
+
+                // Only update the game if it's not over and the level is not completed
+                if (!newGame->IsGameOver() && newGame->IsLevelCompleted() != true)
+                {
+                    newGame->ProcessInput();                  // Handle user input
+
+                    // Update the game logic at fixed intervals (GameTick)
+                    while (AccumulatorTime >= GameConst::GameTick)
+                    {
+                        newGame->Update();
+                        AccumulatorTime -= GameConst::GameTick;
+                    }
+                }
+
+                // Draw
+                //----------------------------------------------------------------------------------
+                BeginDrawing();
+                ClearBackground(RAYWHITE);
+
+                if (newGame->IsGameOver())
+                {
+                    newGame->Render();
+
+                    menu.SetGameState(EGameStates::GAME_OVER);// Render the final game state
+                    menu.Update();
+                    menu.Draw();
+                }
+                else if (newGame->IsLevelCompleted())
+                {
+                    newGame->Render();    // Render the completed level
+                    WaitTime(3);          // Pause before moving to the next level
+
+                    // Handle level progression
+                    if (CurrentLevel == EGameLevel::LEVEL1)
+                    {
+                        CurrentLevel = EGameLevel::LEVEL2;
+                        delete newGame;
+                        newGame = new Game(EGameLevel::LEVEL2);
+                        PreviousTime = GetTime();
+                        AccumulatorTime = 0.0f;
+                    }
+                    else if (CurrentLevel == EGameLevel::LEVEL2)
+                    {
+                        CurrentLevel = EGameLevel::LEVEL3;
+                        delete newGame;
+                        newGame = new Game(EGameLevel::LEVEL1); //change!!!
+                        PreviousTime = GetTime();
+                        AccumulatorTime = 0.0f;
+                    }
+                    else
+                    {
+                        menu.SetGameState(EGameStates::WIN);
+                        menu.Update();
+                        menu.Draw();
+                    }
+                }
+                else
+                {
+                    newGame->Render();    // Render the ongoing game
+                }
+
+                EndDrawing();
+                //----------------------------------------------------------------------------------
+            }
+
+        } break;
+        case EGameStates::GAME_OVER:
+            break;
+        case EGameStates::WIN:
+            break;
+        default:
+            break;
+        }
+    }
+    
+
 
     // Main game loop
         // Wait for the player to press ENTER to start the game
-        while (!WindowShouldClose() && menu.bIsGameShouldClose == false && menu.bIsPaused_ == true)
-        {
-            menu.Update();
-            if (IsKeyPressed(KEY_ENTER))
-            {
-                menu.bIsPaused_ = false;
-            }
-            if (menu.bIsPaused_ == false)
-            { 
-                PreviousTime = GetTime();     // Reset the timer when the game starts
-            }
-            BeginDrawing();
-            ClearBackground(RAYWHITE);
-            menu.Draw();
-            EndDrawing();
-        }
-
-    while (!WindowShouldClose() && menu.bIsGameShouldClose ==false)    // Detect window close button or ESC key
-    {
-        // Update
-        //----------------------------------------------------------------------------------
-        float CurrentTime = GetTime();                // Get the current time
-        float DeltaTime = CurrentTime - PreviousTime; // Calculate time since last frame
-        PreviousTime = CurrentTime;                   // Update previous time
-        AccumulatorTime += DeltaTime;                 // Add to accumulator for fixed updates
-
-        // Only update the game if it's not over and the level is not completed
-        if (!newGame->IsGameOver() && newGame->IsLevelCompleted() != true )
-        {
-            newGame->ProcessInput();                  // Handle user input
-
-            // Update the game logic at fixed intervals (GameTick)
-            while (AccumulatorTime >= GameConst::GameTick)
-            {
-                newGame->Update();
-                AccumulatorTime -= GameConst::GameTick;
-            }
-        }
-
-        // Draw
-        //----------------------------------------------------------------------------------
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        if (newGame->IsGameOver())
-        {
-            newGame->Render();   
-            menu.SetGameState(EGameStates::GAME_OVER);// Render the final game state
-            menu.Update();
-            menu.Draw();
-        }
-        else if (newGame->IsLevelCompleted())
-        {
-            newGame->Render();    // Render the completed level
-            WaitTime(3);          // Pause before moving to the next level
-
-            // Handle level progression
-            if (CurrentLevel == EGameLevel::LEVEL1)
-            {
-                delete newGame;
-                newGame = new Game(EGameLevel::LEVEL2);
-                CurrentLevel = EGameLevel::LEVEL2;
-                PreviousTime = GetTime();
-            }
-            else if (CurrentLevel == EGameLevel::LEVEL2)
-            {
-                delete newGame;
-                newGame = new Game(EGameLevel::LEVEL1);
-                CurrentLevel = EGameLevel::LEVEL3;
-                PreviousTime = GetTime();
-            }
-            else
-            {
-                // All levels completed, show game over in green
-                menu.SetGameState(EGameStates::WIN);
-                menu.Update();
-                menu.Draw();
-            }
-        }
-        else
-        {
-            newGame->Render();    // Render the ongoing game
-        }
-
-        EndDrawing();
-        //----------------------------------------------------------------------------------
-    }
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
-
+    delete newGame;
     return 0;
 }

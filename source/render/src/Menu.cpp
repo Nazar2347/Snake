@@ -24,6 +24,7 @@ void Menu::Update()
 		if (ExitButton_->isClicked())
 		{
 			bIsGameShouldClose = true;
+
 		}
 		break;
 	case EGameStates::GAME:
@@ -32,12 +33,14 @@ void Menu::Update()
 		if (RestartButton_->isClicked())
 		{
 			CurrentState_ = EGameStates::MENU;
+			bIsPaused_ = true;
 		}
 		break;
 	case EGameStates::WIN:
 		if (RestartButton_->isClicked())
 		{
 			CurrentState_ = EGameStates::MENU;
+			bIsPaused_ = true;
 		}
 		break;
 	default:
