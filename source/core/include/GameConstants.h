@@ -39,6 +39,8 @@ namespace GameRules
      * @brief Initial size of the snake.
      */
     inline constexpr int INITIAL_SNAKE_SIZE = 2;
+
+    inline constexpr int MAX_FOOD_ON_LEVEL = 5;
 }
 
 /// @namespace UI
@@ -53,12 +55,12 @@ namespace UI
     /**
      * @brief Width of the game screen in pixels.
      */
-    inline constexpr int SCREEN_WIDTH = 1200;
+    inline constexpr int SCREEN_WIDTH = 1280;
 
     /**
      * @brief Height of the game screen in pixels.
      */
-    inline constexpr int SCREEN_HEIGHT = 940;
+    inline constexpr int SCREEN_HEIGHT = 720;
 
     /**
      * @brief Rectangle for the win label display.
@@ -88,7 +90,7 @@ namespace UI
     /**
      * @brief Initial Y position of the game board.
      */
-    constexpr float BOARD_INITIAL_Y_POS = 50.0f;
+    constexpr float BOARD_INITIAL_Y_POS =0.0f;
 
     /**
      * @brief Scaling factor for blocks.

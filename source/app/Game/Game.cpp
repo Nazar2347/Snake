@@ -70,6 +70,7 @@ void Game::Update()
 			int FoodPoints = LevelFoodStack.top()->GetPoints();
 			PlayerSnake_->ChangeTailSizeBy(FoodPoints);
 			LevelFoodStack.pop();
+			FoodLeft = LevelFoodStack.size();
 
 		}
 	}
@@ -112,6 +113,18 @@ bool Game::IsLevelCompleted()
 	return bIsLevelCompleted_;
 }
 
+int Game::GetAmountFoodLeft()
+{
+	if (LevelFoodStack.empty())
+	{
+		return 0;
+	}
+	else
+	{
+		return LevelFoodStack.size();
+	}
+}
+
 
 
 Game::~Game()
@@ -141,6 +154,7 @@ void Game::InitializeLevel1()
 	PlayerCommand_ = new NullCommand();
 	PlayerSnake_->ChangeTailSizeBy(GameRules::INITIAL_SNAKE_SIZE);
 	bIsLevelCompleted_ = false;
+	FoodLeft = LevelFoodStack.size();
 }
 
 void Game::InitializeLevel2()
@@ -164,6 +178,7 @@ void Game::InitializeLevel2()
 	PlayerCommand_ = new NullCommand();
 	PlayerSnake_->ChangeTailSizeBy(2);
 	bIsLevelCompleted_ = false;
+	FoodLeft = LevelFoodStack.size();
 }
 
 void Game::InitializeLevel3()

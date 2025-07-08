@@ -43,18 +43,22 @@ int main()
                         delete newGame;
                         newGame = new Game(CurrentLevel);
                     }
+                    GameUI.SetGameScore(newGame->FoodLeft);
+                    GameUI.SetGameState(EGameStates::GAME);
+
                     PreviousTime = static_cast<float>(GetTime()); 
                     AccumulatorTime = 0.0f;// Reset the timer when the game starts
                 }
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
+                GameUI.DrawBackgorund();
                 GameUI.Draw();
                 EndDrawing();
             }
             break;
         case EGameStates::GAME:
         {
-            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() !=EGameStates::MENU)    // Detect window close button or ESC key
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() ==EGameStates::GAME)    // Detect window close button or ESC key
             {
                 // Update
                 //----------------------------------------------------------------------------------
@@ -80,14 +84,13 @@ int main()
                 //----------------------------------------------------------------------------------
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
+                GameUI.DrawBackgorund();
 
                 if (newGame->IsGameOver())
                 {
                     newGame->Render();
-
-                    GameUI.SetGameState(EGameStates::GAME_OVER);// Render the final game state
-                    GameUI.Update();
-                    GameUI.Draw();
+                    GameUI.SetGameState(EGameStates::GAME_OVER);
+                    
                 }
                 else if (newGame->IsLevelCompleted())
                 {
@@ -100,6 +103,7 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL2;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL2);
+                        GameUI.SetGameScore(newGame->FoodLeft);
                         PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }
@@ -108,19 +112,21 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL3;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL1); //change!!!
+                        GameUI.SetGameScore(newGame->FoodLeft);
                         PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }
                     else
                     {
+                        newGame->Render();
                         GameUI.SetGameState(EGameStates::WIN);
-                        GameUI.Update();
-                        GameUI.Draw();
                     }
                 }
-                else
+                else // Render the ongoing game
                 {
-                    newGame->Render();    // Render the ongoing game
+                    newGame->Render();    
+                    GameUI.Update();
+                    GameUI.Draw();
                 }
 
                 EndDrawing();
@@ -128,15 +134,29 @@ int main()
             }
 
         } break;
+        
         default:
-            break;
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false &&
+                (GameUI.GetGameState() == EGameStates::GAME_OVER|| GameUI.GetGameState() == EGameStates::WIN))
+            {
+                GameUI.Update();
+
+                BeginDrawing();
+
+                GameUI.DrawBackgorund();
+                newGame->Render();
+                GameUI.Draw();
+                
+                EndDrawing();
+            }
+        break;
         }
     }
     
 
 
     // Main game loop
-        // Wait for the player to press ENTER to start the game
+    // Wait for the player to press ENTER to start the game
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
