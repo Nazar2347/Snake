@@ -43,9 +43,11 @@ int main()
                         delete newGame;
                         newGame = new Game(CurrentLevel);
                     }
+                    GameUI.SetGameScore(newGame->FoodLeft);
+                    GameUI.SetGameState(EGameStates::GAME);
+
                     PreviousTime = static_cast<float>(GetTime()); 
                     AccumulatorTime = 0.0f;// Reset the timer when the game starts
-                    GameUI.SetGameState(EGameStates::GAME);
                 }
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
@@ -101,6 +103,7 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL2;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL2);
+                        GameUI.SetGameScore(newGame->FoodLeft);
                         PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }
@@ -109,6 +112,7 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL3;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL1); //change!!!
+                        GameUI.SetGameScore(newGame->FoodLeft);
                         PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }
@@ -118,11 +122,11 @@ int main()
                         GameUI.SetGameState(EGameStates::WIN);
                     }
                 }
-                else
+                else // Render the ongoing game
                 {
+                    newGame->Render();    
                     GameUI.Update();
                     GameUI.Draw();
-                    newGame->Render();    // Render the ongoing game
                 }
 
                 EndDrawing();
@@ -138,6 +142,7 @@ int main()
                 GameUI.Update();
 
                 BeginDrawing();
+
                 GameUI.DrawBackgorund();
                 newGame->Render();
                 GameUI.Draw();
@@ -151,7 +156,7 @@ int main()
 
 
     // Main game loop
-        // Wait for the player to press ENTER to start the game
+    // Wait for the player to press ENTER to start the game
 
     // De-Initialization
     //--------------------------------------------------------------------------------------

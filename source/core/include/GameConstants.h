@@ -39,6 +39,8 @@ namespace GameRules
      * @brief Initial size of the snake.
      */
     inline constexpr int INITIAL_SNAKE_SIZE = 2;
+
+    inline constexpr int MAX_FOOD_ON_LEVEL = 5;
 }
 
 /// @namespace UI

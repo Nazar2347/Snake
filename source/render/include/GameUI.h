@@ -2,6 +2,9 @@
 #include <raylib.h>
 #include "GameConstants.h"
 #include "Button.h"
+#include <string>
+
+
 
 /**
  * @brief Enumerates the possible game states.
@@ -65,6 +68,7 @@ public:
      * @brief Draws background for the game
      */
     void DrawBackgorund();
+    void SetGameScore(size_t & GameScore);
 protected:
     /**
      * @brief Draws the main menu UI.
@@ -85,7 +89,8 @@ protected:
      * @brief Draws inner game UI
      * @param Score - for displaying score
      */
-    void DrawGameUI(int Score);
+    void DrawGameUI();
+
 
 private:
     /**
@@ -95,6 +100,7 @@ private:
     Texture2D MenuPanel_;
     Texture2D GameOverLablel_;
     Texture2D YouWonLabel_;
+    
 
     /**
      * @brief The current state of the game.
@@ -115,4 +121,5 @@ private:
      * @brief Pointer to the restart button UI element.
      */
     Button* RestartButton_;
+    size_t* CurrentScore;
 };
