@@ -15,7 +15,7 @@ GameUI::GameUI()
 	ExitButton_ = new Button("Assets/ExitButton.png", { UI::SCREEN_WIDTH / 3+70 ,UI::SCREEN_HEIGHT / 2+75 }, 0.75f);
 	RestartButton_ = new Button("Assets/RestartButton.png", { UI::LOSE_LABLEL.x+ 260,UI::LOSE_LABLEL.y + 200 }, 0.5f);
 	CurrentState_ = EGameStates::MENU;
-	CurrentScore = nullptr;
+	Score = nullptr;
 }
 
 // Updates the UI based on the current game state and button clicks
@@ -75,8 +75,8 @@ void GameUI::DrawGameUI()
 {
 	int MaxFoodCount = GameRules::MAX_FOOD_ON_LEVEL;
 
-	size_t FoodEaten = MaxFoodCount - *CurrentScore;
-	float progress = 1.0f - (float)*CurrentScore / MaxFoodCount;
+	size_t FoodEaten = MaxFoodCount - *Score;
+	float progress = 1.0f - (float)*Score / MaxFoodCount;
 
 	// Bar dimensions
 	int barX = 1000;
@@ -102,7 +102,7 @@ void GameUI::DrawGameUI()
 
 void GameUI::SetGameScore( size_t& GameScore)
 {
-	CurrentScore = &GameScore;
+	Score = &GameScore;
 }
 
 // Sets the current game state
@@ -163,4 +163,5 @@ GameUI::~GameUI()
 	delete StartButton_;
 	delete ExitButton_;
 	delete RestartButton_;
+	Score = nullptr;
 }

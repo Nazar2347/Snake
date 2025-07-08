@@ -68,6 +68,9 @@ public:
      * @brief Draws background for the game
      */
     void DrawBackgorund();
+    /**
+     * @brief Sets a GameScore for score bar
+     */
     void SetGameScore(size_t & GameScore);
 protected:
     /**
@@ -121,5 +124,8 @@ private:
      * @brief Pointer to the restart button UI element.
      */
     Button* RestartButton_;
-    size_t* CurrentScore;
+    /**
+     * @brief Pointer to Game score
+     */
+    size_t* Score;
 };
