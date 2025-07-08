@@ -114,9 +114,8 @@ int main()
                     }
                     else
                     {
+                        newGame->Render();
                         GameUI.SetGameState(EGameStates::WIN);
-                        GameUI.Update();
-                        GameUI.Draw();
                     }
                 }
                 else
@@ -131,9 +130,10 @@ int main()
             }
 
         } break;
-        case EGameStates::GAME_OVER:
-        {
-            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() == EGameStates::GAME_OVER)
+        
+        default:
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false &&
+                (GameUI.GetGameState() == EGameStates::GAME_OVER|| GameUI.GetGameState() == EGameStates::WIN))
             {
                 GameUI.Update();
 
@@ -144,10 +144,7 @@ int main()
                 
                 EndDrawing();
             }
-        }
         break;
-        default:
-            break;
         }
     }
     

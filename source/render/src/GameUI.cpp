@@ -7,9 +7,11 @@ GameUI::GameUI()
 	bIsGameShouldClose = false;
 	Background_ = LoadTexture("Assets/GameBackground.png");
 	MenuPanel_ = LoadTexture("Assets/MenuPanel.png");
+	GameOverLablel_ = LoadTexture("Assets/GameOver.png");
+	YouWonLabel_ = LoadTexture("Assets/YouWon.png");
 	StartButton_ = new Button("Assets/StartButton.png", { UI::SCREEN_WIDTH / 3+45 ,UI::SCREEN_HEIGHT/3},0.9f );
 	ExitButton_ = new Button("Assets/ExitButton.png", { UI::SCREEN_WIDTH / 3+70 ,UI::SCREEN_HEIGHT / 2+75 }, 0.75f);
-	RestartButton_ = new Button("Assets/RestartButton.png", { UI::LOSE_LABLEL.x+ 300,UI::LOSE_LABLEL.y + 100 }, 0.5f);
+	RestartButton_ = new Button("Assets/RestartButton.png", { UI::LOSE_LABLEL.x+ 260,UI::LOSE_LABLEL.y + 200 }, 0.5f);
 	CurrentState_ = EGameStates::MENU;
 }
 
@@ -84,24 +86,14 @@ EGameStates GameUI::GetGameState()
 // Draws the win label and restart button
 void GameUI::DrawWinLabel()
 {
-	DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
-	DrawText(
-		"You Won!", 
-		static_cast<int>(UI::SCREEN_WIDTH / 3), 
-		static_cast<int>(UI::SCREEN_HEIGHT / 2.5),
-		UI::LABLE_FONT_SIZE, GREEN);
+	DrawTextureEx(YouWonLabel_, { UI::SCREEN_WIDTH / 3.8f, UI::SCREEN_HEIGHT / 6, }, 0.0f, 0.9f, WHITE);
 	RestartButton_->Draw();
 }
 
 // Draws the game over label and restart button
 void GameUI::DrawGameOverLabel()
 {
-	DrawRectangleRec(UI::LOSE_LABLEL, WHITE);
-	DrawText(
-		"Game OVER!", 
-		static_cast<int>(UI::SCREEN_WIDTH / 3), 
-		static_cast<int>(UI::SCREEN_HEIGHT / 2.5),
-		UI::LABLE_FONT_SIZE, RED);
+	DrawTextureEx(GameOverLablel_, { UI::SCREEN_WIDTH / 3.8f, UI::SCREEN_HEIGHT / 6, }, 0.0f, 0.9f, WHITE);
 	RestartButton_->Draw();
 }
 
@@ -131,6 +123,9 @@ void GameUI::DrawBackgorund()
 GameUI::~GameUI()
 {
 	UnloadTexture(Background_);
+	UnloadTexture(GameOverLablel_);
+	UnloadTexture(YouWonLabel_);
+	UnloadTexture(MenuPanel_);
 	delete StartButton_;
 	delete ExitButton_;
 	delete RestartButton_;

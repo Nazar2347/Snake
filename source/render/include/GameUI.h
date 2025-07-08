@@ -93,6 +93,8 @@ private:
      */
     Texture2D Background_;
     Texture2D MenuPanel_;
+    Texture2D GameOverLablel_;
+    Texture2D YouWonLabel_;
 
     /**
      * @brief The current state of the game.
