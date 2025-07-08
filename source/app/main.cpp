@@ -45,6 +45,7 @@ int main()
                     }
                     PreviousTime = static_cast<float>(GetTime()); 
                     AccumulatorTime = 0.0f;// Reset the timer when the game starts
+                    GameUI.SetGameState(EGameStates::GAME);
                 }
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
@@ -120,6 +121,8 @@ int main()
                 }
                 else
                 {
+                    GameUI.Update();
+                    GameUI.Draw();
                     newGame->Render();    // Render the ongoing game
                 }
 

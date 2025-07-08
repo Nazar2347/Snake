@@ -74,15 +74,23 @@ protected:
     void DrawWinLabel();
 
     /**
-     * @brief Draws the game over label UI.
+     * @brief Draws the gameover label UI.
      */
     void DrawGameOverLabel();
+
+    /**
+     * @brief Draws inner game UI
+     * @param Score - for displaying score
+     */
+    void DrawGameUI(int Score);
+    void DrawBackgorund();
 
 private:
     /**
      * @brief The background texture for the UI.
      */
     Texture2D Background_;
+    Texture2D MenuPanel_;
 
     /**
      * @brief The current state of the game.

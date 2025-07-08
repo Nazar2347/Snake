@@ -5,9 +5,10 @@ GameUI::GameUI()
 {
 	bIsPaused_ = true;
 	bIsGameShouldClose = false;
-	Background_ = LoadTexture("Assets/MenuBackground.png");
-	StartButton_ = new Button("Assets/StartButton.png", { UI::SCREEN_WIDTH / 2 ,UI::SCREEN_HEIGHT/2},1.0f );
-	ExitButton_ = new Button("Assets/ExitButton.png", { UI::SCREEN_WIDTH / 2 ,UI::SCREEN_HEIGHT / 2+ 200 }, 1.0f);
+	Background_ = LoadTexture("Assets/GameBackground.png");
+	MenuPanel_ = LoadTexture("Assets/MenuPanel.png");
+	StartButton_ = new Button("Assets/StartButton.png", { UI::SCREEN_WIDTH / 3+45 ,UI::SCREEN_HEIGHT/3},0.9f );
+	ExitButton_ = new Button("Assets/ExitButton.png", { UI::SCREEN_WIDTH / 3+70 ,UI::SCREEN_HEIGHT / 2+75 }, 0.75f);
 	RestartButton_ = new Button("Assets/RestartButton.png", { UI::LOSE_LABLEL.x+ 300,UI::LOSE_LABLEL.y + 100 }, 0.5f);
 	CurrentState_ = EGameStates::MENU;
 }
@@ -59,9 +60,13 @@ void GameUI::Update()
 // Draws the main menu background and buttons
 void GameUI::DrawMenu()
 {
-	DrawTexture(Background_, static_cast<int>(UI::BOARD_INITIAL_X_POS), static_cast<int>(UI::BOARD_INITIAL_Y_POS), WHITE);
+	DrawTextureEx(MenuPanel_, { UI::SCREEN_WIDTH / 3.8f, UI::SCREEN_HEIGHT / 6, }, 0.0f, 0.75f, WHITE);
 	StartButton_->Draw();
 	ExitButton_->Draw();
+}
+
+void GameUI::DrawGameUI(int Score)
+{
 }
 
 // Sets the current game state
@@ -103,14 +108,22 @@ void GameUI::DrawGameOverLabel()
 // Draws the UI based on the current game state
 void GameUI::Draw()
 {
+	DrawBackgorund();
 	switch (CurrentState_)
 	{
 	case EGameStates::MENU: DrawMenu(); break;
-	case EGameStates::GAME: break; //to-do Draw game UI
+	case EGameStates::GAME: DrawGameUI(10); break;
 	case EGameStates::GAME_OVER: DrawGameOverLabel(); break;
 	case EGameStates::WIN:DrawWinLabel(); break;
 	default: DrawMenu(); break;
 	}
+}
+void GameUI::DrawBackgorund()
+{
+	DrawTexture(Background_, 
+		static_cast<int>(UI::BOARD_INITIAL_X_POS -50),
+		static_cast<int>(UI::BOARD_INITIAL_Y_POS ),
+		WHITE);
 }
 
 // Destructor: unloads textures and deletes button objects
