@@ -49,13 +49,14 @@ int main()
                 }
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
+                GameUI.DrawBackgorund();
                 GameUI.Draw();
                 EndDrawing();
             }
             break;
         case EGameStates::GAME:
         {
-            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() !=EGameStates::MENU)    // Detect window close button or ESC key
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() ==EGameStates::GAME)    // Detect window close button or ESC key
             {
                 // Update
                 //----------------------------------------------------------------------------------
@@ -81,14 +82,13 @@ int main()
                 //----------------------------------------------------------------------------------
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
+                GameUI.DrawBackgorund();
 
                 if (newGame->IsGameOver())
                 {
                     newGame->Render();
-
-                    GameUI.SetGameState(EGameStates::GAME_OVER);// Render the final game state
-                    GameUI.Update();
-                    GameUI.Draw();
+                    GameUI.SetGameState(EGameStates::GAME_OVER);
+                    
                 }
                 else if (newGame->IsLevelCompleted())
                 {
@@ -131,6 +131,21 @@ int main()
             }
 
         } break;
+        case EGameStates::GAME_OVER:
+        {
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() == EGameStates::GAME_OVER)
+            {
+                GameUI.Update();
+
+                BeginDrawing();
+                GameUI.DrawBackgorund();
+                newGame->Render();
+                GameUI.Draw();
+                
+                EndDrawing();
+            }
+        }
+        break;
         default:
             break;
         }

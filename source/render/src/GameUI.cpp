@@ -108,7 +108,7 @@ void GameUI::DrawGameOverLabel()
 // Draws the UI based on the current game state
 void GameUI::Draw()
 {
-	DrawBackgorund();
+	
 	switch (CurrentState_)
 	{
 	case EGameStates::MENU: DrawMenu(); break;
@@ -118,6 +118,7 @@ void GameUI::Draw()
 	default: DrawMenu(); break;
 	}
 }
+// Draws background 
 void GameUI::DrawBackgorund()
 {
 	DrawTexture(Background_, 

@@ -61,7 +61,10 @@ public:
      * @brief Indicates whether the game should close.
      */
     bool bIsGameShouldClose;
-
+    /**
+     * @brief Draws background for the game
+     */
+    void DrawBackgorund();
 protected:
     /**
      * @brief Draws the main menu UI.
@@ -83,7 +86,6 @@ protected:
      * @param Score - for displaying score
      */
     void DrawGameUI(int Score);
-    void DrawBackgorund();
 
 private:
     /**
