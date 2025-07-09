@@ -104,4 +104,6 @@ namespace UI
      * @brief Scaling factor for objects.
      */
     constexpr float OBJECTS_SCALE = (SCALE / 2) + 0.0f;
+
+    constexpr float SCORE_BAR_SCALE = (SCALE * 3.5f);
 }

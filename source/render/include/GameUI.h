@@ -103,6 +103,7 @@ private:
     Texture2D MenuPanel_;
     Texture2D GameOverLablel_;
     Texture2D YouWonLabel_;
+    Texture2D ScoreBar_;
     
 
     /**
