@@ -68,7 +68,7 @@ void AppleFood::Move()
 Frog::Frog(Vector2 Position, Board & Board)
 	:IFood(GameRules::FROG_POINTS, Position, Board)
 {
-	
+	MoveTimer_ = 0;
 	FoodType_ = EFoodType::FROG;
 	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
 
@@ -76,12 +76,33 @@ Frog::Frog(Vector2 Position, Board & Board)
 	
 }
 
-// Frog jumps to a new position when activated
+// Frog jumps to a new position when number of MoveTimer is corresponds
 void Frog::DoSomething()
 {
+	if ((MoveTimer_ % GameRules::FROG_MOVE_TIMER) == 0)
+	{
+		// jump for over 1 cell
+		this->Move();
+	}
+	MoveTimer_++;
+}
+// Moves the frog to a random empty position within its range
+void Frog::Move()
+{
+	Vector2 NewRandomPos;
+	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
+	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
+		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+		{
+			Board_->SetCellType(Position_, ECellType::EMPTY);
+			SetPosition(NewRandomPos);
+			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+		}
+		else
+		{
+			return;
+		}
 	
-	// jump for over 1 cell
-	this->Move();
 }
 
 // Mouse constructor: sets type to MOUSE and initializes movement
@@ -96,29 +117,16 @@ Mouse::Mouse(Vector2 Position, Board& Board)
 	
 }
 
-// Mouse moves to a new position when activated
+// Mouse moves to a new position when number of MoveTimer is corresponds
 void Mouse::DoSomething()
 {
-	this->Move();
+	if ((MoveTimer_ % GameRules::MOUSE_MOVE_TIMER) == 0)
+	{
+		this->Move();
+	}
+	MoveTimer_++;
 }
 
-// Moves the frog to a random empty position within its range
-void Frog::Move()
-{
-	Vector2 NewRandomPos;
-	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
-	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
-	if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
-	{
-		Board_->SetCellType(Position_, ECellType::EMPTY);
-		SetPosition(NewRandomPos);
-		Board_->SetCellType(NewRandomPos, ECellType::FOOD);
-	} 
-	else
-	{
-		return; 
-	}
-}
 
 // Moves the mouse to a random empty position within its range
 void Mouse::Move()
@@ -126,15 +134,15 @@ void Mouse::Move()
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
+		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+		{
+			Board_->SetCellType(Position_, ECellType::EMPTY);
+			SetPosition(NewRandomPos);
+			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+		}
+		else
+		{
+			return;
+		}
 	
-	if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
-	{
-		Board_->SetCellType(Position_, ECellType::EMPTY);
-		SetPosition(NewRandomPos);
-		Board_->SetCellType(NewRandomPos, ECellType::FOOD);
-	}
-	else
-	{
-		return;
-	}
 }

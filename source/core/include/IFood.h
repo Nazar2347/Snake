@@ -113,6 +113,8 @@ protected:
      * @brief Moves the frog on the board.
      */
     void Move() override;
+private:
+    unsigned short MoveTimer_; ///< Move timer per frame
 };
 
 /**
@@ -139,4 +141,9 @@ protected:
      * @brief Moves the mouse on the board.
      */
     void Move() override;
+private:
+    /**
+     * @.
+     */
+    unsigned short MoveTimer_; ///< Move timer per frame
 };
