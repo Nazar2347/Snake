@@ -68,7 +68,7 @@ void AppleFood::Move()
 Frog::Frog(Vector2 Position, Board & Board)
 	:IFood(GameRules::FROG_POINTS, Position, Board)
 {
-	
+	MoveTimer_ = 0;
 	FoodType_ = EFoodType::FROG;
 	NumberGenerator_ = new RandomNumberGenerator(-2, 2);
 
@@ -108,16 +108,20 @@ void Frog::Move()
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
-	if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+	if ((MoveTimer_ % GameRules::FROG_MOVE_TIMER) == 0)
 	{
-		Board_->SetCellType(Position_, ECellType::EMPTY);
-		SetPosition(NewRandomPos);
-		Board_->SetCellType(NewRandomPos, ECellType::FOOD);
-	} 
-	else
-	{
-		return; 
+		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+		{
+			Board_->SetCellType(Position_, ECellType::EMPTY);
+			SetPosition(NewRandomPos);
+			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+		}
+		else
+		{
+			return;
+		}
 	}
+	MoveTimer_++;
 }
 
 // Moves the mouse to a random empty position within its range
@@ -127,14 +131,18 @@ void Mouse::Move()
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
 	
-	if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+	if ((MoveTimer_ % GameRules::MOUSE_MOVE_TIMER) == 0)
 	{
-		Board_->SetCellType(Position_, ECellType::EMPTY);
-		SetPosition(NewRandomPos);
-		Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+		{
+			Board_->SetCellType(Position_, ECellType::EMPTY);
+			SetPosition(NewRandomPos);
+			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+		}
+		else
+		{
+			return;
+		}
 	}
-	else
-	{
-		return;
-	}
+	MoveTimer_++;
 }
