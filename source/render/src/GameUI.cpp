@@ -1,4 +1,4 @@
-#include "GameUI.h"
+﻿#include "GameUI.h"
 
 
 
@@ -11,6 +11,7 @@ GameUI::GameUI()
 	MenuPanel_ = LoadTexture("Assets/MenuPanel.png");
 	GameOverLablel_ = LoadTexture("Assets/GameOver.png");
 	YouWonLabel_ = LoadTexture("Assets/YouWon.png");
+	ScoreBar_ = LoadTexture("Assets/ScoreBar.png");
 	StartButton_ = new Button("Assets/StartButton.png", { UI::SCREEN_WIDTH / 3+45 ,UI::SCREEN_HEIGHT/3},0.9f );
 	ExitButton_ = new Button("Assets/ExitButton.png", { UI::SCREEN_WIDTH / 3+70 ,UI::SCREEN_HEIGHT / 2+75 }, 0.75f);
 	RestartButton_ = new Button("Assets/RestartButton.png", { UI::LOSE_LABLEL.x+ 260,UI::LOSE_LABLEL.y + 200 }, 0.5f);
@@ -74,30 +75,26 @@ void GameUI::DrawMenu()
 void GameUI::DrawGameUI()
 {
 	int MaxFoodCount = GameRules::MAX_FOOD_ON_LEVEL;
-
+	
 	size_t FoodEaten = MaxFoodCount - *Score;
 	float progress = 1.0f - (float)*Score / MaxFoodCount;
 
 	// Bar dimensions
-	int barX = 1000;
-	int barY = 200;
-	int barWidth = 200;
-	int barHeight = 20;
+	Vector2 ScoreBarPos{ 900, 200 };
 
-	// Draw background (empty bar)
-	DrawRectangle(barX, barY, barWidth, barHeight, DARKGRAY);
+	// Draw empty bar
+	DrawTextureEx(ScoreBar_, ScoreBarPos, 0.0f, UI::SCORE_BAR_SCALE/10, WHITE);
 
 	// Draw filled part
-	int filledWidth = static_cast<int>(barWidth * progress);
-	DrawRectangle(barX, barY, filledWidth, barHeight, GOLD);
+	int filledWidth = static_cast<int>((ScoreBar_.width/1.5) * progress-15);
+	Rectangle ScoreBarFillRec = { ScoreBarPos.x+15, ScoreBarPos.y+27, filledWidth, ScoreBar_.height/UI::SCORE_BAR_SCALE };
 
-	// Border
-	DrawRectangleLines(barX, barY, barWidth, barHeight, BLACK);
+	DrawRectangleRounded(ScoreBarFillRec, 0.7f, 30.0f, GOLD);
 
 	// Draw progress text (above bar)
 	std::string text = "Food Eaten: " + std::to_string(FoodEaten) + " / " + std::to_string(MaxFoodCount);
-	DrawText(text.c_str(), barX, barY - 25, 20, YELLOW);
-
+	DrawText(text.c_str(), ScoreBarPos.x, ScoreBarPos.y - 10, 20, YELLOW);
+	
 }
 
 void GameUI::SetGameScore( size_t& GameScore)
