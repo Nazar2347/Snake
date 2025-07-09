@@ -76,7 +76,7 @@ Frog::Frog(Vector2 Position, Board & Board)
 	
 }
 
-// Frog jumps to a new position when activated
+// Frog jumps to a new position when number of MoveTimer is corresponds
 void Frog::DoSomething()
 {
 	if ((MoveTimer_ % GameRules::FROG_MOVE_TIMER) == 0)
@@ -86,6 +86,7 @@ void Frog::DoSomething()
 	}
 	MoveTimer_++;
 }
+// Moves the frog to a random empty position within its range
 void Frog::Move()
 {
 	Vector2 NewRandomPos;
@@ -116,7 +117,7 @@ Mouse::Mouse(Vector2 Position, Board& Board)
 	
 }
 
-// Mouse moves to a new position when activated
+// Mouse moves to a new position when number of MoveTimer is corresponds
 void Mouse::DoSomething()
 {
 	if ((MoveTimer_ % GameRules::MOUSE_MOVE_TIMER) == 0)
@@ -126,7 +127,6 @@ void Mouse::DoSomething()
 	MoveTimer_++;
 }
 
-// Moves the frog to a random empty position within its range
 
 // Moves the mouse to a random empty position within its range
 void Mouse::Move()

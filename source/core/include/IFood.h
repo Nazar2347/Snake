@@ -114,7 +114,7 @@ protected:
      */
     void Move() override;
 private:
-    unsigned short MoveTimer_;
+    unsigned short MoveTimer_; ///< Move timer per frame
 };
 
 /**
@@ -142,5 +142,8 @@ protected:
      */
     void Move() override;
 private:
-    unsigned short MoveTimer_;
+    /**
+     * @.
+     */
+    unsigned short MoveTimer_; ///< Move timer per frame
 };
