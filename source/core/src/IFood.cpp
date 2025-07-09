@@ -79,9 +79,29 @@ Frog::Frog(Vector2 Position, Board & Board)
 // Frog jumps to a new position when activated
 void Frog::DoSomething()
 {
+	if ((MoveTimer_ % GameRules::FROG_MOVE_TIMER) == 0)
+	{
+		// jump for over 1 cell
+		this->Move();
+	}
+	MoveTimer_++;
+}
+void Frog::Move()
+{
+	Vector2 NewRandomPos;
+	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
+	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
+		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
+		{
+			Board_->SetCellType(Position_, ECellType::EMPTY);
+			SetPosition(NewRandomPos);
+			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+		}
+		else
+		{
+			return;
+		}
 	
-	// jump for over 1 cell
-	this->Move();
 }
 
 // Mouse constructor: sets type to MOUSE and initializes movement
@@ -99,30 +119,14 @@ Mouse::Mouse(Vector2 Position, Board& Board)
 // Mouse moves to a new position when activated
 void Mouse::DoSomething()
 {
-	this->Move();
-}
-
-// Moves the frog to a random empty position within its range
-void Frog::Move()
-{
-	Vector2 NewRandomPos;
-	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
-	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
-	if ((MoveTimer_ % GameRules::FROG_MOVE_TIMER) == 0)
+	if ((MoveTimer_ % GameRules::MOUSE_MOVE_TIMER) == 0)
 	{
-		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
-		{
-			Board_->SetCellType(Position_, ECellType::EMPTY);
-			SetPosition(NewRandomPos);
-			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
-		}
-		else
-		{
-			return;
-		}
+		this->Move();
 	}
 	MoveTimer_++;
 }
+
+// Moves the frog to a random empty position within its range
 
 // Moves the mouse to a random empty position within its range
 void Mouse::Move()
@@ -130,9 +134,6 @@ void Mouse::Move()
 	Vector2 NewRandomPos;
 	NewRandomPos.x = Position_.x + NumberGenerator_->GetRandomValue();
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
-	
-	if ((MoveTimer_ % GameRules::MOUSE_MOVE_TIMER) == 0)
-	{
 		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
 		{
 			Board_->SetCellType(Position_, ECellType::EMPTY);
@@ -143,6 +144,5 @@ void Mouse::Move()
 		{
 			return;
 		}
-	}
-	MoveTimer_++;
+	
 }
