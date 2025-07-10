@@ -92,7 +92,7 @@ void Game::Render()
 	SnakeRender_->Draw();
 	if (!LevelFoodStack.empty())
 	{
-		FoodRender_->Draw(LevelFoodStack.top());
+		FoodRender_->Draw(*LevelFoodStack.top());
 	}
 }
 

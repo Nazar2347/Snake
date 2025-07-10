@@ -34,7 +34,7 @@ void IFood::SetPosition(Vector2 Position)
 }
 
 // Returns the type of the food
-EFoodType IFood::GetFoodType()
+EFoodType IFood::GetFoodType() const
 {
 	return FoodType_;
 }

@@ -16,32 +16,32 @@ FoodRender::FoodRender()
 }
 
 // Draws the given food object using the appropriate texture or a red rectangle if type is unknown
-void FoodRender::Draw(IFood* Object)
+void FoodRender::Draw(const IFood& Object)
 {
-	if (Object->GetFoodType() == EFoodType::APPLE)
+	if (Object.GetFoodType() == EFoodType::APPLE)
 	{
 		// Draw apple texture at the food's position
 		DrawTextureEx(AppleTexture_, { 
-			Object->GetPosition().x *UI::CELL_SIZE +UI::BOARD_INITIAL_X_POS, 
-			Object->GetPosition().y *UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS
+			Object.GetPosition().x *UI::CELL_SIZE +UI::BOARD_INITIAL_X_POS, 
+			Object.GetPosition().y *UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS
 			}, 0.0f, UI::OBJECTS_SCALE, WHITE
 		);
 	}
-	else if (Object->GetFoodType() == EFoodType::FROG)
+	else if (Object.GetFoodType() == EFoodType::FROG)
 	{
 		// Draw frog texture at the food's position
 		DrawTextureEx(FrogTexture_, {
-			Object->GetPosition().x * UI::CELL_SIZE +UI::BOARD_INITIAL_X_POS,
-			Object->GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS
+			Object.GetPosition().x * UI::CELL_SIZE +UI::BOARD_INITIAL_X_POS,
+			Object.GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS
 			}, 0.0f, UI::OBJECTS_SCALE, WHITE
 		);
 	}
-	else if (Object->GetFoodType() == EFoodType::MOUSE)
+	else if (Object.GetFoodType() == EFoodType::MOUSE)
 	{
 		// Draw mouse texture at the food's position
 		DrawTextureEx(MouseTexture_, {
-			Object->GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-			Object->GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS
+			Object.GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
+			Object.GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS
 			}, 0.0f, UI::OBJECTS_SCALE, WHITE
 		);
 	}
@@ -49,8 +49,8 @@ void FoodRender::Draw(IFood* Object)
 	{
 		// Draw a red rectangle for unknown food types
 		DrawRectangle(
-			(int)(Object->GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS),
-			(int)(Object->GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS),
+			(int)(Object.GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS),
+			(int)(Object.GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS),
 			(int)UI::OBJECTS_SCALE , (int)UI::OBJECTS_SCALE , RED);
 	}
 }

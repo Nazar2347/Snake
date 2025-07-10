@@ -55,7 +55,7 @@ public:
      * @brief Gets the type of the food.
      * @return The food type.
      */
-    EFoodType GetFoodType();
+    EFoodType GetFoodType() const;
 
     /**
      * @brief Virtual destructor for IFood.

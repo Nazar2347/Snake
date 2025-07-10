@@ -20,7 +20,7 @@ public:
      * @brief Draws the specified food object on the screen.
      * @param Object Pointer to the IFood object to be rendered.
      */
-    void Draw(IFood* Object);
+    void Draw(const IFood& Object);
 
     /**
      * @brief Destroys the FoodRender object and releases resources.
