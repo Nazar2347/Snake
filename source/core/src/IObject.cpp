@@ -14,5 +14,8 @@ ECellType IObject::CheckPosition(Vector2 Position)
 }
 IObject:: ~IObject()
 {
-	
+	if (!Board_.expired())
+	{
+		Board_.lock()->SetCellType(Position_, ECellType::EMPTY);
+	}
 }

@@ -129,27 +129,25 @@ int Game::GetAmountFoodLeft()
 
 Game::~Game()
 {
-	delete BoardRender_;
-	delete FoodRender_;
-	delete SnakeRender_;
+	
 	Level_.reset();
 	PlayerCommand_ = nullptr;
-	delete PlayerSnake_;
+	
 }
 
 void Game::InitializeLevel1()
 {
 	Level_ = make_shared<Board>(Level1Data);
-	PlayerSnake_ = new Snake(Level1StartingPos, Level_);
+	PlayerSnake_ = make_unique<Snake>(Level1StartingPos, Level_);
 
 	LevelFoodStack.emplace(new Frog( { 5,3 }, Level_));
 	LevelFoodStack.emplace(new Mouse( { 7,2 }, Level_));
 	LevelFoodStack.emplace(new Frog( { 2,1 }, Level_));
 	
 
-	BoardRender_ = new RenderBoard(*Level_);
-	SnakeRender_ = new RenderSnake(PlayerSnake_);
-	FoodRender_ = new FoodRender();
+	BoardRender_ = make_unique <RenderBoard>(*Level_);
+	SnakeRender_ = make_unique <RenderSnake>(PlayerSnake_.get());
+	FoodRender_ = make_unique <FoodRender>();
 
 	PlayerCommand_ = new NullCommand();
 	PlayerSnake_->ChangeTailSizeBy(GameRules::INITIAL_SNAKE_SIZE);
@@ -160,7 +158,7 @@ void Game::InitializeLevel1()
 void Game::InitializeLevel2()
 {
 	Level_ = make_shared<Board>(Level2Data);
-	PlayerSnake_ = new Snake(Level2StartingPos, Level_);
+	PlayerSnake_ = make_unique <Snake>(Level2StartingPos, Level_);
 
 	LevelFoodStack.emplace(new Frog( { 5,3 }, Level_));
 	LevelFoodStack.emplace(new Mouse( { 7,2 }, Level_));
@@ -171,9 +169,9 @@ void Game::InitializeLevel2()
 	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,3 }, Level_));
 
 
-	BoardRender_ = new RenderBoard(*Level_);
-	SnakeRender_ = new RenderSnake(PlayerSnake_);
-	FoodRender_ = new FoodRender();
+	BoardRender_ = make_unique <RenderBoard>(*Level_);
+	SnakeRender_ = make_unique <RenderSnake>(PlayerSnake_.get());
+	FoodRender_ = make_unique <FoodRender>();
 
 	PlayerCommand_ = new NullCommand();
 	PlayerSnake_->ChangeTailSizeBy(2);

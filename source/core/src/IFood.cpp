@@ -42,7 +42,7 @@ EFoodType IFood::GetFoodType() const
 // IFood destructor: clears the food from the board
 IFood::~IFood()
 {
-	Board_.lock()->SetCellType(Position_,ECellType::EMPTY);
+	
 }
 
 

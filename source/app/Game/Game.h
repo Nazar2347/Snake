@@ -32,11 +32,11 @@ protected:
 	void InitializeLevel3();
 private:
 	std::shared_ptr<Board> Level_;
-	Snake* PlayerSnake_;
-	RenderBoard* BoardRender_;
-	RenderSnake* SnakeRender_;
-	FoodRender* FoodRender_;
-	std::stack<IFood*> LevelFoodStack;
+	std::unique_ptr<Snake> PlayerSnake_;
+	std::unique_ptr<RenderBoard> BoardRender_;
+	std::unique_ptr<RenderSnake> SnakeRender_;
+	std::unique_ptr<FoodRender> FoodRender_;
+	std::stack<std::unique_ptr<IFood>> LevelFoodStack;
 	InputHandler InputHandler_;
 	Command* PlayerCommand_;
 	bool bIsLevelCompleted_;
