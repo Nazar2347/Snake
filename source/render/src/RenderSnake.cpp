@@ -2,7 +2,7 @@
 
 // Constructor: Initializes the RenderSnake with a pointer to a Snake object.
 // Loads the snake body texture from an image file if the Snake pointer is valid.
-RenderSnake::RenderSnake(Snake* Snake) : Snake_(Snake)
+RenderSnake::RenderSnake(const Snake* Snake) : Snake_(Snake)
 {
     if (Snake != nullptr)
     {
