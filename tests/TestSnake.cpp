@@ -3,14 +3,17 @@
 #include "Snake.h"
 #include "Board.h"
 
-std::vector<std::vector <bool>> TestLevelData = {
+std::vector<std::vector <bool>> TestLevelData = 
+{
     {1,1,1,1,1,1},
     {1,0,0,0,0,1},
     {1,0,0,0,0,1},
     {1,0,0,0,0,1},
     {1,0,0,0,0,1},
-    {1,1,1,1,1,1} };
-Board TestLevel(TestLevelData);
+    {1,1,1,1,1,1} 
+};
+
+auto TestLevel = std::make_shared<Board>(TestLevelData);
 
 
 TEST_CASE("Snake Constructor initializes correctly", "[Snake]") {

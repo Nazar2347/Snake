@@ -1,7 +1,7 @@
     #include "Snake.h"
 
 // Constructor: Initializes the snake's head position, alive state, direction, and starting tail
-Snake::Snake(Vector2 StartingPos, Board &Board) : 
+Snake::Snake(Vector2 StartingPos, std::shared_ptr<Board> Board) :
     IObject(StartingPos,Board),
     bIsAlive_(true),
     HeadDirection_(EDirection::LEFT),
@@ -32,7 +32,7 @@ void Snake::ChangeTailSizeBy(int Size)
         {
             if (TailPosition_.size() >= 1)
             {
-                Board_->SetCellType(TailPosition_.back(), ECellType::EMPTY);
+                Board_.lock()->SetCellType(TailPosition_.back(), ECellType::EMPTY);
                 TailPosition_.pop_back();
                 if (TailPosition_.size() <= 1)
                 {
@@ -109,14 +109,14 @@ void Snake::Move()
     // Move each tail segment to the position of the previous segment
     for (int i = 0; i < TailPosition_.size(); i++)
     {
-        Board_->SetCellType(TailPosition_[i], ECellType::SNAKE);
+        Board_.lock()->SetCellType(TailPosition_[i], ECellType::SNAKE);
         Vector2 OldBodyPos2 = TailPosition_[i];
         TailPosition_[i] = OldBodyPos;
         OldBodyPos = OldBodyPos2;
         // Clear the last cell previously occupied by the tail
         if (i == TailPosition_.size() - 1)
         {
-            Board_->SetCellType(OldBodyPos, ECellType::EMPTY);
+            Board_.lock()->SetCellType(OldBodyPos, ECellType::EMPTY);
         }
     // Check for collision with wall, border, or itself
         
@@ -129,7 +129,7 @@ void Snake::Move()
             printf("Snake died\n");
             return;
         }
-        Board_->SetCellType(GetHeadPosition(), ECellType::SNAKE);
+        Board_.lock()->SetCellType(GetHeadPosition(), ECellType::SNAKE);
 }
 
 // Sets the direction of the snake's movement

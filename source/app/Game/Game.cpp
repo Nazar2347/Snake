@@ -132,19 +132,19 @@ Game::~Game()
 	delete BoardRender_;
 	delete FoodRender_;
 	delete SnakeRender_;
-	delete Level_;
+	Level_.reset();
 	PlayerCommand_ = nullptr;
 	delete PlayerSnake_;
 }
 
 void Game::InitializeLevel1()
 {
-	Level_ = new Board(Level1Data);
-	PlayerSnake_ = new Snake(Level1StartingPos, *Level_);
+	Level_ = make_shared<Board>(Level1Data);
+	PlayerSnake_ = new Snake(Level1StartingPos, Level_);
 
-	LevelFoodStack.emplace(new Frog( { 5,3 }, *Level_));
-	LevelFoodStack.emplace(new Mouse( { 7,2 }, *Level_));
-	LevelFoodStack.emplace(new Frog( { 2,1 }, *Level_));
+	LevelFoodStack.emplace(new Frog( { 5,3 }, Level_));
+	LevelFoodStack.emplace(new Mouse( { 7,2 }, Level_));
+	LevelFoodStack.emplace(new Frog( { 2,1 }, Level_));
 	
 
 	BoardRender_ = new RenderBoard(*Level_);
@@ -159,16 +159,16 @@ void Game::InitializeLevel1()
 
 void Game::InitializeLevel2()
 {
-	Level_ = new Board(Level2Data);
-	PlayerSnake_ = new Snake(Level2StartingPos, *Level_);
+	Level_ = make_shared<Board>(Level2Data);
+	PlayerSnake_ = new Snake(Level2StartingPos, Level_);
 
-	LevelFoodStack.emplace(new Frog( { 5,3 }, *Level_));
-	LevelFoodStack.emplace(new Mouse( { 7,2 }, *Level_));
-	LevelFoodStack.emplace(new Frog( { 2,1 }, *Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 3,3 }, *Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,5 }, *Level_));
-	//LevelFoodStack.emplace(new Frog(FrogPoints, { 6,6 }, *Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,3 }, *Level_));
+	LevelFoodStack.emplace(new Frog( { 5,3 }, Level_));
+	LevelFoodStack.emplace(new Mouse( { 7,2 }, Level_));
+	LevelFoodStack.emplace(new Frog( { 2,1 }, Level_));
+	//LevelFoodStack.emplace(new Mouse(MousePoints, { 3,3 }, Level_));
+	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,5 }, Level_));
+	//LevelFoodStack.emplace(new Frog(FrogPoints, { 6,6 }, Level_));
+	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,3 }, Level_));
 
 
 	BoardRender_ = new RenderBoard(*Level_);

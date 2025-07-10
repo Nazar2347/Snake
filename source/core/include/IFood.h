@@ -26,7 +26,7 @@ public:
      * @param Position The position of the food on the board.
      * @param Board Reference to the game board.
      */
-    IFood(short int Points, Vector2 Position, Board &Board);
+    IFood(short int Points, Vector2 Position, std::shared_ptr<Board> Board);
 
     /**
      * @brief Gets the current position of the food.
@@ -80,7 +80,7 @@ public:
      * @param Position The position of the apple on the board.
      * @param Board Reference to the game board.
      */
-    AppleFood(Vector2 Position, Board &Board);
+    AppleFood(Vector2 Position, std::shared_ptr<Board> Board);
 
     /**
      * @brief Performs the apple's special action.
@@ -101,7 +101,7 @@ public:
      * @param Position The position of the frog on the board.
      * @param Board Reference to the game board.
      */
-    Frog(Vector2 Position, Board & Board);
+    Frog(Vector2 Position, std::shared_ptr<Board> Board);
 
     /**
      * @brief Performs the frog's special action.
@@ -129,7 +129,7 @@ public:
      * @param Position The position of the mouse on the board.
      * @param Board Reference to the game board.
      */
-    Mouse(Vector2 Position, Board & Board);
+    Mouse(Vector2 Position, std::shared_ptr<Board> Board);
 
     /**
      * @brief Performs the mouse's special action.

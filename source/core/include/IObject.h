@@ -1,6 +1,7 @@
 #pragma once
 #include "Utilities.h"
 #include "Board.h"
+#include <memory>
 
 /**
  * @brief Interface for movable entities on the game board.
@@ -14,7 +15,7 @@ public:
      * @brief Constructs a movable entity with a reference to the game board.
      * @param Board Reference to the game board.
      */
-    IObject(Vector2 Position, Board &Board);
+    IObject(Vector2 Position, std::shared_ptr<Board> Board);
 
     /**
      * @brief Moves the entity on the board.
@@ -36,6 +37,6 @@ protected:
      * @return The cell type at the given position.
      */
     virtual ECellType CheckPosition(Vector2 Position);
-    Board* Board_; ///< Pointer to the game board.
+    std::weak_ptr<Board> Board_; ///< Pointer to the game board.
     Vector2 Position_; 
 };

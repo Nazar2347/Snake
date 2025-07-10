@@ -5,6 +5,7 @@
 #include "RenderSnake.h"
 #include "InputHandler.h"
 #include <stack>
+#include <memory>
 
 enum class EGameLevel
 {
@@ -30,7 +31,7 @@ protected:
 	void InitializeLevel2();
 	void InitializeLevel3();
 private:
-	Board* Level_;
+	std::shared_ptr<Board> Level_;
 	Snake* PlayerSnake_;
 	RenderBoard* BoardRender_;
 	RenderSnake* SnakeRender_;

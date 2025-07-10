@@ -1,18 +1,18 @@
 #include "IFood.h"
 
 // IFood constructor: initializes food with points, position, and board reference
-IFood::IFood(short int Points, Vector2 Position, Board &Board):
+IFood::IFood(short int Points, Vector2 Position, std::shared_ptr<Board> Board):
 	IObject(Position,Board),
 	Points_(Points)
 {
 	FoodType_ = EFoodType::NONE;
 	// If the initial position is not empty, find an empty cell
-	if (Board_->GetCellInfo(Position_) != ECellType::EMPTY)
+	if (Board_.lock()->GetCellInfo(Position_) != ECellType::EMPTY)
 	{
-		Position_ = Board_->GetEmptyCell();
+		Position_ = Board_.lock()->GetEmptyCell();
 	}
 	// Mark the cell as containing food
-	Board_->SetCellType(Position_, ECellType::FOOD);
+	Board_.lock()->SetCellType(Position_, ECellType::FOOD);
 }
 
 // Returns the current position of the food
@@ -42,13 +42,13 @@ EFoodType IFood::GetFoodType() const
 // IFood destructor: clears the food from the board
 IFood::~IFood()
 {
-	Board_->SetCellType(Position_,ECellType::EMPTY);
+	Board_.lock()->SetCellType(Position_,ECellType::EMPTY);
 }
 
 
 
 // AppleFood constructor: sets type to APPLE
-AppleFood::AppleFood( Vector2 Position, Board & Board) 
+AppleFood::AppleFood( Vector2 Position, std::shared_ptr<Board> Board)
 	:IFood(GameRules::APPLE_POINTS, Position, Board)
 {
 	FoodType_ = EFoodType::APPLE;
@@ -65,7 +65,7 @@ void AppleFood::Move()
 }
 
 // Frog constructor: sets type to FROG and initializes movement
-Frog::Frog(Vector2 Position, Board & Board)
+Frog::Frog(Vector2 Position, std::shared_ptr<Board> Board)
 	:IFood(GameRules::FROG_POINTS, Position, Board)
 {
 	MoveTimer_ = 0;
@@ -94,9 +94,9 @@ void Frog::Move()
 	NewRandomPos.y = Position_.y + NumberGenerator_->GetRandomValue();
 		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
 		{
-			Board_->SetCellType(Position_, ECellType::EMPTY);
+			Board_.lock()->SetCellType(Position_, ECellType::EMPTY);
 			SetPosition(NewRandomPos);
-			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+			Board_.lock()->SetCellType(NewRandomPos, ECellType::FOOD);
 		}
 		else
 		{
@@ -106,7 +106,7 @@ void Frog::Move()
 }
 
 // Mouse constructor: sets type to MOUSE and initializes movement
-Mouse::Mouse(Vector2 Position, Board& Board)
+Mouse::Mouse(Vector2 Position, std::shared_ptr<Board> Board)
 	: IFood(GameRules::MOUSE_POINTS, Position, Board)
 {
 	FoodType_ = EFoodType::MOUSE;
@@ -136,9 +136,9 @@ void Mouse::Move()
 	NewRandomPos.y = Position_.y +NumberGenerator_->GetRandomValue();
 		if (CheckPosition(NewRandomPos) == ECellType::EMPTY)
 		{
-			Board_->SetCellType(Position_, ECellType::EMPTY);
+			Board_.lock()->SetCellType(Position_, ECellType::EMPTY);
 			SetPosition(NewRandomPos);
-			Board_->SetCellType(NewRandomPos, ECellType::FOOD);
+			Board_.lock()->SetCellType(NewRandomPos, ECellType::FOOD);
 		}
 		else
 		{

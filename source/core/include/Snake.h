@@ -28,7 +28,7 @@ public:
      * @param StartingPos The initial position of the snake's head.
      * @param Board Reference to the game board.
      */
-    Snake(Vector2 StartingPos, Board &Board);
+    Snake(Vector2 StartingPos, std::shared_ptr<Board> Board);
 
     /**
      * @brief Gets the positions of all tail segments.

@@ -13,7 +13,8 @@ static std::vector<std::vector<bool>> CreateEmptyLevelData(size_t rows = 3, size
 TEST_CASE("AppleFood constructs and has correct type", "[AppleFood]") 
 {
     auto levelData = CreateEmptyLevelData();
-    Board board(levelData);
+    std::shared_ptr<Board> board;
+    board = make_shared<Board>(levelData);
     Vector2 pos = {0, 2};
     
 
@@ -34,7 +35,8 @@ TEST_CASE("AppleFood constructs and has correct type", "[AppleFood]")
 TEST_CASE("Frog moves when DoSomething is called", "[Frog]")
 {
     auto levelData = CreateEmptyLevelData();
-    Board board(levelData);
+    std::shared_ptr<Board> board;
+    board = make_shared<Board>(levelData);
     Vector2 pos = {1, 1};
     short points = 7;
 
@@ -47,17 +49,18 @@ TEST_CASE("Frog moves when DoSomething is called", "[Frog]")
     Vector2 after = frog.GetPosition();
 
     // The frog may or may not move (if random pos is not empty), but after is always a valid cell
-    REQUIRE(board.GetCellInfo(after) == ECellType::FOOD);
+    REQUIRE(board->GetCellInfo(after) == ECellType::FOOD);
     // The previous cell should be empty unless frog didn't move
     if (before.x != after.x || before.y != after.y) {
-        REQUIRE(board.GetCellInfo(before) == ECellType::EMPTY);
+        REQUIRE(board->GetCellInfo(before) == ECellType::EMPTY);
     }
 }
 
 TEST_CASE("Mouse moves when DoSomething is called", "[Mouse]") 
 {
     auto levelData = CreateEmptyLevelData();
-    Board board(levelData);
+    std::shared_ptr<Board> board;
+    board = make_shared<Board>(levelData);
     Vector2 pos = {2, 2};
     short points = 3;
 
@@ -69,8 +72,8 @@ TEST_CASE("Mouse moves when DoSomething is called", "[Mouse]")
     mouse.DoSomething();
     Vector2 after = mouse.GetPosition();
 
-    REQUIRE(board.GetCellInfo(after) == ECellType::FOOD);
+    REQUIRE(board->GetCellInfo(after) == ECellType::FOOD);
     if (before.x != after.x || before.y != before.y) {
-        REQUIRE(board.GetCellInfo(before) == ECellType::EMPTY);
+        REQUIRE(board->GetCellInfo(before) == ECellType::EMPTY);
     }
 }
