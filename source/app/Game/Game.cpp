@@ -65,7 +65,7 @@ void Game::Update()
 	PlayerSnake_->Move();
 	if (!LevelFoodStack.empty())
 	{
-		if (PlayerSnake_->getHeadPosition() == LevelFoodStack.top()->GetPosition())
+		if (PlayerSnake_->GetHeadPosition() == LevelFoodStack.top()->GetPosition())
 		{
 			int FoodPoints = LevelFoodStack.top()->GetPoints();
 			PlayerSnake_->ChangeTailSizeBy(FoodPoints);

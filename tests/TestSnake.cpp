@@ -19,9 +19,9 @@ TEST_CASE("Snake Constructor initializes correctly", "[Snake]") {
     start.y = 1;
     Snake snake(start, TestLevel);
 
-    REQUIRE(snake.getHeadPosition().x == 1);
-    REQUIRE(snake.getHeadPosition().y == 1);
-    std::vector<Vector2> tail = snake.getTailPosition();
+    REQUIRE(snake.GetHeadPosition().x == 1);
+    REQUIRE(snake.GetHeadPosition().y == 1);
+    std::vector<Vector2> tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 1);
     REQUIRE(tail[0].x == 2);
     REQUIRE(tail[0].y == 1);
@@ -50,17 +50,17 @@ TEST_CASE("Snake::ChangeTailSizeBy grows and shrinks tail", "[Snake]") {
 
     // Grow tail by 2
     snake.ChangeTailSizeBy(2);
-    std::vector<Vector2> tail = snake.getTailPosition();
+    std::vector<Vector2> tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 3);
 
     // Shrink tail by 1
     snake.ChangeTailSizeBy(-1);
-    tail = snake.getTailPosition();
+    tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 2);
 
     // Shrink tail to zero, snake should die
     snake.ChangeTailSizeBy(-2);
-    REQUIRE(snake.getTailPosition().size() == 0);
+    REQUIRE(snake.GetTailPosition().size() == 0);
     REQUIRE_FALSE(snake.isAlive()); //problem
 }
 
@@ -83,9 +83,9 @@ TEST_CASE("Snake::getHeadPosition and getTailPosition", "[Snake]") {
     start.y = 5;
     Snake snake(start, TestLevel);
 
-    REQUIRE(snake.getHeadPosition().x == 5);
-    REQUIRE(snake.getHeadPosition().y == 5);
-    std::vector<Vector2> tail = snake.getTailPosition();
+    REQUIRE(snake.GetHeadPosition().x == 5);
+    REQUIRE(snake.GetHeadPosition().y == 5);
+    std::vector<Vector2> tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 1);
     REQUIRE(tail[0].x == 6);
     REQUIRE(tail[0].y == 5);
@@ -99,22 +99,22 @@ TEST_CASE("Snake interacts correctly with custom TestLevel board", "[Snake][Boar
     Snake snake(start, TestLevel);
 
     // Initial state
-    REQUIRE(snake.getHeadPosition().x == 2);
-    REQUIRE(snake.getHeadPosition().y == 2);
+    REQUIRE(snake.GetHeadPosition().x == 2);
+    REQUIRE(snake.GetHeadPosition().y == 2);
     REQUIRE(snake.isAlive());
 
     // Move up (should be valid)
     snake.SetDirection(EDirection::UP);
     snake.Move();
-    REQUIRE(snake.getHeadPosition().x == 2);
-    REQUIRE(snake.getHeadPosition().y == 1);
+    REQUIRE(snake.GetHeadPosition().x == 2);
+    REQUIRE(snake.GetHeadPosition().y == 1);
     REQUIRE(snake.isAlive());
 
     // Move left (should be valid)
     snake.SetDirection(EDirection::LEFT);
     snake.Move();
-    REQUIRE(snake.getHeadPosition().x == 1);
-    REQUIRE(snake.getHeadPosition().y == 1);
+    REQUIRE(snake.GetHeadPosition().x == 1);
+    REQUIRE(snake.GetHeadPosition().y == 1);
     REQUIRE(snake.isAlive());
 
     // Move left into wall (should die or stop, depending on implementation)
@@ -134,23 +134,23 @@ TEST_CASE("Snake tail grows, shrinks, and follows head correctly on TestLevel", 
     Snake snake(start, TestLevel);
 
     // Initial tail check
-    std::vector<Vector2> tail = snake.getTailPosition();
+    std::vector<Vector2> tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 1);
     REQUIRE(tail[0].x == 3);
     REQUIRE(tail[0].y == 2);
 
     // Grow tail by 2
     snake.ChangeTailSizeBy(2);
-    tail = snake.getTailPosition();
+    tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 3);
 
     // Move right
     snake.SetDirection(EDirection::LEFT);
     snake.Move();
-    REQUIRE(snake.getHeadPosition().x == 1); //problem
-    REQUIRE(snake.getHeadPosition().y == 2);
+    REQUIRE(snake.GetHeadPosition().x == 1); //problem
+    REQUIRE(snake.GetHeadPosition().y == 2);
 
-    tail = snake.getTailPosition();
+    tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 3);
     REQUIRE(tail[0].x == 2);
     REQUIRE(tail[0].y == 2);
@@ -161,16 +161,16 @@ TEST_CASE("Snake tail grows, shrinks, and follows head correctly on TestLevel", 
 
     // Shrink tail by 2
     snake.ChangeTailSizeBy(-2);
-    tail = snake.getTailPosition();
+    tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 1);
 
     // Move down
     snake.SetDirection(EDirection::DOWN);
     snake.Move();
-    REQUIRE(snake.getHeadPosition().x == 1);
-    REQUIRE(snake.getHeadPosition().y == 3);
-
-    tail = snake.getTailPosition();
+    REQUIRE(snake.GetHeadPosition().x == 1);
+    REQUIRE(snake.GetHeadPosition().y == 3);
+    
+    tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 1);
     REQUIRE(tail[0].x == 1);
     REQUIRE(tail[0].y == 2);
