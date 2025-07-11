@@ -30,7 +30,7 @@ void MoveDownCommand::execute(Snake &SnakeActor)
 }
 
 // Executes the null command; does nothing.
-void NullCommand::execute(Snake &SnakeActor)
+void NullCommand::execute(Snake &SnakeActor) noexcept
 {
     // do nothing
 }
