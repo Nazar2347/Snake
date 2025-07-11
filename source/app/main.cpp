@@ -79,20 +79,34 @@ int main()
                         AccumulatorTime -= GameConst::GameTick;
                     }
                 }
+                
 
                 // Draw
                 //----------------------------------------------------------------------------------
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
+                
+                
                 GameUI.DrawBackgorund();
+                
 
                 if (newGame->IsGameOver())
                 {
                     newGame->Render();
                     GameUI.SetGameState(EGameStates::GAME_OVER);
-                    
+                   
                 }
-                else if (newGame->IsLevelCompleted())
+                
+                else // Render the ongoing game
+                {
+                    newGame->Render();    
+                    GameUI.Update();
+                    GameUI.Draw();
+                }
+                
+                EndDrawing();
+                //----------------------------------------------------------------------------------
+                if (newGame->IsLevelCompleted())
                 {
                     newGame->Render();    // Render the completed level
                     WaitTime(3);          // Pause before moving to the next level
@@ -122,15 +136,6 @@ int main()
                         GameUI.SetGameState(EGameStates::WIN);
                     }
                 }
-                else // Render the ongoing game
-                {
-                    newGame->Render();    
-                    GameUI.Update();
-                    GameUI.Draw();
-                }
-
-                EndDrawing();
-                //----------------------------------------------------------------------------------
             }
 
         } break;
