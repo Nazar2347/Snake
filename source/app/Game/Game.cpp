@@ -81,7 +81,7 @@ void Game::ProcessInput()
 {
 
     PlayerCommand_ = InputHandler_.HandleInput(); // Get current input
-    if (PlayerCommand_)
+    if (PlayerCommand_ != nullptr)
     {
         PlayerCommand_->execute(*PlayerSnake_); // Apply command to snake
     }
@@ -124,20 +124,17 @@ void Game::Render()
 }
 
 // Returns true if the snake is dead
-bool Game::IsGameOver()
+bool Game::IsGameOver() const
 {
     if (PlayerSnake_->isAlive())
     {
         return false;
     }
-    else
-    {
-        return true;
-    }
+    return true;
 }
 
 // Returns true if all food has been consumed
-bool Game::IsLevelCompleted()
+bool Game::IsLevelCompleted() const
 {
     return bIsLevelCompleted_;
 }
@@ -149,10 +146,7 @@ size_t Game::GetAmountFoodLeft()
     {
         return 0;
     }
-    else
-    {
-        return LevelFoodStack.size();
-    }
+    return LevelFoodStack.size();
 }
 
 Game::~Game()

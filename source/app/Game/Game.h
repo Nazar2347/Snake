@@ -54,13 +54,13 @@ class Game
      * @brief Checks if the game is over.
      * @return True if the game is over, false otherwise.
      */
-    bool IsGameOver();
+    bool IsGameOver()const;
 
     /**
      * @brief Checks if the current level is completed.
      * @return True if the level is completed, false otherwise.
      */
-    bool IsLevelCompleted();
+    bool IsLevelCompleted()const ;
 
     /**
      * @brief Gets the amount of food left in the current level.
