@@ -3,8 +3,10 @@ using namespace std;
 
 Vector2 Level1StartingPos = { 6,6 };
 Vector2 Level2StartingPos = { 7,7 };
+Vector2 Level3StartingPos = { 7,6 };
 
-	vector<vector<bool>> Level1Data = {
+	vector<vector<bool>> Level1Data = 
+	{
 		{1,1,1,1,1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,0,1},
@@ -19,7 +21,8 @@ Vector2 Level2StartingPos = { 7,7 };
 		{1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 
-	vector<vector<bool>> Level2Data = {
+	vector<vector<bool>> Level2Data = 
+	{
 		{1,1,1,1,1,1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,1,0,1},
@@ -34,6 +37,22 @@ Vector2 Level2StartingPos = { 7,7 };
 		{1,1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 	
+	vector<vector<bool>> Level3Data =
+	{
+		{1,1,1,1,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,1,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,0,0,0,1,1,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1},
+
+	};
 
 Game::Game(EGameLevel CurrentLevel)
 {
@@ -117,7 +136,7 @@ bool Game::IsLevelCompleted()
 	return bIsLevelCompleted_;
 }
 
-int Game::GetAmountFoodLeft()
+size_t Game::GetAmountFoodLeft()
 {
 	if (LevelFoodStack.empty())
 	{
@@ -163,11 +182,9 @@ void Game::InitializeLevel2()
 
 	LevelFoodStack.emplace(new Frog( { 5,3 }, Level_));
 	LevelFoodStack.emplace(new Mouse( { 7,2 }, Level_));
+	LevelFoodStack.emplace(new Mouse( { 3,3 }, Level_));
 	LevelFoodStack.emplace(new Frog( { 2,1 }, Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 3,3 }, Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,5 }, Level_));
-	//LevelFoodStack.emplace(new Frog(FrogPoints, { 6,6 }, Level_));
-	//LevelFoodStack.emplace(new Mouse(MousePoints, { 8,3 }, Level_));
+	LevelFoodStack.emplace(new Mouse( { 8,5 }, Level_));
 
 
 	BoardRender_ = make_unique <RenderBoard>(*Level_);
@@ -182,7 +199,26 @@ void Game::InitializeLevel2()
 
 void Game::InitializeLevel3()
 {
+	Level_ = make_shared<Board>(Level3Data);
+	PlayerSnake_ = make_unique <Snake>(Level3StartingPos, Level_);
+
+	LevelFoodStack.emplace(new Frog ( { 5,3 }, Level_));
+	LevelFoodStack.emplace(new Mouse( { 7,2 }, Level_));
+	LevelFoodStack.emplace(new Mouse( { 3,3 }, Level_));
+	LevelFoodStack.emplace(new Frog ( { 2,1 }, Level_));
+	LevelFoodStack.emplace(new Mouse( { 8,5 }, Level_));
+	
+
+
+
+	BoardRender_ = make_unique <RenderBoard>(*Level_);
+	SnakeRender_ = make_unique <RenderSnake>(PlayerSnake_.get());
+	FoodRender_ = make_unique <FoodRender>();
+
+	PlayerCommand_ = new NullCommand();
+	PlayerSnake_->ChangeTailSizeBy(2);
 	bIsLevelCompleted_ = false;
+	FoodLeft = LevelFoodStack.size();
 }
 
 

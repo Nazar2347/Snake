@@ -23,7 +23,7 @@ public:
 	void Render();
 	bool IsGameOver();
 	bool IsLevelCompleted();
-	int GetAmountFoodLeft();
+	size_t GetAmountFoodLeft();
 	virtual ~Game();
 	size_t FoodLeft;
 protected:

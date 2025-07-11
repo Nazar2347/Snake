@@ -117,7 +117,7 @@ int main()
                     {
                         CurrentLevel = EGameLevel::LEVEL3;
                         delete newGame;
-                        newGame = new Game(EGameLevel::LEVEL1); //change!!!
+                        newGame = new Game(EGameLevel::LEVEL3); 
                         GameUI.SetGameScore(newGame->FoodLeft);
                         PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
