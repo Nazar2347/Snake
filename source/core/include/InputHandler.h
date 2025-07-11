@@ -1,6 +1,7 @@
 #pragma once
 #include "Command.h"
 #include <raylib.h>
+#include <memory>
 
 /**
  * @brief Handles user input and maps it to command objects.
@@ -33,9 +34,9 @@ public:
     virtual ~InputHandler();
 
 private:
-    Command* ButtonW_;      ///< Command for the 'W' key (move up).
-    Command* ButtonD_;      ///< Command for the 'D' key (move right).
-    Command* ButtonA_;      ///< Command for the 'A' key (move left).
-    Command* ButtonS_;      ///< Command for the 'S' key (move down).
-    Command* NullCommand_;  ///< Command for no input or unhandled input.
+    std::unique_ptr<Command> ButtonW_;      ///< Command for the 'W' key (move up).
+    std::unique_ptr<Command> ButtonD_;      ///< Command for the 'D' key (move right).
+    std::unique_ptr<Command> ButtonA_;      ///< Command for the 'A' key (move left).
+    std::unique_ptr<Command> ButtonS_;      ///< Command for the 'S' key (move down).
+    std::unique_ptr<Command> NullCommand_;  ///< Command for no input or unhandled input.
 };
