@@ -2,6 +2,7 @@
 
 IObject::IObject(Vector2 Position, std::shared_ptr<Board> Board) : Position_(Position), Board_(Board)
 {
+    NumberGenerator_ = nullptr;
 }
 
 ECellType IObject::CheckPosition(Vector2 Position)

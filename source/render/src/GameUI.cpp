@@ -14,7 +14,9 @@ GameUI::GameUI()
     ExitButton_ = new Button("Assets/ExitButton.png", {UI::SCREEN_WIDTH / 3 + 70, UI::SCREEN_HEIGHT / 2 + 75}, 0.75f);
     RestartButton_ = new Button("Assets/RestartButton.png", {UI::LOSE_LABLEL.x + 260, UI::LOSE_LABLEL.y + 200}, 0.5f);
     CurrentState_ = EGameStates::MENU;
+    StartScore_ = 0;
     Score_ = nullptr;
+    
 }
 
 // Updates the UI based on the current game state and button clicks
