@@ -38,6 +38,6 @@ private:
 	std::unique_ptr<FoodRender> FoodRender_;
 	std::stack<std::unique_ptr<IFood>> LevelFoodStack;
 	InputHandler InputHandler_;
-	 Command* PlayerCommand_;
+	Command* PlayerCommand_;
 	bool bIsLevelCompleted_;
 };

@@ -54,8 +54,12 @@ Game::Game(EGameLevel CurrentLevel)
 
 void Game::ProcessInput()
 {	
+	
 	PlayerCommand_ = InputHandler_.HandleInput();
-	PlayerCommand_->execute(*PlayerSnake_);
+	if (PlayerCommand_)
+	{
+		PlayerCommand_->execute(*PlayerSnake_);
+	}
 	
 }
 
@@ -132,7 +136,6 @@ Game::~Game()
 	
 	Level_.reset();
 	PlayerCommand_ = nullptr;
-	
 }
 
 void Game::InitializeLevel1()
