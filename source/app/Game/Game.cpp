@@ -66,10 +66,10 @@ void Game::ProcessInput()
 void Game::Update()
 {
 	
-	PlayerSnake_->Move();
 	if (!LevelFoodStack.empty())
 	{
-		if (PlayerSnake_->GetHeadPosition() == LevelFoodStack.top()->GetPosition())
+		PlayerSnake_->Move();
+		if (PlayerSnake_->GetHeadPosition() == LevelFoodStack.top()->GetPosition()) //collision handling
 		{
 			int FoodPoints = LevelFoodStack.top()->GetPoints();
 			PlayerSnake_->ChangeTailSizeBy(FoodPoints);
@@ -93,11 +93,11 @@ void Game::Update()
 void Game::Render()
 {
 	BoardRender_->Draw();
-	SnakeRender_->Draw();
 	if (!LevelFoodStack.empty())
 	{
 		FoodRender_->Draw(*LevelFoodStack.top());
 	}
+	SnakeRender_->Draw();
 }
 
 bool Game::IsGameOver()
@@ -128,8 +128,6 @@ int Game::GetAmountFoodLeft()
 		return LevelFoodStack.size();
 	}
 }
-
-
 
 Game::~Game()
 {

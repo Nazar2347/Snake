@@ -10,33 +10,33 @@ using namespace std;
 
 int main()
 {
-    // Initialization
-    //--------------------------------------------------------------------------------------
-
+    // Initialize the game window and UI
     InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "raylib [core] example - basic window");
     GameUI GameUI;
     EGameLevel CurrentLevel = EGameLevel::LEVEL1; // Tracks the current game level
     Game* newGame = nullptr;
 
-    float PreviousTime = static_cast<float>(GetTime());           // Stores the time at the previous frame
-    float AccumulatorTime = 0.0f;             // Accumulates elapsed time for fixed time steps
-    // Initialize the game window with specified width, height, and title
+    float PreviousTime = static_cast<float>(GetTime()); // Stores the time at the previous frame
+    float AccumulatorTime = 0.0f; // Accumulates elapsed time for fixed time steps
 
+    // Main application loop
     while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false)
     {
         switch (GameUI.GetGameState())
         {
         case EGameStates::MENU:
+            // Menu loop: waits for the player to start the game
             while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.bIsPaused_ == true)
             {
                 GameUI.Update();
 
+                // Start the game when unpaused
                 if (GameUI.bIsPaused_ == false)
                 { 
                     CurrentLevel = EGameLevel::LEVEL1;
                     if (newGame == nullptr)
                     {
-                        newGame = new Game(CurrentLevel);// Create a new game instance for the current level
+                        newGame = new Game(CurrentLevel); // Create a new game instance for the current level
                     }
                     else
                     {
@@ -47,7 +47,7 @@ int main()
                     GameUI.SetGameState(EGameStates::GAME);
 
                     PreviousTime = static_cast<float>(GetTime()); 
-                    AccumulatorTime = 0.0f;// Reset the timer when the game starts
+                    AccumulatorTime = 0.0f; // Reset the timer when the game starts
                 }
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
@@ -58,19 +58,19 @@ int main()
             break;
         case EGameStates::GAME:
         {
-            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() ==EGameStates::GAME)    // Detect window close button or ESC key
+            // Main game loop: handles gameplay and rendering
+            while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false && GameUI.GetGameState() == EGameStates::GAME)
             {
-                // Update
-                //----------------------------------------------------------------------------------
-                float CurrentTime = static_cast<float>(GetTime());                // Get the current time
+                // Update timing
+                float CurrentTime = static_cast<float>(GetTime()); // Get the current time
                 float DeltaTime = CurrentTime - PreviousTime; // Calculate time since last frame
-                PreviousTime = CurrentTime;                   // Update previous time
-                AccumulatorTime += DeltaTime;                 // Add to accumulator for fixed updates
+                PreviousTime = CurrentTime; // Update previous time
+                AccumulatorTime += DeltaTime; // Add to accumulator for fixed updates
 
-                // Only update the game if it's not over and the level is not completed
+                // Update game logic if not over or completed
                 if (!newGame->IsGameOver() && newGame->IsLevelCompleted() != true)
                 {
-                    newGame->ProcessInput();                  // Handle user input
+                    newGame->ProcessInput(); // Handle user input
 
                     // Update the game logic at fixed intervals (GameTick)
                     while (AccumulatorTime >= GameConst::GameTick)
@@ -78,10 +78,10 @@ int main()
                         newGame->Update();
                         AccumulatorTime -= GameConst::GameTick;
                     }
+                        GameUI.Update();
                 }
-
-                // Draw
-                //----------------------------------------------------------------------------------
+                
+                // Render the game and UI
                 BeginDrawing();
                 ClearBackground(RAYWHITE);
                 GameUI.DrawBackgorund();
@@ -90,14 +90,20 @@ int main()
                 {
                     newGame->Render();
                     GameUI.SetGameState(EGameStates::GAME_OVER);
-                    
                 }
-                else if (newGame->IsLevelCompleted())
+                else // Render the ongoing game
                 {
-                    newGame->Render();    // Render the completed level
-                    WaitTime(3);          // Pause before moving to the next level
+                    newGame->Render();    
+                    GameUI.Draw();
+                }
+                
+                EndDrawing();
 
-                    // Handle level progression
+                // Handle level completion and progression
+                if (newGame->IsLevelCompleted())
+                {
+                    WaitTime(3); // Pause before moving to the next level
+
                     if (CurrentLevel == EGameLevel::LEVEL1)
                     {
                         CurrentLevel = EGameLevel::LEVEL2;
@@ -118,26 +124,17 @@ int main()
                     }
                     else
                     {
-                        newGame->Render();
                         GameUI.SetGameState(EGameStates::WIN);
                     }
                 }
-                else // Render the ongoing game
-                {
-                    newGame->Render();    
-                    GameUI.Update();
-                    GameUI.Draw();
-                }
-
-                EndDrawing();
-                //----------------------------------------------------------------------------------
             }
 
         } break;
         
         default:
+            // Handles GAME_OVER and WIN states
             while (!WindowShouldClose() && GameUI.bIsGameShouldClose == false &&
-                (GameUI.GetGameState() == EGameStates::GAME_OVER|| GameUI.GetGameState() == EGameStates::WIN))
+                (GameUI.GetGameState() == EGameStates::GAME_OVER || GameUI.GetGameState() == EGameStates::WIN))
             {
                 GameUI.Update();
 
@@ -152,16 +149,9 @@ int main()
         break;
         }
     }
-    
 
-
-    // Main game loop
-    // Wait for the player to press ENTER to start the game
-
-    // De-Initialization
-    //--------------------------------------------------------------------------------------
-    CloseWindow();        // Close window and OpenGL context
-    //--------------------------------------------------------------------------------------
+    // Cleanup and exit
+    CloseWindow(); // Close window and OpenGL context
     delete newGame;
     return 0;
 }
