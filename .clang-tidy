@@ -5,7 +5,8 @@ Checks: 'modernize-*,readability-*'
 WarningsAsErrors: ''
 
 # Only run on your own headers (adjust the regex to your include paths)
-HeaderFilterRegex: '.*'
+HeaderFilterRegex: '^(include|src)'
+
 
 # Use Microsoft formatting style
 FormatStyle: Microsoft
