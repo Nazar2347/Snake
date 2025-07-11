@@ -1,10 +1,8 @@
 #pragma once
-#include <raylib.h>
-#include "GameConstants.h"
 #include "Button.h"
+#include "GameConstants.h"
+#include <raylib.h>
 #include <string>
-
-
 
 /**
  * @brief Enumerates the possible game states.
@@ -22,7 +20,7 @@ enum class EGameStates
  */
 class GameUI
 {
-public:
+  public:
     /**
      * @brief Constructs the GameUI object and initializes UI elements.
      */
@@ -71,8 +69,9 @@ public:
     /**
      * @brief Sets a GameScore for score bar
      */
-    void SetGameScore(size_t & GameScore);
-protected:
+    void SetGameScore(size_t &GameScore);
+
+  protected:
     /**
      * @brief Draws the main menu UI.
      */
@@ -94,8 +93,7 @@ protected:
      */
     void DrawGameUI();
 
-
-private:
+  private:
     /**
      * @brief The background texture for the UI.
      */
@@ -104,7 +102,6 @@ private:
     Texture2D GameOverLablel_;
     Texture2D YouWonLabel_;
     Texture2D ScoreBar_;
-    
 
     /**
      * @brief The current state of the game.
@@ -114,20 +111,20 @@ private:
     /**
      * @brief Pointer to the start button UI element.
      */
-    Button* StartButton_;
+    Button *StartButton_;
 
     /**
      * @brief Pointer to the exit button UI element.
      */
-    Button* ExitButton_;
+    Button *ExitButton_;
 
     /**
      * @brief Pointer to the restart button UI element.
      */
-    Button* RestartButton_;
+    Button *RestartButton_;
     /**
      * @brief Pointer to Game score
      */
-    size_t* Score_;
+    size_t *Score_;
     size_t StartScore_;
 };

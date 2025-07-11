@@ -1,20 +1,20 @@
 #pragma once
-#include <raylib.h>
 #include "GameConstants.h"
+#include <raylib.h>
 
 /**
  * @brief Represents a clickable button with a texture in the game UI.
  */
 class Button
 {
-public:
+  public:
     /**
      * @brief Constructs a Button object.
      * @param FileName Path to the texture file for the button.
      * @param Position The position where the button will be drawn.
      * @param size The scale factor for the button texture.
      */
-    Button(const char* FileName, Vector2 Position, float Scale);
+    Button(const char *FileName, Vector2 Position, float Scale);
 
     /**
      * @brief Draws the button on the screen.
@@ -31,7 +31,8 @@ public:
      * @brief Destroys the Button object and releases resources.
      */
     ~Button();
-private:
+
+  private:
     /**
      * @brief The texture used for the button.
      */

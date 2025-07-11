@@ -5,7 +5,7 @@
  */
 class RandomNumberGenerator
 {
-public:
+  public:
     /**
      * @brief Constructs a random number generator with the given range.
      * @param Min The minimum value (inclusive) that can be generated.
@@ -19,9 +19,7 @@ public:
      */
     int GetRandomValue();
 
-private:
-    std::mt19937 gen;  ///< Mersenne Twister random number engine.
+  private:
+    std::mt19937 gen;                        ///< Mersenne Twister random number engine.
     std::uniform_int_distribution<int> dist; ///< Uniform integer distribution for the specified range.
 };
-
-    

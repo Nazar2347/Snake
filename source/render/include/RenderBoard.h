@@ -10,12 +10,12 @@
  */
 class RenderBoard
 {
-public:
+  public:
     /**
      * @brief Constructs a RenderBoard with the given Board data.
      * @param Board Reference to the Board object containing level data.
      */
-    RenderBoard(const Board& Board);
+    RenderBoard(const Board &Board);
 
     /**
      * @brief Draws the board and its background to the screen.
@@ -27,11 +27,11 @@ public:
      */
     virtual ~RenderBoard();
 
-private:
-    const Board &LevelBoard_;                /**< The board data to be rendered. */
-    Texture2D BorderTopTexture_;      /**< Texture for the top border of the board. */
-    Texture2D GroundTexture1_;        /**< First ground texture for the board background. */
-    Texture2D GroundTexture2_;        /**< Second ground texture for the board background. */
+  private:
+    const Board &LevelBoard_;    /**< The board data to be rendered. */
+    Texture2D BorderTopTexture_; /**< Texture for the top border of the board. */
+    Texture2D GroundTexture1_;   /**< First ground texture for the board background. */
+    Texture2D GroundTexture2_;   /**< Second ground texture for the board background. */
 
     /**
      * @brief Draws the background elements of the board.

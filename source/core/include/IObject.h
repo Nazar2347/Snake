@@ -1,6 +1,6 @@
 #pragma once
-#include "Utilities.h"
 #include "Board.h"
+#include "Utilities.h"
 #include <memory>
 
 /**
@@ -10,7 +10,7 @@
  */
 class IObject
 {
-public:
+  public:
     /**
      * @brief Constructs a movable entity with a reference to the game board.
      * @param Board Reference to the game board.
@@ -29,8 +29,8 @@ public:
      */
     virtual ~IObject();
 
-protected:
-    RandomNumberGenerator* NumberGenerator_; ///< Pointer to a random number generator for movement logic.
+  protected:
+    RandomNumberGenerator *NumberGenerator_; ///< Pointer to a random number generator for movement logic.
     /**
      * @brief Checks the type of cell at the specified position.
      * @param Position The position to check.
@@ -38,5 +38,5 @@ protected:
      */
     virtual ECellType CheckPosition(Vector2 Position);
     std::weak_ptr<Board> Board_; ///< Pointer to the game board.
-    Vector2 Position_; 
+    Vector2 Position_;
 };

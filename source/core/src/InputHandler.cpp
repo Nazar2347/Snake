@@ -3,15 +3,15 @@
 // Constructor: Initializes command objects for each input direction and a null command.
 InputHandler::InputHandler()
 {
-    ButtonW_ = std::make_unique<MoveUPCommand>();      // 'W' or 'Up Arrow' key: Move up
-    ButtonD_ = std::make_unique <MoveRightCommand>();   // 'D' or 'Right Arrow' key: Move right
-    ButtonA_ = std::make_unique <MoveLeftCommand>();    // 'A' or 'Left Arrow' key: Move left
-    ButtonS_ = std::make_unique <MoveDownCommand>();    // 'S' or 'Down Arrow' key: Move down
-    NullCommand_ = std::make_unique <NullCommand>();    // No input: Do nothing
+    ButtonW_ = std::make_unique<MoveUPCommand>();    // 'W' or 'Up Arrow' key: Move up
+    ButtonD_ = std::make_unique<MoveRightCommand>(); // 'D' or 'Right Arrow' key: Move right
+    ButtonA_ = std::make_unique<MoveLeftCommand>();  // 'A' or 'Left Arrow' key: Move left
+    ButtonS_ = std::make_unique<MoveDownCommand>();  // 'S' or 'Down Arrow' key: Move down
+    NullCommand_ = std::make_unique<NullCommand>();  // No input: Do nothing
 }
 
 // Checks for key presses and returns the corresponding command object.
-Command* InputHandler::HandleInput()
+Command *InputHandler::HandleInput()
 {
     if (IsKeyPressed(KEY_W) || IsKeyPressed(KEY_UP))
     {
@@ -39,4 +39,3 @@ Command* InputHandler::HandleInput()
 InputHandler::~InputHandler()
 {
 }
-

@@ -1,17 +1,17 @@
 #pragma once
-#include <vector>
+#include "GameConstants.h"
 #include <raylib.h>
 #include <unordered_map>
-#include "GameConstants.h"
+#include <vector>
 
 /**
  * @brief Types of levels available in the game.
  */
 enum class ELevelType
 {
-    FOREST,         /**< Standard forest level. */
-    SPURCE_FOREST,  /**< Spruce forest level. */
-    WINTER_FOREST   /**< Winter-themed forest level. */
+    FOREST,        /**< Standard forest level. */
+    SPURCE_FOREST, /**< Spruce forest level. */
+    WINTER_FOREST  /**< Winter-themed forest level. */
 };
 
 /**
@@ -19,17 +19,17 @@ enum class ELevelType
  */
 enum class ECellType
 {
-    EMPTY,          /**< Empty cell. */
-    WALL,           /**< Wall cell. */
-    FOOD,           /**< Food cell. */
-    SNAKE,          /**< Snake cell. */
-    OUT_OF_BORDER   /**< Cell outside the board boundaries. */
+    EMPTY,        /**< Empty cell. */
+    WALL,         /**< Wall cell. */
+    FOOD,         /**< Food cell. */
+    SNAKE,        /**< Snake cell. */
+    OUT_OF_BORDER /**< Cell outside the board boundaries. */
 };
 
 /**
  * @brief Functor for comparing two Vector2 objects for equality.
  */
-struct Vector2Equal     
+struct Vector2Equal
 {
     /**
      * @brief Compares two Vector2 objects for equality.
@@ -37,7 +37,7 @@ struct Vector2Equal
      * @param b Second vector.
      * @return True if both vectors have the same integer coordinates, false otherwise.
      */
-    bool operator()(const Vector2& a, const Vector2& b) const noexcept;
+    bool operator()(const Vector2 &a, const Vector2 &b) const noexcept;
 };
 
 /**
@@ -50,7 +50,7 @@ struct Vector2Hash
      * @param v The vector to hash.
      * @return The hash value.
      */
-    std::size_t operator()(const Vector2& v) const noexcept;
+    std::size_t operator()(const Vector2 &v) const noexcept;
 };
 
 /**
@@ -58,7 +58,7 @@ struct Vector2Hash
  */
 class Board
 {
-public:
+  public:
     /**
      * @brief Constructs a Board from the given level data.
      * @param LevelData 2D vector representing the initial level layout.
@@ -108,7 +108,7 @@ public:
      */
     virtual ~Board();
 
-private:
+  private:
     /**
      * @brief Transforms the initial level data into the board map.
      */
@@ -116,7 +116,7 @@ private:
 
     std::vector<std::vector<bool>> LevelData_; /**< 2D vector storing the initial level layout. */
     std::unordered_map<Vector2, ECellType, Vector2Hash, Vector2Equal> BoardMap_; /**< Map storing the cell states. */
-    Vector2 StartingPosition_;                 /**< The starting position on the board. */
-    size_t LevelXSize_;                        /**< The width (number of columns) of the level. */
-    size_t LevelYSize_;                        /**< The height (number of rows) of the level. */
+    Vector2 StartingPosition_; /**< The starting position on the board. */
+    size_t LevelXSize_;        /**< The width (number of columns) of the level. */
+    size_t LevelYSize_;        /**< The height (number of rows) of the level. */
 };

@@ -1,8 +1,8 @@
 #pragma once
+#include "IObject.h"
 #include <raylib.h>
 #include <raymath.h>
 #include <vector>
-#include "IObject.h"
 
 /**
  * @brief Represents the possible movement directions for the snake.
@@ -17,12 +17,12 @@ enum class EDirection
 
 /**
  * @brief Represents the snake entity and its behavior in the game.
- * 
+ *
  * Inherits from IMove to provide movement logic.
  */
 class Snake : public IObject
 {
-public:
+  public:
     /**
      * @brief Constructs a Snake object at the given starting position.
      * @param StartingPos The initial position of the snake's head.
@@ -40,7 +40,10 @@ public:
      * @brief Gets the current position of the snake's head.
      * @return The position of the head.
      */
-    inline Vector2 GetHeadPosition() const { return Position_; }
+    inline Vector2 GetHeadPosition() const
+    {
+        return Position_;
+    }
     /**
      * @brief Changes the size of the snake's tail.
      * @param Size The amount to change the tail size by (positive to grow, negative to shrink).
@@ -49,7 +52,7 @@ public:
 
     /**
      * @brief Moves the snake in the current direction.
-     * 
+     *
      * Overrides IMove::Move.
      */
     void Move() override;
@@ -58,7 +61,10 @@ public:
      * @brief Checks if the snake is alive.
      * @return True if the snake is alive, false otherwise.
      */
-    inline bool isAlive()const { return bIsAlive_; }
+    inline bool isAlive() const
+    {
+        return bIsAlive_;
+    }
 
     /**
      * @brief Sets the direction of the snake's head.
@@ -70,18 +76,26 @@ public:
      * @brief Gets the current direction of the snake's head.
      * @return The current direction.
      */
-    inline EDirection GetDirection() const { return Direction_; }
+    inline EDirection GetDirection() const
+    {
+        return Direction_;
+    }
 
-    inline EDirection GetHeadDirection() const { return HeadDirection_; }
+    inline EDirection GetHeadDirection() const
+    {
+        return HeadDirection_;
+    }
     /**
      * @brief Destroys the Snake object.
      */
     virtual ~Snake();
-protected:
-   void SetHeadPosition(const Vector2 Position);
-private:
+
+  protected:
+    void SetHeadPosition(const Vector2 Position);
+
+  private:
     std::vector<Vector2> TailPosition_; ///< Positions of the tail segments.
     EDirection Direction_;
-    bool bIsAlive_;                     ///< Indicates if the snake is alive.
-    EDirection HeadDirection_;          /**< Indicates the direction for Snake movement. */
+    bool bIsAlive_;            ///< Indicates if the snake is alive.
+    EDirection HeadDirection_; /**< Indicates the direction for Snake movement. */
 };
