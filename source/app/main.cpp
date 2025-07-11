@@ -108,7 +108,6 @@ int main()
                 //----------------------------------------------------------------------------------
                 if (newGame->IsLevelCompleted())
                 {
-                    newGame->Render();    // Render the completed level
                     WaitTime(3);          // Pause before moving to the next level
 
                     // Handle level progression
@@ -132,7 +131,6 @@ int main()
                     }
                     else
                     {
-                        newGame->Render();
                         GameUI.SetGameState(EGameStates::WIN);
                     }
                 }
