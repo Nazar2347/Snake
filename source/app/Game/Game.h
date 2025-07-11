@@ -5,6 +5,7 @@
 #include "RenderSnake.h"
 #include "InputHandler.h"
 #include <stack>
+#include <memory>
 
 enum class EGameLevel
 {
@@ -30,12 +31,12 @@ protected:
 	void InitializeLevel2();
 	void InitializeLevel3();
 private:
-	Board* Level_;
-	Snake* PlayerSnake_;
-	RenderBoard* BoardRender_;
-	RenderSnake* SnakeRender_;
-	FoodRender* FoodRender_;
-	std::stack<IFood*> LevelFoodStack;
+	std::shared_ptr<Board> Level_;
+	std::unique_ptr<Snake> PlayerSnake_;
+	std::unique_ptr<RenderBoard> BoardRender_;
+	std::unique_ptr<RenderSnake> SnakeRender_;
+	std::unique_ptr<FoodRender> FoodRender_;
+	std::stack<std::unique_ptr<IFood>> LevelFoodStack;
 	InputHandler InputHandler_;
 	Command* PlayerCommand_;
 	bool bIsLevelCompleted_;

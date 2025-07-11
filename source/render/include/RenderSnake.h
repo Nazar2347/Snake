@@ -38,7 +38,7 @@ public:
      * @brief Constructs a RenderSnake object for a given Snake instance.
      * @param Snake Pointer to the Snake object to render.
      */
-    RenderSnake(Snake* Snake);
+    RenderSnake(const Snake* Snake);
 
     /**
      * @brief Draws the entire snake (head, body, tail) on the screen.
@@ -74,7 +74,7 @@ protected:
     void DrawSnakePart(Rectangle SnakePart, Vector2 Position) const;
 
 private:
-    Snake* Snake_; ///< Pointer to the Snake object being rendered.
+    const Snake* Snake_; ///< Pointer to the Snake object being rendered.
     Texture2D SnakeBodyTexture_; ///< Texture containing all snake parts.
 
     /**

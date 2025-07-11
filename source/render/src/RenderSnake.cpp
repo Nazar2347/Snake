@@ -2,7 +2,7 @@
 
 // Constructor: Initializes the RenderSnake with a pointer to a Snake object.
 // Loads the snake body texture from an image file if the Snake pointer is valid.
-RenderSnake::RenderSnake(Snake* Snake) : Snake_(Snake)
+RenderSnake::RenderSnake(const Snake* Snake) : Snake_(Snake)
 {
     if (Snake != nullptr)
     {
@@ -50,32 +50,32 @@ void RenderSnake::DrawHead() const
     // Render Snake Head in the correct direction
     if (Snake_->GetHeadDirection() == EDirection::UP)
     {
-        DrawSnakePart(SnakeParts[SnakePartType::HEAD_UP], Snake_->getHeadPosition());
+        DrawSnakePart(SnakeParts[SnakePartType::HEAD_UP], Snake_->GetHeadPosition());
     }
     else if (Snake_->GetHeadDirection() == EDirection::DOWN)
     {
-        DrawSnakePart(SnakeParts[SnakePartType::HEAD_DOWN], Snake_->getHeadPosition());
+        DrawSnakePart(SnakeParts[SnakePartType::HEAD_DOWN], Snake_->GetHeadPosition());
     }
     else if (Snake_->GetHeadDirection() == EDirection::RIGHT)
     {
-        DrawSnakePart(SnakeParts[SnakePartType::HEAD_RIGHT], Snake_->getHeadPosition());
+        DrawSnakePart(SnakeParts[SnakePartType::HEAD_RIGHT], Snake_->GetHeadPosition());
     }
     else if (Snake_->GetHeadDirection() == EDirection::LEFT)
     {
-        DrawSnakePart(SnakeParts[SnakePartType::HEAD_LEFT], Snake_->getHeadPosition());
+        DrawSnakePart(SnakeParts[SnakePartType::HEAD_LEFT], Snake_->GetHeadPosition());
     }
 }
 
 // Draws the snake's body segments, choosing the correct texture for straight or turning segments.
 void RenderSnake::DrawBody() const
 {
-    Vector2 Next = Snake_->getHeadPosition();
+    Vector2 Next = Snake_->GetHeadPosition();
 
     // Iterate through all tail segments except the last one
-    for (int i = 0; i < Snake_->getTailPosition().size() - 1; i++)
+    for (int i = 0; i < Snake_->GetTailPosition().size() - 1; i++)
     {
-        Vector2 Current = Snake_->getTailPosition()[i];
-        Vector2 Previous = Snake_->getTailPosition()[i + 1];
+        Vector2 Current = Snake_->GetTailPosition()[i];
+        Vector2 Previous = Snake_->GetTailPosition()[i + 1];
 
         // Draw straight vertical body part
         if (Next.x == Previous.x)
@@ -110,24 +110,24 @@ void RenderSnake::DrawBody() const
         }
 
         // Move to the next segment for the next iteration
-        Next = Snake_->getTailPosition()[i];
+        Next = Snake_->GetTailPosition()[i];
     }
 }
 
 // Draws the snake's tail using the correct texture based on the direction of the last segment.
 void RenderSnake::DrawTail() const
 {
-    size_t TailLenght = Snake_->getTailPosition().size();
+    size_t TailLenght = Snake_->GetTailPosition().size();
     Vector2 Next;
     if (TailLenght >= 1)
     {
-        Next = Snake_->getTailPosition()[TailLenght - 2];
+        Next = Snake_->GetTailPosition()[TailLenght - 2];
     }
     else
     {
-        Next = Snake_->getHeadPosition();
+        Next = Snake_->GetHeadPosition();
     }
-    Vector2 TailPos = Snake_->getTailPosition()[TailLenght - 1];
+    Vector2 TailPos = Snake_->GetTailPosition()[TailLenght - 1];
 
     // Determine the direction of the tail and draw the correct tail part
     if (Next.y < TailPos.y)

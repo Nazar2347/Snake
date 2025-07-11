@@ -28,20 +28,19 @@ public:
      * @param StartingPos The initial position of the snake's head.
      * @param Board Reference to the game board.
      */
-    Snake(Vector2 StartingPos, Board &Board);
+    Snake(Vector2 StartingPos, std::shared_ptr<Board> Board);
 
     /**
      * @brief Gets the positions of all tail segments.
      * @return A vector containing the positions of the tail segments.
      */
-    std::vector<Vector2> getTailPosition() const;
+    std::vector<Vector2> GetTailPosition() const;
 
     /**
      * @brief Gets the current position of the snake's head.
      * @return The position of the head.
      */
-    Vector2 getHeadPosition() const;
-
+    inline Vector2 GetHeadPosition() const { return Position_; }
     /**
      * @brief Changes the size of the snake's tail.
      * @param Size The amount to change the tail size by (positive to grow, negative to shrink).
@@ -59,7 +58,7 @@ public:
      * @brief Checks if the snake is alive.
      * @return True if the snake is alive, false otherwise.
      */
-    bool isAlive();
+    inline bool isAlive()const { return bIsAlive_; }
 
     /**
      * @brief Sets the direction of the snake's head.
@@ -71,17 +70,17 @@ public:
      * @brief Gets the current direction of the snake's head.
      * @return The current direction.
      */
-    EDirection GetDirection();
+    inline EDirection GetDirection() const { return Direction_; }
 
-    EDirection GetHeadDirection();
+    inline EDirection GetHeadDirection() const { return HeadDirection_; }
     /**
      * @brief Destroys the Snake object.
      */
     virtual ~Snake();
-
+protected:
+   void SetHeadPosition(const Vector2 Position);
 private:
     std::vector<Vector2> TailPosition_; ///< Positions of the tail segments.
-    Vector2 *HeadPosition_;              ///< Position of the snake's head.
     EDirection Direction_;
     bool bIsAlive_;                     ///< Indicates if the snake is alive.
     EDirection HeadDirection_;          /**< Indicates the direction for Snake movement. */
