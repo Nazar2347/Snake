@@ -68,6 +68,7 @@ void Game::Update()
 	
 	if (!LevelFoodStack.empty())
 	{
+		PlayerSnake_->Move();
 		if (PlayerSnake_->GetHeadPosition() == LevelFoodStack.top()->GetPosition()) //collision handling
 		{
 			int FoodPoints = LevelFoodStack.top()->GetPoints();
@@ -85,7 +86,6 @@ void Game::Update()
 	{
 		bIsLevelCompleted_ = true;
 	}
-	PlayerSnake_->Move();
 	
 	
 }

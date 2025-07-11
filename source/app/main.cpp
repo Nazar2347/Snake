@@ -78,6 +78,7 @@ int main()
                         newGame->Update();
                         AccumulatorTime -= GameConst::GameTick;
                     }
+                        GameUI.Update();
                 }
                 
                 // Render the game and UI
@@ -93,7 +94,6 @@ int main()
                 else // Render the ongoing game
                 {
                     newGame->Render();    
-                    GameUI.Update();
                     GameUI.Draw();
                 }
                 
