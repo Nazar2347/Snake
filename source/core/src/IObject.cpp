@@ -1,6 +1,6 @@
 #include "IObject.h"
 
-IObject::IObject(Vector2 Position, std::shared_ptr<Board> Board) : Position_(Position), Board_(Board)
+IObject::IObject(Vector2 Position, std::shared_ptr<Board> Board) : Board_(Board), Position_(Position)
 {
     NumberGenerator_ = nullptr;
 }

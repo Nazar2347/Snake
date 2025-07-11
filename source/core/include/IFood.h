@@ -32,19 +32,19 @@ class IFood : public IObject
      * @brief Gets the current position of the food.
      * @return The position of the food.
      */
-    virtual Vector2 GetPosition() const;
+    virtual Vector2 GetPosition() const noexcept;
 
     /**
      * @brief Gets the score value of the food.
      * @return The points awarded for this food.
      */
-    virtual short int GetPoints() const;
+    virtual short int GetPoints() const noexcept;
 
     /**
      * @brief Sets the position of the food.
      * @param Position The new position for the food.
      */
-    virtual void SetPosition(Vector2 Position);
+    virtual void SetPosition(Vector2 Position) noexcept;
 
     /**
      * @brief Performs the food's special action (to be implemented by derived classes).
@@ -55,7 +55,7 @@ class IFood : public IObject
      * @brief Gets the type of the food.
      * @return The food type.
      */
-    EFoodType GetFoodType() const;
+    EFoodType GetFoodType() const noexcept;
 
     /**
      * @brief Virtual destructor for IFood.
@@ -84,8 +84,8 @@ class AppleFood : public IFood
     /**
      * @brief Performs the apple's special action.
      */
-    void DoSomething() override;
-    void Move() override;
+    void DoSomething()noexcept override;
+    void Move()noexcept override;
 };
 
 /**

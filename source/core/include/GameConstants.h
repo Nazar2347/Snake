@@ -13,7 +13,7 @@ namespace GameConst
 /**
  * @brief Time interval for each game tick (in seconds).
  */
-inline constexpr float GameTick = 0.15f;
+inline constexpr float GameTick = 0.15F;
 } // namespace GameConst
 
 /// @namespace GameRules

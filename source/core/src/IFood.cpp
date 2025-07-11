@@ -15,33 +15,32 @@ IFood::IFood(short int Points, Vector2 Position, std::shared_ptr<Board> Board)
 }
 
 // Returns the current position of the food
-Vector2 IFood::GetPosition() const
+Vector2 IFood::GetPosition() const noexcept
 {
     return Position_;
 }
 
 // Returns the points value of the food
-short int IFood::GetPoints() const
+short int IFood::GetPoints() const noexcept
 {
     return Points_;
 }
 
 // Sets the position of the food
-void IFood::SetPosition(Vector2 Position)
+void IFood::SetPosition(Vector2 Position) noexcept
 {
     Position_ = Position;
 }
 
 // Returns the type of the food
-EFoodType IFood::GetFoodType() const
+EFoodType IFood::GetFoodType() const noexcept
 {
     return FoodType_;
 }
 
 // IFood destructor: clears the food from the board
-IFood::~IFood()
-{
-}
+IFood::~IFood() = default;
+
 
 // AppleFood constructor: sets type to APPLE
 AppleFood::AppleFood(Vector2 Position, std::shared_ptr<Board> Board) : IFood(GameRules::APPLE_POINTS, Position, Board)
@@ -50,11 +49,11 @@ AppleFood::AppleFood(Vector2 Position, std::shared_ptr<Board> Board) : IFood(Gam
 }
 
 // AppleFood does nothing special when activated
-void AppleFood::DoSomething()
+void AppleFood::DoSomething() noexcept
 {
     // do nothing
 }
-void AppleFood::Move()
+void AppleFood::Move() noexcept
 {
     // do nothing as it is a stationary item
 }
@@ -64,9 +63,10 @@ Frog::Frog(Vector2 Position, std::shared_ptr<Board> Board) : IFood(GameRules::FR
 {
     MoveTimer_ = 0;
     FoodType_ = EFoodType::FROG;
-    NumberGenerator_ = new RandomNumberGenerator(-2, 2);
+    constexpr int MinStep = -2;
+    constexpr int MaxStep = 2;
+    NumberGenerator_ = std::make_unique<RandomNumberGenerator>(MinStep, MaxStep);
 
-    this->Move();
 }
 
 // Frog jumps to a new position when number of MoveTimer is corresponds
@@ -101,10 +101,10 @@ void Frog::Move()
 Mouse::Mouse(Vector2 Position, std::shared_ptr<Board> Board) : IFood(GameRules::MOUSE_POINTS, Position, Board)
 {
     FoodType_ = EFoodType::MOUSE;
-    short MinStep = -1;
-    short MaxStep = 1;
-    NumberGenerator_ = new RandomNumberGenerator(MinStep, MaxStep);
-    this->Move();
+    constexpr short MinStep = -1;
+    constexpr short MaxStep = 1;
+    NumberGenerator_ = std::make_unique<RandomNumberGenerator>(MinStep, MaxStep);
+    MoveTimer_ = GameRules::MOUSE_MOVE_TIMER;
 }
 
 // Mouse moves to a new position when number of MoveTimer is corresponds
