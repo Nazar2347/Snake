@@ -90,7 +90,7 @@ protected:
 
     /**
      * @brief Draws inner game UI
-     * @param Score - for displaying score
+     * @param Score_ - for displaying score
      */
     void DrawGameUI();
 
@@ -128,5 +128,6 @@ private:
     /**
      * @brief Pointer to Game score
      */
-    size_t* Score;
+    size_t* Score_;
+    size_t StartScore_;
 };
