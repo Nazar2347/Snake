@@ -30,7 +30,7 @@ class IObject
     virtual ~IObject();
 
   protected:
-    RandomNumberGenerator *NumberGenerator_; ///< Pointer to a random number generator for movement logic.
+    std::unique_ptr<RandomNumberGenerator> NumberGenerator_; ///< Pointer to a random number generator for movement logic.
     /**
      * @brief Checks the type of cell at the specified position.
      * @param Position The position to check.
