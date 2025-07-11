@@ -43,7 +43,7 @@ int main()
                         delete newGame;
                         newGame = new Game(CurrentLevel);
                     }
-                    GameUI.SetGameScore(newGame->FoodLeft);
+                    GameUI.StartCountingGameScore(newGame->FoodLeft);
                     GameUI.SetGameState(EGameStates::GAME);
 
                     PreviousTime = static_cast<float>(GetTime());
@@ -109,7 +109,7 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL2;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL2);
-                        GameUI.SetGameScore(newGame->FoodLeft);
+                        GameUI.StartCountingGameScore(newGame->FoodLeft);
                         PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }
@@ -118,7 +118,7 @@ int main()
                         CurrentLevel = EGameLevel::LEVEL3;
                         delete newGame;
                         newGame = new Game(EGameLevel::LEVEL3);
-                        GameUI.SetGameScore(newGame->FoodLeft);
+                        GameUI.StartCountingGameScore(newGame->FoodLeft);
                         PreviousTime = static_cast<float>(GetTime());
                         AccumulatorTime = 0.0f;
                     }

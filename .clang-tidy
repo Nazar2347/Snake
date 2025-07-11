@@ -1,0 +1,11 @@
+# Enable checks from the modernize and readability modules
+Checks: 'modernize-*,readability-*'
+
+# Treat all warnings as normal (not errors)
+WarningsAsErrors: ''
+
+# Only run on your own headers (adjust the regex to your include paths)
+HeaderFilterRegex: '.*'
+
+# Use Microsoft formatting style
+FormatStyle: Microsoft

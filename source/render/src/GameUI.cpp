@@ -75,7 +75,7 @@ void GameUI::DrawMenu()
 
 void GameUI::DrawGameUI()
 {
-    int MaxFoodCount = StartScore_;
+    size_t MaxFoodCount = StartScore_;
 
     size_t FoodEaten = MaxFoodCount - *Score_;
     float progress = 1.0f - (float)*Score_ / MaxFoodCount;
@@ -87,18 +87,18 @@ void GameUI::DrawGameUI()
     DrawTextureEx(ScoreBar_, ScoreBarPos, 0.0f, UI::SCORE_BAR_SCALE / 10, WHITE);
 
     // Draw filled part
-    int filledWidth = static_cast<int>((ScoreBar_.width / 1.5) * progress - 15);
+    float filledWidth = static_cast<float>((ScoreBar_.width / 1.5) * progress - 15);
     Rectangle ScoreBarFillRec = {ScoreBarPos.x + 15, ScoreBarPos.y + 27, filledWidth,
                                  ScoreBar_.height / UI::SCORE_BAR_SCALE};
 
-    DrawRectangleRounded(ScoreBarFillRec, 0.7f, 30.0f, GOLD);
+    DrawRectangleRounded(ScoreBarFillRec, 0.7f, 30, GOLD);
 
     // Draw progress text (above bar)
     std::string text = "Food eaten: " + std::to_string(FoodEaten) + " / " + std::to_string(StartScore_);
-    DrawText(text.c_str(), ScoreBarPos.x, ScoreBarPos.y - 10, 20, YELLOW);
+    DrawText(text.c_str(), static_cast<int> (ScoreBarPos.x), static_cast<int>(ScoreBarPos.y - 10.0f), 20, YELLOW);
 }
 
-void GameUI::SetGameScore(size_t &GameScore)
+void GameUI::StartCountingGameScore(size_t &GameScore)
 {
     Score_ = &GameScore;
     StartScore_ = GameScore;

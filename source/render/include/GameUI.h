@@ -69,7 +69,7 @@ class GameUI
     /**
      * @brief Sets a GameScore for score bar
      */
-    void SetGameScore(size_t &GameScore);
+    void StartCountingGameScore(size_t &GameScore);
 
   protected:
     /**
