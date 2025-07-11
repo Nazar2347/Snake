@@ -2,22 +2,22 @@
 
 // Vector2Equal: Functor for comparing two Vector2 objects for equality in unordered_map.
 // Compares the integer values of x and y to avoid floating-point precision issues.
-bool Vector2Equal::operator()(const Vector2 &a, const Vector2 &b) const noexcept
+bool Vector2Equal::operator()(const Vector2 &FirstVector, const Vector2 &SecondVector) const noexcept
 {
-    return static_cast<int>(a.x) == static_cast<int>(b.x) && static_cast<int>(a.y) == static_cast<int>(b.y);
+    return static_cast<int>(FirstVector.x) == static_cast<int>(SecondVector.x) && static_cast<int>(FirstVector.y) == static_cast<int>(SecondVector.y);
 }
 
 // Vector2Hash: Functor for hashing a Vector2 object for use in unordered_map.
 // Hashes the integer values of x and y, combining them to produce a unique hash.
-size_t Vector2Hash::operator()(const Vector2 &v) const noexcept
+size_t Vector2Hash::operator()(const Vector2 &Vector) const noexcept
 {
-    int x = static_cast<int>(v.x);
-    int y = static_cast<int>(v.y);
+   const int x = static_cast<int>(Vector.x);
+   const int y = static_cast<int>(Vector.y);
     return std::hash<int>()(x) ^ (std::hash<int>()(y) << 1);
 }
 
 // Constructor: Initializes the board with the given level data
-Board::Board(std::vector<std::vector<bool>> LevelData) : LevelData_(LevelData)
+Board::Board(std::vector<std::vector<bool>> LevelData) : LevelData_(std::move(LevelData))
 {
     LevelYSize_ = LevelData_.size();         // Set board height
     LevelXSize_ = LevelData_.front().size(); // Set board width
@@ -98,6 +98,5 @@ size_t Board::GetLevelYSize() const
 }
 
 // Destructor
-Board::~Board()
-{
-}
+Board::~Board() = default;
+

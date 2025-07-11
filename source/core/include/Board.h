@@ -37,7 +37,7 @@ struct Vector2Equal
      * @param b Second vector.
      * @return True if both vectors have the same integer coordinates, false otherwise.
      */
-    bool operator()(const Vector2 &a, const Vector2 &b) const noexcept;
+    bool operator()(const Vector2 &FirstVector, const Vector2 &SecondVector) const noexcept;
 };
 
 /**
@@ -50,7 +50,7 @@ struct Vector2Hash
      * @param v The vector to hash.
      * @return The hash value.
      */
-    std::size_t operator()(const Vector2 &v) const noexcept;
+    std::size_t operator()(const Vector2 &Vector) const noexcept;
 };
 
 /**
