@@ -1,0 +1,15 @@
+# Enable checks from the modernize and readability modules
+Checks: >
+  modernize-*,
+  readability-*,
+  -modernize-use-trailing-return-type
+
+# Treat all warnings as normal (not errors)
+WarningsAsErrors: ''
+
+# Only run on your own headers (adjust the regex to your include paths)
+HeaderFilterRegex: '^(include|src)'
+
+
+# Use Microsoft formatting style
+FormatStyle: Microsoft

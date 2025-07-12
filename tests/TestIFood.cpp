@@ -1,7 +1,7 @@
-#include <catch2/catch_test_macros.hpp>
-#include <raylib.h>
 #include "Board.h"
 #include "IFood.h"
+#include <catch2/catch_test_macros.hpp>
+#include <raylib.h>
 
 // Helper: Create a simple 3x3 board with all cells empty
 static std::vector<std::vector<bool>> CreateEmptyLevelData(size_t rows = 3, size_t cols = 3)
@@ -9,14 +9,12 @@ static std::vector<std::vector<bool>> CreateEmptyLevelData(size_t rows = 3, size
     return std::vector<std::vector<bool>>(rows, std::vector<bool>(cols, false));
 }
 
-
-TEST_CASE("AppleFood constructs and has correct type", "[AppleFood]") 
+TEST_CASE("AppleFood constructs and has correct type", "[AppleFood]")
 {
     auto levelData = CreateEmptyLevelData();
     std::shared_ptr<Board> board;
     board = make_shared<Board>(levelData);
     Vector2 pos = {0, 2};
-    
 
     AppleFood apple(pos, board);
 
@@ -51,12 +49,13 @@ TEST_CASE("Frog moves when DoSomething is called", "[Frog]")
     // The frog may or may not move (if random pos is not empty), but after is always a valid cell
     REQUIRE(board->GetCellInfo(after) == ECellType::FOOD);
     // The previous cell should be empty unless frog didn't move
-    if (before.x != after.x || before.y != after.y) {
+    if (before.x != after.x || before.y != after.y)
+    {
         REQUIRE(board->GetCellInfo(before) == ECellType::EMPTY);
     }
 }
 
-TEST_CASE("Mouse moves when DoSomething is called", "[Mouse]") 
+TEST_CASE("Mouse moves when DoSomething is called", "[Mouse]")
 {
     auto levelData = CreateEmptyLevelData();
     std::shared_ptr<Board> board;
@@ -64,7 +63,7 @@ TEST_CASE("Mouse moves when DoSomething is called", "[Mouse]")
     Vector2 pos = {2, 2};
     short points = 3;
 
-    Mouse mouse( pos, board);
+    Mouse mouse(pos, board);
 
     REQUIRE(mouse.GetFoodType() == EFoodType::MOUSE);
 
@@ -73,7 +72,8 @@ TEST_CASE("Mouse moves when DoSomething is called", "[Mouse]")
     Vector2 after = mouse.GetPosition();
 
     REQUIRE(board->GetCellInfo(after) == ECellType::FOOD);
-    if (before.x != after.x || before.y != before.y) {
+    if (before.x != after.x || before.y != before.y)
+    {
         REQUIRE(board->GetCellInfo(before) == ECellType::EMPTY);
     }
 }

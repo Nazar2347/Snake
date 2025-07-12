@@ -3,20 +3,20 @@
 #include <iostream>
 
 // Constructor: Loads images and creates textures for the board
-RenderBoard::RenderBoard(const Board& Board): LevelBoard_(Board)
+RenderBoard::RenderBoard(const Board &Board) : LevelBoard_(Board)
 {
     Image TopBorder = LoadImage("Assets/BorderTop.png");
     Image Ground1 = LoadImage("Assets/Ground1.png");
     Image Ground2 = LoadImage("Assets/Ground2.png");
-    if (TopBorder.data == NULL || Ground1.data==NULL|| Ground2.data==NULL)
+    if (TopBorder.data == nullptr || Ground1.data == nullptr || Ground2.data == nullptr)
     {
         std::cout << "Failed to load image \n";
     }
-    
+
     BorderTopTexture_ = LoadTextureFromImage(TopBorder);
     GroundTexture1_ = LoadTextureFromImage(Ground1);
     GroundTexture2_ = LoadTextureFromImage(Ground2);
-    if (BorderTopTexture_.id == 0 || GroundTexture1_.id ==0 || GroundTexture2_.id ==0)
+    if (BorderTopTexture_.id == 0 || GroundTexture1_.id == 0 || GroundTexture2_.id == 0)
     {
         std::cout << "Failed to load texture for BorderTop.png \n";
     }
@@ -35,32 +35,33 @@ void RenderBoard::Draw() const
         {
             for (int j = 0; j < LevelBoard_.GetLevelYSize(); j++)
             {
-                Vector2 CurrentCell = { (float)i,float(j) };
+                Vector2 CurrentCell = {(float)i, float(j)};
                 if (LevelBoard_.GetCellInfo(CurrentCell) == ECellType::WALL)
                 {
                     // Draw border texture for active cell
-                    DrawTextureEx(BorderTopTexture_, { CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                        CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS }, 0.0f, UI::BLOCKS_SCALE, WHITE);
+                    DrawTextureEx(BorderTopTexture_,
+                                  {(CurrentCell.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                                   (CurrentCell.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                                  0.0F, UI::BLOCKS_SCALE, WHITE);
                 }
-                else 
+                else
                 {
                     // Alternate ground textures for inactive cells
                     if ((i + j) % 2 == 0)
                     {
-                        DrawTextureEx(GroundTexture1_, {
-                            CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                            CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS },
-                            0.0f, UI::BLOCKS_SCALE, WHITE);
+                        DrawTextureEx(GroundTexture1_,
+                                      {(CurrentCell.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                                       (CurrentCell.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                                      0.0F, UI::BLOCKS_SCALE, WHITE);
                     }
                     else
                     {
-                        DrawTextureEx(GroundTexture2_, {
-                            CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                            CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS },
-                            0.0f, UI::BLOCKS_SCALE, WHITE);
+                        DrawTextureEx(GroundTexture2_,
+                                      {(CurrentCell.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                                       (CurrentCell.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                                      0.0F, UI::BLOCKS_SCALE, WHITE);
                     }
                 }
-
             }
         }
     }
@@ -87,16 +88,7 @@ void RenderBoard::DrawBackground() const
     Backgoround.height = static_cast<float>(LevelBoard_.GetLevelYSize());
     Backgoround.width = static_cast<float>(LevelBoard_.GetLevelXSize());
 
-    DrawRectangle(
-        static_cast<int>(Backgoround.x),
-        static_cast<int>(Backgoround.y), 
-        static_cast<int>(Backgoround.width*UI::CELL_SIZE), 
-        static_cast<int>(Backgoround.height*UI::CELL_SIZE), 
-        LIME);
+    DrawRectangle(static_cast<int>(Backgoround.x), static_cast<int>(Backgoround.y),
+                  static_cast<int>(Backgoround.width * UI::CELL_SIZE),
+                  static_cast<int>(Backgoround.height * UI::CELL_SIZE), LIME);
 }
-
-
-
-
-
-

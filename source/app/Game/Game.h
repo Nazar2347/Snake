@@ -1,11 +1,11 @@
 #pragma once
 #include "Board.h"
+#include "InputHandler.h"
 #include "RenderBoard.h"
 #include "RenderFood.h"
 #include "RenderSnake.h"
-#include "InputHandler.h"
-#include <stack>
 #include <memory>
+#include <stack>
 
 /**
  * @enum EGameLevel
@@ -28,7 +28,7 @@ enum class EGameLevel
  */
 class Game
 {
-public:
+  public:
     /**
      * @brief Constructs a Game instance for the specified level.
      * @param Level The game level to initialize.
@@ -54,13 +54,13 @@ public:
      * @brief Checks if the game is over.
      * @return True if the game is over, false otherwise.
      */
-    bool IsGameOver();
+    bool IsGameOver()const;
 
     /**
      * @brief Checks if the current level is completed.
      * @return True if the level is completed, false otherwise.
      */
-    bool IsLevelCompleted();
+    bool IsLevelCompleted()const ;
 
     /**
      * @brief Gets the amount of food left in the current level.
@@ -78,7 +78,7 @@ public:
      */
     size_t FoodLeft;
 
-protected:
+  protected:
     /**
      * @brief Initializes level 1.
      */
@@ -94,14 +94,14 @@ protected:
      */
     void InitializeLevel3();
 
-private:
-    std::shared_ptr<Board> Level_;                /**< Pointer to the game board */
-    std::unique_ptr<Snake> PlayerSnake_;          /**< Pointer to the player snake */
-    std::unique_ptr<RenderBoard> BoardRender_;    /**< Pointer to the board renderer */
-    std::unique_ptr<RenderSnake> SnakeRender_;    /**< Pointer to the snake renderer */
-    std::unique_ptr<FoodRender> FoodRender_;      /**< Pointer to the food renderer */
+  private:
+    std::shared_ptr<Board> Level_;                     /**< Pointer to the game board */
+    std::unique_ptr<Snake> PlayerSnake_;               /**< Pointer to the player snake */
+    std::unique_ptr<RenderBoard> BoardRender_;         /**< Pointer to the board renderer */
+    std::unique_ptr<RenderSnake> SnakeRender_;         /**< Pointer to the snake renderer */
+    std::unique_ptr<FoodRender> FoodRender_;           /**< Pointer to the food renderer */
     std::stack<std::unique_ptr<IFood>> LevelFoodStack; /**< Stack of food items for the level */
-    InputHandler InputHandler_;                   /**< Handles player input */
-    Command* PlayerCommand_;                      /**< Current player command */
-    bool bIsLevelCompleted_;                      /**< Indicates if the level is completed */
+    InputHandler InputHandler_;                        /**< Handles player input */
+    Command *PlayerCommand_;                           /**< Current player command */
+    bool bIsLevelCompleted_;                           /**< Indicates if the level is completed */
 };

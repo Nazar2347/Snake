@@ -1,17 +1,17 @@
-#pragma once 
-#include <raylib.h>
+#pragma once
 #include "Board.h"
 #include "IObject.h"
+#include <raylib.h>
 
 /**
  * @brief Enumerates the different types of food available in the game.
  */
 enum class EFoodType
 {
-    APPLE,  /**< Apple food type. */
-    FROG,   /**< Frog food type. */
-    MOUSE,  /**< Mouse food type. */
-    NONE    /**< No food. */
+    APPLE, /**< Apple food type. */
+    FROG,  /**< Frog food type. */
+    MOUSE, /**< Mouse food type. */
+    NONE   /**< No food. */
 };
 
 /**
@@ -19,7 +19,7 @@ enum class EFoodType
  */
 class IFood : public IObject
 {
-public:
+  public:
     /**
      * @brief Constructs a food item with the given points, position, and board reference.
      * @param Points The score value of the food.
@@ -32,19 +32,19 @@ public:
      * @brief Gets the current position of the food.
      * @return The position of the food.
      */
-    virtual Vector2 GetPosition() const;
+    virtual Vector2 GetPosition() const noexcept;
 
     /**
      * @brief Gets the score value of the food.
      * @return The points awarded for this food.
      */
-    virtual short int GetPoints() const;
+    virtual short int GetPoints() const noexcept;
 
     /**
      * @brief Sets the position of the food.
      * @param Position The new position for the food.
      */
-    virtual void SetPosition(Vector2 Position);
+    virtual void SetPosition(Vector2 Position) noexcept;
 
     /**
      * @brief Performs the food's special action (to be implemented by derived classes).
@@ -55,17 +55,16 @@ public:
      * @brief Gets the type of the food.
      * @return The food type.
      */
-    EFoodType GetFoodType() const;
+    EFoodType GetFoodType() const noexcept;
 
     /**
      * @brief Virtual destructor for IFood.
      */
     virtual ~IFood();
 
-protected:
-    short int Points_;      ///< The score value of the food.
-    EFoodType FoodType_;    ///< The type of the food.
-   
+  protected:
+    short int Points_;   ///< The score value of the food.
+    EFoodType FoodType_; ///< The type of the food.
 };
 
 /**
@@ -73,7 +72,7 @@ protected:
  */
 class AppleFood : public IFood
 {
-public:
+  public:
     /**
      * @brief Constructs an AppleFood object.
      * @param Points The score value of the apple.
@@ -85,8 +84,8 @@ public:
     /**
      * @brief Performs the apple's special action.
      */
-    void DoSomething() override;
-    void Move()override;
+    void DoSomething() noexcept override;
+    void Move() noexcept override;
 };
 
 /**
@@ -94,7 +93,7 @@ public:
  */
 class Frog : public IFood
 {
-public:
+  public:
     /**
      * @brief Constructs a Frog object.
      * @param Points The score value of the frog.
@@ -108,12 +107,13 @@ public:
      */
     void DoSomething() override;
 
-protected:
+  protected:
     /**
      * @brief Moves the frog on the board.
      */
     void Move() override;
-private:
+
+  private:
     unsigned short MoveTimer_; ///< Move timer per frame
 };
 
@@ -122,7 +122,7 @@ private:
  */
 class Mouse : public IFood
 {
-public:
+  public:
     /**
      * @brief Constructs a Mouse object.
      * @param Points The score value of the mouse.
@@ -136,12 +136,13 @@ public:
      */
     void DoSomething() override;
 
-protected:
+  protected:
     /**
      * @brief Moves the mouse on the board.
      */
     void Move() override;
-private:
+
+  private:
     /**
      * @.
      */

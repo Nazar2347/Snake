@@ -1,7 +1,7 @@
 #pragma once
 #include "Command.h"
-#include <raylib.h>
 #include <memory>
+#include <raylib.h>
 
 /**
  * @brief Handles user input and maps it to command objects.
@@ -12,11 +12,11 @@
  */
 class InputHandler
 {
-public:
+  public:
     /**
      * @brief Constructs an InputHandler and initializes command mappings.
      */
-    InputHandler();
+    InputHandler() noexcept;
 
     /**
      * @brief Processes current input and returns the corresponding command.
@@ -26,17 +26,17 @@ public:
      *
      * @return Command* Pointer to the command corresponding to the current input.
      */
-    Command* HandleInput();
+    Command *HandleInput();
 
     /**
      * @brief Destructor for InputHandler.
      */
-    virtual ~InputHandler();
+    virtual ~InputHandler() = default;
 
-private:
-    std::unique_ptr<Command> ButtonW_;      ///< Command for the 'W' key (move up).
-    std::unique_ptr<Command> ButtonD_;      ///< Command for the 'D' key (move right).
-    std::unique_ptr<Command> ButtonA_;      ///< Command for the 'A' key (move left).
-    std::unique_ptr<Command> ButtonS_;      ///< Command for the 'S' key (move down).
-    std::unique_ptr<Command> NullCommand_;  ///< Command for no input or unhandled input.
+  private:
+    std::unique_ptr<Command> ButtonW_;     ///< Command for the 'W' key (move up).
+    std::unique_ptr<Command> ButtonD_;     ///< Command for the 'D' key (move right).
+    std::unique_ptr<Command> ButtonA_;     ///< Command for the 'A' key (move left).
+    std::unique_ptr<Command> ButtonS_;     ///< Command for the 'S' key (move down).
+    std::unique_ptr<Command> NullCommand_; ///< Command for no input or unhandled input.
 };

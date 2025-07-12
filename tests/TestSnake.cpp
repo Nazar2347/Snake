@@ -1,7 +1,7 @@
+#include "Board.h"
+#include "Snake.h"
 #include <catch2/catch_test_macros.hpp>
 #include <raylib.h>
-#include "Snake.h"
-#include "Board.h"
 
 std::vector<std::vector <bool>> TestLevelData = 
 {
@@ -15,8 +15,8 @@ std::vector<std::vector <bool>> TestLevelData =
 
 auto TestLevel = std::make_shared<Board>(TestLevelData);
 
-
-TEST_CASE("Snake Constructor initializes correctly", "[Snake]") {
+TEST_CASE("Snake Constructor initializes correctly", "[Snake]")
+{
     Vector2 start;
     start.x = 1;
     start.y = 1;
@@ -32,7 +32,8 @@ TEST_CASE("Snake Constructor initializes correctly", "[Snake]") {
     REQUIRE(snake.GetDirection() == EDirection::LEFT);
 }
 
-TEST_CASE("Snake::SetDirection and GetDirection", "[Snake]") {
+TEST_CASE("Snake::SetDirection and GetDirection", "[Snake]")
+{
     Vector2 start;
     start.x = 0;
     start.y = 0;
@@ -45,7 +46,8 @@ TEST_CASE("Snake::SetDirection and GetDirection", "[Snake]") {
     REQUIRE(snake.GetDirection() == EDirection::DOWN);
 }
 
-TEST_CASE("Snake::ChangeTailSizeBy grows and shrinks tail", "[Snake]") {
+TEST_CASE("Snake::ChangeTailSizeBy grows and shrinks tail", "[Snake]")
+{
     Vector2 start;
     start.x = 0;
     start.y = 0;
@@ -64,11 +66,11 @@ TEST_CASE("Snake::ChangeTailSizeBy grows and shrinks tail", "[Snake]") {
     // Shrink tail to zero, snake should die
     snake.ChangeTailSizeBy(-2);
     REQUIRE(snake.GetTailPosition().size() == 0);
-    REQUIRE_FALSE(snake.isAlive()); //problem
+    REQUIRE_FALSE(snake.isAlive()); // problem
 }
 
-
-TEST_CASE("Snake::isAlive returns correct state", "[Snake]") {
+TEST_CASE("Snake::isAlive returns correct state", "[Snake]")
+{
     Vector2 start;
     start.x = 0;
     start.y = 0;
@@ -80,7 +82,8 @@ TEST_CASE("Snake::isAlive returns correct state", "[Snake]") {
     REQUIRE_FALSE(snake.isAlive());
 }
 
-TEST_CASE("Snake::getHeadPosition and getTailPosition", "[Snake]") {
+TEST_CASE("Snake::getHeadPosition and getTailPosition", "[Snake]")
+{
     Vector2 start;
     start.x = 5;
     start.y = 5;
@@ -94,7 +97,8 @@ TEST_CASE("Snake::getHeadPosition and getTailPosition", "[Snake]") {
     REQUIRE(tail[0].y == 5);
 }
 
-TEST_CASE("Snake interacts correctly with custom TestLevel board", "[Snake][Board]") {
+TEST_CASE("Snake interacts correctly with custom TestLevel board", "[Snake][Board]")
+{
     // Use the provided TestLevelData and TestLevel
     Vector2 start;
     start.x = 2;
@@ -130,7 +134,8 @@ TEST_CASE("Snake interacts correctly with custom TestLevel board", "[Snake][Boar
     // REQUIRE(snake.getHeadPosition().y == 1);
 }
 
-TEST_CASE("Snake tail grows, shrinks, and follows head correctly on TestLevel", "[Snake][Tail]") {
+TEST_CASE("Snake tail grows, shrinks, and follows head correctly on TestLevel", "[Snake][Tail]")
+{
     Vector2 start;
     start.x = 2;
     start.y = 2;
@@ -150,7 +155,7 @@ TEST_CASE("Snake tail grows, shrinks, and follows head correctly on TestLevel", 
     // Move right
     snake.SetDirection(EDirection::LEFT);
     snake.Move();
-    REQUIRE(snake.GetHeadPosition().x == 1); //problem
+    REQUIRE(snake.GetHeadPosition().x == 1); // problem
     REQUIRE(snake.GetHeadPosition().y == 2);
 
     tail = snake.GetTailPosition();
@@ -172,7 +177,7 @@ TEST_CASE("Snake tail grows, shrinks, and follows head correctly on TestLevel", 
     snake.Move();
     REQUIRE(snake.GetHeadPosition().x == 1);
     REQUIRE(snake.GetHeadPosition().y == 3);
-    
+
     tail = snake.GetTailPosition();
     REQUIRE(tail.size() == 1);
     REQUIRE(tail[0].x == 1);

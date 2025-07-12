@@ -2,7 +2,7 @@
 
 // Constructor: Initializes the RenderSnake with a pointer to a Snake object.
 // Loads the snake body texture from an image file if the Snake pointer is valid.
-RenderSnake::RenderSnake(const Snake* Snake) : Snake_(Snake)
+RenderSnake::RenderSnake(const Snake *Snake) : Snake_(Snake)
 {
     if (Snake != nullptr)
     {
@@ -28,20 +28,20 @@ void RenderSnake::Draw() const
     }
     else
     {
-        DrawText("NO INITIALIZED SNAKE", static_cast<int>(UI::BOARD_INITIAL_X_POS), static_cast<int>(UI::BOARD_INITIAL_Y_POS), 14, RED);
+        DrawText("NO INITIALIZED SNAKE", 
+                    static_cast<int>(UI::BOARD_INITIAL_X_POS),
+                    static_cast<int>(UI::BOARD_INITIAL_Y_POS), 
+                    14, RED);
     }
 }
 
 // Draws a single part of the snake (head, body, or tail) at the specified board position.
 void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position) const
 {
-    DrawTextureRec(
-        SnakeBodyTexture_,
-        SnakePart,
-        { Position.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-          Position.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS },
-        WHITE
-    );
+    DrawTextureRec(SnakeBodyTexture_, SnakePart,
+                   {(Position.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                    (Position.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                   WHITE);
 }
 
 // Draws the snake's head using the correct texture based on the current direction.
@@ -88,23 +88,23 @@ void RenderSnake::DrawBody() const
             DrawSnakePart(SnakeParts[SnakePartType::BODY_HORIZONTAL], Current);
         }
         // Draw body turns (various corner cases)
-        else if ((Current.y == Next.y && Current.y > Previous.y) && (Current.x < Next.x && Current.x == Previous.x)
-                 || (Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x))
+        else if ((Current.y == Next.y && Current.y > Previous.y) && (Current.x < Next.x && Current.x == Previous.x) ||
+                 (Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x))
         {
             DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_LEFT], Current);
         }
-        else if (((Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x))
-                 || ((Current.y == Next.y && Current.y > Previous.y) && (Current.x > Next.x && Current.x == Previous.x)))
+        else if (((Current.y > Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x)) ||
+                 ((Current.y == Next.y && Current.y > Previous.y) && (Current.x > Next.x && Current.x == Previous.x)))
         {
             DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_DOWN_RIGHT], Current);
         }
-        else if (((Current.y == Next.y && Current.y < Previous.y) && (Current.x > Next.x && Current.x == Previous.x))
-                 || ((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x)))
+        else if (((Current.y == Next.y && Current.y < Previous.y) && (Current.x > Next.x && Current.x == Previous.x)) ||
+                 ((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x > Previous.x)))
         {
             DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_LEFT], Current);
         }
-        else if (((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x))
-                 || ((Current.y == Next.y && Current.y < Previous.y) && (Current.x < Next.x && Current.x == Previous.x)))
+        else if (((Current.y < Next.y && Current.y == Previous.y) && (Current.x == Next.x && Current.x < Previous.x)) ||
+                 ((Current.y == Next.y && Current.y < Previous.y) && (Current.x < Next.x && Current.x == Previous.x)))
         {
             DrawSnakePart(SnakeParts[SnakePartType::BODY_TURN_TOP_RIGHT], Current);
         }
@@ -153,5 +153,3 @@ RenderSnake::~RenderSnake()
 {
     UnloadTexture(SnakeBodyTexture_);
 }
-
-

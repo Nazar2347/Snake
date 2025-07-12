@@ -10,18 +10,19 @@
  */
 class Command
 {
-public:
+  public:
     /**
      * @brief Executes the command on the given Snake actor.
      * @param SnakeActor Reference to the Snake object to operate on.
      */
-    virtual void execute(Snake& SnakeActor) = 0;
+    virtual void execute(Snake &SnakeActor) = 0;
 
     /**
      * @brief Virtual destructor for safe polymorphic deletion.
      */
     virtual ~Command();
-protected:
+
+  protected:
 };
 
 /**
@@ -29,12 +30,12 @@ protected:
  */
 class MoveUPCommand : public Command
 {
-public:
+  public:
     /**
      * @brief Executes the move up action on the Snake.
      * @param SnakeActor Reference to the Snake object.
      */
-    void execute(Snake& SnakeActor) override;
+    void execute(Snake &SnakeActor) override;
 };
 
 /**
@@ -42,12 +43,12 @@ public:
  */
 class MoveDownCommand : public Command
 {
-public:
+  public:
     /**
      * @brief Executes the move down action on the Snake.
      * @param SnakeActor Reference to the Snake object.
      */
-    void execute(Snake& SnakeActor) override;
+    void execute(Snake &SnakeActor) override;
 };
 
 /**
@@ -55,12 +56,12 @@ public:
  */
 class MoveRightCommand : public Command
 {
-public:
+  public:
     /**
      * @brief Executes the move right action on the Snake.
      * @param SnakeActor Reference to the Snake object.
      */
-    void execute(Snake& SnakeActor) override;
+    void execute(Snake &SnakeActor) override;
 };
 
 /**
@@ -68,12 +69,12 @@ public:
  */
 class MoveLeftCommand : public Command
 {
-public:
+  public:
     /**
      * @brief Executes the move left action on the Snake.
      * @param SnakeActor Reference to the Snake object.
      */
-    void execute(Snake& SnakeActor) override;
+    void execute(Snake &SnakeActor) override;
 };
 
 /**
@@ -83,10 +84,10 @@ public:
  */
 class NullCommand : public Command
 {
-public:
+  public:
     /**
      * @brief Executes the null action (does nothing).
      * @param SnakeActor Reference to the Snake object.
      */
-    void execute(Snake & SnakeActor) override;
+    void execute(Snake &SnakeActor) noexcept override;
 };
