@@ -41,6 +41,7 @@ EFoodType IFood::GetFoodType() const noexcept
 // IFood destructor: clears the food from the board
 IFood::~IFood() = default;
 
+
 // AppleFood constructor: sets type to APPLE
 AppleFood::AppleFood(Vector2 Position, std::shared_ptr<Board> Board) : IFood(GameRules::APPLE_POINTS, Position, Board)
 {
