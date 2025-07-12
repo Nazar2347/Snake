@@ -18,7 +18,7 @@ Button::Button(const char *FileName, Vector2 Position, float Scale) : Position_(
 // Draws the button texture at its position
 void Button::Draw()
 {
-    DrawTextureEx(ButtonTexture_, Position_, 0.0f, 1.0f, WHITE);
+    DrawTextureEx(ButtonTexture_, Position_, 0.0F, 1.0F, WHITE);
 }
 
 // Returns true if the button is clicked with the mouse
@@ -33,10 +33,8 @@ bool Button::isClicked()
     {
         return true;
     }
-    else
-    {
         return false;
-    }
+    
 }
 
 // Destructor: unloads the button texture
