@@ -16,7 +16,7 @@ class InputHandler
     /**
      * @brief Constructs an InputHandler and initializes command mappings.
      */
-    InputHandler();
+    InputHandler() noexcept;
 
     /**
      * @brief Processes current input and returns the corresponding command.
@@ -31,7 +31,7 @@ class InputHandler
     /**
      * @brief Destructor for InputHandler.
      */
-    virtual ~InputHandler();
+    virtual ~InputHandler() = default;
 
   private:
     std::unique_ptr<Command> ButtonW_;     ///< Command for the 'W' key (move up).
