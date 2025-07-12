@@ -67,20 +67,17 @@ inline constexpr int SCREEN_WIDTH = 1280;
  */
 inline constexpr int SCREEN_HEIGHT = 720;
 
-/**
- * @brief Rectangle for the win label display.
- */
-constexpr Rectangle WIN_LABLEL = {(SCREEN_WIDTH / 3) - 50, (SCREEN_HEIGHT / 3), 650, 200};
 
 /**
  * @brief Rectangle for the lose label display.
  */
-constexpr Rectangle LOSE_LABLEL = {(SCREEN_WIDTH / 3) - 50, (SCREEN_HEIGHT / 2.5), 650, 200};
+constexpr Rectangle LABEL_REC = {(SCREEN_WIDTH / 3) - 50, (SCREEN_HEIGHT / 2.5), 650, 200};
 
 /**
+ * @brief Rectangle for the win label display.
  * @brief UI scaling factor.
  */
-constexpr float SCALE = 2.0f;
+constexpr float SCALE = 2.0F;
 
 /**
  * @brief Cell size in pixels.
@@ -90,12 +87,12 @@ constexpr float CELL_SIZE = 30 * SCALE; /*!< Cell size in pixels */
 /**
  * @brief Initial X position of the game board.
  */
-constexpr float BOARD_INITIAL_X_POS = 50.0f;
+constexpr float BOARD_INITIAL_X_POS = 50.0F;
 
 /**
  * @brief Initial Y position of the game board.
  */
-constexpr float BOARD_INITIAL_Y_POS = 0.0f;
+constexpr float BOARD_INITIAL_Y_POS = 0.0F;
 
 /**
  * @brief Scaling factor for blocks.
@@ -138,7 +135,7 @@ struct EXIT_BUTTON
 };
 struct RESTART_BUTTON
 {
-    static constexpr Vector2 Position_ = {UI::LOSE_LABLEL.x + 260, UI::LOSE_LABLEL.y + 200};
+    static constexpr Vector2 Position_ = {UI::LABEL_REC.x + 260, UI::LABEL_REC.y + 200};
     static constexpr float Scale_ = 0.5F;
 };
 

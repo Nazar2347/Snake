@@ -53,7 +53,9 @@ void Snake::ChangeTailSizeBy(int Size)
                 const Vector2 LastElementOfTail = TailPosition_.back();
                 const Vector2 NewLastElemtntOfTail = {LastElementOfTail.x + 1, LastElementOfTail.y};
                 TailPosition_.push_back(NewLastElemtntOfTail);
+#ifdef DEBUG
                 printf("TailPosition increased\n");
+#endif // DEBUG
             }
         }
     }
@@ -149,7 +151,10 @@ void Snake::Move()
         CheckPosition(GetHeadPosition()) == ECellType::SNAKE)
     {
         bIsAlive_ = false;
+#ifdef DEBUG
         printf("Snake died\n");
+#endif // DEBUG
+
         return;
     }
     Board_.lock()->SetCellType(GetHeadPosition(), ECellType::SNAKE);
