@@ -8,7 +8,7 @@ RenderBoard::RenderBoard(const Board &Board) : LevelBoard_(Board)
     Image TopBorder = LoadImage("Assets/BorderTop.png");
     Image Ground1 = LoadImage("Assets/Ground1.png");
     Image Ground2 = LoadImage("Assets/Ground2.png");
-    if (TopBorder.data == NULL || Ground1.data == NULL || Ground2.data == NULL)
+    if (TopBorder.data == nullptr || Ground1.data == nullptr || Ground2.data == nullptr)
     {
         std::cout << "Failed to load image \n";
     }
@@ -40,9 +40,9 @@ void RenderBoard::Draw() const
                 {
                     // Draw border texture for active cell
                     DrawTextureEx(BorderTopTexture_,
-                                  {CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                                   CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS},
-                                  0.0f, UI::BLOCKS_SCALE, WHITE);
+                                  {(CurrentCell.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                                   (CurrentCell.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                                  0.0F, UI::BLOCKS_SCALE, WHITE);
                 }
                 else
                 {
@@ -50,16 +50,16 @@ void RenderBoard::Draw() const
                     if ((i + j) % 2 == 0)
                     {
                         DrawTextureEx(GroundTexture1_,
-                                      {CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                                       CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS},
-                                      0.0f, UI::BLOCKS_SCALE, WHITE);
+                                      {(CurrentCell.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                                       (CurrentCell.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                                      0.0F, UI::BLOCKS_SCALE, WHITE);
                     }
                     else
                     {
                         DrawTextureEx(GroundTexture2_,
-                                      {CurrentCell.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                                       CurrentCell.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS},
-                                      0.0f, UI::BLOCKS_SCALE, WHITE);
+                                      {(CurrentCell.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                                       (CurrentCell.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                                      0.0F, UI::BLOCKS_SCALE, WHITE);
                     }
                 }
             }
