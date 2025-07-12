@@ -76,22 +76,22 @@ class Snake : public IObject
      * @brief Gets the current direction of the snake's head.
      * @return The current direction.
      */
-    inline EDirection GetDirection() const
+    inline EDirection GetDirection() const noexcept
     {
         return Direction_;
     }
 
-    inline EDirection GetHeadDirection() const
+    inline EDirection GetHeadDirection() const noexcept
     {
         return HeadDirection_;
     }
     /**
      * @brief Destroys the Snake object.
      */
-    virtual ~Snake();
+    virtual ~Snake()= default;
 
   protected:
-    void SetHeadPosition(const Vector2 Position);
+    void SetHeadPosition(const Vector2 Position) noexcept;
 
   private:
     std::vector<Vector2> TailPosition_; ///< Positions of the tail segments.

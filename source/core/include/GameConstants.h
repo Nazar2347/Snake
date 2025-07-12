@@ -44,6 +44,8 @@ inline constexpr int MAX_FOOD_ON_LEVEL = 5;
 
 inline constexpr unsigned short FROG_MOVE_TIMER = 5;
 inline constexpr unsigned short MOUSE_MOVE_TIMER = 2;
+
+inline constexpr unsigned short MAX_SNAKE_LENGHT = 50;
 } // namespace GameRules
 
 /// @namespace UI

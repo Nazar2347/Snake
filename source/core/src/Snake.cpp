@@ -2,10 +2,11 @@
 
 // Constructor: Initializes the snake's head position, alive state, direction, and starting tail
 Snake::Snake(Vector2 StartingPos, std::shared_ptr<Board> Board)
-    : IObject(StartingPos, Board), bIsAlive_(true), HeadDirection_(EDirection::LEFT), Direction_(EDirection::LEFT)
+    : IObject(StartingPos, Board), Direction_(EDirection::LEFT), bIsAlive_(true), HeadDirection_(EDirection::LEFT)
 {
     // Add initial tail segment to the right of the head
-    TailPosition_.push_back({StartingPos.x + 1, StartingPos.y});
+    const Vector2 TailPos = {StartingPos.x + 1, StartingPos.y};
+    TailPosition_.push_back(TailPos);
 }
 
 // Returns a copy of the current tail positions.
@@ -14,7 +15,7 @@ std::vector<Vector2> Snake::GetTailPosition() const
     return TailPosition_;
 }
 
-void Snake::SetHeadPosition(const Vector2 Position)
+void Snake::SetHeadPosition(const Vector2 Position) noexcept
 {
     Position_ = Position;
 }
@@ -27,7 +28,7 @@ void Snake::ChangeTailSizeBy(int Size)
         // Shrink the tail
         for (; Size < 0; Size++)
         {
-            if (TailPosition_.size() >= 1)
+            if (!TailPosition_.empty())
             {
                 Board_.lock()->SetCellType(TailPosition_.back(), ECellType::EMPTY);
                 TailPosition_.pop_back();
@@ -47,10 +48,11 @@ void Snake::ChangeTailSizeBy(int Size)
         // Grow the tail
         for (int i = 0; i < Size; i++)
         {
-            if (TailPosition_.size() >= 1 && TailPosition_.size() < 100)
+            if (!TailPosition_.empty() && TailPosition_.size() < GameRules::MAX_SNAKE_LENGHT)
             {
-                Vector2 LastElementOfTail = TailPosition_.back();
-                TailPosition_.push_back({LastElementOfTail.x + 1, LastElementOfTail.y});
+                const Vector2 LastElementOfTail = TailPosition_.back();
+                const Vector2 NewLastElemtntOfTail = {LastElementOfTail.x + 1, LastElementOfTail.y};
+                TailPosition_.push_back(NewLastElemtntOfTail);
                 printf("TailPosition increased\n");
             }
         }
@@ -82,7 +84,8 @@ void Snake::Move()
     }
 
     // Prevent immediate reversal into the first tail segment
-    if (Vector2Equals(NextCell, TailPosition_[0]))
+    const bool isGoingBackwards = static_cast<bool>(Vector2Equals(NextCell, TailPosition_.at(0)));
+    if (isGoingBackwards)
     {
         // Reverse direction if about to collide with first tail segment
         switch (Direction_)
@@ -130,9 +133,9 @@ void Snake::Move()
     // Move each tail segment to the position of the previous segment
     for (int i = 0; i < TailPosition_.size(); i++)
     {
-        Board_.lock()->SetCellType(TailPosition_[i], ECellType::SNAKE);
-        Vector2 OldBodyPos2 = TailPosition_[i];
-        TailPosition_[i] = OldBodyPos;
+        Board_.lock()->SetCellType(TailPosition_.at(i), ECellType::SNAKE);
+        const Vector2 OldBodyPos2 = TailPosition_.at(i);
+        TailPosition_.at(i) = OldBodyPos;
         OldBodyPos = OldBodyPos2;
         // Clear the last cell previously occupied by the tail
         if (i == TailPosition_.size() - 1)
@@ -156,8 +159,4 @@ void Snake::Move()
 void Snake::SetDirection(EDirection Direction)
 {
     Direction_ = Direction;
-}
-// Destructor
-Snake::~Snake()
-{
 }
