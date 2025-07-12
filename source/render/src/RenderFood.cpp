@@ -22,31 +22,31 @@ void FoodRender::Draw(const IFood &Object)
     {
         // Draw apple texture at the food's position
         DrawTextureEx(AppleTexture_,
-                      {Object.GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                       Object.GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS},
-                      0.0f, UI::OBJECTS_SCALE, WHITE);
+                      {(Object.GetPosition().x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                       (Object.GetPosition().y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                      0.0F, UI::OBJECTS_SCALE, WHITE);
     }
     else if (Object.GetFoodType() == EFoodType::FROG)
     {
         // Draw frog texture at the food's position
         DrawTextureEx(FrogTexture_,
-                      {Object.GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                       Object.GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS},
-                      0.0f, UI::OBJECTS_SCALE, WHITE);
+                      {(Object.GetPosition().x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                       (Object.GetPosition().y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                      0.0F, UI::OBJECTS_SCALE, WHITE);
     }
     else if (Object.GetFoodType() == EFoodType::MOUSE)
     {
         // Draw mouse texture at the food's position
         DrawTextureEx(MouseTexture_,
-                      {Object.GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS,
-                       Object.GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS},
-                      0.0f, UI::OBJECTS_SCALE, WHITE);
+                      {(Object.GetPosition().x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                       (Object.GetPosition().y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                      0.0F, UI::OBJECTS_SCALE, WHITE);
     }
     else
     {
         // Draw a red rectangle for unknown food types
-        DrawRectangle((int)(Object.GetPosition().x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS),
-                      (int)(Object.GetPosition().y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS), (int)UI::OBJECTS_SCALE,
+        DrawRectangle((int)((Object.GetPosition().x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS),
+                      (int)((Object.GetPosition().y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS), (int)UI::OBJECTS_SCALE,
                       (int)UI::OBJECTS_SCALE, RED);
     }
 }
