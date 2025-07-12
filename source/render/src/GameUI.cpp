@@ -10,13 +10,12 @@ GameUI::GameUI()
     GameOverLablel_ = LoadTexture("Assets/GameOver.png");
     YouWonLabel_ = LoadTexture("Assets/YouWon.png");
     ScoreBar_ = LoadTexture("Assets/ScoreBar.png");
-    StartButton_ = new Button("Assets/StartButton.png", {UI::SCREEN_WIDTH / 3 + 45, UI::SCREEN_HEIGHT / 3}, 0.9f);
-    ExitButton_ = new Button("Assets/ExitButton.png", {UI::SCREEN_WIDTH / 3 + 70, UI::SCREEN_HEIGHT / 2 + 75}, 0.75f);
-    RestartButton_ = new Button("Assets/RestartButton.png", {UI::LOSE_LABLEL.x + 260, UI::LOSE_LABLEL.y + 200}, 0.5f);
+    StartButton_ = new Button("Assets/StartButton.png", UI::START_BUTTON::Position_, UI::START_BUTTON::Scale_);
+    ExitButton_ = new Button("Assets/ExitButton.png", UI::EXIT_BUTTON::Position_, UI::EXIT_BUTTON::Scale_);
+    RestartButton_ = new Button("Assets/RestartButton.png", UI::RESTART_BUTTON::Position_, UI::RESTART_BUTTON::Scale_);
     CurrentState_ = EGameStates::MENU;
     StartScore_ = 0;
     Score_ = nullptr;
-    
 }
 
 // Updates the UI based on the current game state and button clicks
@@ -65,12 +64,7 @@ void GameUI::Update()
 // Draws the main menu background and buttons
 void GameUI::DrawMenu()
 {
-    DrawTextureEx(MenuPanel_,
-                  {
-                      UI::SCREEN_WIDTH / 3.8f,
-                      UI::SCREEN_HEIGHT / 6,
-                  },
-                  0.0f, 0.75f, WHITE);
+    DrawTextureEx(MenuPanel_, UI::MENU_PANEL::Position_, 0.0F, UI::MENU_PANEL::Scale, WHITE);
     StartButton_->Draw();
     ExitButton_->Draw();
 }
@@ -80,24 +74,26 @@ void GameUI::DrawGameUI()
     size_t MaxFoodCount = StartScore_;
 
     size_t FoodEaten = MaxFoodCount - *Score_;
-    float progress = 1.0f - (float)*Score_ / MaxFoodCount;
-
-    // Bar dimensions
-    Vector2 ScoreBarPos{900, 200};
+    float progress = 1.0F - ((float)*Score_ / MaxFoodCount);
 
     // Draw empty bar
-    DrawTextureEx(ScoreBar_, ScoreBarPos, 0.0f, UI::SCORE_BAR_SCALE / 10, WHITE);
+    DrawTextureEx(ScoreBar_, UI::SCORE_BAR::Position, 0.0F, UI::SCORE_BAR::Scale, WHITE);
 
+    // Setting a filled part
+    auto filledWidth = static_cast<float>(((ScoreBar_.width / 1.5) * progress) - 15);
+    Rectangle ScoreBarFillRec = {
+        UI::SCORE_BAR::Position.x + 15,
+        UI::SCORE_BAR::Position.y + 27,
+        filledWidth,
+        ScoreBar_.height / UI::SCORE_BAR_SCALE,
+    };
     // Draw filled part
-    float filledWidth = static_cast<float>((ScoreBar_.width / 1.5) * progress - 15);
-    Rectangle ScoreBarFillRec = {ScoreBarPos.x + 15, ScoreBarPos.y + 27, filledWidth,
-                                 ScoreBar_.height / UI::SCORE_BAR_SCALE};
-
-    DrawRectangleRounded(ScoreBarFillRec, 0.7f, 30, GOLD);
+    DrawRectangleRounded(ScoreBarFillRec, 0.7F, 30, GOLD);
 
     // Draw progress text (above bar)
     std::string text = "Food eaten: " + std::to_string(FoodEaten) + " / " + std::to_string(StartScore_);
-    DrawText(text.c_str(), static_cast<int> (ScoreBarPos.x), static_cast<int>(ScoreBarPos.y - 10.0f), 20, YELLOW);
+    DrawText(text.c_str(), static_cast<int>(UI::SCORE_BAR::Position.x),
+             static_cast<int>(UI::SCORE_BAR::Position.y - 15.0F), 20, YELLOW);
 }
 
 void GameUI::StartCountingGameScore(size_t &GameScore)
@@ -121,24 +117,14 @@ EGameStates GameUI::GetGameState()
 // Draws the win label and restart button
 void GameUI::DrawWinLabel()
 {
-    DrawTextureEx(YouWonLabel_,
-                  {
-                      UI::SCREEN_WIDTH / 3.8f,
-                      UI::SCREEN_HEIGHT / 6,
-                  },
-                  0.0f, 0.9f, WHITE);
+    DrawTextureEx(YouWonLabel_, UI::LARGE_MESSAGE_LABEL::Position, 0.0F, UI::LARGE_MESSAGE_LABEL::Scale, WHITE);
     RestartButton_->Draw();
 }
 
 // Draws the game over label and restart button
 void GameUI::DrawGameOverLabel()
 {
-    DrawTextureEx(GameOverLablel_,
-                  {
-                      UI::SCREEN_WIDTH / 3.8f,
-                      UI::SCREEN_HEIGHT / 6,
-                  },
-                  0.0f, 0.9f, WHITE);
+    DrawTextureEx(GameOverLablel_, UI::LARGE_MESSAGE_LABEL::Position, 0.0F, UI::LARGE_MESSAGE_LABEL::Scale, WHITE);
     RestartButton_->Draw();
 }
 
@@ -168,8 +154,7 @@ void GameUI::Draw()
 // Draws background
 void GameUI::DrawBackgorund()
 {
-    DrawTexture(Background_, static_cast<int>(UI::BOARD_INITIAL_X_POS - 50), static_cast<int>(UI::BOARD_INITIAL_Y_POS),
-                WHITE);
+    DrawTexture(Background_, 0, 0, WHITE);
 }
 
 // Destructor: unloads textures and deletes button objects

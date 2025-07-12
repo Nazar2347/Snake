@@ -108,4 +108,38 @@ constexpr float BLOCKS_SCALE = (SCALE / 10) + 0.01f;
 constexpr float OBJECTS_SCALE = (SCALE / 2) + 0.0f;
 
 constexpr float SCORE_BAR_SCALE = (SCALE * 3.5f);
+
+struct LARGE_MESSAGE_LABEL
+{
+    static constexpr Vector2 Position = {UI::SCREEN_WIDTH / 3.8f, UI::SCREEN_HEIGHT / 6};
+    static constexpr float Scale = 0.9F;
+};
+struct SCORE_BAR
+{
+    static constexpr Vector2 Position = {900, 200};
+    static constexpr float Scale = (SCALE * 3.5f) / 10;
+};
+
+struct MENU_PANEL
+{
+    static constexpr Vector2 Position_ = {UI::SCREEN_WIDTH / 3.8f, UI::SCREEN_HEIGHT / 6};
+    static constexpr float Scale = 0.75F;
+};
+
+struct START_BUTTON
+{
+    static constexpr Vector2 Position_ = {(UI::SCREEN_WIDTH / 3) + 45, UI::SCREEN_HEIGHT / 3};
+    static constexpr float Scale_ = 0.9F;
+};
+struct EXIT_BUTTON
+{
+    static constexpr Vector2 Position_ = {(UI::SCREEN_WIDTH / 3) + 70, (UI::SCREEN_HEIGHT / 2) + 75};
+    static constexpr float Scale_ = 0.75F;
+};
+struct RESTART_BUTTON
+{
+    static constexpr Vector2 Position_ = {UI::LOSE_LABLEL.x + 260, UI::LOSE_LABLEL.y + 200};
+    static constexpr float Scale_ = 0.5F;
+};
+
 } // namespace UI
