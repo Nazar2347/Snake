@@ -88,7 +88,7 @@ class Snake : public IObject
     /**
      * @brief Destroys the Snake object.
      */
-    virtual ~Snake()= default;
+    virtual ~Snake() = default;
 
   protected:
     void SetHeadPosition(const Vector2 Position) noexcept;

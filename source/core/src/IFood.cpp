@@ -41,7 +41,6 @@ EFoodType IFood::GetFoodType() const noexcept
 // IFood destructor: clears the food from the board
 IFood::~IFood() = default;
 
-
 // AppleFood constructor: sets type to APPLE
 AppleFood::AppleFood(Vector2 Position, std::shared_ptr<Board> Board) : IFood(GameRules::APPLE_POINTS, Position, Board)
 {
@@ -66,7 +65,6 @@ Frog::Frog(Vector2 Position, std::shared_ptr<Board> Board) : IFood(GameRules::FR
     constexpr int MinStep = -2;
     constexpr int MaxStep = 2;
     NumberGenerator_ = std::make_unique<RandomNumberGenerator>(MinStep, MaxStep);
-
 }
 
 // Frog jumps to a new position when number of MoveTimer is corresponds

@@ -89,5 +89,5 @@ class NullCommand : public Command
      * @brief Executes the null action (does nothing).
      * @param SnakeActor Reference to the Snake object.
      */
-    void execute(Snake &SnakeActor) noexcept override ;
+    void execute(Snake &SnakeActor) noexcept override;
 };

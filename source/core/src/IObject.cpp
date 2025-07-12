@@ -17,10 +17,8 @@ IObject::~IObject()
     }
 }
 
-IObject::IObject(IObject&& Object) noexcept
-    : NumberGenerator_(std::move(Object.NumberGenerator_)),
-      Board_(std::move(Object.Board_)),
+IObject::IObject(IObject &&Object) noexcept
+    : NumberGenerator_(std::move(Object.NumberGenerator_)), Board_(std::move(Object.Board_)),
       Position_(Object.Position_)
 {
-    
 }

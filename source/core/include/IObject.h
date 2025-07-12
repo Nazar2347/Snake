@@ -23,13 +23,13 @@ class IObject
     virtual ~IObject();
 
     // Deleted copy constructor and copy assignment operator
-    IObject(const IObject&) = delete;
-    IObject& operator=(const IObject&) = delete;
+    IObject(const IObject &) = delete;
+    IObject &operator=(const IObject &) = delete;
 
-    //Move constructor 
-    IObject(IObject&&) noexcept;
-    //Move assignment operator
-    IObject& operator=(IObject&&) noexcept = default;
+    // Move constructor
+    IObject(IObject &&) noexcept;
+    // Move assignment operator
+    IObject &operator=(IObject &&) noexcept = default;
 
     /**
      * @brief Moves the entity on the board.
@@ -39,7 +39,8 @@ class IObject
     virtual void Move() = 0;
 
   protected:
-    std::unique_ptr<RandomNumberGenerator> NumberGenerator_; ///< Pointer to a random number generator for movement logic.
+    std::unique_ptr<RandomNumberGenerator>
+        NumberGenerator_; ///< Pointer to a random number generator for movement logic.
     /**
      * @brief Checks the type of cell at the specified position.
      * @param Position The position to check.

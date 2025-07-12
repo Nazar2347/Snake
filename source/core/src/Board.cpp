@@ -4,15 +4,16 @@
 // Compares the integer values of x and y to avoid floating-point precision issues.
 bool Vector2Equal::operator()(const Vector2 &FirstVector, const Vector2 &SecondVector) const noexcept
 {
-    return static_cast<int>(FirstVector.x) == static_cast<int>(SecondVector.x) && static_cast<int>(FirstVector.y) == static_cast<int>(SecondVector.y);
+    return static_cast<int>(FirstVector.x) == static_cast<int>(SecondVector.x) &&
+           static_cast<int>(FirstVector.y) == static_cast<int>(SecondVector.y);
 }
 
 // Vector2Hash: Functor for hashing a Vector2 object for use in unordered_map.
 // Hashes the integer values of x and y, combining them to produce a unique hash.
 size_t Vector2Hash::operator()(const Vector2 &Vector) const noexcept
 {
-   const int x = static_cast<int>(Vector.x);
-   const int y = static_cast<int>(Vector.y);
+    const int x = static_cast<int>(Vector.x);
+    const int y = static_cast<int>(Vector.y);
     return std::hash<int>()(x) ^ (std::hash<int>()(y) << 1);
 }
 
@@ -99,4 +100,3 @@ size_t Board::GetLevelYSize() const
 
 // Destructor
 Board::~Board() = default;
-
