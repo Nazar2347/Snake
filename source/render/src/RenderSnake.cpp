@@ -28,18 +28,20 @@ void RenderSnake::Draw() const
     }
     else
     {
-        DrawText("NO INITIALIZED SNAKE", static_cast<int>(UI::BOARD_INITIAL_X_POS),
-                 static_cast<int>(UI::BOARD_INITIAL_Y_POS), 14, RED);
+        DrawText("NO INITIALIZED SNAKE", 
+                    static_cast<int>(UI::BOARD_INITIAL_X_POS),
+                    static_cast<int>(UI::BOARD_INITIAL_Y_POS), 
+                    14, RED);
     }
 }
 
 // Draws a single part of the snake (head, body, or tail) at the specified board position.
 void RenderSnake::DrawSnakePart(Rectangle SnakePart, Vector2 Position) const
 {
-    DrawTextureRec(
-        SnakeBodyTexture_, SnakePart,
-        {Position.x * UI::CELL_SIZE + UI::BOARD_INITIAL_X_POS, Position.y * UI::CELL_SIZE + UI::BOARD_INITIAL_Y_POS},
-        WHITE);
+    DrawTextureRec(SnakeBodyTexture_, SnakePart,
+                   {(Position.x * UI::CELL_SIZE) + UI::BOARD_INITIAL_X_POS,
+                    (Position.y * UI::CELL_SIZE) + UI::BOARD_INITIAL_Y_POS},
+                   WHITE);
 }
 
 // Draws the snake's head using the correct texture based on the current direction.
