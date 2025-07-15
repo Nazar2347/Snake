@@ -15,3 +15,5 @@ add_subdirectory(./source/core)
 add_subdirectory(./source/render)
 add_subdirectory(./tests)
 add_subdirectory(./external)
+
+install(TARGETS SnakeMain)
