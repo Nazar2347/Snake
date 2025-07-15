@@ -3,7 +3,7 @@ include (CMakePrintHelpers)
 file (GLOB_RECURSE CORE_HEADERS CONFIGURE_DEPENDS "./include/*.h")
 file (GLOB_RECURSE CORE_SOURCES CONFIGURE_DEPENDS "./src/*.cpp")
 
-add_library(${PROJECT_NAME} 
+add_library(${PROJECT_NAME} STATIC
 	${CORE_HEADERS}
 	${CORE_SOURCES}
 )
