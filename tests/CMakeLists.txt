@@ -15,7 +15,6 @@ add_executable (${PROJECT_NAME} ${TEST_SOURCES})
 
 target_link_libraries( ${PROJECT_NAME}
 	PRIVATE Catch2::Catch2WithMain
-	PRIVATE ExternalLibrary
 	PRIVATE SnakeCoreLib
 )
 

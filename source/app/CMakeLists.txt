@@ -20,3 +20,13 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMENT "Copying Assets to output directory"
 )
 
+
+
+# === Turning off console on release mod
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set_target_properties(SnakeMain PROPERTIES 
+        LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup"
+    )
+endif()
+
+ 
