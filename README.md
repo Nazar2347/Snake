@@ -1,5 +1,5 @@
 # Snake Game (C++ / Raylib)
-A mine representaion on the classic Snake game, built in C++ with Raylib for rendering and CMake for build automation.
+My representaion on the classic Snake game, built in C++ with Raylib for rendering and CMake for build automation.
 Includes core game logic, interactive UI, and robust unit tests using Catch2
 
 # Features
@@ -21,7 +21,7 @@ Includes core game logic, interactive UI, and robust unit tests using Catch2
 
 
   
-## How to run the game (Windows)🕹
+## How to run the game (Windows) (2.17 MB) 🕹
 1) You can run game by simply launching: Install->SnakeMain.exe 
 
 #### OR
