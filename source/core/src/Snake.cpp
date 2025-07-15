@@ -50,9 +50,29 @@ void Snake::ChangeTailSizeBy(int Size)
         {
             if (!TailPosition_.empty() && TailPosition_.size() < GameRules::MAX_SNAKE_LENGHT)
             {
-                const Vector2 LastElementOfTail = TailPosition_.back();
-                const Vector2 NewLastElemtntOfTail = {LastElementOfTail.x + 1, LastElementOfTail.y};
-                TailPosition_.push_back(NewLastElemtntOfTail);
+
+                const Vector2 LastTailSegment = TailPosition_.back();
+                Vector2 NewTailSegment = {LastTailSegment.x + 1,
+                                          LastTailSegment.y}; // default case to pushing to the right
+                if (TailPosition_.size() > 2)
+                {
+                    const Vector2 PreLastTailSegment = *(TailPosition_.end() - 2);
+
+                    if (PreLastTailSegment.y < LastTailSegment.y) // Push below of the tail
+                    {
+                        NewTailSegment = {LastTailSegment.x, LastTailSegment.y + 1};
+                    }
+                    else if (PreLastTailSegment.y > LastTailSegment.y)
+                    {
+                        NewTailSegment = {LastTailSegment.x, LastTailSegment.y - 1}; // push above of the tail
+                    }
+                    else if (PreLastTailSegment.x > LastTailSegment.x)
+                    {
+                        NewTailSegment = {LastTailSegment.x - 1, LastTailSegment.y}; // push to the left
+                    }
+                }
+
+                TailPosition_.push_back(NewTailSegment);
 #ifdef DEBUG
                 printf("TailPosition increased\n");
 #endif // DEBUG
