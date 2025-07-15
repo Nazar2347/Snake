@@ -10,8 +10,8 @@ target_include_directories(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} 
-	PUBLIC SnakeCoreLib
-	PUBLIC SnakeRenderLib
+	PRIVATE SnakeCoreLib
+	PRIVATE SnakeRenderLib
 )
 # === Custom target to copy assets folder ===
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
