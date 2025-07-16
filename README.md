@@ -65,7 +65,7 @@ Snake/
 # Kanban Project Managment methology
 - Since the beginning till the first release version all the work tasks have been described and managed
   by applying Kanban Project Managment methology to have structured and clear steps inorder to succeed 
-[!Kanban workflow](GitVisuals/KanbanWorkflow.png)
+![Kanban workflow](GitVisuals/KanbanWorkflow.png)
 
 ##
 🤓☝️ It's my forth small game project, where this time I used newly obtained skills such as:
