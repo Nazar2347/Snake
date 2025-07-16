@@ -40,7 +40,7 @@ You can see tests are always running after succesfull build and compilation of t
 ##
 ## Project structure📂:
 
-Snake/
+### Snake/
 
 ├── Assets            # Textures for game
 
@@ -48,7 +48,7 @@ Snake/
 
 ├── Install/       # Game Instalation package
 
-#### ├── source/
+### ├── source/
 
 │   ├── core/         # Game logic (Snake, Board, Food)
 
@@ -56,7 +56,7 @@ Snake/
 
 │   └── app/      # Game entry point and logic
 
-#### ├── tests/            # Catch2 unit tests
+### ├── tests/            # Catch2 unit tests
 
 ├── CMakeLists.txt    # Build configuration
 
@@ -68,7 +68,7 @@ Snake/
 ![Kanban workflow](GitVisuals/KanbanWorkflow.png)
 
 ##
-🤓☝️ It's my forth small game project, where this time I used newly obtained skills such as:
+🤓☝️ It's my third small game project, where this time I used newly obtained skills such as:
 - Game Patterns (GameLoop, Command)
 - Combination of popular code practices (S.O.L.I.D), and less coupling class architecture
 - Smart pointers
