@@ -13,7 +13,7 @@ Includes core game logic, interactive UI, and robust unit tests using Catch2
 - 📁 Clean folder structure and CMake build automation
 - 📄 DoxyDocumentaion
 - 📑 Clang for Code formating
-- 📊 Kanban Project Managment methodology
+- 📊 Kanban Project Managment methodology using Jira 
     ## Gameplay
   ![Level1](GitVisuals/GameCapture.gif)
   ![Level2](GitVisuals/GameCapture2.gif)
@@ -64,7 +64,7 @@ You can see tests are always running after succesfull build and compilation of t
 
 # Kanban Project Managment methology 📊🧐
 - Since the beginning till the first release version all the work tasks have been described and managed
-  by applying Kanban Project Managment methology to have structured and clear steps inorder to succeed 
+  by applying Kanban Project Managment methology in Jira Atlassian to have structured worflow and clear steps inorder to succeed 
 ![Kanban workflow](GitVisuals/KanbanWorkflow.png)
 
 ##
