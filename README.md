@@ -62,7 +62,7 @@ Snake/
 
 └── README.md         # This file
 
-# Kanban Project Managment methology
+# Kanban Project Managment methology 📊🧐
 - Since the beginning till the first release version all the work tasks have been described and managed
   by applying Kanban Project Managment methology to have structured and clear steps inorder to succeed 
 ![Kanban workflow](GitVisuals/KanbanWorkflow.png)
