@@ -13,7 +13,7 @@ Includes core game logic, interactive UI, and robust unit tests using Catch2
 - 📁 Clean folder structure and CMake build automation
 - 📄 DoxyDocumentaion
 - 📑 Clang for Code formating
-- Kanban Project Managment methodology
+- 📊 Kanban Project Managment methodology
     ## Gameplay
   ![Level1](GitVisuals/GameCapture.gif)
   ![Level2](GitVisuals/GameCapture2.gif)
