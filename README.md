@@ -13,6 +13,7 @@ Includes core game logic, interactive UI, and robust unit tests using Catch2
 - 📁 Clean folder structure and CMake build automation
 - 📄 DoxyDocumentaion
 - 📑 Clang for Code formating
+- Kanban Project Managment methodology
     ## Gameplay
   ![Level1](GitVisuals/GameCapture.gif)
   ![Level2](GitVisuals/GameCapture2.gif)
@@ -60,6 +61,11 @@ Snake/
 ├── CMakeLists.txt    # Build configuration
 
 └── README.md         # This file
+
+# Kanban Project Managment methology
+- Since the beginning till the first release version all the work tasks have been described and managed
+  by applying Kanban Project Managment methology to have structured and clear steps inorder to succeed 
+[!Kanban workflow](GitVisuals/KanbanWorkflow.png)
 
 ##
 🤓☝️ It's my forth small game project, where this time I used newly obtained skills such as:
