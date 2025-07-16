@@ -1,5 +1,5 @@
 # Snake Game (C++ / Raylib)
-My representaion on the classic Snake game, built in C++ with Raylib for rendering and CMake for build automation.
+My representaion on the classic Snake game, built in C++ with Raylib library for rendering and CMake for build automation.
 Includes core game logic, interactive UI, and robust unit tests using Catch2
 
 # Features
@@ -9,7 +9,7 @@ Includes core game logic, interactive UI, and robust unit tests using Catch2
 - 🟢 Rendering, UI, visuals with Raylib 
 - 🧪 Unit tests with Catch2
 - 🧱 Used OOP Game patterns: Command, GameLoop
-- 🧩 Separeted core logic from render and merging into game logic
+- 🧩 Separeted {core logic} from {render} and merging into {game logic} then into game loop 
 - 📁 Clean folder structure and CMake build automation
 - 📄 DoxyDocumentaion
 - 📑 Clang for Code formating
