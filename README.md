@@ -2,7 +2,7 @@
 My representaion on the classic Snake game, built in C++ with Raylib library for rendering and CMake for build automation.
 Includes core game logic, interactive UI, and robust unit tests using Catch2
 
-# Features
+# Project Features
 - 🎮 W,A,S,D - controlls
 - 🤖 Movable food for Snake - so it's a bit challeging :)
 - 🔰 3 levels with different layout + Level cutomization (incoming feature)
