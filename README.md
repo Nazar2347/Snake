@@ -3,7 +3,7 @@ My representaion on the classic Snake game, built in C++ with Raylib library for
 Includes core game logic, interactive UI, and robust unit tests using Catch2
 
 # Project Features
-- 🎮 W,A,S,D - controlls
+- 🎮 W,A,S,D - controls
 - 🤖 Movable food for Snake - so it's a bit challeging :)
 - 🔰 3 levels with different layout + Level cutomization (incoming feature)
 - 🟢 Rendering, UI, visuals with Raylib 
