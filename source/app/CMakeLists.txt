@@ -21,6 +21,8 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 )
 
 
+set_property(TARGET SnakeMain PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/..")
+
 
 # === Turning off console on release mod
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
