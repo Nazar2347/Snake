@@ -1,5 +1,7 @@
 #pragma once
 #include "Board.h"
+#include "GameState.h"
+#include "GameUI.h"
 #include "InputHandler.h"
 #include "RenderBoard.h"
 #include "RenderFood.h"
@@ -13,9 +15,10 @@
  */
 enum class EGameLevel
 {
-    LEVEL1, /**< First level */
-    LEVEL2, /**< Second level */
-    LEVEL3  /**< Third level */
+    LEVEL1,  /**< First level */
+    LEVEL2,  /**< Second level */
+    LEVEL3,  /**< Third level */
+    GAME_WIN /**< Game Completed*/
 };
 
 /**
@@ -23,7 +26,7 @@ enum class EGameLevel
  * @brief Manages the main game logic, state, and rendering.
  *
  * The Game class encapsulates the core gameplay loop, input handling,
- * rendering, and level management. It owns the board, snake, food, and
+ * rendering, and level management. It owns the board, UI,  snake, food, and
  * rendering objects, and controls progression between levels.
  */
 class Game
@@ -31,36 +34,47 @@ class Game
   public:
     /**
      * @brief Constructs a Game instance for the specified level.
-     * @param Level The game level to initialize.
      */
-    Game(EGameLevel Level);
-
+    Game();
+    void InitializeLevel();
     /**
-     * @brief Processes player input and updates the command state.
+     * @brief calls GameState to handle inputlogic
      */
     void ProcessInput();
+    /**
+     * @brief Processing input for Snake.
+     */
+    void ProcessInputOnGame();
 
     /**
-     * @brief Updates the game state, including snake movement and food logic.
+     * @brief calls GameState to handle update
      */
     void Update();
+    /**
+     * @brief Updates the game componetns during game  .
+     */
+    void UpdateOnPlay();
 
     /**
      * @brief Renders the current game state to the screen.
      */
     void Render();
+    /**
+     * @brief Renders the game componets duing Play scene.
+     */
+    void RenderOnPlay();
 
     /**
      * @brief Checks if the game is over.
      * @return True if the game is over, false otherwise.
      */
-    bool IsGameOver()const;
+    bool IsGameOver() const;
 
     /**
      * @brief Checks if the current level is completed.
      * @return True if the level is completed, false otherwise.
      */
-    bool IsLevelCompleted()const ;
+    bool IsLevelCompleted() const;
 
     /**
      * @brief Gets the amount of food left in the current level.
@@ -77,6 +91,26 @@ class Game
      * @brief Stores the amount of food left in the current level.
      */
     size_t FoodLeft;
+
+    /**
+     * @return Return reference on GameUI object.
+     */
+    GameUI &GetGameUI();
+
+    /**
+     * @brief Switches the Game State.
+     */
+    void SetCurrentState(std::unique_ptr<GameState> State);
+    /**
+     * @return  true - if EGameLevel == Win.
+     */
+
+    bool IsGameWin();
+
+    /**
+     * @brief Indicates whether the game should close.
+     */
+    bool bIsGameShouldClose_;
 
   protected:
     /**
@@ -101,7 +135,10 @@ class Game
     std::unique_ptr<RenderSnake> SnakeRender_;         /**< Pointer to the snake renderer */
     std::unique_ptr<FoodRender> FoodRender_;           /**< Pointer to the food renderer */
     std::stack<std::unique_ptr<IFood>> LevelFoodStack; /**< Stack of food items for the level */
-    InputHandler InputHandler_;                        /**< Handles player input */
-    Command *PlayerCommand_;                           /**< Current player command */
-    bool bIsLevelCompleted_;                           /**< Indicates if the level is completed */
+    std::unique_ptr<GameState> CurrentState_;
+    GameUI GameUI_;             /**< UI of the game/ */
+    EGameLevel CurrentLevel_;   /**< Indicator of ongoing level */
+    InputHandler InputHandler_; /**< Handles player input */
+    Command *PlayerCommand_;    /**< Current player command */
+    bool bIsLevelCompleted_;    /**< Indicates if the level is completed */
 };
