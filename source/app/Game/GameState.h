@@ -1,18 +1,17 @@
 #pragma once
-#include "Game.h"
+class Game;
 
 class GameState
 {
   public:
-    GameState(Game& RefGame);
+    GameState(Game &RefGame);
     virtual void Render() = 0;
     virtual void Update() = 0;
+    virtual void ProcessInput() = 0;
     virtual ~GameState();
 
   protected:
-     Game& Game_;
-  private:
-
+    Game &Game_;
 };
 
 class GameState_Menu : public GameState
@@ -21,7 +20,7 @@ class GameState_Menu : public GameState
     GameState_Menu(Game &RefGame);
     void Render() override;
     void Update() override;
-  private:
+    void ProcessInput() override;
 };
 
 class GameState_Play : public GameState
@@ -30,8 +29,7 @@ class GameState_Play : public GameState
     GameState_Play(Game &RefGame);
     void Render() override;
     void Update() override;
-  private:
-
+    void ProcessInput() override;
 };
 
 class GameState_Win : public GameState
@@ -40,7 +38,7 @@ class GameState_Win : public GameState
     GameState_Win(Game &RefGame);
     void Render() override;
     void Update() override;
-  private:
+    void ProcessInput() override;
 };
 class GameState_Lose : public GameState
 {
@@ -48,5 +46,5 @@ class GameState_Lose : public GameState
     GameState_Lose(Game &RefGame);
     void Render() override;
     void Update() override;
-  private:
+    void ProcessInput() override;
 };

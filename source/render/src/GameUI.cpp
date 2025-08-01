@@ -3,8 +3,6 @@
 // Constructor: initializes UI state, loads textures, and creates buttons
 GameUI::GameUI()
 {
-    bIsPaused_ = true;
-    bIsGameShouldClose = false;
     Background_ = LoadTexture("Assets/GameBackground.png");
     MenuPanel_ = LoadTexture("Assets/MenuPanel.png");
     GameOverLablel_ = LoadTexture("Assets/GameOver.png");
@@ -13,53 +11,10 @@ GameUI::GameUI()
     StartButton_ = new Button("Assets/StartButton.png", UI::START_BUTTON::Position_, UI::START_BUTTON::Scale_);
     ExitButton_ = new Button("Assets/ExitButton.png", UI::EXIT_BUTTON::Position_, UI::EXIT_BUTTON::Scale_);
     RestartButton_ = new Button("Assets/RestartButton.png", UI::RESTART_BUTTON::Position_, UI::RESTART_BUTTON::Scale_);
-    CurrentState_ = EGameStates::MENU;
     StartScore_ = 0;
     Score_ = nullptr;
 }
 
-// Updates the UI based on the current game state and button clicks
-void GameUI::Update()
-{
-    switch (CurrentState_)
-    {
-    case EGameStates::MENU:
-        // Start game if Start button is clicked
-        if (StartButton_->isClicked())
-        {
-            CurrentState_ = EGameStates::GAME;
-            bIsPaused_ = false;
-        }
-        // Set flag to close game if Exit button is clicked
-        if (ExitButton_->isClicked())
-        {
-            bIsGameShouldClose = true;
-        }
-        break;
-    case EGameStates::GAME:
-        // No UI update needed during gameplay
-
-        break;
-    case EGameStates::GAME_OVER:
-        // Return to menu if Restart button is clicked
-        if (RestartButton_->isClicked())
-        {
-            CurrentState_ = EGameStates::MENU;
-            bIsPaused_ = true;
-        }
-        break;
-    case EGameStates::WIN:
-        // Return to menu if Restart button is clicked
-        if (RestartButton_->isClicked())
-        {
-            CurrentState_ = EGameStates::MENU;
-            bIsPaused_ = true;
-        }
-        break;
-    default:
-        break;
-    }
-}
 
 // Draws the main menu background and buttons
 void GameUI::DrawMenu()
@@ -102,18 +57,6 @@ void GameUI::StartCountingGameScore(size_t &GameScore)
     StartScore_ = GameScore;
 }
 
-// Sets the current game state
-void GameUI::SetGameState(EGameStates NewGameState)
-{
-    CurrentState_ = NewGameState;
-}
-
-// Returns the current game state
-EGameStates GameUI::GetGameState()
-{
-    return CurrentState_;
-}
-
 // Draws the win label and restart button
 void GameUI::DrawWinLabel()
 {
@@ -128,33 +71,25 @@ void GameUI::DrawGameOverLabel()
     RestartButton_->Draw();
 }
 
-// Draws the UI based on the current game state
-void GameUI::Draw()
-{
-
-    switch (CurrentState_)
-    {
-    case EGameStates::MENU:
-        DrawMenu();
-        break;
-    case EGameStates::GAME:
-        DrawGameUI();
-        break;
-    case EGameStates::GAME_OVER:
-        DrawGameOverLabel();
-        break;
-    case EGameStates::WIN:
-        DrawWinLabel();
-        break;
-    default:
-        DrawMenu();
-        break;
-    }
-}
 // Draws background
 void GameUI::DrawBackgorund()
 {
     DrawTexture(Background_, 0, 0, WHITE);
+}
+
+bool GameUI::IsStartButtonClicked()
+{
+    return StartButton_->isClicked();
+}
+
+bool GameUI::IsRestartButtonClicked()
+{
+    return RestartButton_->isClicked();
+}
+
+bool GameUI::IsExitButtonClicked()
+{
+    return RestartButton_->isClicked();
 }
 
 // Destructor: unloads textures and deletes button objects

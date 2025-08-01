@@ -55,11 +55,27 @@ Vector2 Level3StartingPos = {7, 7};
 };
 
 // Constructor: initializes level based on enum
-Game::Game(EGameLevel CurrentLevel)
+Game::Game()
 {
-    // 12x12
+    CurrentLevel_ = EGameLevel::LEVEL1;
+    bIsGameShouldClose_ = false;
+    CurrentState_ = std::make_unique<GameState_Menu>(*this);
+}
 
-    switch (CurrentLevel)
+void Game::InitializeLevel()
+{
+    PlayerCommand_ = new NullCommand();
+    Level_.reset();
+    PlayerSnake_.reset();
+    while (!LevelFoodStack.empty())
+    {
+        LevelFoodStack.pop();
+    }
+    BoardRender_.reset();
+    SnakeRender_.reset();
+    FoodRender_.reset();
+
+    switch (CurrentLevel_)
     {
     case EGameLevel::LEVEL1:
         InitializeLevel1();
@@ -72,13 +88,18 @@ Game::Game(EGameLevel CurrentLevel)
         break;
     default:
         InitializeLevel1();
+        CurrentLevel_ = EGameLevel::LEVEL1;
     }
 }
 
-// Handles player input and executes commands
 void Game::ProcessInput()
 {
+    CurrentState_->ProcessInput();
+}
 
+// Handles player input and executes commands
+void Game::ProcessInputOnGame()
+{
     PlayerCommand_ = InputHandler_.HandleInput(); // Get current input
     if (PlayerCommand_ != nullptr)
     {
@@ -86,14 +107,17 @@ void Game::ProcessInput()
     }
 }
 
-// Updates game logic: snake movement, food interaction, and level state
 void Game::Update()
 {
-
+    CurrentState_->Update();
+}
+// Updates game logic: snake movement, food interaction, and level state
+void Game::UpdateOnPlay()
+{
     if (!LevelFoodStack.empty())
     {
         PlayerSnake_->Move();
-        if (PlayerSnake_->GetHeadPosition() == LevelFoodStack.top()->GetPosition()) // collision handling
+        if (PlayerSnake_->GetHeadPosition() == LevelFoodStack.top()->GetPosition()) // food collision handling
         {
             int FoodPoints = LevelFoodStack.top()->GetPoints();
             PlayerSnake_->ChangeTailSizeBy(FoodPoints);
@@ -108,11 +132,29 @@ void Game::Update()
     else
     {
         bIsLevelCompleted_ = true; // No food left
+
+        switch (CurrentLevel_) // itterate to next level
+        {
+        case EGameLevel::LEVEL1:
+            CurrentLevel_ = EGameLevel::LEVEL2;
+            break;
+        case EGameLevel::LEVEL2:
+            CurrentLevel_ = EGameLevel::LEVEL3;
+            break;
+        case EGameLevel::LEVEL3:
+            CurrentLevel_ = EGameLevel::GAME_WIN;
+            break;
+        }
     }
 }
 
-// Renders all game components
 void Game::Render()
+{
+    CurrentState_->Render();
+}
+
+// Renders all game components
+void Game::RenderOnPlay()
 {
     BoardRender_->Draw();
     if (!LevelFoodStack.empty())
@@ -150,21 +192,39 @@ size_t Game::GetAmountFoodLeft()
 
 Game::~Game()
 {
-
     Level_.reset(); // Free level memory
     PlayerCommand_ = nullptr;
 }
 
+GameUI &Game::GetGameUI()
+{
+    return GameUI_;
+}
+
+void Game::SetCurrentState(std::unique_ptr<GameState> State)
+{
+    CurrentState_ = std::move(State);
+}
+
+bool Game::IsGameWin()
+{
+    if (CurrentLevel_ == EGameLevel::GAME_WIN)
+    {
+        return true;
+    }
+    return false;
+}
 // === Level Initialization ===
+
 
 void Game::InitializeLevel1()
 {
     Level_ = make_shared<Board>(Level1Data);
     PlayerSnake_ = make_unique<Snake>(Level1StartingPos, Level_);
 
-    LevelFoodStack.emplace(new Frog({5, 3}, Level_)); //make smart
-    LevelFoodStack.emplace(new Mouse({7, 2}, Level_)); //make smart
-    LevelFoodStack.emplace(new Frog({2, 1}, Level_)); //make smart
+    LevelFoodStack.emplace(std::make_unique<Frog>(Vector2{5, 3}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Mouse>(Vector2{7, 2}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Frog>(Vector2{2, 1}, Level_));
 
     // Set up renderers
     BoardRender_ = std::make_unique<RenderBoard>(*Level_);
@@ -175,6 +235,7 @@ void Game::InitializeLevel1()
     PlayerSnake_->ChangeTailSizeBy(GameRules::INITIAL_SNAKE_SIZE);
     bIsLevelCompleted_ = false;
     FoodLeft = LevelFoodStack.size();
+    GameUI_.StartCountingGameScore(FoodLeft);
 }
 
 void Game::InitializeLevel2()
@@ -182,11 +243,11 @@ void Game::InitializeLevel2()
     Level_ = make_shared<Board>(Level2Data);
     PlayerSnake_ = make_unique<Snake>(Level2StartingPos, Level_);
 
-    LevelFoodStack.emplace(new Frog({5, 3}, Level_)); //make smart
-    LevelFoodStack.emplace(new Mouse({7, 2}, Level_)); //make smart
-    LevelFoodStack.emplace(new Mouse({3, 3}, Level_)); // make smart
-    LevelFoodStack.emplace(new Frog({2, 1}, Level_)); // make smart
-    LevelFoodStack.emplace(new Mouse({8, 5}, Level_)); //make smart
+    LevelFoodStack.emplace(std::make_unique<Frog>(Vector2{5, 3}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Mouse>(Vector2{7, 2}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Mouse>(Vector2{3, 3}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Frog>(Vector2{2, 1}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Mouse>(Vector2{8, 5}, Level_));
 
     BoardRender_ = std::make_unique<RenderBoard>(*Level_);
     SnakeRender_ = std::make_unique<RenderSnake>(PlayerSnake_.get());
@@ -196,6 +257,7 @@ void Game::InitializeLevel2()
     PlayerSnake_->ChangeTailSizeBy(2);
     bIsLevelCompleted_ = false;
     FoodLeft = LevelFoodStack.size();
+    GameUI_.StartCountingGameScore(FoodLeft);
 }
 
 void Game::InitializeLevel3()
@@ -203,18 +265,19 @@ void Game::InitializeLevel3()
     Level_ = make_shared<Board>(Level3Data);
     PlayerSnake_ = make_unique<Snake>(Level3StartingPos, Level_);
 
-    LevelFoodStack.emplace(new Frog({5, 3}, Level_)); //make smart
-    LevelFoodStack.emplace(new Mouse({7, 2}, Level_)); //make smart
-    LevelFoodStack.emplace(new Mouse({3, 3}, Level_));//make smart
-    LevelFoodStack.emplace(new Frog({2, 1}, Level_));//make smart
-    LevelFoodStack.emplace(new Mouse({8, 5}, Level_));//make smart
+    LevelFoodStack.emplace(std::make_unique<Frog>(Vector2{5, 3}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Mouse>(Vector2{7, 2}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Mouse>(Vector2{3, 3}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Frog>(Vector2{2, 1}, Level_));
+    LevelFoodStack.emplace(std::make_unique<Mouse>(Vector2{8, 5}, Level_));
 
     BoardRender_ = std::make_unique<RenderBoard>(*Level_);
     SnakeRender_ = std::make_unique<RenderSnake>(PlayerSnake_.get());
     FoodRender_ = std::make_unique<FoodRender>();
 
-    PlayerCommand_ = new NullCommand(); //make smart
+    PlayerCommand_ = new NullCommand(); 
     PlayerSnake_->ChangeTailSizeBy(2);
     bIsLevelCompleted_ = false;
     FoodLeft = LevelFoodStack.size();
+    GameUI_.StartCountingGameScore(FoodLeft);
 }

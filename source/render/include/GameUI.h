@@ -5,17 +5,6 @@
 #include <string>
 
 /**
- * @brief Enumerates the possible game states.
- */
-enum class EGameStates
-{
-    MENU,      ///< Main menu state
-    GAME,      ///< Gameplay state
-    GAME_OVER, ///< Game over state
-    WIN        ///< Win state
-};
-
-/**
  * @brief Handles the user interface for the game, including menus and state transitions.
  */
 class GameUI
@@ -32,36 +21,10 @@ class GameUI
     void Update();
 
     /**
-     * @brief Draws the current UI elements based on the game state.
-     */
-    void Draw();
-
-    /**
-     * @brief Sets the current game state.
-     * @param NewGameState The new state to set.
-     */
-    void SetGameState(EGameStates NewGameState);
-
-    /**
-     * @brief Gets the current game state.
-     * @return The current EGameStates value.
-     */
-    EGameStates GetGameState();
-
-    /**
      * @brief Destroys the GameUI object and releases resources.
      */
     ~GameUI();
 
-    /**
-     * @brief Indicates whether the game is currently paused.
-     */
-    bool bIsPaused_;
-
-    /**
-     * @brief Indicates whether the game should close.
-     */
-    bool bIsGameShouldClose;
     /**
      * @brief Draws background for the game
      */
@@ -71,7 +34,10 @@ class GameUI
      */
     void StartCountingGameScore(size_t &GameScore);
 
-  protected:
+    bool IsStartButtonClicked();
+    bool IsRestartButtonClicked();
+    bool IsExitButtonClicked();
+
     /**
      * @brief Draws the main menu UI.
      */
@@ -102,11 +68,6 @@ class GameUI
     Texture2D GameOverLablel_;
     Texture2D YouWonLabel_;
     Texture2D ScoreBar_;
-
-    /**
-     * @brief The current state of the game.
-     */
-    EGameStates CurrentState_;
 
     /**
      * @brief Pointer to the start button UI element.
