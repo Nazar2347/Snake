@@ -1,9 +1,11 @@
 #include "Game/Game.h"
 #include "GameUI.h"
+Image GameIcon = LoadImage("Assets/GameIcon.png"); /* or LoadImage("Assets/Images/myimage.png"); */
 
 int main()
 {
-    InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "raylib [core] example - basic window");
+    InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "Snake Game");
+    SetWindowIcon(GameIcon);
 
     Game newGame;
 
@@ -24,11 +26,12 @@ int main()
             AccumulatorTime -= GameConst::GameTick;
         }
 
-        BeginDrawing();
+        BeginDrawing();  
         ClearBackground(RAYWHITE);
         newGame.Render();
         EndDrawing();
     }
     CloseWindow();
+    UnloadImage(GameIcon);
     return 0;
 }

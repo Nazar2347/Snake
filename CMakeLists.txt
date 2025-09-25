@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Enable Clang-Tidy with modernize and readability checks
+# Enable Clang-Tidy 
 set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=modernize-*,readability-*")
 
 
@@ -17,3 +17,5 @@ add_subdirectory(./tests)
 add_subdirectory(./external)
 
 install(TARGETS SnakeMain)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/Assets
+        DESTINATION bin)
