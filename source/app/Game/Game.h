@@ -1,13 +1,21 @@
 #pragma once
-#include "Board.h"
-#include "GameState.h"
-#include "GameUI.h"
-#include "InputHandler.h"
-#include "RenderBoard.h"
-#include "RenderFood.h"
-#include "RenderSnake.h"
+
+
+#include <vector>
 #include <memory>
 #include <stack>
+
+
+class Board;
+class Snake;
+class IFood;
+class GameState;
+class GameUI;
+class InputHandler;
+class Command;
+class RenderBoard;
+class RenderSnake;
+class FoodRender;
 
 /**
  * @enum EGameLevel
@@ -95,7 +103,7 @@ class Game
     /**
      * @return Return reference on GameUI object.
      */
-    GameUI &GetGameUI();
+    GameUI* GetGameUI();
 
     /**
      * @brief Switches the Game State.
@@ -136,9 +144,9 @@ class Game
     std::unique_ptr<FoodRender> FoodRender_;           /**< Pointer to the food renderer */
     std::stack<std::unique_ptr<IFood>> LevelFoodStack; /**< Stack of food items for the level */
     std::unique_ptr<GameState> CurrentState_;
-    GameUI GameUI_;             /**< UI of the game/ */
+    GameUI* GameUI_;             /**< UI of the game/ */
     EGameLevel CurrentLevel_;   /**< Indicator of ongoing level */
-    InputHandler InputHandler_; /**< Handles player input */
+    InputHandler* InputHandler_; /**< Handles player input */
     Command *PlayerCommand_;    /**< Current player command */
     bool bIsLevelCompleted_;    /**< Indicates if the level is completed */
 };

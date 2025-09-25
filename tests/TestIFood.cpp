@@ -1,7 +1,6 @@
 #include "Board.h"
 #include "IFood.h"
 #include <catch2/catch_test_macros.hpp>
-#include <raylib.h>
 
 // Helper: Create a simple 3x3 Board1 with all cells empty
 static std::vector<std::vector<bool>> EmptyLevelData(size_t rows = 3, size_t cols = 3)

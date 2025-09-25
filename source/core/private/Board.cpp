@@ -1,4 +1,5 @@
 #include "Board.h"
+#include <raylib.h>
 
 // Vector2Equal: Functor for comparing two Vector2 objects for equality in unordered_map.
 // Compares the integer values of x and y to avoid floating-point precision issues.

@@ -1,8 +1,6 @@
 #pragma once
-#include "Button.h"
+class Button;
 #include "GameConstants.h"
-#include <raylib.h>
-#include <string>
 
 /**
  * @brief Handles the user interface for the game, including menus and state transitions.

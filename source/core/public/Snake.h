@@ -1,7 +1,6 @@
 #pragma once
+
 #include "IObject.h"
-#include <raylib.h>
-#include <raymath.h>
 #include <vector>
 
 /**

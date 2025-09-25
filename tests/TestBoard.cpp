@@ -1,6 +1,5 @@
 #include "Board.h"
 #include <catch2/catch_test_macros.hpp>
-#include <raylib.h>
 
 TEST_CASE("Vector2Equal compares integer values", "[Vector2Equal]")
 {

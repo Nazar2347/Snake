@@ -1,5 +1,6 @@
 #include "IObject.h"
 
+
 IObject::IObject(Vector2 Position, std::shared_ptr<Board> Board) noexcept : Board_(Board), Position_(Position)
 {
     NumberGenerator_ = nullptr;

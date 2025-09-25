@@ -1,7 +1,6 @@
 #include "Board.h"
 #include "Snake.h"
 #include <catch2/catch_test_macros.hpp>
-#include <raylib.h>
 
 std::vector<std::vector <bool>> TestLevelData = 
 {

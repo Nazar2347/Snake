@@ -1,5 +1,4 @@
 #include "RenderBoard.h"
-#include "GameConstants.h"
 #include <iostream>
 
 // Constructor: Loads images and creates textures for the board

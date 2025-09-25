@@ -1,6 +1,5 @@
 #pragma once
 #include "Board.h"
-#include "GameConstants.h"
 
 /**
  * @brief Handles rendering of the game board and its background.

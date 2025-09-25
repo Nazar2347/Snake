@@ -1,5 +1,5 @@
 #pragma once
-#include "Snake.h"
+class Snake;
 
 /**
  * @brief Abstract base class for all command objects.

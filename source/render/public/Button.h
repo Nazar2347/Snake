@@ -1,6 +1,5 @@
 #pragma once
 #include "GameConstants.h"
-#include <raylib.h>
 
 /**
  * @brief Represents a clickable button with a texture in the game UI.

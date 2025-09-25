@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include <raylib.h>
 
 // Constructor: Initializes the snake's head position, alive state, direction, and starting tail
 Snake::Snake(Vector2 StartingPos, std::shared_ptr<Board> Board)

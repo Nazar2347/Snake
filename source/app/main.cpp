@@ -1,12 +1,5 @@
 #include "Game/Game.h"
 #include "GameUI.h"
-#include "InputHandler.h"
-#include "RenderBoard.h"
-#include "RenderFood.h"
-#include "RenderSnake.h"
-#include <iostream>
-#include <stack>
-using namespace std;
 
 int main()
 {

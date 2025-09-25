@@ -1,4 +1,5 @@
 #include "InputHandler.h"
+#include <raylib.h>
 
 // Constructor: Initializes command objects for each input direction and a null command.
 InputHandler::InputHandler() noexcept
