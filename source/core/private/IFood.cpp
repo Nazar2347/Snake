@@ -1,4 +1,5 @@
 #include "IFood.h"
+#include <raylib.h>
 
 // IFood constructor: initializes food with points, position, and board reference
 IFood::IFood(short int Points, Vector2 Position, std::shared_ptr<Board> Board)

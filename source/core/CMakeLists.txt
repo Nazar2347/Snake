@@ -1,7 +1,7 @@
 project (SnakeCoreLib)
 include (CMakePrintHelpers)
-file (GLOB_RECURSE CORE_HEADERS CONFIGURE_DEPENDS "./include/*.h")
-file (GLOB_RECURSE CORE_SOURCES CONFIGURE_DEPENDS "./src/*.cpp")
+file (GLOB_RECURSE CORE_HEADERS CONFIGURE_DEPENDS "./public/*.h")
+file (GLOB_RECURSE CORE_SOURCES CONFIGURE_DEPENDS "./private/*.cpp")
 
 add_library(${PROJECT_NAME} STATIC
 	${CORE_HEADERS}
@@ -9,8 +9,8 @@ add_library(${PROJECT_NAME} STATIC
 )
 
 target_include_directories (${PROJECT_NAME} 
-	PUBLIC ./include 
-	PRIVATE ./src
+	PUBLIC ./public
+	PRIVATE ./private
 )
 
 target_link_libraries(${PROJECT_NAME} 

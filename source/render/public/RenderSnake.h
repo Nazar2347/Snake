@@ -1,8 +1,5 @@
 #pragma once
-#include "GameConstants.h"
 #include "Snake.h"
-#include <raylib.h>
-
 /**
  * @enum SnakePartType
  * @brief Enumerates the different graphical parts of the snake for rendering.

@@ -1,7 +1,6 @@
 #pragma once
 #include "Command.h"
 #include <memory>
-#include <raylib.h>
 
 /**
  * @brief Handles user input and maps it to command objects.

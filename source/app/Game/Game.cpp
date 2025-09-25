@@ -1,4 +1,11 @@
 #include "Game.h"
+#include "Board.h"
+#include "GameState.h"
+#include "GameUI.h"
+#include "InputHandler.h"
+#include "RenderBoard.h"
+#include "RenderFood.h"
+#include "RenderSnake.h"
 
 // Starting positions for each level
 Vector2 Level1StartingPos = {6, 6};
@@ -60,6 +67,9 @@ Game::Game()
     CurrentLevel_ = EGameLevel::LEVEL1;
     bIsGameShouldClose_ = false;
     CurrentState_ = std::make_unique<GameState_Menu>(*this);
+    InputHandler_ = new InputHandler();
+    GameUI_ = new GameUI();
+
 }
 
 void Game::InitializeLevel()
@@ -100,7 +110,7 @@ void Game::ProcessInput()
 // Handles player input and executes commands
 void Game::ProcessInputOnGame()
 {
-    PlayerCommand_ = InputHandler_.HandleInput(); // Get current input
+    PlayerCommand_ = InputHandler_->HandleInput(); // Get current input
     if (PlayerCommand_ != nullptr)
     {
         PlayerCommand_->execute(*PlayerSnake_); // Apply command to snake
@@ -194,9 +204,11 @@ Game::~Game()
 {
     Level_.reset(); // Free level memory
     PlayerCommand_ = nullptr;
+    GameUI_ = nullptr;
+    InputHandler_ = nullptr;
 }
 
-GameUI &Game::GetGameUI()
+GameUI* Game::GetGameUI()
 {
     return GameUI_;
 }
@@ -235,7 +247,7 @@ void Game::InitializeLevel1()
     PlayerSnake_->ChangeTailSizeBy(GameRules::INITIAL_SNAKE_SIZE);
     bIsLevelCompleted_ = false;
     FoodLeft = LevelFoodStack.size();
-    GameUI_.StartCountingGameScore(FoodLeft);
+    GameUI_->StartCountingGameScore(FoodLeft);
 }
 
 void Game::InitializeLevel2()
@@ -257,7 +269,7 @@ void Game::InitializeLevel2()
     PlayerSnake_->ChangeTailSizeBy(2);
     bIsLevelCompleted_ = false;
     FoodLeft = LevelFoodStack.size();
-    GameUI_.StartCountingGameScore(FoodLeft);
+    GameUI_->StartCountingGameScore(FoodLeft);
 }
 
 void Game::InitializeLevel3()
@@ -279,5 +291,5 @@ void Game::InitializeLevel3()
     PlayerSnake_->ChangeTailSizeBy(2);
     bIsLevelCompleted_ = false;
     FoodLeft = LevelFoodStack.size();
-    GameUI_.StartCountingGameScore(FoodLeft);
+    GameUI_->StartCountingGameScore(FoodLeft);
 }

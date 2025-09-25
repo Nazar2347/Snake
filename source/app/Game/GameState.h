@@ -1,5 +1,6 @@
 #pragma once
 class Game;
+class GameUI;
 
 class GameState
 {

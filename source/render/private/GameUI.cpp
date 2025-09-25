@@ -1,5 +1,6 @@
 ﻿#include "GameUI.h"
-
+#include "Button.h"
+#include <string>
 // Constructor: initializes UI state, loads textures, and creates buttons
 GameUI::GameUI()
 {

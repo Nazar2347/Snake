@@ -1,5 +1,5 @@
 #include "Command.h"
-
+#include "Snake.h"
 // Destructor for the base Command class.
 Command::~Command()
 {

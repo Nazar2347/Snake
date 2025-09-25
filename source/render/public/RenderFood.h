@@ -1,5 +1,4 @@
 #pragma once
-#include "GameConstants.h"
 #include "IFood.h"
 
 /**
